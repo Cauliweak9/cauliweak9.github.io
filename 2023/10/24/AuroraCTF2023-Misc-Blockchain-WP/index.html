@@ -6,19 +6,37 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://Cauliweak9.github.io">
-  <title>Archives | 9C±Void&#39;s Blog</title>
+  <title>ACTF2023 Misc&amp;Blockchain WP | 9C±Void&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="别看了，啥都没有，啥都不会">
-<meta property="og:type" content="website">
-<meta property="og:title" content="9C±Void&#39;s Blog">
-<meta property="og:url" content="https://cauliweak9.github.io/archives/index.html">
+  <meta name="description" content="本文章为ACTF2023的Misc&#x2F;Blockchain方向的总Writeup，同时提供部分题目的出题脚本与灵感和吐槽 本人学艺不精，故整体难度较低，还请多多包涵">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ACTF2023 Misc&amp;Blockchain WP">
+<meta property="og:url" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/index.html">
 <meta property="og:site_name" content="9C±Void&#39;s Blog">
-<meta property="og:description" content="别看了，啥都没有，啥都不会">
+<meta property="og:description" content="本文章为ACTF2023的Misc&#x2F;Blockchain方向的总Writeup，同时提供部分题目的出题脚本与灵感和吐槽 本人学艺不精，故整体难度较低，还请多多包涵">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/Earth.png">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/LSB.png">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/header.png">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/Earth01.png">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/ES02.png">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/ES03.png">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/ES04.png">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/SOS.jpg">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/ES05.png">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/DIEIN.png">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/ES06.jpg">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/Contract.png">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/Fund.png">
+<meta property="article:published_time" content="2023-10-24T05:21:57.000Z">
+<meta property="article:modified_time" content="2023-10-24T08:49:17.254Z">
 <meta property="article:author" content="9C±Void">
+<meta property="article:tag" content="Writeup">
+<meta property="article:tag" content="ACTF">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/Earth.png">
   
     <link rel="alternative" href="/atom.xml" title="9C±Void&#39;s Blog" type="application/atom+xml">
   
@@ -198,41 +216,228 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-AuroraCTF2023-Misc-Blockchain-WP" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/" class="archive-article-date">
-        <time datetime="2023-10-24T05:21:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/">ACTF2023 Misc&amp;Blockchain WP</a>
-	
+    <h1 class="article-title" itemprop="name">
+      ACTF2023 Misc&amp;Blockchain WP
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/" class="archive-article-date">
+        <time datetime="2023-10-24T05:21:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-24</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">4.5k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">19分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>本文章为ACTF2023的Misc&#x2F;Blockchain方向的总Writeup，同时提供部分题目的出题脚本与灵感<del>和吐槽</del></p>
+<p>本人学艺不精，故整体难度较低，还请多多包涵</p>
+<span id="more"></span>
+
+<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><h3 id="一拳超人"><a href="#一拳超人" class="headerlink" title="一拳超人"></a>一拳超人</h3><h4 id="灵感来源"><a href="#灵感来源" class="headerlink" title="灵感来源"></a>灵感来源</h4><p>题目考点“punch card”中的punch，<del>非常的牵强附会</del></p>
+<h4 id="考点"><a href="#考点" class="headerlink" title="考点"></a>考点</h4><p>文件尾+基础信息搜集，预期难度1.5⭐</p>
+<img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/Earth.png" class="" title="题目原图">
+
+<h4 id="Writeup"><a href="#Writeup" class="headerlink" title="Writeup"></a>Writeup</h4><p>用010Editor&#x2F;Winhex打开图片，发现文件尾存在字符串“What is a punch card?”，搜索punch card后了解穿孔卡片编码规律</p>
+<p>根据flag格式，得到flag：Aurora{1PUNCHM4N}</p>
+<h4 id="吐槽"><a href="#吐槽" class="headerlink" title="吐槽"></a>吐槽</h4><p>好像很多新生都误把文件尾的提示当成flag提交了www，下次我尽量加个hint在前面，但是别的出题人就不一定会这样干了的说</p>
+<h3 id="你俩啥时候联动？"><a href="#你俩啥时候联动？" class="headerlink" title="你俩啥时候联动？"></a>你俩啥时候联动？</h3><h4 id="灵感来源-1"><a href="#灵感来源-1" class="headerlink" title="灵感来源"></a>灵感来源</h4><p>灵梦和Miku互换服装这个想法真的好棒www，但是我印象中两边没有正式联动过，意难平…</p>
+<p>不过倒是一堆音游又有术曲又有车万曲，某种意义上也算是联动了…？</p>
+<h4 id="考点-1"><a href="#考点-1" class="headerlink" title="考点"></a>考点</h4><p>LSB隐写，预期难度1.1⭐</p>
+<h4 id="Writeup-1"><a href="#Writeup-1" class="headerlink" title="Writeup"></a>Writeup</h4><p><a name="lsb"></a>扔Stegsolve全部0通道直接解，或者zsteg也能直接解</p>
+<img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/LSB.png" class="" title="LSB隐写结果">
+
+<p>flag：Aurora{39_B@d_App7e5!!!}</p>
+<h4 id="吐槽-1"><a href="#吐槽-1" class="headerlink" title="吐槽"></a>吐槽</h4><p>新生们估计都没用过Stegsolve，不了解这个工具拿空格分隔只是为了使用者阅读方便，仅此而已，内容里面其实不存在那个空格的</p>
+<p>然后我就看到基本每个人提交至少有一次带那个空格的，甚至有人爆破了20+次还是不删掉那*空格…</p>
+<p>我宣布，Stegsolve负全责，<strong>Stegsolve，出列！！！</strong></p>
+<h3 id="锟斤拷"><a href="#锟斤拷" class="headerlink" title="锟斤拷"></a>锟斤拷</h3><h4 id="灵感来源-2"><a href="#灵感来源-2" class="headerlink" title="灵感来源"></a>灵感来源</h4><p>和题目中提示一样，灵感来自前段时间呼市公交车后面显示文字出现乱码的事情</p>
+<h4 id="考点-2"><a href="#考点-2" class="headerlink" title="考点"></a>考点</h4><p>文件头补全+Base全家桶+信息搜集+汉字编码（GBK），预期难度2.6⭐</p>
+<h4 id="Writeup-2"><a href="#Writeup-2" class="headerlink" title="Writeup"></a>Writeup</h4><p>打开压缩包发现压缩包损坏，用010Editor查看后发现缺少文件头</p>
+<img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/header.png" class="" title="我504b0304呢？">
+
+<p>补全后打开得到flag.docx和fl4g.txt，打开后者得到一串Hex，根据以下方式解码得到提示：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">原文：4841344445343341474e4e53435732344c555453595632424e4e53465755593d</span><br><span class="line">Hex解码：HA4DE43AGNNSCW24LUTSYV2BNNSFWUY=</span><br><span class="line">Base32解码：882s`3[![<span class="keyword">\]</span>&#x27;,WAkd[S</span><br><span class="line">Base85解码（最终编码为UTF-8）：Hint: 顺蛋踩</span><br></pre></td></tr></table></figure>
+
+<p>搜索顺蛋踩即可搜索到题目灵感来源，利用同样的方式将flag.docx的汉字编码进行错位重组：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">原文：芾薪探涛液鹤直嗦氩</span><br><span class="line">GBK编码：DCC0 D0BD CCBD CCCE D2BA BAD7 D6B1 E0C2 EBB2</span><br><span class="line">将前一个字的后两位与后一个字的前两位重新组合得到：（最后一个字与第一个字重组）</span><br><span class="line">B2DC C0D0 BDCC BDCC CED2 BABA D7D6 B1E0 C2EB</span><br><span class="line">编码结果：曹佬教教我汉字编码</span><br></pre></td></tr></table></figure>
+
+<p>flag：Aurora{caolaojiaojiaowohanzibianma}</p>
+<h4 id="吐槽-2"><a href="#吐槽-2" class="headerlink" title="吐槽"></a>吐槽</h4><p>出题的时候我就已经猜到有人会把编码前两个和最后两个都扔掉，不过由于大部分人都在做自己方向的题目，Misc没人做，我也就没给提示</p>
+<p>直到后面看到有位已经解到“佬教教我汉字编码”了，于是我给了提示“首尾呼应，循环利用”，但是那位应该没理解是什么意思，开始了他的爆破之路：究竟是哪个佬？</p>
+<p><del>结果就是我在后台成功地了解到了百家姓（并不）</del></p>
+<p>还有一件事，我发现新生打不开压缩包的时候第一时间不是想到文件格式出了问题，而是出题人题目附件有问题，这个就完全是靠积累了，总之这一次知道了下一次就能更好地做出来了吧www</p>
+<p>至于打开docx报错这件事，详见<a href="#docx">The Eye Sigil部分</a></p>
+<h3 id="彩虹"><a href="#彩虹" class="headerlink" title="彩虹"></a>彩虹</h3><h4 id="灵感来源-3"><a href="#灵感来源-3" class="headerlink" title="灵感来源"></a>灵感来源</h4><p>出题灵感是当时在密码吧逛的时候看到一位大佬的C#开源项目，觉得很有意思，然后从里面挑个了彩色二维码生成脚本学习了一下，最后自己花了点时间用Python搞了个生成脚本</p>
+<p>这里附上大佬的开源项目链接：<a target="_blank" rel="noopener" href="https://github.com/Lazuplis-Mei/ClassicalCryptography/">Lazuplis-Mei&#x2F;ClassicalCryptography: 部分古典密码 (github.com)</a></p>
+<h4 id="考点-3"><a href="#考点-3" class="headerlink" title="考点"></a>考点</h4><p>变种LSB+二维码扫描，预期难度2.2⭐</p>
+<h4 id="Writeup-3"><a href="#Writeup-3" class="headerlink" title="Writeup"></a>Writeup</h4><p>用Stegsolve打开图片，查看不同频道，总共能得到6张二维码，依次扫描得到下面的结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#x27;QXVyb3J&#x27;, &#x27;he0JlbD&#x27;, &#x27;FFdmVfd&#x27;, &#x27;GgzX3I0&#x27;, &#x27;SW5iMH&#x27;, &#x27;Z2fQ==&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>拼接后Base64解码得到flag：Aurora{Bel1Eve_th3_r4Inb0vv}<del>（唉，舞萌痴）</del></p>
+<p>最后附上本人冗杂的出题脚本，各位可自行取用优化：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> qrcode</span><br><span class="line"><span class="keyword">from</span> qrcode.util <span class="keyword">import</span> QRData, MODE_8BIT_BYTE</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Could be improved, but I&#x27;m just too trash to find out where to improve lol</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">ColorfulQR</span>(<span class="params">ifBase64, plainTxt, colorType</span>):</span><br><span class="line">    <span class="keyword">if</span> ifBase64:</span><br><span class="line">        pTxt = base64.b64encode(plainTxt.encode(<span class="string">&quot;utf-8&quot;</span>))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        pTxt = plainTxt.encode(<span class="string">&quot;utf-8&quot;</span>)</span><br><span class="line">    pTxt = pTxt.decode(<span class="string">&quot;utf-8&quot;</span>)  <span class="comment"># Encode plaintext with Base64(or not)</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">len</span>(pTxt))</span><br><span class="line">    strade = math.ceil((<span class="built_in">len</span>(pTxt) / colorType))</span><br><span class="line">    <span class="built_in">print</span>(strade, end=<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    txtList = [<span class="built_in">str</span>(i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, colorType)]</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">len</span>(pTxt) // colorType)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(pTxt) % colorType):</span><br><span class="line">        txtList[i] = pTxt[i * strade : (i + <span class="number">1</span>) * strade]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(pTxt) % colorType, colorType):</span><br><span class="line">        txtList[i] = pTxt[</span><br><span class="line">            i * (strade - <span class="number">1</span>)</span><br><span class="line">            + <span class="built_in">len</span>(pTxt) % colorType : (i + <span class="number">1</span>) * (strade - <span class="number">1</span>)</span><br><span class="line">            + <span class="built_in">len</span>(pTxt) % colorType</span><br><span class="line">        ]</span><br><span class="line">    <span class="built_in">print</span>(txtList)  <span class="comment"># Divide the string into parts of equal length</span></span><br><span class="line">    QRList = [</span><br><span class="line">        qrcode.make(txtList[i]) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, colorType)</span><br><span class="line">    ]  <span class="comment"># Produce a list of QRCode with each of the divided strings</span></span><br><span class="line">    imgList = [</span><br><span class="line">        QRList[i].rotate(<span class="number">90</span> * i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, colorType)</span><br><span class="line">    ]  <span class="comment"># Rotate the QRCode with 90*i degrees according its position in the list</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, colorType):</span><br><span class="line">        imgList[i].save(</span><br><span class="line">            <span class="string">&quot;A&quot;</span> + <span class="built_in">str</span>(i) + <span class="string">&quot;.png&quot;</span></span><br><span class="line">        )  <span class="comment"># Save each of these rotated QRCodes as PNG type for later use</span></span><br><span class="line">    <span class="keyword">if</span> colorType == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, colorType):</span><br><span class="line">            img = Image.<span class="built_in">open</span>(<span class="string">&quot;A&quot;</span> + <span class="built_in">str</span>(i) + <span class="string">&quot;.png&quot;</span>)</span><br><span class="line">            width = img.size[<span class="number">0</span>]</span><br><span class="line">            height = img.size[<span class="number">1</span>]</span><br><span class="line">            ColorQR = Image.new(</span><br><span class="line">                <span class="string">&quot;RGB&quot;</span>, img.size, <span class="number">0</span></span><br><span class="line">            )  <span class="comment"># Create a brand new black image with the same size of the PNG in RGB type</span></span><br><span class="line">            <span class="keyword">for</span> h <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, height):</span><br><span class="line">                <span class="keyword">for</span> w <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, width):</span><br><span class="line">                    pix = img.getpixel(</span><br><span class="line">                        (w, h)</span><br><span class="line">                    )  <span class="comment"># The &#x27;pix&#x27; variable type is &#x27;int&#x27;, which means the QRCode image is a grey-scale image, the pixel of which is controlled by a int from 0~255, from black to white</span></span><br><span class="line">                    color = [<span class="number">0x0</span>, <span class="number">0x0</span>, <span class="number">0x0</span>]</span><br><span class="line">                    <span class="keyword">if</span> pix == <span class="number">0xFF</span>:  <span class="comment"># If the pixel is white:</span></span><br><span class="line">                        color[i] = pix</span><br><span class="line">                        ColorQR.putpixel((w, h), (color[<span class="number">0</span>], color[<span class="number">1</span>], color[<span class="number">2</span>]))</span><br><span class="line">                        <span class="keyword">continue</span>  <span class="comment"># Filling the colors in the new RGB image in an order of pure red, pure green and pure blue. Due to the grey-scaled QRCode, a new image in RGB type is needed for creating a colorful image, in this case, the ColorQR</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">continue</span>  <span class="comment"># If the pixel is black, do nothing</span></span><br><span class="line">            imgList[</span><br><span class="line">                i</span><br><span class="line">            ] = ColorQR  <span class="comment"># Actually, this can be deleted, but I&#x27;m too lazy to delete this lol</span></span><br><span class="line">            ColorQR.save(</span><br><span class="line">                <span class="string">&quot;A&quot;</span> + <span class="built_in">str</span>(i) + <span class="string">&quot;.png&quot;</span></span><br><span class="line">            )  <span class="comment"># Covering the colored QRCode for later use</span></span><br><span class="line">    <span class="keyword">elif</span> colorType == <span class="number">6</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, colorType):</span><br><span class="line">            img = Image.<span class="built_in">open</span>(<span class="string">&quot;A&quot;</span> + <span class="built_in">str</span>(i) + <span class="string">&quot;.png&quot;</span>)</span><br><span class="line">            width = img.size[<span class="number">0</span>]</span><br><span class="line">            height = img.size[<span class="number">1</span>]</span><br><span class="line">            ColorQR = Image.new(<span class="string">&quot;RGB&quot;</span>, img.size, <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> h <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, height):</span><br><span class="line">                <span class="keyword">for</span> w <span class="keyword">in</span> <span class="built_in">range</span>(</span><br><span class="line">                    <span class="number">0</span>, width</span><br><span class="line">                ):  <span class="comment"># Same as in 3-bit encoding so far blah blah blah...</span></span><br><span class="line">                    pix = img.getpixel((w, h))</span><br><span class="line">                    color = [</span><br><span class="line">                        <span class="number">0b01010101</span>,</span><br><span class="line">                        <span class="number">0b10101010</span>,</span><br><span class="line">                    ]  <span class="comment"># But for the 6-bit encoding, the filling colors changed from pure RGB to (85,0,0),(170,0,0),(0,85,0),(0,170,0),(0,0,85),(0,0,170)</span></span><br><span class="line">                    colorRGB = [<span class="number">0x0</span>, <span class="number">0x0</span>, <span class="number">0x0</span>]</span><br><span class="line">                    <span class="keyword">if</span> pix == <span class="number">0xFF</span>:</span><br><span class="line">                        colorRGB[math.floor(i / <span class="number">2</span>)] = color[i % <span class="number">2</span>]</span><br><span class="line">                        ColorQR.putpixel(</span><br><span class="line">                            (w, h), (colorRGB[<span class="number">0</span>], colorRGB[<span class="number">1</span>], colorRGB[<span class="number">2</span>])</span><br><span class="line">                        )</span><br><span class="line">                        <span class="keyword">continue</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">continue</span></span><br><span class="line">            imgList[i] = ColorQR</span><br><span class="line">            ColorQR.save(</span><br><span class="line">                <span class="string">&quot;A&quot;</span> + <span class="built_in">str</span>(i) + <span class="string">&quot;.png&quot;</span></span><br><span class="line">            )  <span class="comment"># Same as in 3-bit encoding blah blah blah...</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;An Error has occurred...&quot;</span>)</span><br><span class="line">    final_Img = Image.new(<span class="string">&quot;RGB&quot;</span>, imgList[<span class="number">0</span>].size, <span class="number">0</span>)</span><br><span class="line">    final_Img.save(</span><br><span class="line">        <span class="string">&quot;black.png&quot;</span></span><br><span class="line">    )  <span class="comment"># Create a brand new black image for adding up all the images</span></span><br><span class="line">    fI = cv2.imread(<span class="string">&quot;black.png&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, colorType):</span><br><span class="line">        iL = cv2.imread(<span class="string">&quot;A&quot;</span> + <span class="built_in">str</span>(i) + <span class="string">&quot;.png&quot;</span>)  <span class="comment"># Transforming the image into a int[]</span></span><br><span class="line">        fI = cv2.add(fI, iL)  <span class="comment"># Using OpenCV&#x27;s add function to add up all the pixels</span></span><br><span class="line">    cv2.imwrite(</span><br><span class="line">        <span class="string">&quot;ColorfulQRCode.png&quot;</span>, fI</span><br><span class="line">    )  <span class="comment"># Save the Final Colorful QRCode in current folder</span></span><br><span class="line">    plt.imshow(fI[:, :, ::-<span class="number">1</span>])</span><br><span class="line">    plt.show()  <span class="comment"># Show the QRCode in a 2D axis(could be deleted tbh)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        colorType = <span class="built_in">int</span>(</span><br><span class="line">            <span class="built_in">input</span>(</span><br><span class="line">                <span class="string">&quot;Do you wish to use 3-colour or 6-colour encoding? Just input the number:\nOr you could just exit by typing 0\n&quot;</span></span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">except</span> IOError:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;An error has occurred, would you please try again?\n&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> colorType == <span class="number">3</span> <span class="keyword">or</span> colorType == <span class="number">6</span>:</span><br><span class="line">            ifBase64 = <span class="built_in">int</span>(<span class="built_in">input</span>(<span class="string">&quot;Input 1 if you wish to use Base64, and 0 if don&#x27;t:&quot;</span>))</span><br><span class="line">            plainTxt = <span class="built_in">input</span>(<span class="string">&quot;Please input the text you wish to encode:&quot;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Now producing your QRCode...&quot;</span>)</span><br><span class="line">            ColorfulQR(ifBase64, plainTxt, colorType)</span><br><span class="line">        <span class="keyword">elif</span> colorType != <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;This number of colors is not available for now, please try again?&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;Goodbye~&quot;</span>)</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Chocolate-Missile"><a href="#Chocolate-Missile" class="headerlink" title="Chocolate Missile"></a>Chocolate Missile</h3><h4 id="灵感来源-4"><a href="#灵感来源-4" class="headerlink" title="灵感来源"></a>灵感来源</h4><p>同名乐曲，<del>鉴定为打Cytus II打的</del></p>
+<h4 id="考点-4"><a href="#考点-4" class="headerlink" title="考点"></a>考点</h4><p>信息搜集+<del>猜谜</del>+SilentEye隐写，预期难度3.7⭐</p>
+<h4 id="Writeup-4"><a href="#Writeup-4" class="headerlink" title="Writeup"></a>Writeup</h4><p>搜索题目名称，得到同名乐曲结果，在网易云音乐评论区下或搜索创作团队官网可了解到Alice语这一架空语，同时与题目描述第一句话可以对应上，故合理猜测图片中的架空文字为Alice语的架空文字</p>
+<p>搜索Alice语，可以搜到我自己手译出来的对应表（当然你也可以自己根据众多曲子的MV和歌词去一一对应，不过会耗很多时间）：<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv22158840/?jump_opus=1">Alice语架空文字与英文字母的对应（手解） - 哔哩哔哩 (bilibili.com)</a></p>
+<p>对应后得到图片内信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The Eye is watching in the dreadful silence,</span><br><span class="line">with a passphrase only known by The Eye itself.</span><br><span class="line">But I&#x27;ve got it, it&#x27;s</span><br><span class="line"></span><br><span class="line">ALiCeSCHac</span><br></pre></td></tr></table></figure>
+
+<p>根据题目描述提示：“作曲家”指向Chocolate Missile的创作团队Alice Schach and the Magic Orchestra，而“最后一个字”以及粗体“小写”直接提示最后一个字母是小写，故得知passphrase为ALiCeSCHach</p>
+<p>而又根据Eye+silence⇒SilentEye，最终经过SilentEye长时间的运行解密之后得到flag：Aurora{BiS_0_N4i-Hellm}</p>
+<h4 id="吐槽-3"><a href="#吐槽-3" class="headerlink" title="吐槽"></a>吐槽</h4><p>应该是所有题目里面出的最糟糕的一题，里面包含了各种猜谜，对新生来说极其不友好，单从推断出SilentEye这一步就需要大量的做题经验才有一定可能联想到，更何况在获取passphrase那一步存在猜谜，这更是恶上加恶，在此向各位新生谢罪（土下座）</p>
+<h3 id="同伴方块"><a href="#同伴方块" class="headerlink" title="同伴方块"></a>同伴方块</h3><h4 id="灵感"><a href="#灵感" class="headerlink" title="灵感"></a>灵感</h4><p>来自传送门2的一个成就“最终传送”（传送门1也存在大量SSTV信号），而传送门以月球作为伏笔，本人作为音游人自然想到了Apollo这首曲子，因此把这两者结合了出了这道题</p>
+<h4 id="考点-5"><a href="#考点-5" class="headerlink" title="考点"></a>考点</h4><p>mp4音轨提取+SSTV，预期难度4.8⭐</p>
+<h4 id="Writeup-5"><a href="#Writeup-5" class="headerlink" title="Writeup"></a>Writeup</h4><p>利用ffmpeg或者Audacity（如使用，则需要先安装对应版本的ffmpeg for Audacity）将mp4的第二条音轨提取出来</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i 阿波罗计划.mp4 -vn -map 0:a:1 -c copy SSTV.mp3</span><br></pre></td></tr></table></figure>
+
+<p>然后再将得到的音轨SSTV解码，最后扫出flag：flag{f4LL_iNt0_th3_D@Rks1de}</p>
+<h4 id="吐槽-4"><a href="#吐槽-4" class="headerlink" title="吐槽"></a>吐槽</h4><p>本身题目只进行了两次简单的处理，但是由于没有向新生们科普有关音频&amp;影像处理的知识，同时可能没有料到一个mp4文件可以存在“第二条音轨”，最后看完这个Writeup可能还是懵圈的</p>
+<p>总之可以搞一个Audacity，对于音频的隐写分析有着极大的帮助，包括但不限于摩斯，频谱图，二进制等</p>
+<p>至于SSTV嘛…听过一遍之后就知道SSTV大概是啥样的了，想扫出来要么在一个安静的地方朝着麦外放，要么就需要搞一个虚拟声卡，整体还是有些麻烦的</p>
+<h3 id="The-Eye-Sigil"><a href="#The-Eye-Sigil" class="headerlink" title="The Eye Sigil"></a>The Eye Sigil</h3><h4 id="灵感-1"><a href="#灵感-1" class="headerlink" title="灵感"></a>灵感</h4><p>来自Eye Sigil ARG，想到当时的ARG第一步是在每个The Sigil附近放一块The Big Picture的碎片，于是想到把flag分散在每一题里面，然后就有了这道题（新生赛有人搜到了这个出题灵感来着，但是当答案交了www，可能是我全英文的剧情太冗长难懂了吧www）</p>
+<h4 id="考点-6"><a href="#考点-6" class="headerlink" title="考点"></a>考点</h4><p>Act I（预期难度5.2⭐）：CVE-28303（一拳超人），LSB（你俩啥时候联动？），Word隐写（不知道算不算）（锟斤拷）</p>
+<p>Act II（预期难度5.0⭐）：Hex逆序（彩虹），社工+视力（Chocolate Missile），zip伪加密+mp3提取封面图片+修改图片高度（同伴方块）</p>
+<h4 id="Writeup-6"><a href="#Writeup-6" class="headerlink" title="Writeup"></a>Writeup</h4><p>一拳超人：在010Editor查看图片，发现存在两个IEND文件尾，推测为CVE-28303漏洞（亦称Acropalypse漏洞），在github上获取到acropalypse_png.py脚本后使用，最后解出第一块flag：Aurora{C@n_y</p>
+<img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/Earth01.png" class="" title="最后结果如图">
+
+<p>你俩啥时候联动？：在获取到flag的通道下面（<a href="#lsb">可见上图</a>），发现下方明文内容存在89504e47字样，察觉到为PNG文件头，故将对应明文信息作为Hex流生成新文件，得到第二块flag：0u_S3e_7he_B</p>
+<img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/ES02.png" class="" title="最后结果如图">
+
+<p><a name="docx"></a>锟斤拷：打开flag.docx的时候发现docx内存在无法识别的文件，故可以想到docx内存在额外的文件，将docx转为zip后打开，可发现在rels文件夹下存在第三块flag：1g_PiCtuRe?}</p>
+<img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/ES03.png" class="" title="最后结果如图">
+
+<p>拼接得到Act I的flag：Aurora{C@n_y0u_S3e_7he_B1g_PiCtuRe?}</p>
+<p>彩虹：用010Editor打开png，发现文件尾存在47 4e 50 89字样，猜测为PNG文件逆向输出，将对应数据逆序之后得到第一块flag：Aurora{7</p>
+<img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/ES04.png" class="" title="最后结果如图">
+
+<p>Chocolate Missile：在架空文字最后一行下面的亮白色区域，存在“QQ：1434198202”字样</p>
+<img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/SOS.jpg" class="" title="不清楚米娜桑能不能看得清？">
+
+<p>搜索对应账号后在其QQ空间动态里得到第二块flag：He_J1g_i</p>
+<img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/ES05.png" class="" title="最后结果如图">
+
+<p>同伴方块：在mp4的文件尾处，存在一个zip，提取后发现需要密码，检查加密位后得知压缩包经过了伪加密，修复后从压缩包可提取出DIEIN.mp3，播放发现曲绘被更改成了The Sigil图案，猜测flag为曲绘</p>
+<p>用010Editor打开MP3，发现有image&#x2F;jpeg，之后就是jpg文件头FFD8FFE0</p>
+<img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/DIEIN.png" class="" title="就从这里开始desu">
+
+<p>提取后与Act I提供的无flag附件对比后发现图片高度被修改过，修改之后得到第三块flag：5_uP!!!}</p>
+<img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/ES06.jpg" class="" title="最后结果如图">
+
+<p>拼接得到Act II的flag：Aurora{7He_J1g_i5_uP!!!}</p>
+<h4 id="吐槽-5"><a href="#吐槽-5" class="headerlink" title="吐槽"></a>吐槽</h4><p>当时本来还想搞MP3Stego的，但是不知道为什么总是显示我的wav文件缺了什么东西…我明明用的是ffmpeg转的啊，哭&#x2F;(ㄒoㄒ)&#x2F;~~</p>
+<p>两道题一共6块flag，其中28303的那块flag有一个人解出来了，Word的那块有两个，其他的要么没交我没看到，要么就没解出来</p>
+<p>然后解出28303的那位以为是一拳超人的flag，愣是交了好几次，只能说没看Act I的剧情是这样的www</p>
+<hr>
+<h2 id="Blockchain"><a href="#Blockchain" class="headerlink" title="Blockchain"></a>Blockchain</h2><h3 id="契约"><a href="#契约" class="headerlink" title="契约"></a>契约</h3><h4 id="灵感-2"><a href="#灵感-2" class="headerlink" title="灵感"></a>灵感</h4><p>不会没人发现题目描述是魔圆第一集开头QB说的话吧，不会吧不会吧<del>（我现在就要看叛逆的物语）</del></p>
+<h4 id="考点-7"><a href="#考点-7" class="headerlink" title="考点"></a>考点</h4><p>合约部署字节码泄露，预期难度1.0⭐</p>
+<h4 id="Writeup-7"><a href="#Writeup-7" class="headerlink" title="Writeup"></a>Writeup</h4><p>在<a target="_blank" rel="noopener" href="https://sepolia.etherscan.io/">etherscan</a>上根据地址搜对应的合约，然后查看部署合约的交易，在下面Show More的Input Data选择View input as UTF-8</p>
+<img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/Contract.png" class="" title="这就是flag啦">
+
+<p>得到flag：flag{W3lc0me_2_Blockch4in!!!}</p>
+<h4 id="吐槽-6"><a href="#吐槽-6" class="headerlink" title="吐槽"></a>吐槽</h4><p>这道签到题放了<strong>整整42hrs</strong>没有人解出来，后面是加急赶了个科普视频出来才有人解出来，其他的没解出来的说是因为<strong>不会魔法</strong>…</p>
+<p>只能说视频把flag喂嘴边了，剩下的就是看各位能不能张开嘴巴吃到了</p>
+<h3 id="Five-Nights-at-Sepolia’s"><a href="#Five-Nights-at-Sepolia’s" class="headerlink" title="Five Nights at Sepolia’s"></a>Five Nights at Sepolia’s</h3><h4 id="灵感-3"><a href="#灵感-3" class="headerlink" title="灵感"></a>灵感</h4><p>如题目所示，灵感来自FNAF，主要是因为看UCN 50&#x2F;20的时候Rockstar Freddy老是在那”Please deposit five coins”，联想到自己跟着smartcontractkit学的FundMe，于是在那个的合约基础上稍微做了调整就扔出来当题目了</p>
+<h4 id="考点-8"><a href="#考点-8" class="headerlink" title="考点"></a>考点</h4><p>简单的合约交互，钱包助记词&#x2F;账户地址私钥的使用，预期难度2.3⭐</p>
+<h4 id="Writeup-8"><a href="#Writeup-8" class="headerlink" title="Writeup"></a>Writeup</h4><img src="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/Fund.png" class="" title="对着这个做一下呗~">
+
+<p>首先把两个合约扔在Remix上面，等编译好了就在左侧先在At Address处输入合约地址（选中的合约一定是ACTFFundMe.sol），然后点击At Address就可以和已部署的合约进行交互啦~ (￣▽￣) ~*</p>
+<p>然后我解释一下funds函数（其他的不用管）：就是检测调用者资助的ETH价值是否超过5USD，如果没有就直接失败，并返回“More money should be spent”，有的话就设定checkCreditList[调用者地址]&#x3D;1并且返还所有资助的ETH（gas费肯定还不回来的www）</p>
+<p>调用成功之后就可以去靶机那里确认啦，如果成功结果应该是这样的说：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">Please enter your account address with &quot;0x&quot; at the front:</span><br><span class="line">0xad33070E5dC2AcD2d8518aBA2E5D4fb3e64FF634</span><br><span class="line">Initializing...</span><br><span class="line"></span><br><span class="line">Now checking...</span><br><span class="line"></span><br><span class="line">Thank you for depositing five coins. All the coins you have deposited are refunded.</span><br><span class="line"></span><br><span class="line">We hope you enjoy the flag:</span><br><span class="line"></span><br><span class="line">wreck eight teach valley castle drama foot novel home inform author actor</span><br><span class="line"></span><br><span class="line">Wait... Where&#x27;s the address of the flag account?</span><br><span class="line"></span><br><span class="line">Welp, seems our system went wrong, our apologies.</span><br><span class="line"></span><br><span class="line">We&#x27;ll try sending the flag once more, plz wait for a sec...</span><br><span class="line"></span><br><span class="line">40dc829ce31d6fd3ef20dd6b2e87a5bf76dcea642fa5399f1aef5aa8c0428947</span><br><span class="line"></span><br><span class="line">Hmmm... There seems to be a problem with out system...</span><br><span class="line"></span><br><span class="line">Plz try another day? Hope you have a nice day, bye~</span><br></pre></td></tr></table></figure>
+
+<p>wreck那行就是助记词，40那行就是账户私钥，之后跟着科普视频一样导入就可以找到账户啦</p>
+<p>flag：Aurora{0xEC3f12a41f9d42FCDCce6125cA219515A5b579F1}</p>
+<h4 id="吐槽-7"><a href="#吐槽-7" class="headerlink" title="吐槽"></a>吐槽</h4><p>至于为什么给私钥，主要是怕有人一个不小心“手滑”删掉了钱包里面的账户<del>（也就是过河拆桥）</del>，因为会合约交互了，那基本也就算得上入了门了，这个flag还是能给就给<del>（不过还是没人解出来QAQ）</del></p>
+<p>这一题还有个非预期：我没有清零，所以如果有人解出来了，别人就可以用前面那个人的地址进行确认，不过由于没有人解出来，所以这非预期我可以忽略不计…？（啪啪给自己两巴掌）</p>
+<h3 id="Sepolia外传"><a href="#Sepolia外传" class="headerlink" title="Sepolia外传"></a>Sepolia外传</h3><h4 id="灵感-4"><a href="#灵感-4" class="headerlink" title="灵感"></a>灵感</h4><p>武林外传，BA最终章<del>（不是，这也能刀？）</del></p>
+<p>题目描述感谢LithosPriesteX师傅提供，咱是真的没灵感了www<del>（发配到沙勒.jpg）</del></p>
+<h4 id="考点-9"><a href="#考点-9" class="headerlink" title="考点"></a>考点</h4><p>简单的合约攻击与函数绕过（tx.origin和extcodesize()），预期难度2.8⭐</p>
+<h4 id="Writeup-9"><a href="#Writeup-9" class="headerlink" title="Writeup"></a>Writeup</h4><p>在网上都能搜到原题，三重绕过我去掉了一重</p>
+<p>POC如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//SPDX-License-Identifier:MIT</span><br><span class="line">pragma solidity ^0.8.18;</span><br><span class="line">import &#x27;./ACTFBypass.sol&#x27;;</span><br><span class="line"></span><br><span class="line">contract testAcc&#123;</span><br><span class="line">    address public magic_addr;</span><br><span class="line"></span><br><span class="line">    constructor(address addr)&#123;</span><br><span class="line">        magic_addr=addr;</span><br><span class="line">        NoBypasses(magic_addr).setFlag();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>部署的时候要添加题目合约的地址作为参数，而且这种合约是一次性的，就部署完之后就没法进行第二次同样的攻击了（constructor只会调用一次这个还是知道的吧）</p>
+<p>然后用攻击合约地址（注意<strong>不是</strong>个人账户地址）在靶机进行检验，如果成功则可以获取到flag：flag{c0ntR4ct_a7TacK_&amp;_Con5tRuctOr_byp@Ss}</p>
+<h4 id="吐槽-8"><a href="#吐槽-8" class="headerlink" title="吐槽"></a>吐槽</h4><p>为什么没人做，明明有原题的说QAQ</p>
+<p>咱学艺不精，自己搞Docker搞了超久，结果还是这里出问题那里出问题，下次我就看看能不能在靶机上搞ganache-cli了，本地区块链至少不用连外网连API（土下座）</p>
+<hr>
+<p>以上就是所有的题目，各位如果有疑问可以diss我，如果有需要附件的师傅也可以找我desu</p>
+<p>总之就这么多啦，各位师傅们加油哦ヾ(≧ ▽ ≦)ゝ记得多带带我哦</p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          9C±Void
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://Cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/" title="ACTF2023 Misc&amp;Blockchain WP" target="_blank">https://Cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -248,62 +453,120 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://cauliweak9.github.io/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/23/Brief%20Intro/" class="archive-article-date">
-        <time datetime="2023-10-23T15:29:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-23</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2023/10/23/Brief%20Intro/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Brief Intro</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/10/23/Brief%20Intro/">Brief Intro</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Introduction</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Misc"><span class="toc-number">1.</span> <span class="toc-text">Misc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E6%8B%B3%E8%B6%85%E4%BA%BA"><span class="toc-number">1.1.</span> <span class="toc-text">一拳超人</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%B5%E6%84%9F%E6%9D%A5%E6%BA%90"><span class="toc-number">1.1.1.</span> <span class="toc-text">灵感来源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E7%82%B9"><span class="toc-number">1.1.2.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Writeup"><span class="toc-number">1.1.3.</span> <span class="toc-text">Writeup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%90%E6%A7%BD"><span class="toc-number">1.1.4.</span> <span class="toc-text">吐槽</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%A0%E4%BF%A9%E5%95%A5%E6%97%B6%E5%80%99%E8%81%94%E5%8A%A8%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">你俩啥时候联动？</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%B5%E6%84%9F%E6%9D%A5%E6%BA%90-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">灵感来源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E7%82%B9-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Writeup-1"><span class="toc-number">1.2.3.</span> <span class="toc-text">Writeup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%90%E6%A7%BD-1"><span class="toc-number">1.2.4.</span> <span class="toc-text">吐槽</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%9F%E6%96%A4%E6%8B%B7"><span class="toc-number">1.3.</span> <span class="toc-text">锟斤拷</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%B5%E6%84%9F%E6%9D%A5%E6%BA%90-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">灵感来源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E7%82%B9-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Writeup-2"><span class="toc-number">1.3.3.</span> <span class="toc-text">Writeup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%90%E6%A7%BD-2"><span class="toc-number">1.3.4.</span> <span class="toc-text">吐槽</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%A9%E8%99%B9"><span class="toc-number">1.4.</span> <span class="toc-text">彩虹</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%B5%E6%84%9F%E6%9D%A5%E6%BA%90-3"><span class="toc-number">1.4.1.</span> <span class="toc-text">灵感来源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E7%82%B9-3"><span class="toc-number">1.4.2.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Writeup-3"><span class="toc-number">1.4.3.</span> <span class="toc-text">Writeup</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chocolate-Missile"><span class="toc-number">1.5.</span> <span class="toc-text">Chocolate Missile</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%B5%E6%84%9F%E6%9D%A5%E6%BA%90-4"><span class="toc-number">1.5.1.</span> <span class="toc-text">灵感来源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E7%82%B9-4"><span class="toc-number">1.5.2.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Writeup-4"><span class="toc-number">1.5.3.</span> <span class="toc-text">Writeup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%90%E6%A7%BD-3"><span class="toc-number">1.5.4.</span> <span class="toc-text">吐槽</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E4%BC%B4%E6%96%B9%E5%9D%97"><span class="toc-number">1.6.</span> <span class="toc-text">同伴方块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%B5%E6%84%9F"><span class="toc-number">1.6.1.</span> <span class="toc-text">灵感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E7%82%B9-5"><span class="toc-number">1.6.2.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Writeup-5"><span class="toc-number">1.6.3.</span> <span class="toc-text">Writeup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%90%E6%A7%BD-4"><span class="toc-number">1.6.4.</span> <span class="toc-text">吐槽</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Eye-Sigil"><span class="toc-number">1.7.</span> <span class="toc-text">The Eye Sigil</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%B5%E6%84%9F-1"><span class="toc-number">1.7.1.</span> <span class="toc-text">灵感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E7%82%B9-6"><span class="toc-number">1.7.2.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Writeup-6"><span class="toc-number">1.7.3.</span> <span class="toc-text">Writeup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%90%E6%A7%BD-5"><span class="toc-number">1.7.4.</span> <span class="toc-text">吐槽</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Blockchain"><span class="toc-number">2.</span> <span class="toc-text">Blockchain</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A5%91%E7%BA%A6"><span class="toc-number">2.1.</span> <span class="toc-text">契约</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%B5%E6%84%9F-2"><span class="toc-number">2.1.1.</span> <span class="toc-text">灵感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E7%82%B9-7"><span class="toc-number">2.1.2.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Writeup-7"><span class="toc-number">2.1.3.</span> <span class="toc-text">Writeup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%90%E6%A7%BD-6"><span class="toc-number">2.1.4.</span> <span class="toc-text">吐槽</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Five-Nights-at-Sepolia%E2%80%99s"><span class="toc-number">2.2.</span> <span class="toc-text">Five Nights at Sepolia’s</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%B5%E6%84%9F-3"><span class="toc-number">2.2.1.</span> <span class="toc-text">灵感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E7%82%B9-8"><span class="toc-number">2.2.2.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Writeup-8"><span class="toc-number">2.2.3.</span> <span class="toc-text">Writeup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%90%E6%A7%BD-7"><span class="toc-number">2.2.4.</span> <span class="toc-text">吐槽</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sepolia%E5%A4%96%E4%BC%A0"><span class="toc-number">2.3.</span> <span class="toc-text">Sepolia外传</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%81%B5%E6%84%9F-4"><span class="toc-number">2.3.1.</span> <span class="toc-text">灵感</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%80%83%E7%82%B9-9"><span class="toc-number">2.3.2.</span> <span class="toc-text">考点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Writeup-9"><span class="toc-number">2.3.3.</span> <span class="toc-text">Writeup</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%90%E6%A7%BD-8"><span class="toc-number">2.3.4.</span> <span class="toc-text">吐槽</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+        
+    </div>
+</aside>
 
-    
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -344,8 +607,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
