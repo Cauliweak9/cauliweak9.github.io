@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://cauliweak9.github.io/2023/11/21/FlowAnalysis/FA0.png">
 <meta property="og:image" content="https://cauliweak9.github.io/2023/11/21/FlowAnalysis/FA1.png">
 <meta property="article:published_time" content="2023-11-21T10:33:15.000Z">
-<meta property="article:modified_time" content="2023-11-21T14:08:23.382Z">
+<meta property="article:modified_time" content="2023-11-21T14:23:17.762Z">
 <meta property="article:author" content="9C±Void">
 <meta property="article:tag" content="流量分析">
 <meta name="twitter:card" content="summary">
@@ -366,7 +366,7 @@
 </ul>
 <p>这类题主要还是靠脚本做，但是了解一下自然是好的</p>
 <h4 id="Net-NTLM流量分析（哈希爆破）"><a href="#Net-NTLM流量分析（哈希爆破）" class="headerlink" title="Net-NTLM流量分析（哈希爆破）"></a>Net-NTLM流量分析（哈希爆破）</h4><p><del>由于SMTP这种邮箱传输真没啥好讲的，这里就跳过吧（bushi）</del></p>
-<p>NTLM是Windows下的一个安全认证协议，原因是Windows内部只存储明文密码的哈希而非明文密码本身，交互流程大致分为**协商(Negotiate) &#x3D;&gt; 质询(Challenge) &#x3D;&gt; 身份认证(Auth)**这三步，具体实现可以参考<a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/193149#h2-1">这篇文章</a></p>
+<p>NTLM是Windows下的一个安全认证协议，原因是Windows内部只存储明文密码的哈希而非明文密码本身，交互流程大致分为<strong>协商（Negotiate）→质询（Challenge）→身份认证（Auth）</strong>这三步，具体实现可以参考<a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/193149#h2-1">这篇文章</a></p>
 <p>那么我们知道了哈希算法，有一个字典，不就可以用字典哈希爆破了吗（笑）</p>
 <p>这里以Net-NTLMv2哈希爆破为例，我们先获取以下信息：</p>
 <ul>
@@ -388,7 +388,7 @@
 
 
 <h4 id="5G传输协议流量分析（以NAS-5GS为例）"><a href="#5G传输协议流量分析（以NAS-5GS为例）" class="headerlink" title="5G传输协议流量分析（以NAS-5GS为例）"></a>5G传输协议流量分析（以NAS-5GS为例）</h4><p><del>（只能说是不懂装懂了www）</del></p>
-<p>只凭借咱浅薄的理解，整个NAS-5GS的流程大致可以分为<strong>配置 &#x3D;&gt; 注册请求 &#x3D;&gt; 认证 &#x3D;&gt; 协商 &#x3D;&gt; 通信</strong>这几步，这个协议下的参数巨多，要翻起来真的头都大，就稍微简单讲讲好了</p>
+<p>只凭借咱浅薄的理解，整个NAS-5GS的流程大致可以分为<strong>配置→注册请求→认证→协商→通信</strong>这几步，这个协议下的参数巨多，要翻起来真的头都大，就稍微简单讲讲好了</p>
 <p>首先是NG Setup，擦除NG-RAN节点和AMF的应用程序级别配置数据，并替换为接收到的数据，同时清楚NG-RAN节点上AMF超载状态信息；如果里面出现错误（如国家与网络运营商参数识别错误），可能导致无法正常进行UE注册请求</p>
 <p>然后就是UE注册请求，其中包括了所支持的加密和完保算法，5GS注册类型，NAS key设置等信息，当然如果不支持至少一个加密和完保算法的话，UE会以5GMM Cause: UE security capabilities mismatch拒绝注册请求</p>
 <p>注册完成后如果开启UE安全模式，就是进行密钥的协商，即确认最终使用的加密和完保算法</p>
@@ -682,6 +682,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Writeup</a>
               </li>
              
@@ -694,15 +698,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
               </li>
             
             <div class="clearfix"></div>
