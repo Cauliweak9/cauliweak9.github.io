@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://Cauliweak9.github.io">
-  <title>Archives: 2023 | 9C±Void&#39;s Blog</title>
+  <title>随想——Brainfuck | 9C±Void&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="别看了，啥都没有，啥都不会">
-<meta property="og:type" content="website">
-<meta property="og:title" content="9C±Void&#39;s Blog">
-<meta property="og:url" content="https://cauliweak9.github.io/archives/2023/index.html">
+  <meta name="description" content="一时兴起，自己尝试学了一点Brainfuck，纯粹就只是图一乐">
+<meta property="og:type" content="article">
+<meta property="og:title" content="随想——Brainfuck">
+<meta property="og:url" content="https://cauliweak9.github.io/2023/11/30/BrainFuck/index.html">
 <meta property="og:site_name" content="9C±Void&#39;s Blog">
-<meta property="og:description" content="别看了，啥都没有，啥都不会">
+<meta property="og:description" content="一时兴起，自己尝试学了一点Brainfuck，纯粹就只是图一乐">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-11-30T10:21:24.000Z">
+<meta property="article:modified_time" content="2023-11-30T12:18:31.703Z">
 <meta property="article:author" content="9C±Void">
+<meta property="article:tag" content="随想">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="9C±Void&#39;s Blog" type="application/atom+xml">
@@ -198,41 +201,215 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-BrainFuck" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
+    <h1 class="article-title" itemprop="name">
+      随想——Brainfuck
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2023/11/30/BrainFuck/" class="archive-article-date">
         <time datetime="2023-11-30T10:21:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-30</time>
 </a>
 
-        </div>
-    	 
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/11/30/BrainFuck/">随想——Brainfuck</a>
-	
-    </h1>
   
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">4.4k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">21分</span>
+    </span>
+  </span>
+</div>
 
 
-        <div class="article-info info-on-right">
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>一时兴起，自己尝试学了一点Brainfuck，纯粹就只是图一乐</p>
+<span id="more"></span>
+
+<hr>
+<h3 id="简单的了解"><a href="#简单的了解" class="headerlink" title="简单的了解"></a>简单的了解</h3><p>一开始是想起来之前羊城杯2023那道GIFuck，想着给学弟们上点强度出道同一个考点的题目来着，结果自己玩起来了（笑）</p>
+<p>Brainfuck说白了就是一个数组+一个指针然后进行操作而已。<del>什么？你问我指针是啥？算了你还是想象有一个箭头吧：</del></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针: ↑</span><br></pre></td></tr></table></figure>
+
+<p>总之先了解一下基础的Brainfuck操作（其实就是图灵机操作www）</p>
+<ul>
+<li>+	指针当前指向的元素+1</li>
+<li>-	 指针当前指向的元素-1</li>
+<li>&lt;    指针左移1位</li>
+<li>&gt;    指针右移1位</li>
+<li>[]    循环，和C里面的while(*p){}类似</li>
+<li>,      输入，类似*p&#x3D;getchar();</li>
+<li>.      输出，类似putchar(*p)</li>
+</ul>
+<p>它的输出是会转换为ASCII的，所以你想输出个1得要搞个0x31也就是49出来</p>
+<p>我用的在线网站有两个，一般很多人都能搜到Splitbrains的Ook&#x2F;Brainfuck编解码网站，不过最近用了另一个<a target="_blank" rel="noopener" href="http://pablojorge.github.io/brainfuck/">网站</a>，能清晰地看到内存区的数据，所以就用后者了，不过好像直接登的话网站显示很怪？反正我是先回到Github仓库再转到这个网站的</p>
+<p>听爹地qsdz说还有IDE来着，不过咱就只是玩玩看，没必要这么大动干戈（</p>
+<h3 id="基础的循环逻辑"><a href="#基础的循环逻辑" class="headerlink" title="基础的循环逻辑"></a>基础的循环逻辑</h3><p>Brainfuck只有加减，那我们先从加法开始吧</p>
+<p>假如我们有下面的内存区：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针: ↑</span><br></pre></td></tr></table></figure>
+
+<p>我们现在需要让数组第0位变成两个数相加的结果，该怎么办？</p>
+<p>那很简单，一边+1一边-1不就好了嘛，所以就是先把指针右移，然后-1，再左移+1再回来，直到第1位为0即可</p>
+<p>所以代码很简单：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;[-&lt;+&gt;]</span><br></pre></td></tr></table></figure>
+
+<p>最后我们的内存区应该是这样的结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针:   ↑</span><br></pre></td></tr></table></figure>
+
+<p>那乘法不就是多加几次而已嘛，那假如还是原来的内存区，我们需要让第0位变成2*3该怎么办？</p>
+<p>欸，先别急，我们先学一下怎么复制数据再回来做这题</p>
+<h3 id="简单的复制操作"><a href="#简单的复制操作" class="headerlink" title="简单的复制操作"></a>简单的复制操作</h3><p>比如我们内存区长这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针: ↑</span><br></pre></td></tr></table></figure>
+
+<p>我们想让第0位的数据<strong>复制</strong>到第2位，那我们该怎么办？</p>
+<p>可能你会想“这不就和一开始的加法一样嘛”，那我们试着写出来代码？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[-&gt;&gt;+&lt;&lt;]</span><br></pre></td></tr></table></figure>
+
+<p>但是最后跑完的结果却是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针: ↑</span><br></pre></td></tr></table></figure>
+
+<p>？我第0位数据呢？啊，被用作循环的参数清0了</p>
+<p>那怎么办？这还不简单，我多复制出来1个数据再搞回去不就好了</p>
+<p>比如我们这样打：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[-&gt;+&gt;+&lt;&lt;]</span><br></pre></td></tr></table></figure>
+
+<p>我们让第1位跟着我们一起变成3，得到下面的内存区：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 0 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针: ↑</span><br></pre></td></tr></table></figure>
+
+<p>然后再把第1位的数据搬到第0位就好了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;[-&lt;+&gt;]</span><br></pre></td></tr></table></figure>
+
+<p>最后我们得到的内存区就长这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 3 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针:   ↑</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="一些基础运用"><a href="#一些基础运用" class="headerlink" title="一些基础运用"></a>一些基础运用</h3><p>再回到刚刚那个2*3的例子，由于我们知道循环参数会被消耗掉，所以我们得先额外复制一个出来再搞回去</p>
+<p>假如我们转换成C&#x2F;C++代码，核心逻辑应该是这样的：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sum=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="number">2</span>--)&#123;</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">3</span>--)&#123;</span><br><span class="line">		sum++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> sum;</span><br></pre></td></tr></table></figure>
+
+<p>我们会发现这里的3被消耗掉2次，所以我们需要复制的数据就是3（当然你也可以选择复制2，这里只是个例子而已）</p>
+<p>那我们内层循环就又要输出一个3，又要复原作为循环参数的3，所以内层逻辑就可以是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[-&gt;+&gt;+&lt;&lt;]	先让3复制到第2位和第3位</span><br><span class="line">&gt;[-&lt;+&gt;]&lt;	再把第2位的3转移回第1位，以便下次循环使用</span><br></pre></td></tr></table></figure>
+
+<p>然后我们外层再这样操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[-&gt;(内层逻辑...)&lt;]	外层参数-1，执行完内层逻辑指针回归第0位以判断循环</span><br></pre></td></tr></table></figure>
+
+<p>所以最终代码就应该是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[-&gt;[-&gt;+&gt;+&lt;&lt;]&gt;[-&lt;+&gt;]&lt;&lt;]</span><br></pre></td></tr></table></figure>
+
+<p>最后得到的内存区应该是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 0 3 0 6 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针: ↑</span><br></pre></td></tr></table></figure>
+
+<p>之后再把第3位的结果移到第0位就行了，这一步我就省略了，这种基础的数据移动上面也有写了</p>
+<h3 id="给学弟们出的（没啥深度的）题目"><a href="#给学弟们出的（没啥深度的）题目" class="headerlink" title="给学弟们出的（没啥深度的）题目"></a>给学弟们出的<del>（没啥深度的）</del>题目</h3><p>先说一下Splitbrains那个输出基本上是怎么样的</p>
+<p>为了数组开的尽可能小，它一般只会在第0位和第1位进行操作，比如我想输出”ABCD”的话，基本就是先构造出”A”再在”A”的基础上输出”BCD”：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">++++++++[-&gt;++++++++&lt;]&gt;+.	输出A（65）</span><br><span class="line">+.	输出B（66）</span><br><span class="line">+.	输出C（67）</span><br><span class="line">+.	输出D（68）</span><br></pre></td></tr></table></figure>
+
+<p>不过这样的话数据就会被覆盖掉，运行完内存区就变成这样了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 0 68 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针:   ↑</span><br></pre></td></tr></table></figure>
+
+<p>我参照GIFuck出的时候把flag每个字符都放内存区了来着，不是这种覆盖，不过非flag内容因为不重要就直接借用这种覆盖的写法了</p>
+<h4 id="CPU给干到满占用率了（预期难度1-5⭐）"><a href="#CPU给干到满占用率了（预期难度1-5⭐）" class="headerlink" title="CPU给干到满占用率了（预期难度1.5⭐）"></a>CPU给干到满占用率了（预期难度1.5⭐）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+++++ +++[- &gt;++++ ++++&lt; ]&gt;+.&lt; +++++ ++[-&gt; +++++ ++&lt;]&gt; +++.- --.-- -.+++</span><br><span class="line">.&lt;+++ +[-&gt;- ---&lt;] &gt;-.&lt;+ ++++[ -&gt;+++ ++&lt;]&gt; +.&lt;++ ++++[ -&gt;--- ---&lt;] &gt;.&lt;++</span><br><span class="line">++[-&gt; ++++&lt; ]&gt;+.- ----- -.&lt;++ ++[-&gt; ++++&lt; ]&gt;+++ .&lt;+++ +[-&gt;- ---&lt;] &gt;----</span><br><span class="line">-.&lt;++ ++[-&gt; ++++&lt; ]&gt;+++ ++.&lt;+ ++[-&gt; ---&lt;] &gt;---. ---.- ----- .&lt;+++ ++[-&gt;</span><br><span class="line">----- &lt;]&gt;-- --.&lt;+ +++[- &gt;++++ &lt;]&gt;.&lt; ++++[ -&gt;--- -&lt;]&gt;- .++++ ++++. +++++</span><br><span class="line">.---- ----. &lt;+++[ -&gt;+++ &lt;]&gt;++ ++++. &lt;++++ [-&gt;-- --&lt;]&gt; --.++ +++++ +.&lt;++</span><br><span class="line">+[-&gt;- --&lt;]&gt; ---.. .&lt;+++ ++++[ -&gt;+++ ++++&lt; ]&gt;+++ +++++ +++++ .&lt;</span><br></pre></td></tr></table></figure>
+
+<p>这个可太明显了，一看就知道是从Splitbrains直接把flag编码了的<del>（它甚至为了美观每5个字符就打个空格，它真的我哭死）</del></p>
+<p>直接拉上去解码就行了，这题就只是为了了解有Brainfuck这种东西存在，仅此而已</p>
+<h4 id="CPU给干烧了（预期难度3-0⭐）"><a href="#CPU给干烧了（预期难度3-0⭐）" class="headerlink" title="CPU给干烧了（预期难度3.0⭐）"></a>CPU给干烧了（预期难度3.0⭐）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">++++++++[-&gt;++++++++&lt;]&gt;+</span><br><span class="line">&lt;+++++++[-&gt;+++++++&lt;]&gt;+++</span><br><span class="line">---</span><br><span class="line">---</span><br><span class="line">+++</span><br><span class="line">&lt;++++[-&gt;----&lt;]&gt;-</span><br><span class="line">&lt;+++++[-&gt;+++++&lt;]&gt;+</span><br><span class="line">&lt;+++++++[-&gt;-------&lt;]&gt;------</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">+++++</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">&lt;+++++[-&gt;-----&lt;]&gt;--</span><br><span class="line">&lt;++++[-&gt;----&lt;]&gt;----</span><br><span class="line">&lt;++++++[-&gt;++++++&lt;]&gt;</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">&lt;+++++[-&gt;-----&lt;]&gt;--</span><br><span class="line">&lt;++++++[-&gt;++++++&lt;]&gt;+++++++</span><br><span class="line">&lt;+++++[-&gt;-----&lt;]&gt;--</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">&lt;+++++[-&gt;-----&lt;]&gt;--</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">&lt;++++[-&gt;----&lt;]&gt;--------</span><br><span class="line">&lt;++++++++[-&gt;++++++++&lt;]&gt;++++++</span><br><span class="line">明明每一行都是一个字母来着，但是为什么就是读不出来啊QAQ</span><br></pre></td></tr></table></figure>
+
+<p>全是自己手打的，用的就是上面提到的覆盖写法，考点就是基础的输出操作符”.”</p>
+<p>每一行加一个”.”就行了，没什么难度<del>（本来还想去掉换行的，但是发现这样就纯恶心人www）</del></p>
+<p>3.0⭐说句实话就是纯虚高，2.6⭐倒还可能有</p>
+<h4 id="CPU给干炸了（预期难度3-8⭐）"><a href="#CPU给干炸了（预期难度3-8⭐）" class="headerlink" title="CPU给干炸了（预期难度3.8⭐）"></a>CPU给干炸了（预期难度3.8⭐）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+++++++++[-&gt;+++++++++&lt;]&gt;+++.&lt;+++++[-&gt;++++&lt;]&gt;.---.&lt;++++[-&gt;+++&lt;]&gt;+.-&lt;++++[-&gt;---&lt;]&gt;.++++.&lt;+++[-&gt;+++&lt;]&gt;+.-----.+.&lt;+++[-&gt;---&lt;]&gt;.++++++.&lt;++++[-&gt;---&lt;]&gt;+.++++++.&gt;&gt;&gt;++++++++[-&lt;++++++++&gt;]&lt;+&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;----&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;++++&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;+&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;++++&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;---&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;++&gt;&gt;+++++++++[-&lt;+++++++++&gt;]&lt;+++&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;++++&gt;&gt;++++++++[-&lt;++++++++&gt;]&lt;&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;-----&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;---&gt;&gt;+++++++++[-&lt;++++++++&gt;]&lt;+++&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+++++&gt;&gt;++++++[-&lt;+++++++++&gt;]&lt;-&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----&gt;&gt;++++++[-&lt;+++++++++&gt;]&lt;--&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;--&gt;&gt;+++++[-&lt;++++++++++&gt;]&lt;-&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;++++[&lt;]</span><br></pre></td></tr></table></figure>
+
+<p>Splitbrains解出来只有”Thereisnoflag”，这下很多人估计直接就傻眼了，不过说句实话有非预期解，总之先上我自己打这串代码的源码：（输出操作符只是为了检验，题目代码中所有输出flag的输出操作符都已被删除）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"># 84 104 101 114 101 105 115 110 111 102 108 97 103 Thereisnoflag</span><br><span class="line"># 32 65 117 114 111 114 97 123 84 104 64 116 95 99 97 75 101 95 105 53 95 52 95 108 49 101 33 33 33 125 Aurora&#123;Th@t_caKe_i5_4_l1e!!!&#125;</span><br><span class="line">+++++++++[-&gt;+++++++++&lt;]&gt;+++.    #T</span><br><span class="line">&lt;+++++[-&gt;++++&lt;]&gt;.   #h</span><br><span class="line">---.    #e</span><br><span class="line">&lt;++++[-&gt;+++&lt;]&gt;+.    #r</span><br><span class="line">-&lt;++++[-&gt;---&lt;]&gt;.    #e</span><br><span class="line">++++.   #i</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;+.  #s</span><br><span class="line">-----.  #n</span><br><span class="line">+.  #o</span><br><span class="line">&lt;+++[-&gt;---&lt;]&gt;.  #f</span><br><span class="line">++++++. #l</span><br><span class="line">&lt;++++[-&gt;---&lt;]&gt;+.    #a</span><br><span class="line">++++++. #g</span><br><span class="line">&gt;</span><br><span class="line">&gt;&gt;++++++++[-&lt;++++++++&gt;]&lt;+. #A</span><br><span class="line">&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;----. #u</span><br><span class="line">&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;++++.  #r</span><br><span class="line">&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;+.  #o</span><br><span class="line">&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;++++.  #r</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;---.  #a 97</span><br><span class="line">&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;++.  #&#123;</span><br><span class="line">&gt;&gt;+++++++++[-&lt;+++++++++&gt;]&lt;+++.  #T</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;++++.   #h</span><br><span class="line">&gt;&gt;++++++++[-&lt;++++++++&gt;]&lt;.   #@</span><br><span class="line">&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;-----.    #t 116</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----.  #_</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-.  #c</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;---.    #a</span><br><span class="line">&gt;&gt;+++++++++[-&lt;++++++++&gt;]&lt;+++.   #K 75</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+.  #e</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----.  #_ 95</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+++++.  #i</span><br><span class="line">&gt;&gt;++++++[-&lt;+++++++++&gt;]&lt;-.   #5 53</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----.  #_</span><br><span class="line">&gt;&gt;++++++[-&lt;+++++++++&gt;]&lt;--.  #4 52</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----. #_</span><br><span class="line">&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;--.    #l</span><br><span class="line">&gt;&gt;+++++[-&lt;++++++++++&gt;]&lt;-.   #1 49</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+.  #e</span><br><span class="line">&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---.    #!</span><br><span class="line">&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---.    #!</span><br><span class="line">&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---.    #!</span><br><span class="line">&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;++++. #&#125;</span><br><span class="line">[&lt;] #将本行替换为以下操作可清零：&gt;+[[-]&lt;]</span><br></pre></td></tr></table></figure>
+
+<p>非预期其实很简单：找规律，在每个”&gt;&gt;”前面加个输出操作符就行了，这个也是咱在出完题目后才发现的，但是懒得重新写一遍了，所以就此作罢（一看就知道全是复制粘贴www）</p>
+<p>讲一下整个代码的思路，前面非flag就是覆盖式写法，我们直接跳过</p>
+<p>后面的flag内容是这样的：比如我想在第i位放字符，但是考虑到i-1位已经有字符存在，所以我在第i+1位保存循环参数然后在第i位构造出字符，一直到flag构造完成，此时所有的flag都已经在内存区</p>
+<p>最后一行那个[&lt;]就是指针归位到第2位（因为那一位的数据刚好是0，指针就在那里停下来了）</p>
+<p>这一题的预期考点其实就是开头提到的GIFuck里面的考点：数组内存区未清零，flag可被读取</p>
+<p>所以我们可以在整个代码最后加几个输出操作符和指针右移的组合，也就是”.&gt;”，这样我们就可以读取内存区的flag了</p>
+<p>当然也可以把最后一行的”[&lt;]”改成”[.&lt;]”，边输出边左移，只是flag是逆序的而已，转一下就行了</p>
+<p>如果用Splitbrains网站，你可以在代码最后打一个”#”，这样可以看到此时内存区的所有数据，当然如果是一开头提到的第2个网站就能直接看到内存区了</p>
+<h4 id="CPU炸了，内存也炸了（预期难度4-0⭐）"><a href="#CPU炸了，内存也炸了（预期难度4-0⭐）" class="headerlink" title="CPU炸了，内存也炸了（预期难度4.0⭐）"></a>CPU炸了，内存也炸了（预期难度4.0⭐）</h4><p>这题是作为隐藏题发布的，前提条件是完成上面的“CPU给干炸了”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">++++++++[-&gt;+++++++++&lt;]&gt;--.&lt;+++++[-&gt;++++++++&lt;]&gt;--.+&lt;++++[-&gt;---&lt;]&gt;.++++++.&gt;++++++[-&gt;++++++&lt;]&gt;+++.&lt;&lt;&lt;++++[-&gt;+++&lt;]&gt;.&gt;+++[-&gt;--&lt;]&gt;-.&lt;&lt;-----.+.+++++.&gt;&gt;.&lt;&lt;&lt;++++[-&gt;---&lt;]&gt;.---.+&lt;++++[-&gt;+++&lt;]&gt;.&lt;++++[-&gt;---&lt;]&gt;-.&gt;&gt;.&lt;&lt;&lt;+++[-&gt;++&lt;]&gt;+.+++.---.&gt;&gt;[-]&lt;&lt;[-]&lt;++++[-&gt;&gt;++++[-&lt;++++&gt;]&lt;&lt;]&gt;+[-&gt;+&gt;+&lt;&lt;]&gt;[-&lt;+&gt;]&gt;[-&lt;++&gt;&gt;++&lt;]++++[-&lt;---&gt;&gt;---&lt;]&gt;-&lt;&lt;-&gt;&gt;[-&lt;+&gt;&gt;+&gt;+&gt;+&gt;+&lt;&lt;&lt;&lt;]&lt;---&gt;&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;------&gt;---&gt;&gt;&gt;+++++[-&lt;&lt;----&gt;&gt;]&lt;++++++&lt;[-&gt;&gt;+&gt;+&gt;+&lt;&lt;&lt;&lt;]&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;]+++++[-&lt;&lt;----&gt;----------&gt;]&lt;&lt;+&gt;+&lt;&lt;&lt;[-&gt;&gt;&gt;&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;]&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;]+++++[-&lt;&lt;&lt;&lt;&lt;++++&gt;&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;&lt;++&gt;--&gt;&gt;&gt;&gt;+++[-&lt;&lt;&lt;----&gt;&gt;&gt;]&lt;&lt;--&gt;&gt;+++++[-&lt;----&gt;]&lt;--&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;[-&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;]&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;----&gt;---&gt;++++&gt;++++&gt;&gt;&gt;&gt;&gt;+++++[-&lt;&lt;&lt;&lt;----&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;+++++++[-&lt;&lt;&lt;-------&gt;&gt;&gt;]&lt;&lt;&lt;+&gt;&gt;&gt;++++[-&lt;----&gt;]&lt;-&gt;&gt;+++++++[-&lt;+++++++&gt;]&lt;[-&gt;++&gt;+&gt;++&gt;++&gt;++&gt;+&gt;+++&gt;+&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;]&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;]++++[-&lt;&lt;&lt;&lt;&lt;&lt;&lt;+++&gt;&gt;&gt;&gt;&gt;&gt;&gt;]+++[-&lt;&lt;&lt;&lt;&lt;&lt;+++++++&gt;&gt;&gt;&gt;&gt;&gt;]+++[-&lt;&lt;&lt;&lt;&lt;++++++&gt;&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;&lt;+&gt;+&gt;&gt;&gt;&gt;+++[-&lt;&lt;&lt;+++&gt;&gt;&gt;]++++[-&lt;&lt;----&gt;&gt;]+++++[-&lt;----&gt;]&lt;--[[-]&lt;]</span><br></pre></td></tr></table></figure>
+
+<p>这次的代码应该找不到规律了吧www</p>
+<p>还是先上源码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># 70 108 97 103 39 115 32 110 111 116 32 104 101 114 101 32 108 111 108 Flag&#x27;s not here lol</span><br><span class="line"># 65 117 114 111 114 97 123 78 48 119 95 85 95 75 110 111 118 118 95 66 114 97 49 110 70 117 99 107 33 125</span><br><span class="line"># A  u   r   o   r   a  &#123;   N  0  w   _  U  _  K  n   o   v   v   _  B  r   a  1  n   F  u   c  k   !  &#125;</span><br><span class="line"></span><br><span class="line">++++++++[-&gt;+++++++++&lt;]&gt;--.&lt;+++++[-&gt;++++++++&lt;]&gt;--.+&lt;++++[-&gt;---&lt;]&gt;.++++++.&gt;++++++[-&gt;++++++&lt;]&gt;+++.&lt;&lt;&lt;++++[-&gt;+++&lt;]&gt;.&gt;+++[-&gt;--&lt;]&gt;-.&lt;&lt;-----.+.+++++.&gt;&gt;.&lt;&lt;&lt;++++[-&gt;---&lt;]&gt;.---.+&lt;++++[-&gt;+++&lt;]&gt;.&lt;++++[-&gt;---&lt;]&gt;-.&gt;&gt;.&lt;&lt;&lt;+++[-&gt;++&lt;]&gt;+.+++.---.&gt;&gt;[-]&lt;&lt;[-]&lt;</span><br><span class="line">print string &quot;Flag&#x27;s not here lol&quot;</span><br><span class="line"></span><br><span class="line">++++[-&gt;&gt;++++[-&lt;++++&gt;]&lt;&lt;]&gt;+. \x00 A</span><br><span class="line">[-&gt;+&gt;+&lt;&lt;]&gt;[-&lt;+&gt;]    \x00 A *\x00 A</span><br><span class="line">&gt;[-&lt;++&gt;&gt;++&lt;]++++[-&lt;---&gt;&gt;---&lt;]&gt;-&lt;&lt;-. \x00 A *u \x00 u</span><br><span class="line">&gt;&gt;[-&lt;+&gt;&gt;+&gt;+&gt;+&gt;+&lt;&lt;&lt;&lt;]&lt;---.   \x00 A u *r \x00 u u u u</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;------.    \x00 A u r o u u u \x00</span><br><span class="line">&gt;---.   r</span><br><span class="line">&gt;&gt;&gt;+++++[-&lt;&lt;----&gt;&gt;]&lt;&lt;.  a</span><br><span class="line">&gt;++++++.    \x00 A u r o r a *&#123; \x00</span><br><span class="line">&lt;[-&gt;&gt;+&gt;+&gt;+&lt;&lt;&lt;&lt;]&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;] copy &quot;a&quot; to positions 9~10</span><br><span class="line">+++++[-&lt;&lt;----&gt;----------&gt;]&lt;&lt;+.&gt;+.   \x00 A u r o r a &#123; N *0 \x00</span><br><span class="line">&lt;&lt;&lt;[-&gt;&gt;&gt;&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;]&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;]   copy &quot;a&quot; on position 6 to positions 11~15</span><br><span class="line">+++++[-&lt;&lt;&lt;&lt;&lt;++++&gt;&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;&lt;++. w</span><br><span class="line">&gt;--.    _</span><br><span class="line">&gt;&gt;&gt;&gt;+++[-&lt;&lt;&lt;----&gt;&gt;&gt;]&lt;&lt;&lt;.    U</span><br><span class="line">&gt;--.    _</span><br><span class="line">&gt;&gt;+++++[-&lt;----&gt;]&lt;--.    K</span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;[-&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;]&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;] copy &quot;r&quot; on position 5 to positions 16~23</span><br><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;----. n</span><br><span class="line">&gt;---.   o</span><br><span class="line">&gt;++++.  v</span><br><span class="line">&gt;++++.  v</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;+++++[-&lt;&lt;&lt;&lt;----&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;+. \x00 A u r o r a &#123; N 0 w _ U _ K n o v v *_ r r r \x00</span><br><span class="line">&gt;&gt;&gt;&gt;+++++++[-&lt;&lt;&lt;-------&gt;&gt;&gt;]&lt;&lt;&lt;+.</span><br><span class="line">&gt;.</span><br><span class="line">&gt;&gt;++++[-&lt;----&gt;]&lt;-.  \x00 A u r o r a &#123; N 0 w _ U _ K n o v v _ B r *a \x00</span><br><span class="line">&gt;&gt;+++++++[-&lt;+++++++&gt;]&lt;. 1</span><br><span class="line">[-&gt;++&gt;+&gt;++&gt;++&gt;++&gt;+&gt;+++&gt;+&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;]&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;]   copy &quot;1&quot; on position 23 to positions 24~30, while value on positions 24,26,27,28 are doubled and position 30 tripled </span><br><span class="line">++++[-&lt;&lt;&lt;&lt;&lt;&lt;&lt;+++&gt;&gt;&gt;&gt;&gt;&gt;&gt;]    n</span><br><span class="line">+++[-&lt;&lt;&lt;&lt;&lt;&lt;+++++++&gt;&gt;&gt;&gt;&gt;&gt;]   F</span><br><span class="line">+++[-&lt;&lt;&lt;&lt;&lt;++++++&gt;&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;&lt;+    u</span><br><span class="line">&gt;+  c</span><br><span class="line">&gt;&gt;&gt;&gt;+++[-&lt;&lt;&lt;+++&gt;&gt;&gt;] k</span><br><span class="line">++++[-&lt;&lt;----&gt;&gt;] !</span><br><span class="line">+++++[-&lt;----&gt;]&lt;--   &#125;</span><br><span class="line">[[-]&lt;]  reset whole memory to 0</span><br></pre></td></tr></table></figure>
+
+<p>由于上一题一堆非预期解做出来的，所以我这题就刻意不搞出来规律。我当时就想“我已经构造好了r，为什么我之后不在已构造好的r的基础上再对它进行操作呢？”，所以就得到了这一长串代码，里面夹杂了一堆复制操作</p>
+<p>而且毕竟是隐藏题，我可不能让他们直接看内存区就能读出来，所以最后一行我很“贴心”地把所有内存区都归零了（笑）</p>
+<p>不仅如此，我还简单优化了一下代码，因为有些指针的左移右移可以被抵消，所以我把它们全部删掉了www，所以题目代码和源码会有差别的www</p>
+<p>我知道可以删掉归零操作再看内存区，但是前提是你真的理解了Brainfuck才能做到，不是吗？所以能这样做出来咱也算达到目的了www</p>
+<p>考点其实就是前置题目的预期解做法，只是我把指针归位了和内存区清零了，仅此而已</p>
+<p>这还不简单，清零前你指针肯定得到位吧，那我清零前读取数据不就好了？</p>
+<p>所以最后一行”[[-]&lt;]”改成”[.[-]&lt;]”就能得到逆序flag了，理解了之后真的会觉得没啥难的</p>
+<p>（不过感觉4.0⭐是不是有点虚低了，可能4.2⭐会好一点？）</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>有啥好总结的，我玩的很开心（摸鱼谁不开心啊www），<del>学弟们被恶心吐了</del>，我们都有美好的未来（笑）</p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          9C±Void
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://Cauliweak9.github.io/2023/11/30/BrainFuck/" title="随想——Brainfuck" target="_blank">https://Cauliweak9.github.io/2023/11/30/BrainFuck/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -244,293 +421,120 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://cauliweak9.github.io/2023/11/30/BrainFuck/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/11/21/FlowAnalysis/" class="archive-article-date">
-        <time datetime="2023-11-21T10:33:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-21</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2023/11/21/FlowAnalysis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">随想——流量分析</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/11/21/FlowAnalysis/">随想——流量分析</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">流量分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E4%BA%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">简单的了解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9A%84%E5%BE%AA%E7%8E%AF%E9%80%BB%E8%BE%91"><span class="toc-number">2.</span> <span class="toc-text">基础的循环逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E5%A4%8D%E5%88%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">简单的复制操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E8%BF%90%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">一些基础运用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E5%AD%A6%E5%BC%9F%E4%BB%AC%E5%87%BA%E7%9A%84%EF%BC%88%E6%B2%A1%E5%95%A5%E6%B7%B1%E5%BA%A6%E7%9A%84%EF%BC%89%E9%A2%98%E7%9B%AE"><span class="toc-number">5.</span> <span class="toc-text">给学弟们出的（没啥深度的）题目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E7%BB%99%E5%B9%B2%E5%88%B0%E6%BB%A1%E5%8D%A0%E7%94%A8%E7%8E%87%E4%BA%86%EF%BC%88%E9%A2%84%E6%9C%9F%E9%9A%BE%E5%BA%A61-5%E2%AD%90%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">CPU给干到满占用率了（预期难度1.5⭐）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E7%BB%99%E5%B9%B2%E7%83%A7%E4%BA%86%EF%BC%88%E9%A2%84%E6%9C%9F%E9%9A%BE%E5%BA%A63-0%E2%AD%90%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">CPU给干烧了（预期难度3.0⭐）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E7%BB%99%E5%B9%B2%E7%82%B8%E4%BA%86%EF%BC%88%E9%A2%84%E6%9C%9F%E9%9A%BE%E5%BA%A63-8%E2%AD%90%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">CPU给干炸了（预期难度3.8⭐）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E7%82%B8%E4%BA%86%EF%BC%8C%E5%86%85%E5%AD%98%E4%B9%9F%E7%82%B8%E4%BA%86%EF%BC%88%E9%A2%84%E6%9C%9F%E9%9A%BE%E5%BA%A64-0%E2%AD%90%EF%BC%89"><span class="toc-number">5.4.</span> <span class="toc-text">CPU炸了，内存也炸了（预期难度4.0⭐）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/11/12/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/" class="archive-article-date">
-        <time datetime="2023-11-12T10:17:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/11/12/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想——Img2B64</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">胡思乱想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/11/10/GeekChallenge2023-Writeup/" class="archive-article-date">
-        <time datetime="2023-11-10T15:21:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-10</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/11/10/GeekChallenge2023-Writeup/">GeekChallenge2023-Misc-Writeup</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Writeup</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GeekChallenge</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/30/hackergame2023-Writeup/" class="archive-article-date">
-        <time datetime="2023-10-30T10:37:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-30</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/10/30/hackergame2023-Writeup/">Hackergame2023 Writeup</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Writeup</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hackergame</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/" class="archive-article-date">
-        <time datetime="2023-10-24T05:21:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/">AuroraCTF2023 Misc&amp;Blockchain WP</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Writeup</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">AuroraCTF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/23/Brief%20Intro/" class="archive-article-date">
-        <time datetime="2023-10-23T15:29:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-10-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/10/23/Brief%20Intro/">Brief Intro</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Introduction</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -571,8 +575,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

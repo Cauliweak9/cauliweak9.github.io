@@ -20,10 +20,10 @@
 <meta property="og:image" content="https://cauliweak9.github.io/2023/11/21/FlowAnalysis/FA0.png">
 <meta property="og:image" content="https://cauliweak9.github.io/2023/11/21/FlowAnalysis/FA1.png">
 <meta property="article:published_time" content="2023-11-21T10:33:15.000Z">
-<meta property="article:modified_time" content="2023-11-22T13:58:27.152Z">
+<meta property="article:modified_time" content="2023-11-27T15:09:48.850Z">
 <meta property="article:author" content="9C±Void">
-<meta property="article:tag" content="流量分析">
 <meta property="article:tag" content="随想">
+<meta property="article:tag" content="流量分析">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cauliweak9.github.io/2023/11/21/FlowAnalysis/FA0.png">
   
@@ -238,7 +238,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">3k字</span>
+      <span class="post-count">3.1k字</span>
     </span>
   </span>
 
@@ -386,6 +386,9 @@
 <p>5600指的是Net-NTLMv2，5500是Net-NTLMv1，两个需要的信息不一样，Net-NTLMv1需要的是：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username::domain:ANSI Password:Union Password:Challenge</span><br></pre></td></tr></table></figure>
 
+<p>感谢爹地qsdz提供的半自动化脚本（此处以geekchallenge2023 窃听风云为例），以后可以不用瞪眼法做这种题咯（这就回去补scapy）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">from</span> scapy.layers <span class="keyword">import</span> ntlm</span><br><span class="line"></span><br><span class="line">auth_b64 = <span class="string">&#x27;TlRMTVNTUAADAAAAGAAYAIIAAABYAVgBmgAAABIAEgBYAAAACAAIAGoAAAAQABAAcgAAABAAEADyAQAAFYKI4goAYUoAAAAPVS6RhfnytMqt5hsgL2wgnFcASQBEAEcARQBUAEwATABDAGoAYQBjAGsAQwBMAEkARQBOAFQAMAAxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC0dJFcrFf5UQENDHFmWXTABAQAAAAAAAAQNlisC7dkB5plBR9ajSvIAAAAAAgASAFcASQBEAEcARQBUAEwATABDAAEACABEAEMAMAAxAAQAJABXAGkAZABnAGUAdABMAEwAQwAuAEkAbgB0AGUAcgBuAGEAbAADAC4ARABDADAAMQAuAFcAaQBkAGcAZQB0AEwATABDAC4ASQBuAHQAZQByAG4AYQBsAAUAJABXAGkAZABnAGUAdABMAEwAQwAuAEkAbgB0AGUAcgBuAGEAbAAHAAgABA2WKwLt2QEGAAQAAgAAAAgAMAAwAAAAAAAAAAAAAAAAMAAAB4zcUgkQdiJn5ASItgAyg1xqN2BNHpvj7O5YgC+1+RUKABAAAAAAAAAAAAAAAAAAAAAAAAkAIABIAFQAVABQAC8AMQA5ADIALgAxADYAOAAuADAALgAxAAAAAAAAAAAAlbkMmv5SCuQVUPyZtIn4uA==&#x27;</span></span><br><span class="line">chal_b64 = <span class="string">&#x27;TlRMTVNTUAACAAAAEgASADgAAAAVgoniKvcbXKckYmgAAAAAAAAAALQAtABKAAAACgA5OAAAAA9XAEkARABHAEUAVABMAEwAQwACABIAVwBJAEQARwBFAFQATABMAEMAAQAIAEQAQwAwADEABAAkAFcAaQBkAGcAZQB0AEwATABDAC4ASQBuAHQAZQByAG4AYQBsAAMALgBEAEMAMAAxAC4AVwBpAGQAZwBlAHQATABMAEMALgBJAG4AdABlAHIAbgBhAGwABQAkAFcAaQBkAGcAZQB0AEwATABDAC4ASQBuAHQAZQByAG4AYQBsAAcACAAEDZYrAu3ZAQAAAAA=&#x27;</span></span><br><span class="line"></span><br><span class="line">auth_bytes = base64.b64decode(auth_b64)</span><br><span class="line">chal_bytes = base64.b64decode(chal_b64)</span><br><span class="line"></span><br><span class="line">auth = ntlm.NTLM_Header(auth_bytes)</span><br><span class="line">chal = ntlm.NTLM_Header(chal_bytes)</span><br><span class="line">payload = <span class="built_in">dict</span>(auth.Payload)</span><br><span class="line"><span class="built_in">hash</span> = <span class="string">f&quot;<span class="subst">&#123;payload[<span class="string">&#x27;UserName&#x27;</span>]&#125;</span>::<span class="subst">&#123;payload[<span class="string">&#x27;DomainName&#x27;</span>]&#125;</span>:<span class="subst">&#123;chal.ServerChallenge.<span class="built_in">hex</span>()&#125;</span>:<span class="subst">&#123;payload[<span class="string">&#x27;NtChallengeResponse&#x27;</span>].NTProofStr.<span class="built_in">hex</span>()&#125;</span>:<span class="subst">&#123;payload[<span class="string">&#x27;NtChallengeResponse&#x27;</span>].original[<span class="number">16</span>:].<span class="built_in">hex</span>()&#125;</span>&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">hash</span>)</span><br></pre></td></tr></table></figure>
+
 
 
 <h4 id="5G传输协议流量分析（以NAS-5GS为例）"><a href="#5G传输协议流量分析（以NAS-5GS为例）" class="headerlink" title="5G传输协议流量分析（以NAS-5GS为例）"></a>5G传输协议流量分析（以NAS-5GS为例）</h4><p><del>（只能说是不懂装懂了www）</del></p>
@@ -431,11 +434,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">流量分析</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">流量分析</a>
         		</li>
       		
 		</ul>
@@ -505,6 +508,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2023/11/30/BrainFuck/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          随想——Brainfuck
+        
+      </div>
+    </a>
   
   
     <a href="/2023/11/12/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/" id="article-nav-older" class="article-nav-link-wrap">
@@ -695,11 +707,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -707,7 +715,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+                <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
               </li>
              
               <li class="article-tag-list-item">
