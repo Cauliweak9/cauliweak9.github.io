@@ -19,10 +19,10 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cauliweak9.github.io/2024/02/11/SmartContractSecurity/state_var.jpeg">
 <meta property="article:published_time" content="2024-02-10T18:30:29.000Z">
-<meta property="article:modified_time" content="2024-02-13T15:23:04.659Z">
+<meta property="article:modified_time" content="2024-02-17T19:26:24.827Z">
 <meta property="article:author" content="9C±Void">
-<meta property="article:tag" content="随想">
 <meta property="article:tag" content="Web3">
+<meta property="article:tag" content="随想">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cauliweak9.github.io/2024/02/11/SmartContractSecurity/state_var.jpeg">
   
@@ -237,7 +237,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">7.4k字</span>
+      <span class="post-count">8.9k字</span>
     </span>
   </span>
 
@@ -246,7 +246,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">29分</span>
+      <span class="post-count">35分</span>
     </span>
   </span>
 </div>
@@ -276,7 +276,7 @@
 <p>就是一个简化的代币合约，构造函数铸造代币，有个转账功能，一个查看用户余额的函数</p>
 <p>正常来说，转账里面那个require应该是没什么问题的，很符合逻辑，毕竟我有20块不可能给别人21块吧（笑），但是对于0.6及更低版本的Solidity就完蛋了，比如这里的uint应该是会自动转换成uint256<del>（多少我忘了，反正蛮大，就先按256写吧）</del>，那么20-21得到的结果实际是$2^{256}$-1，非常幽默，我给别人转账，他拿钱了，我也拿钱了，我们都有美好的未来</p>
 <p>不过这个漏洞仅在&lt;&#x3D;0.6版本下有效，而且合约里如果使用了OpenZeppelin的SafeMath.sol，同样无法通过此漏洞攻击</p>
-<h2 id="有关EOA地址和账户地址的一些事"><a href="#有关EOA地址和账户地址的一些事" class="headerlink" title="有关EOA地址和账户地址的一些事"></a>有关EOA地址和账户地址的一些事</h2><p>EOA地址，External Owned Account地址，简单理解为用户地址就行，下面就用“用户地址”了，免得忘了EOA是啥，还得回来翻</p>
+<h2 id="有关EOA地址和合约地址的一些事"><a href="#有关EOA地址和合约地址的一些事" class="headerlink" title="有关EOA地址和合约地址的一些事"></a>有关EOA地址和合约地址的一些事</h2><p>EOA地址，External Owned Account地址，简单理解为用户地址就行，下面就用“用户地址”了，免得忘了EOA是啥，还得回来翻</p>
 <h3 id="msg-sender和tx-origin"><a href="#msg-sender和tx-origin" class="headerlink" title="msg.sender和tx.origin"></a>msg.sender和tx.origin</h3><p>我们假设有这样一个链条：用户A&rarr;合约B&rarr;合约C，就是用户A创建了一个合约B，而合约B会调用合约C中的某些函数</p>
 <p>假如此时合约B调用了合约C的某个函数，那么此时合约C中的msg.sender就是B的地址，因为是B<strong>直接调用</strong>了C的功能；tx.origin是调用了智能合约功能的<strong>用户地址</strong>，所以这里合约C的tx.origin则是A的地址</p>
 <p>记不住？msg&rArr;message，tx&rArr;transaction，一个是信息（直接）发送者，一个是交易的源头，我个人是这样去记的</p>
@@ -305,7 +305,7 @@
 <p>在0.6及以下版本，Solidity的构造函数是和合约名字一致的，也就是你有一个contract Clwk9，那么你的构造函数就应该是function Clwk9()</p>
 <p>但是就和我举的例子一样，假如这个函数因为有些字符难区分导致打错了，比如从Cl(小写L)wk9写成了CI(大写i)wk9，那么这个函数就变成了一个普通的函数. 又假如这个函数有些敏感的东西，比如我很喜欢在构造函数里面加的owner&#x3D;msg.sender，那么这可能会导致极其严重的后果</p>
 <p>不过和上面的整型溢出一样，这个也是0.6及以下版本的漏洞，现在大伙都用constructor()了</p>
-<h2 id="（伪）随机数预测"><a href="#（伪）随机数预测" class="headerlink" title="（伪）随机数预测"></a>（伪）随机数预测</h2><p>假如我们要写一个抛硬币的合约，那么我们需要找到一个随机数来保证其随机性，而在以太坊里面我们一般用keccak256算法来生成一个值，并把这个值作为随机数使用，至于参数可能是各种东西，比如区块的时间戳，上面提到的msg.sender，区块数之类的，这里我们假设这个随机数为：</p>
+<h2 id="（伪）随机数预测（操控）"><a href="#（伪）随机数预测（操控）" class="headerlink" title="（伪）随机数预测（操控）"></a>（伪）随机数预测（操控）</h2><p>假如我们要写一个抛硬币的合约，那么我们需要找到一个随机数来保证其随机性，而在以太坊里面我们一般用keccak256算法来生成一个值，并把这个值作为随机数使用，至于参数可能是各种东西，比如区块的时间戳，上面提到的msg.sender，区块数之类的，这里我们假设这个随机数为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">random_num = uint256(keccak256(abi.encodePacked(tx.origin, block.timestamp)))</span><br></pre></td></tr></table></figure>
 
 <p>看起来很吓人，对吗？但是不用担心，因为区块链它的公开性，<strong>绝大部分的数据是可确认或者可控的</strong>，比如这里的时间戳就是确定的，而看似模糊的tx.origin其实也是可控的：假如我们用的是一个合约来攻击它，那这里的tx.origin不就是我们自己的地址吗？</p>
@@ -407,6 +407,45 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">contract <span class="title class_">EtherStore</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// initialize the mutex</span></span><br><span class="line">    bool reEntrancyMutex = <span class="literal">false</span>;</span><br><span class="line">    uint256 public withdrawalLimit = <span class="number">1</span> ether;</span><br><span class="line">    <span class="title function_">mapping</span>(<span class="function"><span class="params">address</span> =&gt;</span> uint256) public lastWithdrawTime;</span><br><span class="line">    <span class="title function_">mapping</span>(<span class="function"><span class="params">address</span> =&gt;</span> uint256) public balances;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">depositFunds</span>(<span class="params"></span>) external payable &#123;</span><br><span class="line">        balances[msg.<span class="property">sender</span>] += msg.<span class="property">value</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">withdrawFunds</span> (uint256 _weiToWithdraw) public &#123;</span><br><span class="line">        <span class="built_in">require</span>(!reEntrancyMutex);</span><br><span class="line">        <span class="built_in">require</span>(balances[msg.<span class="property">sender</span>] &gt;= _weiToWithdraw);</span><br><span class="line">        <span class="comment">// limit the withdrawal</span></span><br><span class="line">        <span class="built_in">require</span>(_weiToWithdraw &lt;= withdrawalLimit);</span><br><span class="line">        <span class="comment">// limit the time allowed to withdraw</span></span><br><span class="line">        <span class="built_in">require</span>(now &gt;= lastWithdrawTime[msg.<span class="property">sender</span>] + <span class="number">1</span> weeks);</span><br><span class="line">        balances[msg.<span class="property">sender</span>] -= _weiToWithdraw;</span><br><span class="line">        lastWithdrawTime[msg.<span class="property">sender</span>] = now;</span><br><span class="line">        <span class="comment">// set the reEntrancy mutex before the external call</span></span><br><span class="line">        reEntrancyMutex = <span class="literal">true</span>;</span><br><span class="line">        msg.<span class="property">sender</span>.<span class="title function_">transfer</span>(_weiToWithdraw);</span><br><span class="line">        <span class="comment">// release the mutex after the external call</span></span><br><span class="line">        reEntrancyMutex = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
 <p>我们添加了一个reEntrancyMutex，而且我们提前修改了被转账者的余额和上次提款时间，双倍保险</p>
+<h2 id="selfdestruct以及它的潜在危害"><a href="#selfdestruct以及它的潜在危害" class="headerlink" title="selfdestruct以及它的潜在危害"></a>selfdestruct以及它的潜在危害</h2><p>selfdestruct()，正如其名，是一个合约自毁方法，其效果是将已存储在链上的bytecode（即deployedBytecode）删除，同时将合约中储存的所有ether转移到指定的地址去，最后向合约的开发者返回一些gas费（因为销毁合约bytecode能有效减少节省链上的gas）. 一般这个方法会在合约升级、清除不再使用的合约、减少损失（假如合约被攻击的话）的时候被使用</p>
+<p>调用selfdestruct并不会清除合约的存在痕迹，而只是删除合约的bytecode</p>
+<p>当然，如果调用了selfdestruct，那么它只会转移ether，而合约内存储的ERC20代币或者ERC721下的NFT都将会丢失，无法被找回，这也是selfdestruct的一个问题</p>
+<p>当然，最大的问题还是在于selfdestruct的强制转移ether：</p>
+<h3 id="强制地向合约地址转账"><a href="#强制地向合约地址转账" class="headerlink" title="强制地向合约地址转账"></a>强制地向合约地址转账</h3><p>前面有说过一般情况下如果要向一个合约进行转账，那么要么通过被payable修饰的函数，要么合约存在receive()，要么合约存在fallback()，否则EVM就会报错. 但是有三种情况可以绕过上面的情况：</p>
+<ol>
+<li><p>利用selfdestruct()向合约地址发送ether</p>
+</li>
+<li><p>合约仍旧可以接受Coinbase转账或挖矿奖励，攻击者可以进行PoW挖矿然后设定受害者合约，从而使合约强制收款</p>
+</li>
+<li><p>在合约创建之前提前获取其地址，然后向该地址进行转账，从而使合约强制收款</p>
+<ul>
+<li><p>合约的地址是先对交易发送者的地址和交易的nonce进行RLP编码，然后进行keccak256哈希运算，取最右侧160位为地址，用一句Python代码形容就是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def <span class="title function_">mk_contract_address</span>(sender, nonce):</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">sha3</span>(rlp.<span class="title function_">encode</span>([<span class="title function_">normalize_address</span>(sender), nonce]))[<span class="number">12</span>:]</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<p>这里我们就只针对selfdestruct的攻击方法进行阐述</p>
+<p>一般使用selfdestruct时，我们的受害者合约都会使用address(this).balance来进行一定的判断，比如下面这个合约：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SPDX-License-Identifier : MIT  </span></span><br><span class="line"> </span><br><span class="line">pragma solidity ^<span class="number">0.8</span><span class="number">.17</span>;</span><br><span class="line"></span><br><span class="line">contract <span class="title class_">Mint</span>&#123;</span><br><span class="line">  address public minter;</span><br><span class="line">  uint public target = <span class="number">30</span> <span class="title class_">Ether</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">depositMintingEther</span>(<span class="params"></span>) public payable  &#123;</span><br><span class="line">  <span class="built_in">require</span>(msg.<span class="property">value</span> == <span class="number">1</span> <span class="title class_">Ether</span>, <span class="string">&quot;You can only mint one NFT at a time&quot;</span>);</span><br><span class="line">      uint bal = <span class="title function_">address</span>(<span class="variable language_">this</span>).<span class="property">balance</span>;</span><br><span class="line">      </span><br><span class="line">      <span class="built_in">require</span>(bal &lt;= target, <span class="string">&quot;We have run out of NFTs&quot;</span>);</span><br><span class="line">      </span><br><span class="line">      <span class="keyword">if</span>(bal == target)&#123;</span><br><span class="line">      lastMinter = msg.<span class="property">sender</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">          </span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">receiveFunds</span>(<span class="params"></span>) public &#123;</span><br><span class="line">  <span class="built_in">require</span>(msg.<span class="property">sender</span> == lastMinter);</span><br><span class="line">          </span><br><span class="line">      (bool success, ) = msg.<span class="property">sender</span>.<span class="property">call</span>&#123;value : <span class="title function_">address</span>(<span class="variable language_">this</span>).<span class="property">balance</span>&#125;(<span class="string">&quot;&quot;</span>);      </span><br><span class="line">      <span class="built_in">require</span>(success, <span class="string">&quot;Cannot send funds&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">          </span><br><span class="line">contract <span class="title class_">Attack</span>&#123;</span><br><span class="line">       </span><br><span class="line">   <span class="title class_">Mint</span> badMinter;</span><br><span class="line">   <span class="title function_">constructor</span>(<span class="params">Mint _badMinter</span>) &#123;</span><br><span class="line">   badMinter = <span class="title class_">Mint</span>(_badMinter);</span><br><span class="line">   &#125;</span><br><span class="line">          </span><br><span class="line">   <span class="keyword">function</span> <span class="title function_">spoiler</span> () public payable&#123;</span><br><span class="line">   address payable mintAddress = <span class="title function_">payable</span>(<span class="title function_">address</span>(badMinter))    </span><br><span class="line">   <span class="title function_">selfdestruct</span>(mintAddress));</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们先分析Mint合约. 这个合约首先就是每个人向合约发送1ether来铸造1个NFT，然后设定最多铸造30个. 当铸造完毕后，最后一个铸造NFT的人就可以调用receiveFunds函数来获取之前所有人用于铸造NFT的ether，也就是1换30+一个NFT，血赚</p>
+<p>理想很美好，但是现实很骨感，下面的Attack合约就打破了这个美梦：上面的bal是利用的address(this).balance，所以我们可以利用selfdestruct强制向Mint合约发送ether，从而使得我们的lastMinter身份不被别人抢走</p>
+<p>攻击的思路大概是这样：我们先正常depositMintingEther，使lastMinter变成我们自己，然后我们部署一个Attack合约，向Attack合约发送ether（这里可以是30ether），然后我们调用spoiler（当然可以先部署Attack再depositMintingEther，但是spoiler肯定是最后执行），从而使Mint合约的余额超过30ether，无法再铸造NFT. 最后我们receiveFunds就能收回所有自己的合约，还有别人的ether. Voilà!</p>
+<p>所以开发的时候，请务必不要依赖address(this).balance，会变得不幸</p>
+<h2 id="private并不private——公开的存储"><a href="#private并不private——公开的存储" class="headerlink" title="private并不private——公开的存储"></a>private并不private——公开的存储</h2><p>有的时候合约开发的时候我们会遇到private状态变量，很明显合约开发者并不希望我们知道这是什么，或者对这个变量进行一些操作，但是private真的有那么安全吗？</p>
+<p>都讲到private了，先插个题外话：</p>
+<h3 id="public，private，internal，external"><a href="#public，private，internal，external" class="headerlink" title="public，private，internal，external"></a>public，private，internal，external</h3><p>这4个修饰词在开发中时是非常常用的，这里就简单讲下4个词的区别：</p>
+<ul>
+<li>public，公开的，合约内部和外部都可以访问&#x2F;调用</li>
+<li>private，私有的，只有本合约可以访问&#x2F;调用，即使是本合约派生的子合约也无法访问&#x2F;调用</li>
+<li>internal，内部的，只可被本合约以及派生的子合约访问&#x2F;调用</li>
+<li>external，外部的，只可被外部地址访问&#x2F;调用</li>
+</ul>
+<p>有没有发现刚刚写的都只是合约与合约之间的可见性关系？那是因为对于一个状态变量，无论它是怎么修饰的，其可见度都只对合约有效！</p>
+<p>听起来太绝对了，不是吗？那么我这里给出这个论断的原因：还记得前面我们提到过的状态变量的存储分布吗？状态变量是存在存储里面的，而区块链上所有东西都是公开的，包括合约的存储（以及其变化），所以<strong>所有能访问区块链的人（也就是所有人）都能通过存储看到状态变量！</strong></p>
+<p>一般想查看特定合约特定存储槽下数据的话都会使用<strong>web3的工具getStorageAt</strong>，但是其实直接查看链上的交易详情也是可行的，不过得先找到修改对应存储槽下数据的交易然后查看状态变化（Etherscan上就是查看交易下的State的详情）</p>
+<p>如果是把数据直接硬编码在合约状态变量的话，它的bytecode就会泄露这个状态变量的数据，原理其实也是大差不差的</p>
+<p>所以想把数据直接存储在链上是不可取的，最好的方法就是在链上存储之前就先加密，然后利用零知识证明（Zero-Knowledge Proof）在不透露秘密参数的情况下证明自己有这个参数（<strong>ZK非常重要，非常重要！！！！</strong>）</p>
 <h1 id="智能合约开发随想"><a href="#智能合约开发随想" class="headerlink" title="智能合约开发随想"></a>智能合约开发随想</h1><p>下面的就不用看了，就是一个啥都不会的菜鸡的大惊小怪，既没有什么深度和水平，也不是主要更新的部分，分成合约审计和合约开发这两部分单纯是为了区分，别把知识点搞太乱了www</p>
 <h2 id="ERC20"><a href="#ERC20" class="headerlink" title="ERC20"></a>ERC20</h2><p>目前对整个ERC20协议还是不是很了解，而且还有个NFT的ERC721协议，之后遇到可能会再补充补充</p>
 <p>和ERC20接触的原因是最近几天被爹地赶去当帕鲁，在2天之内抽空赶出来了一道Blockchain的红包题<del>（怎么过年都能被PUA啊）</del></p>
@@ -461,11 +500,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Web3</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Web3</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
         		</li>
       		
 		</ul>
@@ -565,7 +604,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E5%AE%A1%E8%AE%A1%E9%9A%8F%E6%83%B3"><span class="toc-number">1.</span> <span class="toc-text">智能合约审计随想</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E5%9E%8B%E6%BA%A2%E5%87%BA%EF%BC%88Solidity"><span class="toc-number">1.1.</span> <span class="toc-text">整型溢出（Solidity &lt;&#x3D;0.6特性）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%85%B3EOA%E5%9C%B0%E5%9D%80%E5%92%8C%E8%B4%A6%E6%88%B7%E5%9C%B0%E5%9D%80%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B"><span class="toc-number">1.2.</span> <span class="toc-text">有关EOA地址和账户地址的一些事</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#msg-sender%E5%92%8Ctx-origin"><span class="toc-number">1.2.1.</span> <span class="toc-text">msg.sender和tx.origin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extcodesize"><span class="toc-number">1.2.2.</span> <span class="toc-text">extcodesize</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#bytecode-deployedBytecode"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">bytecode &amp; deployedBytecode</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%91%BD%E5%90%8D%E9%94%99%E8%AF%AF%EF%BC%88Solidity"><span class="toc-number">1.3.</span> <span class="toc-text">构造函数命名错误（Solidity &lt;&#x3D;0.6特性）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BC%AA%EF%BC%89%E9%9A%8F%E6%9C%BA%E6%95%B0%E9%A2%84%E6%B5%8B"><span class="toc-number">1.4.</span> <span class="toc-text">（伪）随机数预测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#call-%EF%BC%8Cstaticcall-%E5%92%8Cdelegatecall"><span class="toc-number">1.5.</span> <span class="toc-text">call()，staticcall()和delegatecall()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#call-%E5%92%8Cstaticcall-%E7%9A%84%E5%8C%BA%E5%88%86"><span class="toc-number">1.5.1.</span> <span class="toc-text">call()和staticcall()的区分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fallback%EF%BC%8Creceive"><span class="toc-number">1.5.2.</span> <span class="toc-text">fallback，receive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#delegatecall"><span class="toc-number">1.5.3.</span> <span class="toc-text">delegatecall()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#delegatecall%E7%9A%84%E4%BF%9D%E7%95%99%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">delegatecall的保留上下文</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%8E%92%E5%B8%83%E4%B8%8D%E4%B8%80%E8%87%B4%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">存储排布不一致可能导致的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#storage%EF%BC%8Cmemory%EF%BC%8Ccalldata"><span class="toc-number">1.5.3.2.1.</span> <span class="toc-text">storage，memory，calldata</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Solidity%E5%90%88%E7%BA%A6%E4%B8%AD%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%98%E5%82%A8%E6%8E%92%E5%B8%83"><span class="toc-number">1.5.3.2.2.</span> <span class="toc-text">Solidity合约中状态变量的存储排布</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%BF%9B%E5%85%A5-Reentrancy-%E6%94%BB%E5%87%BB"><span class="toc-number">1.6.</span> <span class="toc-text">重进入(Reentrancy)攻击</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E5%BC%80%E5%8F%91%E9%9A%8F%E6%83%B3"><span class="toc-number">2.</span> <span class="toc-text">智能合约开发随想</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ERC20"><span class="toc-number">2.1.</span> <span class="toc-text">ERC20</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#transferFrom-%EF%BC%8Capprove%EF%BC%8Callowance"><span class="toc-number">2.1.1.</span> <span class="toc-text">transferFrom()，approve，allowance</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E5%AF%B9"><span class="toc-number">2.2.</span> <span class="toc-text">字符串比对</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E5%AE%A1%E8%AE%A1%E9%9A%8F%E6%83%B3"><span class="toc-number">1.</span> <span class="toc-text">智能合约审计随想</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E5%9E%8B%E6%BA%A2%E5%87%BA%EF%BC%88Solidity"><span class="toc-number">1.1.</span> <span class="toc-text">整型溢出（Solidity &lt;&#x3D;0.6特性）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%85%B3EOA%E5%9C%B0%E5%9D%80%E5%92%8C%E5%90%88%E7%BA%A6%E5%9C%B0%E5%9D%80%E7%9A%84%E4%B8%80%E4%BA%9B%E4%BA%8B"><span class="toc-number">1.2.</span> <span class="toc-text">有关EOA地址和合约地址的一些事</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#msg-sender%E5%92%8Ctx-origin"><span class="toc-number">1.2.1.</span> <span class="toc-text">msg.sender和tx.origin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extcodesize"><span class="toc-number">1.2.2.</span> <span class="toc-text">extcodesize</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#bytecode-deployedBytecode"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">bytecode &amp; deployedBytecode</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%91%BD%E5%90%8D%E9%94%99%E8%AF%AF%EF%BC%88Solidity"><span class="toc-number">1.3.</span> <span class="toc-text">构造函数命名错误（Solidity &lt;&#x3D;0.6特性）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%88%E4%BC%AA%EF%BC%89%E9%9A%8F%E6%9C%BA%E6%95%B0%E9%A2%84%E6%B5%8B%EF%BC%88%E6%93%8D%E6%8E%A7%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">（伪）随机数预测（操控）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#call-%EF%BC%8Cstaticcall-%E5%92%8Cdelegatecall"><span class="toc-number">1.5.</span> <span class="toc-text">call()，staticcall()和delegatecall()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#call-%E5%92%8Cstaticcall-%E7%9A%84%E5%8C%BA%E5%88%86"><span class="toc-number">1.5.1.</span> <span class="toc-text">call()和staticcall()的区分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fallback%EF%BC%8Creceive"><span class="toc-number">1.5.2.</span> <span class="toc-text">fallback，receive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#delegatecall"><span class="toc-number">1.5.3.</span> <span class="toc-text">delegatecall()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#delegatecall%E7%9A%84%E4%BF%9D%E7%95%99%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">delegatecall的保留上下文</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E6%8E%92%E5%B8%83%E4%B8%8D%E4%B8%80%E8%87%B4%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">存储排布不一致可能导致的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#storage%EF%BC%8Cmemory%EF%BC%8Ccalldata"><span class="toc-number">1.5.3.2.1.</span> <span class="toc-text">storage，memory，calldata</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Solidity%E5%90%88%E7%BA%A6%E4%B8%AD%E7%8A%B6%E6%80%81%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%98%E5%82%A8%E6%8E%92%E5%B8%83"><span class="toc-number">1.5.3.2.2.</span> <span class="toc-text">Solidity合约中状态变量的存储排布</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%BF%9B%E5%85%A5-Reentrancy-%E6%94%BB%E5%87%BB"><span class="toc-number">1.6.</span> <span class="toc-text">重进入(Reentrancy)攻击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#selfdestruct%E4%BB%A5%E5%8F%8A%E5%AE%83%E7%9A%84%E6%BD%9C%E5%9C%A8%E5%8D%B1%E5%AE%B3"><span class="toc-number">1.7.</span> <span class="toc-text">selfdestruct以及它的潜在危害</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E5%9C%B0%E5%90%91%E5%90%88%E7%BA%A6%E5%9C%B0%E5%9D%80%E8%BD%AC%E8%B4%A6"><span class="toc-number">1.7.1.</span> <span class="toc-text">强制地向合约地址转账</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#private%E5%B9%B6%E4%B8%8Dprivate%E2%80%94%E2%80%94%E5%85%AC%E5%BC%80%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">1.8.</span> <span class="toc-text">private并不private——公开的存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#public%EF%BC%8Cprivate%EF%BC%8Cinternal%EF%BC%8Cexternal"><span class="toc-number">1.8.1.</span> <span class="toc-text">public，private，internal，external</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E5%BC%80%E5%8F%91%E9%9A%8F%E6%83%B3"><span class="toc-number">2.</span> <span class="toc-text">智能合约开发随想</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ERC20"><span class="toc-number">2.1.</span> <span class="toc-text">ERC20</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#transferFrom-%EF%BC%8Capprove%EF%BC%8Callowance"><span class="toc-number">2.1.1.</span> <span class="toc-text">transferFrom()，approve，allowance</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%AF%94%E5%AF%B9"><span class="toc-number">2.2.</span> <span class="toc-text">字符串比对</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -721,7 +760,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
+                <a href="javascript:void(0)" class="js-tag color5">Web3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -729,7 +768,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Web3</a>
+                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -741,11 +780,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
+                <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
               </li>
             
             <div class="clearfix"></div>

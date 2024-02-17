@@ -17,11 +17,13 @@
 <meta property="og:site_name" content="9C±Void&#39;s Blog">
 <meta property="og:description" content="Open Zeppelin制作的一个Web3&#x2F;Solidity的对抗游戏，超级好玩，挺适合当作智能合约安全的入门教程">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cauliweak9.github.io/2024/01/21/Ethernaut/Token.png">
 <meta property="article:published_time" content="2024-01-21T00:48:12.000Z">
-<meta property="article:modified_time" content="2024-01-21T01:04:53.568Z">
+<meta property="article:modified_time" content="2024-02-17T19:23:27.259Z">
 <meta property="article:author" content="9C±Void">
 <meta property="article:tag" content="Web3">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cauliweak9.github.io/2024/01/21/Ethernaut/Token.png">
   
     <link rel="alternative" href="/atom.xml" title="9C±Void&#39;s Blog" type="application/atom+xml">
   
@@ -234,7 +236,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.9k字</span>
+      <span class="post-count">2.9k字</span>
     </span>
   </span>
 
@@ -243,7 +245,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">7分</span>
+      <span class="post-count">11分</span>
     </span>
   </span>
 </div>
@@ -332,6 +334,43 @@
 <ol>
 <li>在这个情况下, <code>tx.origin</code> 是受害者的地址 ( <code>msg.sender</code> 是恶意协议的地址), 这会导致受害者的资产被转移到攻击者的手上.</li>
 </ol>
+<h2 id="Stage-5-Token"><a href="#Stage-5-Token" class="headerlink" title="Stage 5    Token"></a>Stage 5    Token</h2><p>看到pragma solidity ^0.6.0我就知道事情不对了（笑）</p>
+<p>跟着Chainlink的教程学Solidity的时候就有了解到相关的东西，挺难绷的（当时他们还是用的0.6的Solidity，我自己找0.8的相关东西折磨死了，<a target="_blank" rel="noopener" href="http://还有那个逼web3.py/">还有那个逼web3.py</a>，受不了一点）</p>
+<p>这题给的提示是odometer，即油量表，对应的考点是整型溢出攻击（Overflow）</p>
+<p>简单来说就是这样：比如我有两个uint4：1011和0101，相加得到的理应是10000，但是由于uint4只有4位，所以最前面那个1会被省略，变成0000，这就和油量表一样，超过最大值9999.99就回到最小值0000.00一样</p>
+<p>同时由于Solidity它这些uint不存在负数，所以就会出现这种溢出的情况，比如0000-1&#x3D;1111的情况</p>
+<p>所以这题的解法就很显然了：向另一个合法地址传21个token就行了，结果嘛…</p>
+<img src="/2024/01/21/Ethernaut/Token.png" class="" title="I" alt="m rich">
+
+<p>如果在0.6下最好导入Openzeppelin的SafeMath.sol，当然如果你在0.8的话就不用担心这种溢出了，Solidity已经修复了</p>
+<h2 id="Stage-6-Delegation"><a href="#Stage-6-Delegation" class="headerlink" title="Stage 6    Delegation"></a>Stage 6    Delegation</h2><p>一个利用delegatecall性质进行攻击的题目，有关delegatecall的各种性质和两个攻击点我都写在了那个半总结性的随想里面，我这里就懒得再写了，具体内容比较多，而且需要一定的基础知识</p>
+<p>解题就只需要账户调用一下Delegate合约下的pwn()就好了，具体是为什么我也不清楚，主要是这个实例有两个合约，但是只有1个地址，我一开始用攻击合约攻击之后提交说我错，可能是给的地址就是Delegate合约的地址而非Delegation的地址吧…</p>
+<h2 id="Stage-7-Force"><a href="#Stage-7-Force" class="headerlink" title="Stage 7    Force"></a>Stage 7    Force</h2><p>一个只有可爱猫猫的合约~</p>
+<p>半总结性那个博客有讲过正常情况下如果向合约转账，要么通过payable修饰后的函数，要么合约存在receive，要么存在fallback，否则EVM会报错</p>
+<p>但是！上面的都可以被绕过！一般情况下我们有3种方法：</p>
+<ol>
+<li><p>利用selfdestruct()向合约发送ether</p>
+</li>
+<li><p>合约仍旧可以接受Coinbase转账或挖矿奖励，攻击者可以进行PoW挖矿然后设定受害者合约，从而使合约强制收款</p>
+</li>
+<li><p>在合约创建之前提前获取其地址，然后向该地址进行转账，从而使合约强制收款</p>
+<ul>
+<li><p>合约的地址是先对交易发送者的地址和交易的nonce进行RLP编码，然后进行keccak256哈希运算，取最右侧160位为地址，用一句Python代码形容就是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def <span class="title function_">mk_contract_address</span>(sender, nonce):</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">sha3</span>(rlp.<span class="title function_">encode</span>([<span class="title function_">normalize_address</span>(sender), nonce]))[<span class="number">12</span>:]</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<p>很明显，后两种攻击的构造比较困难，所以我们这里可以选择第一种攻击:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SPDX-License-Identifier: MIT</span></span><br><span class="line">pragma solidity ^<span class="number">0.8</span><span class="number">.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./Level7.sol&#x27;</span>;</span><br><span class="line"></span><br><span class="line">contract <span class="title class_">Attack</span>&#123;</span><br><span class="line">    address public victim_addr;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">address _addr</span>) &#123;</span><br><span class="line">        victim_addr = _addr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">fallback</span>() external payable&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">attack</span>(<span class="params"></span>) public&#123;</span><br><span class="line">        <span class="title function_">selfdestruct</span>(<span class="title function_">payable</span>(victim_addr));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Stage-8-Vault"><a href="#Stage-8-Vault" class="headerlink" title="Stage 8    Vault"></a>Stage 8    Vault</h2><p>一个金库，一个private的密码，一个locked表示是否上锁</p>
+<p>你以为这个金库很安全，因为这个密码也在金库里面，但是有没有可能…这个金库是玻璃做的？（笑）</p>
+<p>这里我们要讲一下private关键词了，其实private只能让其他合约无法访问这个被private修饰的东西，但是毕竟是放在存储里面的东西，肯定会存在链上，所以所有能访问区块链的人（也就是所有人www）都能看到这个东西的</p>
+<p>这题有两个做法：一个是利用web3的工具getStorageAt，一个就是直接上区块链浏览器去看合约创建的交易里面合约状态的变化</p>
+<p>我这边是用的后者，因为我目前还没有学Web3的JS开发，而且能直接搜到的不是比写一堆交互脚本更快？（笑）</p>
+<p><del>（其实这题的密码也算是个小彩蛋）</del></p>
 <h2 id="To-be-continued…（正在激情闯关-制作当中-）"><a href="#To-be-continued…（正在激情闯关-制作当中-）" class="headerlink" title="To be continued…（正在激情闯关&#x2F;制作当中~）"></a>To be continued…（正在激情闯关&#x2F;制作当中~）</h2>
     
 
@@ -477,7 +516,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-0-Hello-Ethernaut"><span class="toc-number">1.</span> <span class="toc-text">Stage 0    Hello Ethernaut</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-1-Fallback"><span class="toc-number">2.</span> <span class="toc-text">Stage 1    Fallback</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-2-Fallout"><span class="toc-number">3.</span> <span class="toc-text">Stage 2    Fallout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-3-Coin-Flip"><span class="toc-number">4.</span> <span class="toc-text">Stage 3    Coin Flip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-4-Telephone"><span class="toc-number">5.</span> <span class="toc-text">Stage 4    Telephone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#To-be-continued%E2%80%A6%EF%BC%88%E6%AD%A3%E5%9C%A8%E6%BF%80%E6%83%85%E9%97%AF%E5%85%B3-%E5%88%B6%E4%BD%9C%E5%BD%93%E4%B8%AD-%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">To be continued…（正在激情闯关&#x2F;制作当中~）</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-0-Hello-Ethernaut"><span class="toc-number">1.</span> <span class="toc-text">Stage 0    Hello Ethernaut</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-1-Fallback"><span class="toc-number">2.</span> <span class="toc-text">Stage 1    Fallback</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-2-Fallout"><span class="toc-number">3.</span> <span class="toc-text">Stage 2    Fallout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-3-Coin-Flip"><span class="toc-number">4.</span> <span class="toc-text">Stage 3    Coin Flip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-4-Telephone"><span class="toc-number">5.</span> <span class="toc-text">Stage 4    Telephone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-5-Token"><span class="toc-number">6.</span> <span class="toc-text">Stage 5    Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-6-Delegation"><span class="toc-number">7.</span> <span class="toc-text">Stage 6    Delegation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-7-Force"><span class="toc-number">8.</span> <span class="toc-text">Stage 7    Force</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-8-Vault"><span class="toc-number">9.</span> <span class="toc-text">Stage 8    Vault</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#To-be-continued%E2%80%A6%EF%BC%88%E6%AD%A3%E5%9C%A8%E6%BF%80%E6%83%85%E9%97%AF%E5%85%B3-%E5%88%B6%E4%BD%9C%E5%BD%93%E4%B8%AD-%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">To be continued…（正在激情闯关&#x2F;制作当中~）</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -633,7 +672,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
+                <a href="javascript:void(0)" class="js-tag color5">Web3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -641,7 +680,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Web3</a>
+                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,11 +692,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
+                <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
               </li>
             
             <div class="clearfix"></div>
