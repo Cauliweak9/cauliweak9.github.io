@@ -17,11 +17,13 @@
 <meta property="og:site_name" content="9C±Void&#39;s Blog">
 <meta property="og:description" content="一时兴起，自己尝试学了一点Brainfuck，纯粹就只是图一乐">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cauliweak9.github.io/2023/11/30/BrainFuck/Chat_History.jpg">
 <meta property="article:published_time" content="2023-11-30T10:21:24.000Z">
-<meta property="article:modified_time" content="2024-03-07T08:57:51.680Z">
+<meta property="article:modified_time" content="2024-03-21T13:21:01.945Z">
 <meta property="article:author" content="9C±Void">
 <meta property="article:tag" content="随想">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cauliweak9.github.io/2023/11/30/BrainFuck/Chat_History.jpg">
   
     <link rel="alternative" href="/atom.xml" title="9C±Void&#39;s Blog" type="application/atom+xml">
   
@@ -234,7 +236,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">4.4k字</span>
+      <span class="post-count">7.2k字</span>
     </span>
   </span>
 
@@ -243,7 +245,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">21分</span>
+      <span class="post-count">31分</span>
     </span>
   </span>
 </div>
@@ -258,7 +260,7 @@
 <span id="more"></span>
 
 <hr>
-<h3 id="简单的了解"><a href="#简单的了解" class="headerlink" title="简单的了解"></a>简单的了解</h3><p>一开始是想起来之前羊城杯2023那道GIFuck，想着给学弟们上点强度出道同一个考点的题目来着，结果自己玩起来了（笑）</p>
+<h2 id="简单的了解"><a href="#简单的了解" class="headerlink" title="简单的了解"></a>简单的了解</h2><p>一开始是想起来之前羊城杯2023那道GIFuck，想着给学弟们上点强度出道同一个考点的题目来着，结果自己玩起来了（笑）</p>
 <p>Brainfuck说白了就是一个数组+一个指针然后进行操作而已。<del>什么？你问我指针是啥？算了你还是想象有一个箭头吧：</del></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针: ↑</span><br></pre></td></tr></table></figure>
 
@@ -275,7 +277,7 @@
 <p>它的输出是会转换为ASCII的，所以你想输出个1得要搞个0x31也就是49出来</p>
 <p>我用的在线网站有两个，一般很多人都能搜到Splitbrains的Ook&#x2F;Brainfuck编解码网站，不过最近用了另一个<a target="_blank" rel="noopener" href="http://pablojorge.github.io/brainfuck/">网站</a>，能清晰地看到内存区的数据，所以就用后者了，不过好像直接登的话网站显示很怪？反正我是先回到Github仓库再转到这个网站的</p>
 <p>听爹地qsdz说还有IDE来着，不过咱就只是玩玩看，没必要这么大动干戈（</p>
-<h3 id="基础的循环逻辑"><a href="#基础的循环逻辑" class="headerlink" title="基础的循环逻辑"></a>基础的循环逻辑</h3><p>Brainfuck只有加减，那我们先从加法开始吧</p>
+<h2 id="基础的循环逻辑"><a href="#基础的循环逻辑" class="headerlink" title="基础的循环逻辑"></a>基础的循环逻辑</h2><p>Brainfuck只有加减，那我们先从加法开始吧</p>
 <p>假如我们有下面的内存区：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 2 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针: ↑</span><br></pre></td></tr></table></figure>
 
@@ -289,7 +291,7 @@
 
 <p>那乘法不就是多加几次而已嘛，那假如还是原来的内存区，我们需要让第0位变成2*3该怎么办？</p>
 <p>欸，先别急，我们先学一下怎么复制数据再回来做这题</p>
-<h3 id="简单的复制操作"><a href="#简单的复制操作" class="headerlink" title="简单的复制操作"></a>简单的复制操作</h3><p>比如我们内存区长这样：</p>
+<h2 id="简单的复制操作"><a href="#简单的复制操作" class="headerlink" title="简单的复制操作"></a>简单的复制操作</h2><p>比如我们内存区长这样：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针: ↑</span><br></pre></td></tr></table></figure>
 
 <p>我们想让第0位的数据<strong>复制</strong>到第2位，那我们该怎么办？</p>
@@ -315,7 +317,7 @@
 
 
 
-<h3 id="一些基础运用"><a href="#一些基础运用" class="headerlink" title="一些基础运用"></a>一些基础运用</h3><p>再回到刚刚那个2*3的例子，由于我们知道循环参数会被消耗掉，所以我们得先额外复制一个出来再搞回去</p>
+<h2 id="一些基础运用"><a href="#一些基础运用" class="headerlink" title="一些基础运用"></a>一些基础运用</h2><p>再回到刚刚那个2*3的例子，由于我们知道循环参数会被消耗掉，所以我们得先额外复制一个出来再搞回去</p>
 <p>假如我们转换成C&#x2F;C++代码，核心逻辑应该是这样的：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> sum=<span class="number">0</span>, i=<span class="number">2</span>, j=<span class="number">3</span>;</span><br><span class="line"><span class="keyword">while</span>(i--)&#123;</span><br><span class="line">	<span class="keyword">while</span>(j--)&#123;</span><br><span class="line">		sum++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> sum;</span><br></pre></td></tr></table></figure>
 
@@ -333,7 +335,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 0 3 0 6 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针: ↑</span><br></pre></td></tr></table></figure>
 
 <p>之后再把第3位的结果移到第0位就行了，这一步我就省略了，这种基础的数据移动上面也有写了</p>
-<h3 id="给学弟们出的（没啥深度的）题目"><a href="#给学弟们出的（没啥深度的）题目" class="headerlink" title="给学弟们出的（没啥深度的）题目"></a>给学弟们出的<del>（没啥深度的）</del>题目</h3><p>先说一下Splitbrains那个输出基本上是怎么样的</p>
+<h2 id="给学弟们出的（没啥深度的）题目"><a href="#给学弟们出的（没啥深度的）题目" class="headerlink" title="给学弟们出的（没啥深度的）题目"></a>给学弟们出的<del>（没啥深度的）</del>题目</h2><p>先说一下Splitbrains那个输出基本上是怎么样的</p>
 <p>为了数组开的尽可能小，它一般只会在第0位和第1位进行操作，比如我想输出”ABCD”的话，基本就是先构造出”A”再在”A”的基础上输出”BCD”：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">++++++++[-&gt;++++++++&lt;]&gt;+.	输出A（65）</span><br><span class="line">+.	输出B（66）</span><br><span class="line">+.	输出C（67）</span><br><span class="line">+.	输出D（68）</span><br></pre></td></tr></table></figure>
 
@@ -341,16 +343,16 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">数组: 0 68 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...</span><br><span class="line">指针:   ↑</span><br></pre></td></tr></table></figure>
 
 <p>我参照GIFuck出的时候把flag每个字符都放内存区了来着，不是这种覆盖，不过非flag内容因为不重要就直接借用这种覆盖的写法了</p>
-<h4 id="CPU给干到满占用率了（预期难度1-5⭐）"><a href="#CPU给干到满占用率了（预期难度1-5⭐）" class="headerlink" title="CPU给干到满占用率了（预期难度1.5⭐）"></a>CPU给干到满占用率了（预期难度1.5⭐）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+++++ +++[- &gt;++++ ++++&lt; ]&gt;+.&lt; +++++ ++[-&gt; +++++ ++&lt;]&gt; +++.- --.-- -.+++</span><br><span class="line">.&lt;+++ +[-&gt;- ---&lt;] &gt;-.&lt;+ ++++[ -&gt;+++ ++&lt;]&gt; +.&lt;++ ++++[ -&gt;--- ---&lt;] &gt;.&lt;++</span><br><span class="line">++[-&gt; ++++&lt; ]&gt;+.- ----- -.&lt;++ ++[-&gt; ++++&lt; ]&gt;+++ .&lt;+++ +[-&gt;- ---&lt;] &gt;----</span><br><span class="line">-.&lt;++ ++[-&gt; ++++&lt; ]&gt;+++ ++.&lt;+ ++[-&gt; ---&lt;] &gt;---. ---.- ----- .&lt;+++ ++[-&gt;</span><br><span class="line">----- &lt;]&gt;-- --.&lt;+ +++[- &gt;++++ &lt;]&gt;.&lt; ++++[ -&gt;--- -&lt;]&gt;- .++++ ++++. +++++</span><br><span class="line">.---- ----. &lt;+++[ -&gt;+++ &lt;]&gt;++ ++++. &lt;++++ [-&gt;-- --&lt;]&gt; --.++ +++++ +.&lt;++</span><br><span class="line">+[-&gt;- --&lt;]&gt; ---.. .&lt;+++ ++++[ -&gt;+++ ++++&lt; ]&gt;+++ +++++ +++++ .&lt;</span><br></pre></td></tr></table></figure>
+<h3 id="CPU给干到满占用率了（预期难度1-5⭐）"><a href="#CPU给干到满占用率了（预期难度1-5⭐）" class="headerlink" title="CPU给干到满占用率了（预期难度1.5⭐）"></a>CPU给干到满占用率了（预期难度1.5⭐）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+++++ +++[- &gt;++++ ++++&lt; ]&gt;+.&lt; +++++ ++[-&gt; +++++ ++&lt;]&gt; +++.- --.-- -.+++</span><br><span class="line">.&lt;+++ +[-&gt;- ---&lt;] &gt;-.&lt;+ ++++[ -&gt;+++ ++&lt;]&gt; +.&lt;++ ++++[ -&gt;--- ---&lt;] &gt;.&lt;++</span><br><span class="line">++[-&gt; ++++&lt; ]&gt;+.- ----- -.&lt;++ ++[-&gt; ++++&lt; ]&gt;+++ .&lt;+++ +[-&gt;- ---&lt;] &gt;----</span><br><span class="line">-.&lt;++ ++[-&gt; ++++&lt; ]&gt;+++ ++.&lt;+ ++[-&gt; ---&lt;] &gt;---. ---.- ----- .&lt;+++ ++[-&gt;</span><br><span class="line">----- &lt;]&gt;-- --.&lt;+ +++[- &gt;++++ &lt;]&gt;.&lt; ++++[ -&gt;--- -&lt;]&gt;- .++++ ++++. +++++</span><br><span class="line">.---- ----. &lt;+++[ -&gt;+++ &lt;]&gt;++ ++++. &lt;++++ [-&gt;-- --&lt;]&gt; --.++ +++++ +.&lt;++</span><br><span class="line">+[-&gt;- --&lt;]&gt; ---.. .&lt;+++ ++++[ -&gt;+++ ++++&lt; ]&gt;+++ +++++ +++++ .&lt;</span><br></pre></td></tr></table></figure>
 
 <p>这个可太明显了，一看就知道是从Splitbrains直接把flag编码了的<del>（它甚至为了美观每5个字符就打个空格，它真的我哭死）</del></p>
 <p>直接拉上去解码就行了，这题就只是为了了解有Brainfuck这种东西存在，仅此而已</p>
-<h4 id="CPU给干烧了（预期难度3-0⭐）"><a href="#CPU给干烧了（预期难度3-0⭐）" class="headerlink" title="CPU给干烧了（预期难度3.0⭐）"></a>CPU给干烧了（预期难度3.0⭐）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">++++++++[-&gt;++++++++&lt;]&gt;+</span><br><span class="line">&lt;+++++++[-&gt;+++++++&lt;]&gt;+++</span><br><span class="line">---</span><br><span class="line">---</span><br><span class="line">+++</span><br><span class="line">&lt;++++[-&gt;----&lt;]&gt;-</span><br><span class="line">&lt;+++++[-&gt;+++++&lt;]&gt;+</span><br><span class="line">&lt;+++++++[-&gt;-------&lt;]&gt;------</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">+++++</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">&lt;+++++[-&gt;-----&lt;]&gt;--</span><br><span class="line">&lt;++++[-&gt;----&lt;]&gt;----</span><br><span class="line">&lt;++++++[-&gt;++++++&lt;]&gt;</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">&lt;+++++[-&gt;-----&lt;]&gt;--</span><br><span class="line">&lt;++++++[-&gt;++++++&lt;]&gt;+++++++</span><br><span class="line">&lt;+++++[-&gt;-----&lt;]&gt;--</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">&lt;+++++[-&gt;-----&lt;]&gt;--</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">&lt;++++[-&gt;----&lt;]&gt;--------</span><br><span class="line">&lt;++++++++[-&gt;++++++++&lt;]&gt;++++++</span><br><span class="line">明明每一行都是一个字母来着，但是为什么就是读不出来啊QAQ</span><br></pre></td></tr></table></figure>
+<h3 id="CPU给干烧了（预期难度3-0⭐）"><a href="#CPU给干烧了（预期难度3-0⭐）" class="headerlink" title="CPU给干烧了（预期难度3.0⭐）"></a>CPU给干烧了（预期难度3.0⭐）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">++++++++[-&gt;++++++++&lt;]&gt;+</span><br><span class="line">&lt;+++++++[-&gt;+++++++&lt;]&gt;+++</span><br><span class="line">---</span><br><span class="line">---</span><br><span class="line">+++</span><br><span class="line">&lt;++++[-&gt;----&lt;]&gt;-</span><br><span class="line">&lt;+++++[-&gt;+++++&lt;]&gt;+</span><br><span class="line">&lt;+++++++[-&gt;-------&lt;]&gt;------</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">+++++</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">&lt;+++++[-&gt;-----&lt;]&gt;--</span><br><span class="line">&lt;++++[-&gt;----&lt;]&gt;----</span><br><span class="line">&lt;++++++[-&gt;++++++&lt;]&gt;</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">&lt;+++++[-&gt;-----&lt;]&gt;--</span><br><span class="line">&lt;++++++[-&gt;++++++&lt;]&gt;+++++++</span><br><span class="line">&lt;+++++[-&gt;-----&lt;]&gt;--</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">&lt;+++++[-&gt;-----&lt;]&gt;--</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;++</span><br><span class="line">&lt;++++[-&gt;----&lt;]&gt;--------</span><br><span class="line">&lt;++++++++[-&gt;++++++++&lt;]&gt;++++++</span><br><span class="line">明明每一行都是一个字母来着，但是为什么就是读不出来啊QAQ</span><br></pre></td></tr></table></figure>
 
 <p>全是自己手打的，用的就是上面提到的覆盖写法，考点就是基础的输出操作符”.”</p>
 <p>每一行加一个”.”就行了，没什么难度<del>（本来还想去掉换行的，但是发现这样就纯恶心人www）</del></p>
 <p>3.0⭐说句实话就是纯虚高，2.6⭐倒还可能有</p>
-<h4 id="CPU给干炸了（预期难度3-8⭐）"><a href="#CPU给干炸了（预期难度3-8⭐）" class="headerlink" title="CPU给干炸了（预期难度3.8⭐）"></a>CPU给干炸了（预期难度3.8⭐）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+++++++++[-&gt;+++++++++&lt;]&gt;+++.&lt;+++++[-&gt;++++&lt;]&gt;.---.&lt;++++[-&gt;+++&lt;]&gt;+.-&lt;++++[-&gt;---&lt;]&gt;.++++.&lt;+++[-&gt;+++&lt;]&gt;+.-----.+.&lt;+++[-&gt;---&lt;]&gt;.++++++.&lt;++++[-&gt;---&lt;]&gt;+.++++++.&gt;&gt;&gt;++++++++[-&lt;++++++++&gt;]&lt;+&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;----&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;++++&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;+&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;++++&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;---&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;++&gt;&gt;+++++++++[-&lt;+++++++++&gt;]&lt;+++&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;++++&gt;&gt;++++++++[-&lt;++++++++&gt;]&lt;&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;-----&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;---&gt;&gt;+++++++++[-&lt;++++++++&gt;]&lt;+++&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+++++&gt;&gt;++++++[-&lt;+++++++++&gt;]&lt;-&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----&gt;&gt;++++++[-&lt;+++++++++&gt;]&lt;--&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;--&gt;&gt;+++++[-&lt;++++++++++&gt;]&lt;-&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;++++[&lt;]</span><br></pre></td></tr></table></figure>
+<h3 id="CPU给干炸了（预期难度3-8⭐）"><a href="#CPU给干炸了（预期难度3-8⭐）" class="headerlink" title="CPU给干炸了（预期难度3.8⭐）"></a>CPU给干炸了（预期难度3.8⭐）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+++++++++[-&gt;+++++++++&lt;]&gt;+++.&lt;+++++[-&gt;++++&lt;]&gt;.---.&lt;++++[-&gt;+++&lt;]&gt;+.-&lt;++++[-&gt;---&lt;]&gt;.++++.&lt;+++[-&gt;+++&lt;]&gt;+.-----.+.&lt;+++[-&gt;---&lt;]&gt;.++++++.&lt;++++[-&gt;---&lt;]&gt;+.++++++.&gt;&gt;&gt;++++++++[-&lt;++++++++&gt;]&lt;+&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;----&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;++++&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;+&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;++++&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;---&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;++&gt;&gt;+++++++++[-&lt;+++++++++&gt;]&lt;+++&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;++++&gt;&gt;++++++++[-&lt;++++++++&gt;]&lt;&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;-----&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;---&gt;&gt;+++++++++[-&lt;++++++++&gt;]&lt;+++&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+++++&gt;&gt;++++++[-&lt;+++++++++&gt;]&lt;-&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----&gt;&gt;++++++[-&lt;+++++++++&gt;]&lt;--&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;--&gt;&gt;+++++[-&lt;++++++++++&gt;]&lt;-&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;++++[&lt;]</span><br></pre></td></tr></table></figure>
 
 <p>Splitbrains解出来只有”Thereisnoflag”，这下很多人估计直接就傻眼了，不过说句实话有非预期解，总之先上我自己打这串代码的源码：（输出操作符只是为了检验，题目代码中所有输出flag的输出操作符都已被删除）</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"># 84 104 101 114 101 105 115 110 111 102 108 97 103 Thereisnoflag</span><br><span class="line"># 32 65 117 114 111 114 97 123 84 104 64 116 95 99 97 75 101 95 105 53 95 52 95 108 49 101 33 33 33 125 Aurora&#123;Th@t_caKe_i5_4_l1e!!!&#125;</span><br><span class="line">+++++++++[-&gt;+++++++++&lt;]&gt;+++.    #T</span><br><span class="line">&lt;+++++[-&gt;++++&lt;]&gt;.   #h</span><br><span class="line">---.    #e</span><br><span class="line">&lt;++++[-&gt;+++&lt;]&gt;+.    #r</span><br><span class="line">-&lt;++++[-&gt;---&lt;]&gt;.    #e</span><br><span class="line">++++.   #i</span><br><span class="line">&lt;+++[-&gt;+++&lt;]&gt;+.  #s</span><br><span class="line">-----.  #n</span><br><span class="line">+.  #o</span><br><span class="line">&lt;+++[-&gt;---&lt;]&gt;.  #f</span><br><span class="line">++++++. #l</span><br><span class="line">&lt;++++[-&gt;---&lt;]&gt;+.    #a</span><br><span class="line">++++++. #g</span><br><span class="line">&gt;</span><br><span class="line">&gt;&gt;++++++++[-&lt;++++++++&gt;]&lt;+. #A</span><br><span class="line">&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;----. #u</span><br><span class="line">&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;++++.  #r</span><br><span class="line">&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;+.  #o</span><br><span class="line">&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;++++.  #r</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;---.  #a 97</span><br><span class="line">&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;++.  #&#123;</span><br><span class="line">&gt;&gt;+++++++++[-&lt;+++++++++&gt;]&lt;+++.  #T</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;++++.   #h</span><br><span class="line">&gt;&gt;++++++++[-&lt;++++++++&gt;]&lt;.   #@</span><br><span class="line">&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;-----.    #t 116</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----.  #_</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-.  #c</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;---.    #a</span><br><span class="line">&gt;&gt;+++++++++[-&lt;++++++++&gt;]&lt;+++.   #K 75</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+.  #e</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----.  #_ 95</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+++++.  #i</span><br><span class="line">&gt;&gt;++++++[-&lt;+++++++++&gt;]&lt;-.   #5 53</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----.  #_</span><br><span class="line">&gt;&gt;++++++[-&lt;+++++++++&gt;]&lt;--.  #4 52</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;-----. #_</span><br><span class="line">&gt;&gt;++++++++++[-&lt;+++++++++++&gt;]&lt;--.    #l</span><br><span class="line">&gt;&gt;+++++[-&lt;++++++++++&gt;]&lt;-.   #1 49</span><br><span class="line">&gt;&gt;++++++++++[-&lt;++++++++++&gt;]&lt;+.  #e</span><br><span class="line">&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---.    #!</span><br><span class="line">&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---.    #!</span><br><span class="line">&gt;&gt;++++++[-&lt;++++++&gt;]&lt;---.    #!</span><br><span class="line">&gt;&gt;+++++++++++[-&lt;+++++++++++&gt;]&lt;++++. #&#125;</span><br><span class="line">[&lt;] #将本行替换为以下操作可清零：&gt;+[[-]&lt;]</span><br></pre></td></tr></table></figure>
@@ -363,7 +365,7 @@
 <p>所以我们可以在整个代码最后加几个输出操作符和指针右移的组合，也就是”.&gt;”，这样我们就可以读取内存区的flag了</p>
 <p>当然也可以把最后一行的”[&lt;]”改成”[.&lt;]”，边输出边左移，只是flag是逆序的而已，转一下就行了</p>
 <p>如果用Splitbrains网站，你可以在代码最后打一个”#”，这样可以看到此时内存区的所有数据，当然如果是一开头提到的第2个网站就能直接看到内存区了</p>
-<h4 id="CPU炸了，内存也炸了（预期难度4-0⭐）"><a href="#CPU炸了，内存也炸了（预期难度4-0⭐）" class="headerlink" title="CPU炸了，内存也炸了（预期难度4.0⭐）"></a>CPU炸了，内存也炸了（预期难度4.0⭐）</h4><p>这题是作为隐藏题发布的，前提条件是完成上面的“CPU给干炸了”</p>
+<h3 id="CPU炸了，内存也炸了（预期难度4-0⭐）"><a href="#CPU炸了，内存也炸了（预期难度4-0⭐）" class="headerlink" title="CPU炸了，内存也炸了（预期难度4.0⭐）"></a>CPU炸了，内存也炸了（预期难度4.0⭐）</h3><p>这题是作为隐藏题发布的，前提条件是完成上面的“CPU给干炸了”</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">++++++++[-&gt;+++++++++&lt;]&gt;--.&lt;+++++[-&gt;++++++++&lt;]&gt;--.+&lt;++++[-&gt;---&lt;]&gt;.++++++.&gt;++++++[-&gt;++++++&lt;]&gt;+++.&lt;&lt;&lt;++++[-&gt;+++&lt;]&gt;.&gt;+++[-&gt;--&lt;]&gt;-.&lt;&lt;-----.+.+++++.&gt;&gt;.&lt;&lt;&lt;++++[-&gt;---&lt;]&gt;.---.+&lt;++++[-&gt;+++&lt;]&gt;.&lt;++++[-&gt;---&lt;]&gt;-.&gt;&gt;.&lt;&lt;&lt;+++[-&gt;++&lt;]&gt;+.+++.---.&gt;&gt;[-]&lt;&lt;[-]&lt;++++[-&gt;&gt;++++[-&lt;++++&gt;]&lt;&lt;]&gt;+[-&gt;+&gt;+&lt;&lt;]&gt;[-&lt;+&gt;]&gt;[-&lt;++&gt;&gt;++&lt;]++++[-&lt;---&gt;&gt;---&lt;]&gt;-&lt;&lt;-&gt;&gt;[-&lt;+&gt;&gt;+&gt;+&gt;+&gt;+&lt;&lt;&lt;&lt;]&lt;---&gt;&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;------&gt;---&gt;&gt;&gt;+++++[-&lt;&lt;----&gt;&gt;]&lt;++++++&lt;[-&gt;&gt;+&gt;+&gt;+&lt;&lt;&lt;&lt;]&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;]+++++[-&lt;&lt;----&gt;----------&gt;]&lt;&lt;+&gt;+&lt;&lt;&lt;[-&gt;&gt;&gt;&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;]&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;]+++++[-&lt;&lt;&lt;&lt;&lt;++++&gt;&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;&lt;++&gt;--&gt;&gt;&gt;&gt;+++[-&lt;&lt;&lt;----&gt;&gt;&gt;]&lt;&lt;--&gt;&gt;+++++[-&lt;----&gt;]&lt;--&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;[-&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&gt;+&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;]&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;----&gt;---&gt;++++&gt;++++&gt;&gt;&gt;&gt;&gt;+++++[-&lt;&lt;&lt;&lt;----&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;+++++++[-&lt;&lt;&lt;-------&gt;&gt;&gt;]&lt;&lt;&lt;+&gt;&gt;&gt;++++[-&lt;----&gt;]&lt;-&gt;&gt;+++++++[-&lt;+++++++&gt;]&lt;[-&gt;++&gt;+&gt;++&gt;++&gt;++&gt;+&gt;+++&gt;+&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;]&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;[-&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;]++++[-&lt;&lt;&lt;&lt;&lt;&lt;&lt;+++&gt;&gt;&gt;&gt;&gt;&gt;&gt;]+++[-&lt;&lt;&lt;&lt;&lt;&lt;+++++++&gt;&gt;&gt;&gt;&gt;&gt;]+++[-&lt;&lt;&lt;&lt;&lt;++++++&gt;&gt;&gt;&gt;&gt;]&lt;&lt;&lt;&lt;&lt;+&gt;+&gt;&gt;&gt;&gt;+++[-&lt;&lt;&lt;+++&gt;&gt;&gt;]++++[-&lt;&lt;----&gt;&gt;]+++++[-&lt;----&gt;]&lt;--[[-]&lt;]</span><br></pre></td></tr></table></figure>
 
 <p>这次的代码应该找不到规律了吧www</p>
@@ -378,7 +380,100 @@
 <p>这还不简单，清零前你指针肯定得到位吧，那我清零前读取数据不就好了？</p>
 <p>所以最后一行”[[-]&lt;]”改成”[.[-]&lt;]”就能得到逆序flag了，理解了之后真的会觉得没啥难的</p>
 <p>（不过感觉4.0⭐是不是有点虚低了，可能4.2⭐会好一点？）</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>有啥好总结的，我玩的很开心（摸鱼谁不开心啊www），<del>学弟们被恶心吐了</del>，我们都有美好的未来（笑）</p>
+<h2 id="总结…？"><a href="#总结…？" class="headerlink" title="总结…？"></a>总结…？</h2><p>有啥好总结的，我玩的很开心（摸鱼谁不开心啊www），<del>学弟们被恶心吐了</del>，我们都有美好的未来（笑）</p>
+<p><strong>~~~(p≧w≦q)~~~这里是来自2024年3月20号的分割线~~~(p≧w≦q)~~~</strong></p>
+<hr>
+<h2 id="Quine"><a href="#Quine" class="headerlink" title="Quine"></a>Quine</h2><p>我也没想到我会更新这个博客，主要还是和爹地聊了一下，才知道有这种东西，感觉有意思，就搞了一下</p>
+<p>这个quine我也不会翻译，总之就是一个<strong>可以输出自己源代码的计算机程序</strong>，就比如说一个C语言quine程序，它的代码是int main(){&#x2F;* 程序的代码 *&#x2F;}，这个程序的输出结果就是int main(){&#x2F;* 程序的代码 *&#x2F;}，完全一致</p>
+<p>可以证明的是，<strong>任意一个图灵完备的语言都存在自己的quine</strong>，但是我这里就不展开讲了，因为这一部分的重点是如何构造一个Brainfuck的quine<del>（其实是我完全没看懂QAQ）</del></p>
+<p>其实网上有很多教你自己写Brainfuck的quine的，我写的肯定没有他们的好<del>（或者说我就是一个翻译，而且还是水平不太高的那种）</del>，所以这里先把几个链接给出来供大佬们参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.codingame.com/playgrounds/50485/brainfuck-part-7---quine-some-non-bf-quine-theory/welcome">Welcome - BrainFuck part 7 - Quine (+ some non-BF quine theory) (codingame.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://brainfuckhowto.blogspot.com/2017/03/quine-introduction-and-mechanisms-1.html">BrainFuck how-to: Quine: introduction and mechanisms (1) (brainfuckhowto.blogspot.com)</a></p>
+<p>我是跟着第二个链接走的，不过两个都是非常好的文章，感兴趣的话可以自行查看</p>
+<p>我本人不太会表达，不过我尽量多用例子来解释</p>
+<h3 id="基本组成"><a href="#基本组成" class="headerlink" title="基本组成"></a>基本组成</h3><p>一个quine的组成简单拆分一下的话其实就两部分：</p>
+<ul>
+<li>一系列数据，这些数据代表的是下面的代码</li>
+<li>一串代码，它的功能是利用上面的数据输出数据以及这串代码本身</li>
+</ul>
+<p>不过我们如果要生成数据，那么我们肯定需要代码来生成，比如在Brainfuck里，我们至少需要”+”和”&gt;”两个指令来生成数据. 虽然我们可以使用循环来优化代码长度，但是之后我们想要输出表示循环的”[]”就会比较麻烦，所以这里我们就用简单的”+”和”&gt;”就行</p>
+<p>比如：我们代码里面有个”+”（ASCII：43），那么就是用43个”+”和一个”&gt;”构造进内存里面，<strong>此时数据中”+”的数量就和代码的ASCII发生了绑定</strong>，换句话说，我们就可以利用这个数据同时输出构造”+”的代码和”+”本身了，怎么输出之后我们再谈</p>
+<p>当然，我们如果需要输出构造数据的指令，也就是那一大串”+”和”&gt;”，那我们最起码需要先把这两个字符构造好放在内存里吧</p>
+<h3 id="输出过程"><a href="#输出过程" class="headerlink" title="输出过程"></a>输出过程</h3><p>那么我们有了数据，构造好了两个字符，我们应该怎么输出呢？</p>
+<p>假如我们有代码ABC（ASCII：65，66，67），然后我们的内存区长这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">字符:   +  &gt;    A  B  C</span><br><span class="line">数组: 0 43 62 0 65 66 67 0 0 0 ...</span><br><span class="line">指针: ↑</span><br></pre></td></tr></table></figure>
+
+<p>刚刚我们说了数据和ASCII发生了绑定，所以构造数据的指令可以利用这一点进行输出，用（伪）C代码表示大致上是这样的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr;	<span class="comment">// arr是内存区</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">4</span>;i&lt;len(data)+<span class="number">4</span>;i++)&#123;</span><br><span class="line">	<span class="type">int</span> val = arr[i];</span><br><span class="line">	<span class="keyword">while</span>(data[i]--)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(arr[i<span class="number">-3</span>]);	<span class="comment">// 输出N次&quot;+&quot;，N为每个代码的ASCII码值</span></span><br><span class="line">        arr[i<span class="number">-4</span>]++;		<span class="comment">// 将数据复制到&quot;+&quot;和&quot;&gt;&quot;前面</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(arr[i<span class="number">-2</span>]);	<span class="comment">// 输出&quot;&gt;&quot;</span></span><br><span class="line">    arr[i<span class="number">-1</span>]=arr[i<span class="number">-2</span>];</span><br><span class="line">    arr[i<span class="number">-2</span>]=arr[i<span class="number">-3</span>];	<span class="comment">// 将&quot;+&quot;和&quot;&gt;&quot;向后移一位</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>换成Brainfuck的话就是这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;&gt;					指针移到A处</span><br><span class="line">[						外层循环，遍历整个data，这里是ABC</span><br><span class="line">	[-					内层循环，这里是执行65/66/67次</span><br><span class="line">		&lt;&lt;&lt;.			输出&quot;+&quot;</span><br><span class="line">		&lt;+ &gt;&gt;&gt;&gt;			将data复制在两个指令字符前，然后复位</span><br><span class="line">	]</span><br><span class="line">	&lt;&lt;.[-&gt;+&lt;]&lt;[-&gt;+&lt;]	输出&quot;&gt;&quot;后将两个指令字符向前移一位</span><br><span class="line">	&gt;&gt;&gt;&gt;				执行完单个字符的构造代码的输出后，指针移动到下一位</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>可能还是不够清晰，那我们先走一遍内层循环</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">第1行执行完成后：</span><br><span class="line">字符:   +  &gt;    A  B  C</span><br><span class="line">数组: 0 43 62 0 65 66 67 0 0 0 ...</span><br><span class="line">指针:           ↑</span><br><span class="line"></span><br><span class="line">第一轮内层循环执行完后：</span><br><span class="line">字符: A  +  &gt;      B  C</span><br><span class="line">数组: 65 43 62 0 0 66 67 0 0 0 ...</span><br><span class="line">指针:            ↑</span><br><span class="line">输出: 65个+</span><br><span class="line"></span><br><span class="line">第7行执行完后：</span><br><span class="line">字符: A    +  &gt;    B  C</span><br><span class="line">数组: 65 0 43 62 0 66 67 0 0 0 ...</span><br><span class="line">指针:    ↑</span><br><span class="line">输出：65个+和1个&gt;</span><br><span class="line"></span><br><span class="line">第一轮外层循环执行完后：</span><br><span class="line">字符: A    +  &gt;    B  C</span><br><span class="line">数组: 65 0 43 62 0 66 67 0 0 0 ...</span><br><span class="line">指针:              ↑</span><br><span class="line">输出：65个+和1个&gt;</span><br><span class="line"></span><br><span class="line">第二轮外层循环执行完后：</span><br><span class="line">字符: A  B    +  &gt;    C</span><br><span class="line">数组: 65 66 0 43 62 0 67 0 0 0 ...</span><br><span class="line">指针:                 ↑</span><br><span class="line">输出：65个+和1个&gt; 66个+和1个&gt;</span><br><span class="line"></span><br><span class="line">第三轮外层循环执行完后：</span><br><span class="line">字符: A  B  C    +  &gt;</span><br><span class="line">数组: 65 66 67 0 43 62 0 0 0 0 0 ...</span><br><span class="line">指针:                    ↑</span><br><span class="line">输出：65个+和1个&gt; 66个+和1个&gt; 67个+和1个&gt;</span><br><span class="line"></span><br><span class="line">指针指向0，外层循环结束</span><br></pre></td></tr></table></figure>
+
+<p><del>（有一种利用DNA构造蛋白质的感觉有木有）</del></p>
+<p>然后我们再把指针回到一开始然后直接输出ABC就好了</p>
+<h3 id="整体逻辑与Brainfuck代码框架"><a href="#整体逻辑与Brainfuck代码框架" class="headerlink" title="整体逻辑与Brainfuck代码框架"></a>整体逻辑与Brainfuck代码框架</h3><p>那么上面的例子大致理解了，我们只需要把ABC换成最后输出自己的Brainfuck代码就行了，至于那些数据从哪里来，等会再说</p>
+<p>最后我们就有下面的基本逻辑：</p>
+<ol>
+<li>留白，方便构造指令字符和之后输出时的位移</li>
+<li>仅使用”+”和”&gt;”将数据存储在内存里面</li>
+<li>回到内存区[0]</li>
+<li>在开头构造两个指令字符</li>
+<li>上面输出构造数据的代码的逻辑的循环</li>
+<li>回到内存区[1]并输出存在内存里的数据，也就是代码区里的代码</li>
+</ol>
+<p>至于Brainfuck框架，我这里就直接照搬上面第2个链接的框架了：</p>
+<p><a name="BF_Code_Framework"></a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;&gt;	留白，方便之后的&quot;+&quot;和&quot;&gt;&quot;的构造以及不断的位移</span><br><span class="line"></span><br><span class="line">$$$</span><br><span class="line">这里需要填写构造数据的代码</span><br><span class="line">$$$</span><br><span class="line"></span><br><span class="line">$$$ 代码部分从下面开始</span><br><span class="line">&lt;[&lt;]	回到内存区开头留白处</span><br><span class="line"></span><br><span class="line">&lt;&lt;&lt;+++++++[-&gt;+++&lt;]&gt;[-&gt;++&gt;+++&lt;&lt;]&gt;+&gt;-		在内存区开头构造&quot;+&quot;和&quot;&gt;&quot;</span><br><span class="line"></span><br><span class="line">....	输出4次&quot;&gt;&quot;，对应一开始的留白操作</span><br><span class="line"></span><br><span class="line">&gt;	到内存区[1]</span><br><span class="line">[</span><br><span class="line">  [-&lt;&lt;.&lt;+&gt;&gt;&gt;]</span><br><span class="line">  &lt;.</span><br><span class="line">  [-&gt;+&lt;]&lt;[-&gt;+&lt;]</span><br><span class="line">  &gt;&gt;&gt;</span><br><span class="line">]	上面输出过程的逻辑</span><br><span class="line"></span><br><span class="line">&lt;&lt;&lt;&lt;[&lt;]&gt;[.&gt;]	回到开头，输出代码</span><br></pre></td></tr></table></figure>
+
+<p>所以我们现在就需要把下面的代码转换成构造数据的代码，把下面的代码理解成上面的ABC就行，进行一样的操作就行</p>
+<p>但是手搓的话会不会太耗时间了…所以和那些教程一样，我们也直接用Brainfuck写个“脚本”来把数据构造出来</p>
+<h3 id="构造数据的代码的生成"><a href="#构造数据的代码的生成" class="headerlink" title="构造数据的代码的生成"></a>构造数据的代码的生成</h3><p>那么基本的输出逻辑其实和上面的输出过程差不多，就是我们没必要复制保存数据，我们只需要读取然后输出就行了</p>
+<p>那么整体逻辑就像这样：</p>
+<ol>
+<li>先把两个指令字符构造好</li>
+<li>读入字符</li>
+<li>输出对应数量的+和&gt;</li>
+<li>回到2，直至输入结束</li>
+</ol>
+<p>那么Brainfuck脚本就是这样：<del>（嗯，还是第2个链接直接复制粘贴的）</del></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">++++++[-&gt;++++++++++&gt;+++++++&lt;&lt;]&gt;++&gt;+		构造&quot;+&quot;和&quot;&gt;&quot;</span><br><span class="line"></span><br><span class="line">&gt;,[		读取输入</span><br><span class="line"></span><br><span class="line">  [-&lt;.&gt;]	输出ASCII(input)个+</span><br><span class="line"></span><br><span class="line">  &lt;&lt;.	输出1个&gt;</span><br><span class="line"></span><br><span class="line">  &gt;&gt;,	循环读入，直至没有输入的时候，输入为0，断开循环</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>具体跑的结果是怎么样我就不演示了，很长</p>
+<p>最后把跑出来的结果扔进上面的数据段（就是两行$的中间），你就成功得到了一个Brainfuck Quine！可喜可贺~~~</p>
+<h3 id="冗余数据（唉，藏逼）"><a href="#冗余数据（唉，藏逼）" class="headerlink" title="冗余数据（唉，藏逼）"></a>冗余数据<del>（唉，藏逼）</del></h3><p>当时和爹地聊天的时候他有这么说过：</p>
+<img src="/2023/11/30/BrainFuck/Chat_History.jpg" class="" title="来自和爹地的聊天记录">
+
+<p>冗余数据？这个quine里面还能藏东西？啊？？？</p>
+<p>一开始没理解的时候确实觉得不太可能，但是后面想了想，前面的数据构造区<strong>构造的数据只是后面的代码的字符串</strong>，实际上后面的代码<strong>只要有能够执行输出逻辑的代码就一定是一个quine</strong>，其它的功能可有可无，也就是这里的“冗余数据”</p>
+<p>所以此时我们的整体逻辑就有了这样的变化：</p>
+<ol>
+<li><p>留白，方便构造指令字符和之后输出时的位移</p>
+</li>
+<li><p>仅使用”+”和”&gt;”将数据存储在内存里面</p>
+</li>
+<li><p>回到内存区[0]</p>
+</li>
+<li><p>在开头构造两个指令字符</p>
+</li>
+<li><p>上面输出构造数据的代码的逻辑的循环</p>
+<p><strong>5.5 潜在的冗余数据执行区？</strong></p>
+</li>
+<li><p>回到内存区[1]并输出存在内存里的数据，也就是代码区里的代码</p>
+</li>
+</ol>
+<p>根据现在的逻辑，此时看到我们上面<a href="#BF_Code_Framework">代码框架</a>的第21行，那里就是我们潜在的冗余数据执行区</p>
+<p>让我们看看到第21行的时候整个内存区应该是怎么样的吧：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">数组: 0 data[0] data[1] ... data[len-1] 0 43 62 0 0 0 ...</span><br><span class="line">指针:                                           ↑</span><br><span class="line">输出:整个构造数据的代码</span><br></pre></td></tr></table></figure>
+
+<p>此时如果没有冗余数据，我们下一步就是直接输出data，也就是代码，但是此时我们可以进行一系列操作，只要不影响到前面的data，那么我们进行任何操作都可以，<del>理论上我们还可以再嵌套一个quine…？</del></p>
+<p>就比如我们想在中间输出一句话，那么就可以往那里面塞输出的Brainfuck代码，然后再利用上面的脚本生成数据区的代码，这样最后的输出就是（整个构造数据的代码）（你输出的那句话）（代码区的代码）</p>
+<p>所以最后我们的代码框架如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;&gt;	留白，方便之后的&quot;+&quot;和&quot;&gt;&quot;的构造以及不断的位移</span><br><span class="line"></span><br><span class="line">$$$</span><br><span class="line">这里需要填写构造数据的代码，将#范围内的Brainfuck代码作为输入利用上面的脚本生成</span><br><span class="line">$$$</span><br><span class="line"></span><br><span class="line">### 代码部分从下面开始</span><br><span class="line">&lt;[&lt;]	回到内存区开头留白处</span><br><span class="line"></span><br><span class="line">&lt;&lt;&lt;+++++++[-&gt;+++&lt;]&gt;[-&gt;++&gt;+++&lt;&lt;]&gt;+&gt;-		在内存区开头构造&quot;+&quot;和&quot;&gt;&quot;</span><br><span class="line"></span><br><span class="line">....	输出4次&quot;&gt;&quot;，对应一开始的留白操作</span><br><span class="line"></span><br><span class="line">&gt;	到内存区[1]</span><br><span class="line">[</span><br><span class="line">  [-&lt;&lt;.&lt;+&gt;&gt;&gt;]</span><br><span class="line">  &lt;.</span><br><span class="line">  [-&gt;+&lt;]&lt;[-&gt;+&lt;]</span><br><span class="line">  &gt;&gt;&gt;</span><br><span class="line">]	上面输出过程的逻辑</span><br><span class="line"></span><br><span class="line">***这里是冗余数据区，在不影响到前面内存里数据的情况下可以执行任意行为***</span><br><span class="line"></span><br><span class="line">&lt;&lt;&lt;&lt;[&lt;]&gt;[.&gt;]	回到开头，输出代码</span><br><span class="line"></span><br><span class="line">### 代码区结束</span><br></pre></td></tr></table></figure>
+
+<p>其实还存在Double-Quine（另称Two-Step Quine），就是一个程序P，其输出是程序Q，而Q的输出是程序P，这个之后有缘再更新www</p>
 
     
 
@@ -524,7 +619,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E4%BA%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">简单的了解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9A%84%E5%BE%AA%E7%8E%AF%E9%80%BB%E8%BE%91"><span class="toc-number">2.</span> <span class="toc-text">基础的循环逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E5%A4%8D%E5%88%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">简单的复制操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E8%BF%90%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">一些基础运用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E5%AD%A6%E5%BC%9F%E4%BB%AC%E5%87%BA%E7%9A%84%EF%BC%88%E6%B2%A1%E5%95%A5%E6%B7%B1%E5%BA%A6%E7%9A%84%EF%BC%89%E9%A2%98%E7%9B%AE"><span class="toc-number">5.</span> <span class="toc-text">给学弟们出的（没啥深度的）题目</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E7%BB%99%E5%B9%B2%E5%88%B0%E6%BB%A1%E5%8D%A0%E7%94%A8%E7%8E%87%E4%BA%86%EF%BC%88%E9%A2%84%E6%9C%9F%E9%9A%BE%E5%BA%A61-5%E2%AD%90%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">CPU给干到满占用率了（预期难度1.5⭐）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E7%BB%99%E5%B9%B2%E7%83%A7%E4%BA%86%EF%BC%88%E9%A2%84%E6%9C%9F%E9%9A%BE%E5%BA%A63-0%E2%AD%90%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">CPU给干烧了（预期难度3.0⭐）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E7%BB%99%E5%B9%B2%E7%82%B8%E4%BA%86%EF%BC%88%E9%A2%84%E6%9C%9F%E9%9A%BE%E5%BA%A63-8%E2%AD%90%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">CPU给干炸了（预期难度3.8⭐）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E7%82%B8%E4%BA%86%EF%BC%8C%E5%86%85%E5%AD%98%E4%B9%9F%E7%82%B8%E4%BA%86%EF%BC%88%E9%A2%84%E6%9C%9F%E9%9A%BE%E5%BA%A64-0%E2%AD%90%EF%BC%89"><span class="toc-number">5.4.</span> <span class="toc-text">CPU炸了，内存也炸了（预期难度4.0⭐）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E4%BA%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">简单的了解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%9A%84%E5%BE%AA%E7%8E%AF%E9%80%BB%E8%BE%91"><span class="toc-number">2.</span> <span class="toc-text">基础的循环逻辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E5%A4%8D%E5%88%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">简单的复制操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E8%BF%90%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">一些基础运用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%99%E5%AD%A6%E5%BC%9F%E4%BB%AC%E5%87%BA%E7%9A%84%EF%BC%88%E6%B2%A1%E5%95%A5%E6%B7%B1%E5%BA%A6%E7%9A%84%EF%BC%89%E9%A2%98%E7%9B%AE"><span class="toc-number">5.</span> <span class="toc-text">给学弟们出的（没啥深度的）题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU%E7%BB%99%E5%B9%B2%E5%88%B0%E6%BB%A1%E5%8D%A0%E7%94%A8%E7%8E%87%E4%BA%86%EF%BC%88%E9%A2%84%E6%9C%9F%E9%9A%BE%E5%BA%A61-5%E2%AD%90%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">CPU给干到满占用率了（预期难度1.5⭐）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU%E7%BB%99%E5%B9%B2%E7%83%A7%E4%BA%86%EF%BC%88%E9%A2%84%E6%9C%9F%E9%9A%BE%E5%BA%A63-0%E2%AD%90%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">CPU给干烧了（预期难度3.0⭐）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU%E7%BB%99%E5%B9%B2%E7%82%B8%E4%BA%86%EF%BC%88%E9%A2%84%E6%9C%9F%E9%9A%BE%E5%BA%A63-8%E2%AD%90%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">CPU给干炸了（预期难度3.8⭐）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU%E7%82%B8%E4%BA%86%EF%BC%8C%E5%86%85%E5%AD%98%E4%B9%9F%E7%82%B8%E4%BA%86%EF%BC%88%E9%A2%84%E6%9C%9F%E9%9A%BE%E5%BA%A64-0%E2%AD%90%EF%BC%89"><span class="toc-number">5.4.</span> <span class="toc-text">CPU炸了，内存也炸了（预期难度4.0⭐）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E2%80%A6%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">总结…？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Quine"><span class="toc-number">7.</span> <span class="toc-text">Quine</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%BB%84%E6%88%90"><span class="toc-number">7.1.</span> <span class="toc-text">基本组成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E8%BF%87%E7%A8%8B"><span class="toc-number">7.2.</span> <span class="toc-text">输出过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E9%80%BB%E8%BE%91%E4%B8%8EBrainfuck%E4%BB%A3%E7%A0%81%E6%A1%86%E6%9E%B6"><span class="toc-number">7.3.</span> <span class="toc-text">整体逻辑与Brainfuck代码框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BB%A3%E7%A0%81%E7%9A%84%E7%94%9F%E6%88%90"><span class="toc-number">7.4.</span> <span class="toc-text">构造数据的代码的生成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%97%E4%BD%99%E6%95%B0%E6%8D%AE%EF%BC%88%E5%94%89%EF%BC%8C%E8%97%8F%E9%80%BC%EF%BC%89"><span class="toc-number">7.5.</span> <span class="toc-text">冗余数据（唉，藏逼）</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -672,6 +767,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Writeup</a>
               </li>
              
@@ -681,10 +780,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -700,11 +795,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
+                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
+                <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
               </li>
             
             <div class="clearfix"></div>
