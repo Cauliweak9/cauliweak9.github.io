@@ -585,6 +585,37 @@
 
 
 
+  
+      <section id="comments" class="comments">
+        <style>
+          .comments{margin:30px;padding:10px;background:#fff}
+          @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+        </style>
+        <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "gKwlr1RYCplgQDNhzIJAB42y-gzGzoHsz",
+            app_key: "a4flqbMyJoAUgvgNLxCQ8Bjh",
+            placeholder: "求求大佬给点建议带带我吧(☆▽☆)",
+            avatar:""
+        });
+    }
+</script>
+    </section>
+  
+
+
+
+
+
 
 
 
@@ -718,10 +749,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Writeup</a>
               </li>
              
@@ -734,7 +761,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Web3</a>
+                <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -742,7 +769,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Web3</a>
               </li>
              
               <li class="article-tag-list-item">
