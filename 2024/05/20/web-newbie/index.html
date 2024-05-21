@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://cauliweak9.github.io">
-  <title>Tag: 胡思乱想 | 9C±Void&#39;s Blog</title>
+  <title>菜鸡9C的Web入门记 | 9C±Void&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="别看了，啥都没有，啥都不会">
-<meta property="og:type" content="website">
-<meta property="og:title" content="9C±Void&#39;s Blog">
-<meta property="og:url" content="https://cauliweak9.github.io/tags/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/index.html">
+  <meta name="description" content="就是刚接触Web的水平，大佬们可以离开了，怕咱太菜了，大佬们看不下去了（">
+<meta property="og:type" content="article">
+<meta property="og:title" content="菜鸡9C的Web入门记">
+<meta property="og:url" content="https://cauliweak9.github.io/2024/05/20/web-newbie/index.html">
 <meta property="og:site_name" content="9C±Void&#39;s Blog">
-<meta property="og:description" content="别看了，啥都没有，啥都不会">
+<meta property="og:description" content="就是刚接触Web的水平，大佬们可以离开了，怕咱太菜了，大佬们看不下去了（">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-20T02:54:23.000Z">
+<meta property="article:modified_time" content="2024-05-21T13:06:47.844Z">
 <meta property="article:author" content="9C±Void">
+<meta property="article:tag" content="Web">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="9C±Void&#39;s Blog" type="application/atom+xml">
@@ -198,65 +202,306 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-web-newbie" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/11/12/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/" class="archive-article-date">
-        <time datetime="2023-11-12T10:17:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/11/12/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想——Img2B64</a>
-	
+    <h1 class="article-title" itemprop="name">
+      菜鸡9C的Web入门记
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2024/05/20/web-newbie/" class="archive-article-date">
+        <time datetime="2024-05-20T02:54:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-05-20</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.4k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">6分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>就是刚接触Web的水平，大佬们可以离开了，怕咱太菜了，大佬们看不下去了（</p>
+<span id="more"></span>
+
+<hr>
+<p>这篇不算博客，主要是给我自己做笔记用的，不会考虑任何排版和分类，我自己看得懂就行</p>
+<h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h1><h2 id="1-各种比较（强弱比较，其它比较函数和方法）"><a href="#1-各种比较（强弱比较，其它比较函数和方法）" class="headerlink" title="1. 各种比较（强弱比较，其它比较函数和方法）"></a>1. 各种比较（强弱比较，其它比较函数和方法）</h2><ol>
+<li><p>PHP中的弱比较使用的是<code>==</code>，要求参数<strong>值相同</strong>，若两个参数数据类型不同，会尝试将其中一个转换为另一个数据的类型<br>e.g.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串以数字开头时，以开头数字（到字母出现截止）作为转换结果；开头不是数字的字符串或空（null），则转换为0</span></span><br><span class="line"><span class="string">&#x27;12&#x27;</span>==<span class="number">12</span>    <span class="comment">//true</span></span><br><span class="line"><span class="string">&#x27;12abc&#x27;</span>==<span class="number">12</span> <span class="comment">//true</span></span><br><span class="line"><span class="string">&#x27;adm2n&#x27;</span>==<span class="number">0</span>  <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 布尔值true和任意字符串都相等，除了0</span></span><br><span class="line"><span class="string">&#x27;way&#x27;</span>==<span class="literal">true</span>    <span class="comment">//true</span></span><br><span class="line"><span class="string">&#x27;false&#x27;</span>==<span class="literal">true</span>  <span class="comment">//true</span></span><br><span class="line"><span class="number">234</span>==<span class="literal">true</span>      <span class="comment">//true</span></span><br><span class="line"><span class="number">0</span>==flase       <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当字符串被当作一个数值来处理时，如果该字符串没有包含’.’,‘e’,&#x27;E’并且其数值在整形的范围之内，该字符串作为int来取值，其他所有情况下都被作为float来取值，并且字符串开始部分决定它的取值，开始部分为数字，则其值就是开始的数字，否则，其值为0</span></span><br><span class="line"><span class="comment">// 因此当hash开头为0e后全为数字的话，进行比较时就会将其当做科学计数法来计算，用计算出的结果来进行比较</span></span><br><span class="line"><span class="title function_ invoke__">md5</span>(<span class="variable">$str1</span>)=<span class="number">0e420233178946742799316739797882</span></span><br><span class="line"><span class="title function_ invoke__">md5</span>(<span class="variable">$str2</span>) == <span class="string">&#x27;0&#x27;</span>	<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>一般的绕过就是像上面举的例子一样，让两个数据值一样就行</p>
+<p>这里添加一些MD5的值开头是0e的字符串：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">240610708:0e462097431906509019562988736854</span><br><span class="line">QLTHNDT:0e405967825401955372549139051580</span><br><span class="line">QNKCDZO:0e830400451993494058024219903391</span><br><span class="line">PJNPDWY:0e291529052894702774557631701704</span><br><span class="line">NWWKITQ:0e763082070976038347657360817689</span><br><span class="line">NOOPCJF:0e818888003657176127862245791911</span><br><span class="line">MMHUWUV:0e701732711630150438129209816536</span><br><span class="line">MAUXXQC:0e478478466848439040434801845361</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>PHP中强比较使用的是<code>===</code>，要求参数<strong>不仅值相同，类型也必须相同</strong>才返回true<br>一般强比较没有很好的绕过方法，但是如果存在<code>md5($str1) === md5($str2)</code>的时候，我们就可以找到一些不相同但是MD5值相同的字符串进行绕过，下面给出一些符合条件的字符串对：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pair 1</span></span><br><span class="line">a=%<span class="number">4</span>d%c9%<span class="number">68</span>%ff%<span class="number">0</span>e%e3%<span class="number">5</span>c%<span class="number">20</span>%<span class="number">95</span>%<span class="number">72</span>%d4%<span class="number">77</span>%<span class="number">7</span>b%<span class="number">72</span>%<span class="number">15</span>%<span class="number">87</span>%d3%<span class="number">6</span>f%a7%b2%<span class="number">1</span>b%dc%<span class="number">56</span>%b7%<span class="number">4</span>a%<span class="number">3</span>d%c0%<span class="number">78</span>%<span class="number">3</span>e%<span class="number">7</span>b%<span class="number">95</span>%<span class="number">18</span>%af%bf%a2%<span class="number">00</span>%a8%<span class="number">28</span>%<span class="number">4</span>b%f3%<span class="number">6</span>e%<span class="number">8</span>e%<span class="number">4</span>b%<span class="number">55</span>%b3%<span class="number">5</span>f%<span class="number">42</span>%<span class="number">75</span>%<span class="number">93</span>%d8%<span class="number">49</span>%<span class="number">67</span>%<span class="number">6</span>d%a0%d1%<span class="number">55</span>%<span class="number">5</span>d%<span class="number">83</span>%<span class="number">60</span>%fb%<span class="number">5</span>f%<span class="number">07</span>%fe%a2</span><br><span class="line">b=%<span class="number">4</span>d%c9%<span class="number">68</span>%ff%<span class="number">0</span>e%e3%<span class="number">5</span>c%<span class="number">20</span>%<span class="number">95</span>%<span class="number">72</span>%d4%<span class="number">77</span>%<span class="number">7</span>b%<span class="number">72</span>%<span class="number">15</span>%<span class="number">87</span>%d3%<span class="number">6</span>f%a7%b2%<span class="number">1</span>b%dc%<span class="number">56</span>%b7%<span class="number">4</span>a%<span class="number">3</span>d%c0%<span class="number">78</span>%<span class="number">3</span>e%<span class="number">7</span>b%<span class="number">95</span>%<span class="number">18</span>%af%bf%a2%<span class="number">02</span>%a8%<span class="number">28</span>%<span class="number">4</span>b%f3%<span class="number">6</span>e%<span class="number">8</span>e%<span class="number">4</span>b%<span class="number">55</span>%b3%<span class="number">5</span>f%<span class="number">42</span>%<span class="number">75</span>%<span class="number">93</span>%d8%<span class="number">49</span>%<span class="number">67</span>%<span class="number">6</span>d%a0%d1%d5%<span class="number">5</span>d%<span class="number">83</span>%<span class="number">60</span>%fb%<span class="number">5</span>f%<span class="number">07</span>%fe%a2</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pair 2</span></span><br><span class="line">a=M%C9h%FF%<span class="number">0</span>E%E3%<span class="number">5</span>C%<span class="number">20</span>%<span class="number">95</span>r%D4w%<span class="number">7</span>Br%<span class="number">15</span>%<span class="number">87</span>%D3o%A7%B2%<span class="number">1</span>B%DCV%B7J%<span class="number">3</span>D%C0x%<span class="number">3</span>E%<span class="number">7</span>B%<span class="number">95</span>%<span class="number">18</span>%AF%BF%A2%<span class="number">00</span>%A8%<span class="number">28</span>K%F3n%<span class="number">8</span>EKU%B3_Bu%<span class="number">93</span>%D8Igm%A0%D1U%<span class="number">5</span>D%<span class="number">83</span>%<span class="number">60</span>%FB_%<span class="number">07</span>%FE%A2</span><br><span class="line">b=M%C9h%FF%<span class="number">0</span>E%E3%<span class="number">5</span>C%<span class="number">20</span>%<span class="number">95</span>r%D4w%<span class="number">7</span>Br%<span class="number">15</span>%<span class="number">87</span>%D3o%A7%B2%<span class="number">1</span>B%DCV%B7J%<span class="number">3</span>D%C0x%<span class="number">3</span>E%<span class="number">7</span>B%<span class="number">95</span>%<span class="number">18</span>%AF%BF%A2%<span class="number">02</span>%A8%<span class="number">28</span>K%F3n%<span class="number">8</span>EKU%B3_Bu%<span class="number">93</span>%D8Igm%A0%D1%D5%<span class="number">5</span>D%<span class="number">83</span>%<span class="number">60</span>%FB_%<span class="number">07</span>%FE%A2</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pair 3</span></span><br><span class="line">a=<span class="number">0e306561559</span>aa787d00bc6f70bbdfe3404cf03659e704f8534c00ffb659c4c8740cc942feb2da115a3f4155cbb8607497386656d7d1f34a42059d78f5a8dd1ef</span><br><span class="line">b=<span class="number">0e306561559</span>aa787d00bc6f70bbdfe3404cf03659e744f8534c00ffb659c4c8740cc942feb2da115a3f415dcbb8607497386656d7d1f34a42059d78f5a8dd1ef</span><br></pre></td></tr></table></figure>
+
+<p>上面的方法是强碰撞，可以用于传入的参数必须是字符串的强比较（Pair 3除外），比如下面的例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>((<span class="keyword">string</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;a&#x27;</span>]!==(<span class="keyword">string</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>] &amp;&amp; <span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;a&#x27;</span>])===<span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>]))&#123;</span><br><span class="line">	<span class="keyword">die</span>(<span class="string">&quot;success!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而如果参数不要求是字符串，比如下面的例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;a&#x27;</span>]!==<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>]&amp;&amp; <span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;a&#x27;</span>])===<span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>]))&#123;</span><br><span class="line">	<span class="keyword">die</span>(<span class="string">&quot;success!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么我们可以传入两个数组，这样<code>md5()</code>不会报错，返回值是<code>null</code>，而强比较中<code>null===null</code>返回值是<code>true</code></p>
+</li>
+<li><p>PHP中存在一个字符串比对的函数<code>strcmp($str1, $str2)</code>，返回值如下：</p>
+</li>
+</ol>
+<ul>
+<li>$str1 &#x3D;&#x3D;&#x3D; $str2 &rarr; 0</li>
+<li>$str1 &lt; $str2 &rarr; &lt;0</li>
+<li>$str1 &gt; $str2 &rarr; &gt;0</li>
+</ul>
+<p>   如果两个字符串不同等，但是字符串长度相同，就比较从哪一位开始不同的，然后按照ASCII码比较那一位的大小，但是当参数是数字或者数组的时候，返回值就是<code>null</code></p>
+<ol start="4">
+<li><p><code>switch()</code>方法也是可以绕过的，方法类似弱比较的绕过，因为<code>switch()</code>会将参数转为int值</p>
+</li>
+<li><p><code>intval()</code>方法会获取变量的整数值，但是它也会自动获取数字，直到遇到字母为止，同时该方法不可用于object，否则会返回<code>E_NOTICE</code>错误并返回1，下面是一个绕过的例子：</p>
+</li>
+</ol>
+   <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$num</span>=<span class="number">2e4</span></span><br><span class="line"><span class="title function_ invoke__">intval</span>(<span class="variable">$num</span>)&lt;<span class="number">2020</span> &amp;&amp; <span class="title function_ invoke__">intval</span>(<span class="variable">$num</span>+<span class="number">1</span>)&gt;<span class="number">2021</span></span><br><span class="line"><span class="comment">// 左侧intval只读到2，遇到e停止，返回结果为2；而右侧会先计算加法，返回结果为20001，所以表达式返回值为true</span></span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><code>is_numeric()</code>函数用于判断参数是否是数字&#x2F;数字字符串，但是存在2种绕过方式，一种是利用空字符，另一种是利用Hex绕过，因为这个函数认为Hex也是数字<br>   比如说：</li>
+</ol>
+   <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="variable">$num</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;num&#x27;</span>];</span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">is_numeric</span>(<span class="variable">$num</span>))</span><br><span class="line">&#123;</span><br><span class="line">  	<span class="keyword">echo</span> <span class="variable">$num</span>;</span><br><span class="line">   	<span class="keyword">if</span>(<span class="variable">$num</span>==<span class="number">1</span>)</span><br><span class="line">   	<span class="keyword">echo</span> <span class="string">&#x27;flag&#123;**********&#125;&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>   我们可以利用空字符绕过：</p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%001 or 1%00 or 1%20</span><br></pre></td></tr></table></figure>
+
+<p>   这样<code>is_numeric()</code>就不认为参数是数字，后面的弱比较看上面就行了</p>
+<p>   对于Hex的绕过，一般可以用于SQL注入，比如：</p>
+   <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 作用：判断参数s是否为数字，是则返回数字，不是则返回0，然后带入数据库查询</span></span><br><span class="line"><span class="variable">$s</span> = <span class="title function_ invoke__">is_numeric</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;s&#x27;</span>])?<span class="variable">$_GET</span>[<span class="string">&#x27;s&#x27;</span>]:<span class="number">0</span>;</span><br><span class="line"><span class="variable">$sql</span>=<span class="string">&quot;insert into test(type)values(<span class="subst">$s</span>);&quot;</span>;  <span class="comment">//是 values($s) 不是values(&#x27;$s&#x27;)</span></span><br><span class="line"><span class="title function_ invoke__">mysql_query</span>(<span class="variable">$sql</span>);</span><br></pre></td></tr></table></figure>
+
+<p>   如果我们传入字符串”1 or 1”的Hex，也就是<code>0x31206f722031</code>的话，就可能导致SQL注入</p>
+<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1>
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          9C±Void
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://cauliweak9.github.io/2024/05/20/web-newbie/" title="菜鸡9C的Web入门记" target="_blank">https://cauliweak9.github.io/2024/05/20/web-newbie/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">胡思乱想</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Web</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://cauliweak9.github.io/2024/05/20/web-newbie/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2024/04/28/Blockchain-Guide/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CTF的Blockchain方向入门指南...？</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP"><span class="toc-number">1.</span> <span class="toc-text">PHP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%90%84%E7%A7%8D%E6%AF%94%E8%BE%83%EF%BC%88%E5%BC%BA%E5%BC%B1%E6%AF%94%E8%BE%83%EF%BC%8C%E5%85%B6%E5%AE%83%E6%AF%94%E8%BE%83%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%B9%E6%B3%95%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1. 各种比较（强弱比较，其它比较函数和方法）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java"><span class="toc-number">2.</span> <span class="toc-text">Java</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+  
+      <section id="comments" class="comments">
+        <style>
+          .comments{margin:30px;padding:10px;background:#fff}
+          @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+        </style>
+        <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "gKwlr1RYCplgQDNhzIJAB42y-gzGzoHsz",
+            app_key: "a4flqbMyJoAUgvgNLxCQ8Bjh",
+            placeholder: "求求大佬给点建议带带我吧(☆▽☆)",
+            avatar:""
+        });
+    }
+</script>
+    </section>
+  
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -297,9 +542,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
