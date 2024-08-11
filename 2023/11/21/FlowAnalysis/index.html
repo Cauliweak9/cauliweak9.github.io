@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://cauliweak9.github.io/2023/11/21/FlowAnalysis/FA0.png">
 <meta property="og:image" content="https://cauliweak9.github.io/2023/11/21/FlowAnalysis/FA1.png">
 <meta property="article:published_time" content="2023-11-21T10:33:15.000Z">
-<meta property="article:modified_time" content="2024-03-07T08:57:43.301Z">
+<meta property="article:modified_time" content="2024-08-04T11:27:32.013Z">
 <meta property="article:author" content="9C±Void">
 <meta property="article:tag" content="随想">
 <meta property="article:tag" content="流量分析">
@@ -119,7 +119,7 @@
 					
 				
 					
-						<a class="mail" href="mailto:cauliweak9@outlook.com" 
+						<a class="mail" href="mailto:早上好，你不会以为这里真的有我邮箱吧www" 
 												title="邮件联系" target="_blank"><i class="icon-mail"></i></a>
 					
 				
@@ -177,7 +177,7 @@
 					
 						
 						<a class="mail" target="_blank" 
-							href="mailto:cauliweak9@outlook.com" title="邮件联系"><i class="icon-mail"></i></a>
+							href="mailto:早上好，你不会以为这里真的有我邮箱吧www" title="邮件联系"><i class="icon-mail"></i></a>
 						
 					
 				</div>
@@ -238,7 +238,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">3.5k字</span>
+      <span class="post-count">3.6k字</span>
     </span>
   </span>
 
@@ -268,7 +268,7 @@
 <p>其它流量种类比较多，包括但不限于5G传输协议，USB协议，SMTP协议等，具体情况还得需要自行分析</p>
 <h3 id="工具使用"><a href="#工具使用" class="headerlink" title="工具使用"></a>工具使用</h3><p>主要工具自然是Wireshark，不过有的时候得用到tshark，下面会提及</p>
 <h4 id="大量数据提取"><a href="#大量数据提取" class="headerlink" title="大量数据提取"></a>大量数据提取</h4><p>有的时候流量包过多，直接用手收集需要的数据太麻烦了，这个时候就可以用下面的tshark指令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r 流量文件名 -Tfileds -Y 过滤器 -e 需要提取的数据 &gt; 输出文件名</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r 流量文件名 -Tfields -Y 过滤器 -e 需要提取的数据 &gt; 输出文件名</span><br></pre></td></tr></table></figure>
 
 <p>比如DASCTF 2021八月赛的stealer，里面是DNS流量分析，请求的DNS前面是Base64，我需要提取出所有的Base64，但是数据太多了，那我可以这样做：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tshark -r dump.pcapng -Tfields -Y <span class="string">&quot;dns &amp;&amp; ip.src == 172.27.221.13&quot;</span> -e <span class="string">&#x27;dns.qry.name&#x27;</span> &gt; data.txt</span><br></pre></td></tr></table></figure>
@@ -279,7 +279,8 @@
 <p>比如：我想检索所有TCP Acknowledgement Number为1953的流量包，但是我不知道&#x2F;忘记怎么写过滤器了：</p>
 <img src="/2023/11/21/FlowAnalysis/FA0.png" class="" title="这样干">
 
-<p>左下对着对应的参数右键，光标移到”作为过滤器应用“或者”准备作为过滤器“处，右侧选项栏的最上面那栏就会告诉你对应的过滤器参数，非常好用，屡试不爽</p>
+<p>左下对着对应的参数右键，光标移到”作为过滤器应用“或者”准备作为过滤器“处，右侧选项栏的最上面那栏就会告诉你对应的过滤器参数，非常好用，屡试不爽（笑死了，<strong>直接点下面选中</strong>就行了，如果过滤器已经有参数了就可以根据情况选“且选中”和“或选中”了）</p>
+<p>其实点击选中字段之后，Wireshark左下角就会显示它的过滤器和字段长度，也可以利用一下</p>
 <p>然后有一些过滤器参数非常好&#x2F;常用，这里稍微记录一下，如果还有遇到&#x2F;想起来其他的还会更新：</p>
 <ol>
 <li><p><strong>ip.addr，ip.dst，ip.src</strong></p>
@@ -736,11 +737,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+                <a href="javascript:void(0)" class="js-tag color4">入门...大概？</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">入门...大概？</a>
+                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -756,15 +761,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -772,11 +773,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color5">Encrypted</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AuroraCTF 2024</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
