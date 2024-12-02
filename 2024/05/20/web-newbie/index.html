@@ -18,7 +18,7 @@
 <meta property="og:description" content="就是刚接触Web的水平，大佬们可以离开了，怕咱太菜了，大佬们看不下去了（">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-05-20T02:54:23.000Z">
-<meta property="article:modified_time" content="2024-08-15T13:00:32.649Z">
+<meta property="article:modified_time" content="2024-11-22T08:08:08.887Z">
 <meta property="article:author" content="9C±Void">
 <meta property="article:tag" content="持续更新中(☆▽☆)">
 <meta property="article:tag" content="Web">
@@ -754,6 +754,8 @@
 
 <h3 id="1-2-量词"><a href="#1-2-量词" class="headerlink" title="1.2 量词"></a>1.2 量词</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/yo+/gm	=&gt; 匹配所有y*，其中*为1个或多个o</span><br><span class="line">/yo*/gm	=&gt; 匹配所有y*，其中*为0个及以上数量的o</span><br><span class="line">/yo?/gm	=&gt; 匹配所有y*，其中*为0个或1个o</span><br><span class="line">/yo&#123;2,5&#125;/gm	=&gt; 匹配所有y*，其中*为2~5个o，花括号用于限定重复次数</span><br><span class="line">/yo&#123;2,&#125;/gm	=&gt; 匹配所有y*，其中*为2个以上的o</span><br><span class="line">/yo&#123;2,&#125;?/gm	=&gt; 非贪婪匹配，只匹配到所有y*，其中*为2个o</span><br><span class="line">/(web)*/gm	=&gt; 匹配所有*，其中*为0个及以上数量的web循环（即webwebweb这类），此处的括号()表分组</span><br><span class="line">/Web|web/gm	=&gt; 匹配所有的Web和web,分隔符|表或操作</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[a-zA-Z]&#123;9&#125;</span><br></pre></td></tr></table></figure>
+
 
 
 <h3 id="1-3-分组和引用"><a href="#1-3-分组和引用" class="headerlink" title="1.3 分组和引用"></a>1.3 分组和引用</h3><h4 id="1-3-1-分组替换"><a href="#1-3-1-分组替换" class="headerlink" title="1.3.1 分组替换"></a>1.3.1 分组替换</h4><p>假如有一系列格式为<code>yyyy:mm:dd</code>格式的日期，需要将格式更改为<code>mm-dd-yyyy</code>，可以首先利用下面的Regex进行匹配：</p>
@@ -1162,6 +1164,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">入门...大概？</a>
               </li>
              
@@ -1170,7 +1176,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1178,11 +1184,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
+                <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1194,15 +1196,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
+                <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">AuroraCTF 2024</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Forensics</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1210,7 +1208,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color5">Forensics</a>
               </li>
              
               <li class="article-tag-list-item">
