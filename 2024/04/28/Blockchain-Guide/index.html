@@ -27,8 +27,11 @@
 <meta property="og:image" content="https://cauliweak9.github.io/2024/04/28/Blockchain-Guide/08.png">
 <meta property="og:image" content="https://cauliweak9.github.io/2024/04/28/Blockchain-Guide/09.png">
 <meta property="og:image" content="https://cauliweak9.github.io/2024/04/28/Blockchain-Guide/10.png">
+<meta property="og:image" content="c:\Users\10347\AppData\Roaming\Typora\typora-user-images\image-20240826011301279.png">
+<meta property="og:image" content="c:\Users\10347\AppData\Roaming\Typora\typora-user-images\image-20240826143431825.png">
+<meta property="og:image" content="c:\Users\10347\AppData\Roaming\Typora\typora-user-images\image-20240826143711607.png">
 <meta property="article:published_time" content="2024-04-27T21:16:03.000Z">
-<meta property="article:modified_time" content="2024-08-15T12:58:07.613Z">
+<meta property="article:modified_time" content="2025-03-01T06:40:05.108Z">
 <meta property="article:author" content="9C±Void">
 <meta property="article:tag" content="入门...大概？">
 <meta property="article:tag" content="持续更新中(☆▽☆)">
@@ -235,7 +238,7 @@
 <a href="/2024/04/28/Blockchain-Guide/" class="archive-article-date">
         <time datetime="2024-04-27T21:16:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2024-04-28</time>
         
-                <br><time datetime="2024-08-15T12:58:07.613Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2024-08-15</time>
+                <br><time datetime="2025-03-01T06:40:05.108Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2025-03-01</time>
         
 </a>
 
@@ -250,7 +253,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">4.3k字</span>
+      <span class="post-count">5k字</span>
     </span>
   </span>
 
@@ -259,7 +262,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">15分</span>
+      <span class="post-count">18分</span>
     </span>
   </span>
 </div>
@@ -281,7 +284,7 @@
 <li>首先，<strong>最最重要的！魔法（VPN）！</strong>因为其实Blockchain很多东西都在国外的网站，而且有些网站必须要用魔法才能登上去，所以这点是至关重要的！我个人现在使用的订阅URL是<a target="_blank" rel="noopener" href="https://pqjc.site/">赔钱机场</a>（要钱，不多，登录好像也要魔法，不过<a target="_blank" rel="noopener" href="https://www.croxy.network/_zh/">这个Croxy Network</a>能用，但是不推荐长期使用，不一定安全，不过仅用于临时使用还是可以的），代理工具URL使用的是<a target="_blank" rel="noopener" href="https://github.com/Clash-Verge-rev/clash-verge-rev/releases">Clash Verge Rev</a>，至于你们自己使用什么可以自行决定，但是<strong>一定要有魔法！！！</strong></li>
 <li>想进入Blockchain的世界，你必须需要一个<strong>钱包</strong>，现在其实有很多钱包插件，比如<a target="_blank" rel="noopener" href="https://metamask.io/">MetaMask（小狐狸）</a>，<a target="_blank" rel="noopener" href="https://phantom.app/">Phantom</a>，<a target="_blank" rel="noopener" href="https://chromewebstore.google.com/detail/sui-wallet/opcgpfmipidbgpenhmajoajpbobppdil">Sui Wallet</a>等，而且其实现在有很多不同的链，有些链需要专门的钱包，比如Solana链强制需要Phantom，Sui链需要Sui Wallet等，不过这两个链的语言（分别是Rust和Move）相比Solidity还是难入门一点的，所以其实MetaMask就可以满足大部分需求了，就是注意<strong>助记词和私钥一定不要外泄！</strong></li>
 <li>要编写代码，肯定需要一个<strong>IDE</strong>，这里编写Solidity合约最常使用的是<a target="_blank" rel="noopener" href="https://remix.ethereum.org/">Remix IDE</a>，它支持本地的虚拟私链，同时可以利用Injected Provider和真实的链进行合约部署与交互</li>
-<li>有了钱包，一定要有<strong>测试链的币</strong>，因为这些链上的代币是不需要钱的，而且和主网链（Mainnet）进行代码编译运行的机制一致，能做到最真实的模拟。<br>我个人最常使用的测试链是Sepolia Testnet，它的链ID（Chain ID）是11155111，所有的链和它的链ID都可以在<a target="_blank" rel="noopener" href="https://chainlist.org/">ChainList</a>找到，这个之后如果你想进行开发的话应该能用上。<br>回到获取测试链的币的问题，你<strong>需要找到水龙头（Faucet）去接水</strong>，这个是黑话，其实就是获取某个链的代币，拿我使用的Sepolia举例，<a target="_blank" rel="noopener" href="https://faucetlink.to/sepolia">Faucet Link</a>上面有很多不同的水龙头，你可以自行去接水，不过我不是很推荐pk910，它给的多，但是它的证明机制是PoW（Proof-of-Work，工作量证明），说白了就是挖矿，如果你不想你的散热风扇轰鸣的话就别用（笑）<br>推荐使用Infura的水龙头，只需要注册一个账号，而且Infura的API在你使用Python&#x2F;JavaScript进行Web3开发的时候是必要的；过去Alchemy不需要主网有真的钱，不过现在改了，要主网有钱了，<del>对于咱这种穷逼就还是算了（</del></li>
+<li>有了钱包，一定要有<strong>测试链的币</strong>，因为这些链上的代币是不需要钱的，而且和主网链（Mainnet）进行代码编译运行的机制一致，能做到最真实的模拟。<br>我个人最常使用的测试链是Sepolia Testnet，它的链ID（Chain ID）是11155111，所有的链和它的链ID都可以在<a target="_blank" rel="noopener" href="https://chainlist.org/">ChainList</a>找到，这个之后如果你想进行开发的话应该能用上。<br>回到获取测试链的币的问题，你<strong>需要找到水龙头（Faucet）去接水</strong>，这个是黑话，其实就是获取某个链的代币，拿我使用的Sepolia举例，<a target="_blank" rel="noopener" href="https://faucetlink.to/sepolia">Faucet Link</a>上面有很多不同的水龙头，你可以自行去接水，但是目前绝大部分的水龙头都需要你在主网上面有价值至少10USD的ETH，bruh…</li>
 <li>如果你在真实链上进行了合约交互，那么你肯定需要一个<strong>区块链浏览器</strong>，这里推荐<a target="_blank" rel="noopener" href="https://etherscan.io/">Etherscan</a>，对于Sepolia测试链，将etherscan.io改成sepolia.etherscan.io即可</li>
 </ol>
 <h2 id="2-基础资料"><a href="#2-基础资料" class="headerlink" title="2. 基础资料"></a>2. 基础资料</h2><p>在Ethereum相关的链上进行合约开发&#x2F;交互的话一共有三个语言可选：Solidity，语法类似C&#x2F;C++；Vyper，语法类似Python；Yul，汇编语言，不过题目一般都是Solidity为主，所以我这里就只拿Solidity举例了</p>
@@ -333,6 +336,9 @@
 <p>还是在最左边那一栏第4个，我们这里选中Injected Provider - MetaMask（这里显示Phantom是因为我同时有安装Phantom）</p>
 <img src="/2024/04/28/Blockchain-Guide/07.png" class="" title="选择链网络">
 
+<blockquote>
+<p>需要注意的是，有的时候你的Metamask网络可能是其它的网络，比如说是主网，这个时候点击Metamask插件的左上角那个图标修改网络</p>
+</blockquote>
 <p>如果你的钱包没登录&#x2F;连接到网站，那么你的钱包会跳出来让你输入密码，输入完之后应该是这样（后面那个余额别管，我浏览器缓存有问题）</p>
 <p>接下来就是点击Deploy，你的钱包应该会跳出来这样的页面：</p>
 <img src="/2024/04/28/Blockchain-Guide/08.png" class="" title="交易确认页面">
@@ -376,8 +382,35 @@
 <li><code>foundry.toml</code>：为Foundry提供配置参数</li>
 </ul>
 <p>如果你确实在你的目录下面看到了这些东西，那么恭喜你，可以使用Foundry进行合约的部署和交互了！</p>
+<blockquote>
 <p><strong>温馨提示</strong>：运行<code>forge init</code>的时候需要用到<code>libwebkit2gtk-4.0-37</code>这个库，而有些Linux可能缺少这个库，因此你可能需要<code>apt-get install</code>一下，当然<code>apt</code>和<code>aptitude</code>都行，不过可能还是有问题，直接跟着报错给的建议（我记得是什么<code>--fix-broken install</code>之类的命令）运行一下命令就行了（错误原因好像就是这个库还有一个依赖要下）</p>
-<h3 id="4-4-合约的编译，运行与交互-Under-Construction"><a href="#4-4-合约的编译，运行与交互-Under-Construction" class="headerlink" title="4.4 合约的编译，运行与交互 (Under Construction)"></a>4.4 合约的编译，运行与交互 (Under Construction)</h3><p><strong>温馨提示</strong>：有些Linux可能缺少<code>libwebkit2gtk-4.0-37</code>这个库，你可能需要<code>apt-get install</code>一下，当然<code>apt</code>和<code>aptitude</code>都行，不过可能还是有问题，直接跟着报错给的建议（我记得是什么<code>--fix-broken install</code>之类的命令）运行一下命令就行了（错误原因好像就是这个库还有一个依赖要下）</p>
+<p><mark>请注意：想下载<code>libwebkit2gtk-4.0-37</code>，你可能还需要安装或更新下面的几个前置依赖库：<code>libjavascriptcoregtk-4.0-18_2.43.3-1</code>，<code>libicu74</code>，<code>libc6</code>，<code>libjpeg8</code>，<code>libjpeg-turbo8</code></mark></p>
+</blockquote>
+<h3 id="4-4-合约的编译，运行与交互-Under-Construction"><a href="#4-4-合约的编译，运行与交互-Under-Construction" class="headerlink" title="4.4 合约的编译，运行与交互 (Under Construction)"></a>4.4 合约的编译，运行与交互 (Under Construction)</h3><h4 id="4-4-1-合约的编译"><a href="#4-4-1-合约的编译" class="headerlink" title="4.4.1 合约的编译"></a>4.4.1 合约的编译</h4><p>我们假设你已经在你的<code>src</code>目录下编写好了你自己的合约，比如说下面这个简单的合约，里面包含一个返回值42的函数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: UNLICENSED</span><br><span class="line">pragma solidity ^0.8.25</span><br><span class="line"></span><br><span class="line">contract Universe&#123;</span><br><span class="line">	function magic_number() public pure returns(uint256)&#123;</span><br><span class="line">		return 42;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>那么此时我们回到总目录下，在终端输入<code>forge build</code>或者<code>forge compile</code>，此时Foundry就会开始编译你的合约，最后会在<code>out/(filename)/</code>下得到一个json文件，里面就是合约编译之后的东西，里面包含了合约ABI等相关信息</p>
+<p>那么编译完成之后就可以尝试部署它了</p>
+<h4 id="4-4-1-5-前置知识：RPC-URL与合约部署本质"><a href="#4-4-1-5-前置知识：RPC-URL与合约部署本质" class="headerlink" title="4.4.(1.5) 前置知识：RPC URL与合约部署本质"></a>4.4.(1.5) 前置知识：RPC URL与合约部署本质</h4><p>如果你有尝试过使用Remix将你的合约部署到测试链甚至主链上，你会发现Metamask会弹出来让你设置信息并签名部署，但是Metamask又是如何知道这个交易要发送到哪条链上的呢？</p>
+<p>此时打开Metamask的设置，找到网络那一栏，你会看到这样的东西：</p>
+<p><img src="C:\Users\10347\AppData\Roaming\Typora\typora-user-images\image-20240826011301279.png" alt="image-20240826011301279"></p>
+<p>右侧你就会看到RPC URL，而这就是我们每次发送交易的时候API调用将发送到的地方</p>
+<p>每一个区块链节点都有一个与之对应的RPC URL，而你的交易信息发送到RPC之后就会通过节点发送到链上，所以链和RPC属于一对多的关系，不过如果你搭的是私链，那大部分情况你的RPC是只有1个的，因为你的私链只有1个节点正在运作</p>
+<p>与此同时，链ID也是一个分辨你在和什么链交互的重要信息，这个也是不能填错，比如Ethereum Mainnet的ID是1，Sepolia Ethereum Testnet的是11155111，Anvil本地链的是31137等，Anvil的我们过会儿会用上</p>
+<p>因此如果你发现题目给了RPC，那么你可以在Metamask添加网络，就把上面图片右侧的信息填充一下就好了</p>
+<h4 id="4-4-2-将合约部署到本地链"><a href="#4-4-2-将合约部署到本地链" class="headerlink" title="4.4.2 将合约部署到本地链"></a>4.4.2 将合约部署到本地链</h4><p>使用Foundry部署合约有两种方法，下面将依次介绍：</p>
+<ol>
+<li><p>使用Forge的<code>create</code>命令就可以实现合约部署的功能，具体命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forge create ContractName --rpc-url RPC_URL --interactive</span><br></pre></td></tr></table></figure>
+
+<p>之后在终端输入你的账户私钥就可以了，当然你也可以使用<code>--private-key PrivateKey</code> 而不是<code>--interactive</code>，比如下面这张图：</p>
+<p><img src="C:\Users\10347\AppData\Roaming\Typora\typora-user-images\image-20240826143431825.png" alt="image-20240826143431825"></p>
+<p>这里的RPC是Anvil的本地链RPC，其实RPC参数可以省去，因为<code>forge create</code>的默认RPC就是这个，但是此处为了让各位更直观理解就打上去了</p>
+<p>但是注意一点：<strong>永远永远不要将你有实际资产的账户的私钥在明文状态下使用</strong>，不然被偷走了就是另一个故事了</p>
+<p>此时查看你的本地链，应该会有交易产生，比如我这里的Anvil：<br><img src="C:\Users\10347\AppData\Roaming\Typora\typora-user-images\image-20240826143711607.png" alt="image-20240826143711607"></p>
+</li>
+</ol>
+<p>坏消息：我虚拟机炸了，环境全没了QAQ，所以这个入门可能就到此为止了QAQ，如果之后我安好了会在我博客更新的：<a href="https://cauliweak9.github.io/2024/04/28/Blockchain-Guide/">CTF的Blockchain方向入门指南…？ | 9C±Void’s Blog (cauliweak9.github.io)</a>，当然你可以跟着Cyfrin Updraft那个网站走，我这边基本上就是翻译了一遍（</p>
 
     
 
@@ -527,7 +560,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">1. 准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%9F%BA%E7%A1%80%E8%B5%84%E6%96%99"><span class="toc-number">2.</span> <span class="toc-text">2. 基础资料</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%88%9D%E8%AF%86Web3"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 初识Web3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%88%9D%E8%AF%86%E4%BB%A5%E5%A4%AA%E5%9D%8A%EF%BC%88Ethereum%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 初识以太坊（Ethereum）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Solidity%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%86%E8%A7%A3"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 Solidity基础语法了解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 智能合约漏洞靶场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E7%B4%A7%E8%B7%9F%E6%97%B6%E4%BA%8B"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 紧跟时事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E5%9B%BD%E5%A4%96%E8%B5%9B%E4%BA%8B"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 国外赛事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E9%99%84%E5%8A%A0%E8%B5%84%E6%96%99"><span class="toc-number">2.7.</span> <span class="toc-text">2.7 附加资料</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%90%88%E7%BA%A6%E2%80%A6%E6%88%96%E8%AE%B8%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">3. 你的第一个合约…或许？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Remix%E6%9C%AC%E5%9C%B0%E8%99%9A%E6%8B%9F%E9%93%BE%E4%B8%8A%E7%9A%84%E5%90%88%E7%BA%A6%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BA%A4%E4%BA%92"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 Remix本地虚拟链上的合约部署与交互</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%A6%82%E4%BD%95%E5%9C%A8%E7%9C%9F%E5%AE%9E%E7%9A%84%E6%B5%8B%E8%AF%95%E9%93%BE%E4%B8%8A%E4%BA%A4%E4%BA%92%E2%80%94%E2%80%94%E4%BB%A5Sepolia%E4%B8%BA%E4%BE%8B"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 如何在真实的测试链上交互——以Sepolia为例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Foundry%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8%E2%80%94%E2%80%94%E4%BD%BF%E7%94%A8Unix%E7%B3%BB%E7%BB%9F%E4%BB%8E%E6%BA%90%E4%BB%A3%E7%A0%81%E6%90%AD%E5%BB%BA-Under-Construction"><span class="toc-number">4.</span> <span class="toc-text">4. Foundry环境的搭建与使用——使用Unix系统从源代码搭建 (Under Construction)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%90%9E%E4%B8%AA%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%90%A7"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 搞个虚拟机吧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%AE%89%E8%A3%85Foundry"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 安装Foundry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E4%BD%BF%E7%94%A8Foundry%E6%9E%84%E5%BB%BA%E6%96%B0%E9%A1%B9%E7%9B%AE"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 使用Foundry构建新项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%90%88%E7%BA%A6%E7%9A%84%E7%BC%96%E8%AF%91%EF%BC%8C%E8%BF%90%E8%A1%8C%E4%B8%8E%E4%BA%A4%E4%BA%92-Under-Construction"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 合约的编译，运行与交互 (Under Construction)</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">1. 准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%9F%BA%E7%A1%80%E8%B5%84%E6%96%99"><span class="toc-number">2.</span> <span class="toc-text">2. 基础资料</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%88%9D%E8%AF%86Web3"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 初识Web3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%88%9D%E8%AF%86%E4%BB%A5%E5%A4%AA%E5%9D%8A%EF%BC%88Ethereum%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 初识以太坊（Ethereum）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Solidity%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%BA%86%E8%A7%A3"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 Solidity基础语法了解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%99%BA%E8%83%BD%E5%90%88%E7%BA%A6%E6%BC%8F%E6%B4%9E%E9%9D%B6%E5%9C%BA"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 智能合约漏洞靶场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E7%B4%A7%E8%B7%9F%E6%97%B6%E4%BA%8B"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 紧跟时事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E5%9B%BD%E5%A4%96%E8%B5%9B%E4%BA%8B"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 国外赛事</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-%E9%99%84%E5%8A%A0%E8%B5%84%E6%96%99"><span class="toc-number">2.7.</span> <span class="toc-text">2.7 附加资料</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%90%88%E7%BA%A6%E2%80%A6%E6%88%96%E8%AE%B8%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">3. 你的第一个合约…或许？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Remix%E6%9C%AC%E5%9C%B0%E8%99%9A%E6%8B%9F%E9%93%BE%E4%B8%8A%E7%9A%84%E5%90%88%E7%BA%A6%E9%83%A8%E7%BD%B2%E4%B8%8E%E4%BA%A4%E4%BA%92"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 Remix本地虚拟链上的合约部署与交互</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%A6%82%E4%BD%95%E5%9C%A8%E7%9C%9F%E5%AE%9E%E7%9A%84%E6%B5%8B%E8%AF%95%E9%93%BE%E4%B8%8A%E4%BA%A4%E4%BA%92%E2%80%94%E2%80%94%E4%BB%A5Sepolia%E4%B8%BA%E4%BE%8B"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 如何在真实的测试链上交互——以Sepolia为例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Foundry%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8%E2%80%94%E2%80%94%E4%BD%BF%E7%94%A8Unix%E7%B3%BB%E7%BB%9F%E4%BB%8E%E6%BA%90%E4%BB%A3%E7%A0%81%E6%90%AD%E5%BB%BA-Under-Construction"><span class="toc-number">4.</span> <span class="toc-text">4. Foundry环境的搭建与使用——使用Unix系统从源代码搭建 (Under Construction)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%90%9E%E4%B8%AA%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%90%A7"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 搞个虚拟机吧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%AE%89%E8%A3%85Foundry"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 安装Foundry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E4%BD%BF%E7%94%A8Foundry%E6%9E%84%E5%BB%BA%E6%96%B0%E9%A1%B9%E7%9B%AE"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 使用Foundry构建新项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%90%88%E7%BA%A6%E7%9A%84%E7%BC%96%E8%AF%91%EF%BC%8C%E8%BF%90%E8%A1%8C%E4%B8%8E%E4%BA%A4%E4%BA%92-Under-Construction"><span class="toc-number">4.4.</span> <span class="toc-text">4.4 合约的编译，运行与交互 (Under Construction)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-1-%E5%90%88%E7%BA%A6%E7%9A%84%E7%BC%96%E8%AF%91"><span class="toc-number">4.4.1.</span> <span class="toc-text">4.4.1 合约的编译</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-1-5-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%EF%BC%9ARPC-URL%E4%B8%8E%E5%90%88%E7%BA%A6%E9%83%A8%E7%BD%B2%E6%9C%AC%E8%B4%A8"><span class="toc-number">4.4.2.</span> <span class="toc-text">4.4.(1.5) 前置知识：RPC URL与合约部署本质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-2-%E5%B0%86%E5%90%88%E7%BA%A6%E9%83%A8%E7%BD%B2%E5%88%B0%E6%9C%AC%E5%9C%B0%E9%93%BE"><span class="toc-number">4.4.3.</span> <span class="toc-text">4.4.2 将合约部署到本地链</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -726,19 +759,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">AuroraCTF2024</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Encrypted</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">AuroraCTF2024</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -746,11 +771,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
+                <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -759,6 +784,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Encrypted</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
               </li>
              
               <li class="article-tag-list-item">
