@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://cauliweak9.github.io/2024/01/21/Ethernaut/Token.png">
 <meta property="og:image" content="https://cauliweak9.github.io/2024/01/21/Ethernaut/Recovery.png">
 <meta property="article:published_time" content="2024-01-21T00:48:12.000Z">
-<meta property="article:modified_time" content="2025-03-11T08:49:46.341Z">
+<meta property="article:modified_time" content="2025-03-30T16:41:22.829Z">
 <meta property="article:author" content="9C±Void">
 <meta property="article:tag" content="持续更新中(☆▽☆)">
 <meta property="article:tag" content="Web3">
@@ -227,7 +227,7 @@
 <a href="/2024/01/21/Ethernaut/" class="archive-article-date">
         <time datetime="2024-01-21T00:48:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2024-01-21</time>
         
-                <br><time datetime="2025-03-11T08:49:46.341Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2025-03-11</time>
+                <br><time datetime="2025-03-30T16:41:22.829Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2025-03-31</time>
         
 </a>
 
@@ -242,7 +242,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">9.2k字</span>
+      <span class="post-count">9.3k字</span>
     </span>
   </span>
 
@@ -251,7 +251,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">36分</span>
+      <span class="post-count">37分</span>
     </span>
   </span>
 </div>
@@ -350,7 +350,12 @@
 <h2 id="Stage-6-Delegation"><a href="#Stage-6-Delegation" class="headerlink" title="Stage 6    Delegation"></a>Stage 6    Delegation</h2><p>一个利用delegatecall性质进行攻击的题目，有关delegatecall的各种性质和两个攻击点我都写在了<a href="https://cauliweak9.github.io/2024/02/11/SmartContractSecurity/#5-3-delegatecall">那个半总结性的随想</a>里面，由于篇幅问题，这里就不赘述了</p>
 <p>有关delegatecall的内容比较多，而且需要一定的前置基础知识，不过可以了解一下，之后在Stage 16我们还会学习如何利用其特性攻击</p>
 <p><del>这一题解题就只需要账户调用一下Delegate合约下的pwn()就好了，具体是为什么我也不清楚，主要是这个实例有两个合约，但是只有1个地址，我一开始用攻击合约攻击之后提交说我错，可能是给的地址就是Delegate合约的地址而非Delegation的地址吧…</del></p>
-<p>（2024.7.16更新）做视频的时候又看了一下，整体思路还是delegatecall的攻击，就是实际上的操作是我们直接用EOA地址直接调用fallback就行，msg.data就是字符串<code>pwn()</code>的函数选择器，也就是<code>bytes4(sha3(&quot;pwn()&quot;))</code>，当然可以使用<code>abi.encodeWithSignature(&quot;pwn()&quot;)</code>获取到同样的结果，然后发送就行了，在Remix上的话就在<code>Deployed Contracts</code>那里找到对应的合约，然后将得到的selector作为calldata进行tra</p>
+<p>（2024.7.16更新）做视频的时候又看了一下，整体思路还是delegatecall的攻击，就是实际上的操作是我们直接用EOA地址直接调用fallback就行，msg.data就是<code>pwn()</code>的函数选择器，也就是<code>bytes4(sha3(&quot;pwn()&quot;))</code>，当然可以使用<code>abi.encodeWithSignature(&quot;pwn()&quot;)</code>获取到同样的结果，然后发送就行了，在Remix上的话就在<code>Deployed Contracts</code>那里找到对应的合约，然后将得到的selector作为calldata进行transact就行</p>
+<p>至于为什么使用攻击合约无法提交，这是因为Ethernaut的所有实例提交都是调用一个Ethernaut.sol的<code>submitLevelInstance</code>，而它会调用每个题目的Factory的<code>validateInstance</code>，其中传入的参数是<code>msg.sender</code>，一般情况下都是EOA地址，而本题的Factory里面是这样实现<code>validateInstance</code>的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function validateInstance(address payable _instance, address _player) public view override returns (bool) &#123;</span><br><span class="line">    Delegation parity = Delegation(_instance);</span><br><span class="line">    return parity.owner() == _player;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也就是说我们需要让Delegation的owner是我们自己，而使用攻击合约的话owner就是攻击合约而非我们自己，因此函数返回的是false</p>
+<p>具体的实现可以自行查看OZ的源码：<a target="_blank" rel="noopener" href="https://github.com/OpenZeppelin/ethernaut/tree/master">OpenZeppelin&#x2F;ethernaut: Web3&#x2F;Solidity based wargame</a></p>
 <h2 id="Stage-7-Force"><a href="#Stage-7-Force" class="headerlink" title="Stage 7    Force"></a>Stage 7    Force</h2><p>一个只有可爱猫猫的合约~</p>
 <p>半总结性那个博客有讲过正常情况下如果向合约转账，要么通过payable修饰后的函数，要么合约存在receive，要么存在fallback，否则EVM会报错</p>
 <p>但是！上面的都可以被绕过！一般情况下我们有3种方法：</p>
@@ -878,10 +883,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">AuroraCTF2024</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
               </li>
              
@@ -891,14 +892,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">GeekChallenge</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Web3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -914,7 +907,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">AuroraCTF2024</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Web3</a>
               </li>
              
               <li class="article-tag-list-item">
