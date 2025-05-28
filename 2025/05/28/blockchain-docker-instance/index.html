@@ -6,19 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://cauliweak9.github.io">
-  <title>Tag: Web | 9C±Void&#39;s Blog</title>
+  <title>区块链靶机小记 | 9C±Void&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="别看了，啥都没有，啥都不会">
-<meta property="og:type" content="website">
-<meta property="og:title" content="9C±Void&#39;s Blog">
-<meta property="og:url" content="https://cauliweak9.github.io/tags/Web/index.html">
+  <meta name="description" content="一个简单的随想而已，一堆废话">
+<meta property="og:type" content="article">
+<meta property="og:title" content="区块链靶机小记">
+<meta property="og:url" content="https://cauliweak9.github.io/2025/05/28/blockchain-docker-instance/index.html">
 <meta property="og:site_name" content="9C±Void&#39;s Blog">
-<meta property="og:description" content="别看了，啥都没有，啥都不会">
+<meta property="og:description" content="一个简单的随想而已，一堆废话">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cauliweak9.github.io/2025/05/28/blockchain-docker-instance/0.png">
+<meta property="og:image" content="https://cauliweak9.github.io/2025/05/28/blockchain-docker-instance/1.png">
+<meta property="article:published_time" content="2025-05-28T08:38:34.000Z">
+<meta property="article:modified_time" content="2025-05-28T16:11:35.645Z">
 <meta property="article:author" content="9C±Void">
+<meta property="article:tag" content="已完结Σ(っ °Д °;)っ">
+<meta property="article:tag" content="随想">
+<meta property="article:tag" content="Web3">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cauliweak9.github.io/2025/05/28/blockchain-docker-instance/0.png">
   
     <link rel="alternative" href="/atom.xml" title="9C±Void&#39;s Blog" type="application/atom+xml">
   
@@ -198,136 +206,335 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-blockchain-docker-instance" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2024" class="archive-year">2024</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/07/16/New2Flask/" class="archive-article-date">
-        <time datetime="2024-07-15T16:46:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2024-07-16</time>
-        
-                <br><time datetime="2024-11-30T15:24:36.878Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2024-11-30</time>
-        
-</a>
-
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/07/16/New2Flask/">（杂乱无章的）Flask开发学习笔记</a>
-	
+    <h1 class="article-title" itemprop="name">
+      区块链靶机小记
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2025/05/28/blockchain-docker-instance/" class="archive-article-date">
+        <time datetime="2025-05-28T08:38:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2025-05-28</time>
+        
+                <br><time datetime="2025-05-28T16:11:35.645Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2025-05-29</time>
+        
+</a>
+
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">3.5k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">15分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>一个简单的随想而已，一堆废话</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="0-序章——梦想-执念"><a href="#0-序章——梦想-执念" class="headerlink" title="0. 序章——梦想&amp;执念"></a>0. 序章——梦想&amp;执念</h2><p>自从本人大二开始学习Solidity，我就一直想要自己做一个动态的靶机，而且也确实这么做了，在AuroraCTF 2023（我们学校的新生赛）我就已经做了几个和Sepolia Testnet交互的动态靶机，不过那个时候我才发现学校的CTFd靶场是不出网的…</p>
+<p>虽然在此之后也是继续在学Solidity，同时还给某个比赛供了几道题，但是想做一个“不出网的动态靶机环境”一直悬在我心上，不过因为社团的事务还有各种比赛也是被硬控了许久</p>
+<p>期间也是有参考国外的repo和文章，比如最出名最泛用的<a target="_blank" rel="noopener" href="https://github.com/paradigmxyz/paradigm-ctf-infrastructure">paradigm-ctf-infrastructure</a>，<a target="_blank" rel="noopener" href="https://github.com/chainflag/solidctf">SolidCTF</a>还有Zellic的文章<a target="_blank" rel="noopener" href="https://www.zellic.io/blog/how-to-create-an-ethereum-ctf-challenge/">Hosting an Ethereum CTF Challenge, the Easy Way | Zellic — Research</a>，但是发现它们基本都是出网的，但是我也没有钱去租一个服务器专门去为学校搞Blockchain CTF，因此一直搁置…</p>
+<h2 id="1-梦的开始——RemedyCTF-2025"><a href="#1-梦的开始——RemedyCTF-2025" class="headerlink" title="1. 梦的开始——RemedyCTF 2025"></a>1. 梦的开始——RemedyCTF 2025</h2><p>今年2月有幸和大哥们打了一次RemedyCTF，当时从中学到很多东西，也在大哥们的提供的思路下完成了一部分exp的编写，也算是出了绵薄之力吧www</p>
+<p>比赛结束后官方放出了他们所有题目的源文件：<a target="_blank" rel="noopener" href="https://github.com/Hexens/remedy-ctf-2025/tree/main">Hexens&#x2F;remedy-ctf-2025</a>，而这又让我重新燃起了希望：说不定这一次就能完成愿望呢？</p>
+<p>事实证明，现实和梦想的差距是巨大的：</p>
+<img src="/2025/05/28/blockchain-docker-instance/0.png" class="" title="这就是现实">
+
+<p>看不出来有什么问题？CTFd作为一个非常古早的CTF靶场平台，它的动态靶机功能都是由插件实现的，而这个插件是不支持docker-compose的；除此之外，这个插件<strong>只能上传一个docker image</strong>，<strong>只能frp 1个端口</strong>；最大的问题是：这个infra是部署在公网上的，它出网，<strong>而我们学校的CTFd它不出网</strong>…</p>
+<p>事已至此，是时候开始自己搓一个靶机了…</p>
+<h2 id="2-基础环境配置——多阶段搭建"><a href="#2-基础环境配置——多阶段搭建" class="headerlink" title="2. 基础环境配置——多阶段搭建"></a>2. 基础环境配置——多阶段搭建</h2><p>虽然RemedyCTF的infra用不上，但是参考价值还是满满的，因此我在搭建的时候<strong>主要都是参考了Remedy和Paradigm两个比赛的infra</strong>，同时测试用的题目实例是直接用的Remedy的Diamond Heist</p>
+<p>首先确认了基础的配置应该是怎么样的：</p>
+<ul>
+<li>前端<ul>
+<li>Flask进行HTML页面渲染</li>
+<li>JavaScript向API路由发送请求，使用Jquery</li>
+<li>BootstrapCSS简单美化一下页面<del>（实际完全没有美化）</del></li>
+</ul>
+</li>
+<li>后端<ul>
+<li>Flask路由，包括API路由和用户使用的RPC路由</li>
+<li>Web3py和私链进行交互</li>
+</ul>
+</li>
+<li>私链<ul>
+<li>Foundry Anvil作为私链</li>
+<li>Forge进行Solidity的编译和脚本运行</li>
+</ul>
+</li>
+</ul>
+<p>其实我本人还想多加一个IDE的路由的，就是希望像Remix那样能直接在靶机上编写简单的合约并且部署和交互，因此还想着整个Monaco Editor，所以实际上还有一个Nodejs，不过我不确定自己之后是否会真的去实现这一点，所以…到时候再说吧www</p>
+<p>OK，接下来就是使用Dockerfile进行多阶段的搭建了，不过由于CTFd的限制，我需要将所有的环境集成在一个环境下，而这个环境要保证Foundry可以运行（我是真的出了这个问题，参考<a target="_blank" rel="noopener" href="https://github.com/foundry-rs/foundry/issues/3827">forge fails with ‘GLIBC_2.33’ not found (required by forge) in github action CI · Issue #3827 · foundry-rs&#x2F;foundry</a>），最后是从RemedyCTF参考后确认使用<code>python:3.11.6-slim</code>是完全OK的，因此我们最后的环境容器肯定是使用的它</p>
+<p>剩下的有关Foundry的下载和Foundry项目的预搭建自然是从RemedyCTF那里照搬的，而前面提到的Flask+Anvil的基础配置则需要使用一个多进程管理器去进行管理，我这里使用的是supervisord，所以最后的Dockerfile长这样：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一阶段：构建Monaco资源</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">18</span> AS builder</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装Monaco Editor</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> npm install monaco-editor --prefix static/js/</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">mv</span> static/js/node_modules/monaco-editor static/js/monaco-editor</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> ghcr.io/foundry-rs/foundry:latest AS foundry</span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> project /project</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="literal">true</span> &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    <span class="built_in">cd</span> /project &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    forge build --out /artifacts/out --cache-path /artifacts/cache &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    <span class="literal">true</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二阶段：集成所有组件</span></span><br><span class="line"><span class="keyword">FROM</span> python:<span class="number">3.11</span>.<span class="number">6</span>-slim</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装系统依赖</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get update &amp;&amp; apt-get install -y \</span></span><br><span class="line"><span class="language-bash">    curl git socat bsdmainutils libssl-dev ca-certificates \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; <span class="built_in">rm</span> -rf /var/lib/apt/lists/* \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; pip config <span class="built_in">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装Foundry</span></span><br><span class="line"><span class="keyword">ENV</span> FOUNDRY_DIR=/opt/foundry</span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> PATH=$&#123;FOUNDRY_DIR&#125;/bin/:$&#123;PATH&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="literal">true</span> &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    curl -L https://foundry.paradigm.xyz | bash &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    foundryup &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    <span class="literal">true</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装huff</span></span><br><span class="line"><span class="keyword">ENV</span> HUFF_DIR=/opt/huff</span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> PATH=$&#123;HUFF_DIR&#125;/bin/:$&#123;PATH&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="literal">true</span> &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    curl -L http://get.huff.sh | bash &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    huffup &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    <span class="literal">true</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> pip install flask markdown web3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制应用文件</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=builder /app/static /app/static</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> --from=foundry /artifacts /artifacts</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> solc-static-linux /usr/bin/solc</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> . /app</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置环境变量</span></span><br><span class="line"><span class="keyword">ENV</span> FLASK_APP=app.py</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用supervisord管理多进程</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apt-get update \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apt-get install -y supervisor \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;[supervisord]\nnodaemon=true\n\n[program:flask]\ncommand=/app/service/docker-entrypoint.sh\n\n[program:anvil]\ncommand=anvil --hardfork shanghai --host=0.0.0.0 --port 8545&quot;</span> &gt; /etc/supervisor/conf.d/supervisord.conf</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;/usr/bin/supervisord&quot;</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 暴露端口</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">5000</span></span><br></pre></td></tr></table></figure>
+
+<p>我不保证这个Dockerfile一定是最简洁的（因为有一些组件我不确定用没用到，比如socat可能是没用到的的），但是这样能跑，这就已经win了（笑）</p>
+<blockquote>
+<p>需要注意的是，如果使用我这冗杂的靶机，且对私链的硬分叉有要求，需要你自行手动更改第62行里面对anvil hardfork的参数设置，不然默认是latest</p>
+<p>还有一点，由于我们学校的靶机不出网，因此要<strong>提前在<a target="_blank" rel="noopener" href="https://github.com/ethereum/solidity/releases">Releases · ethereum&#x2F;solidity</a>下载好对应的solc二进制文件</strong>，我这里是选择放在<code>/usr/bin/solc</code>下，不过后面还需要指定solc路径，所以无所谓</p>
+</blockquote>
+<h2 id="3-靶机的核心——Flask-Web3py"><a href="#3-靶机的核心——Flask-Web3py" class="headerlink" title="3. 靶机的核心——Flask&amp;Web3py"></a>3. 靶机的核心——Flask&amp;Web3py</h2><p>接下来就是后端交互的核心逻辑了，首先我们先写好和Anvil交互相关的代码</p>
+<h3 id="3-1-（非常冗杂的）靶机初始化"><a href="#3-1-（非常冗杂的）靶机初始化" class="headerlink" title="3.1 （非常冗杂的）靶机初始化"></a>3.1 （非常冗杂的）靶机初始化</h3><p>由于我们前面在使用supervisord管理anvil进程的时候并没有指定助记词，因此Anvil会自动使用默认的助记词<code>test test test test test test test test test test test junk</code>，这样就会导致生成的钱包是固定的，而这有很大可能会导致问题，因此我们希望是能生成一个随机的钱包，每次使用靶机用户使用的钱包都是不一样的</p>
+<p>这怎么办呢？我们能发现Anvil为了方便开发者调试，它自带了一些非常强大的API方法，比如<code>anvil_setBalance</code>，它可以调整Anvil链上指定地址的余额，而我自己的解决方法正是使用这个：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> web3 <span class="keyword">import</span> Web3</span><br><span class="line"><span class="keyword">from</span> web3.types <span class="keyword">import</span> RPCResponse</span><br><span class="line"><span class="keyword">from</span> eth_account.hdaccount <span class="keyword">import</span> generate_mnemonic</span><br><span class="line"><span class="keyword">from</span> eth_account.hdaccount <span class="keyword">import</span> key_from_seed, seed_from_mnemonic</span><br><span class="line"><span class="keyword">from</span> eth_account <span class="keyword">import</span> Account</span><br><span class="line"></span><br><span class="line">ANVIL_INSTANCE = Web3(Web3.HTTPProvider(<span class="string">&quot;http://127.0.0.1:8545&quot;</span>))</span><br><span class="line">DEFAULT_MNEMONIC = <span class="string">&quot;test test test test test test test test test test test junk&quot;</span></span><br><span class="line">ETH = <span class="number">10</span>**<span class="number">18</span></span><br><span class="line">mnemonic = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_account</span>(<span class="params">mnemonic: <span class="built_in">str</span>, index: <span class="built_in">int</span></span>):</span><br><span class="line">    seed = seed_from_mnemonic(mnemonic, <span class="string">&quot;&quot;</span>)</span><br><span class="line">    private_key = key_from_seed(seed, <span class="string">f&quot;<span class="subst">&#123;DEFAULT_DERIVATION_PATH&#125;</span><span class="subst">&#123;index&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> Account.from_key(private_key)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">get_player_account</span>(<span class="params">mnemonic: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="keyword">return</span> get_account(mnemonic, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">check_error</span>(<span class="params">resp: RPCResponse</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;error&quot;</span> <span class="keyword">in</span> resp:</span><br><span class="line">        <span class="keyword">raise</span> Exception(<span class="string">&quot;rpc exception&quot;</span>, resp[<span class="string">&quot;error&quot;</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">anvil_setBalance</span>(<span class="params">web3: Web3, address: <span class="built_in">str</span>, amount: <span class="built_in">str</span></span>):</span><br><span class="line">    check_error(web3.provider.make_request(<span class="string">&quot;anvil_setBalance&quot;</span>, [address, amount]))</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">manual_set_wallet</span>(<span class="params">mnemonic: <span class="built_in">str</span></span>):</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">        account = get_account(mnemonic, i)</span><br><span class="line">        default_account = get_account(DEFAULT_MNEMONIC, i)</span><br><span class="line">        anvil_setBalance(ANVIL_INSTANCE, account.address, <span class="built_in">str</span>(<span class="number">10000</span> * ETH))</span><br><span class="line">        anvil_setBalance(ANVIL_INSTANCE, default_account.address, <span class="string">&quot;0&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">initialization</span>():</span><br><span class="line">    <span class="keyword">global</span> mnemonic</span><br><span class="line">    mnemonic = generate_mnemonic(<span class="number">12</span>, lang=<span class="string">&quot;english&quot;</span>)</span><br><span class="line">    manual_set_wallet(mnemonic)</span><br><span class="line">    challenge_address = deploy(</span><br><span class="line">        ANVIL_INSTANCE, <span class="string">&quot;/app/project&quot;</span>, mnemonic=mnemonic, env=&#123;&#125;</span><br><span class="line">    )</span><br><span class="line">    player_private_key = get_player_account(mnemonic).key.<span class="built_in">hex</span>()</span><br><span class="line">    <span class="keyword">return</span> (challenge_address, player_private_key)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果有看过前面的两个CTF infra的话就能发现我根据助记词获取地址的代码明显是在抄这两个infra的（笑）</p>
+</blockquote>
+<p>看起来很乱，所以我将获取账户的几个函数都放在另外一个Python文件了，实际上也就是照搬的<a target="_blank" rel="noopener" href="https://github.com/Hexens/remedy-ctf-2025/blob/main/paradigm-ctf-infrastructure/paradigmctf.py/ctf_server/types/__init__.py">remedy-ctf-2025&#x2F;paradigm-ctf-infrastructure&#x2F;paradigmctf.py&#x2F;ctf_server&#x2F;types&#x2F;_<em>init</em>_.py at main · Hexens&#x2F;remedy-ctf-2025</a></p>
+<p>至于题目合约的初始化部署<code>deploy</code>也是照搬的<a target="_blank" rel="noopener" href="https://github.com/Hexens/remedy-ctf-2025/blob/main/paradigm-ctf-infrastructure/paradigmctf.py/ctf_launchers/utils.py">remedy-ctf-2025&#x2F;paradigm-ctf-infrastructure&#x2F;paradigmctf.py&#x2F;ctf_launchers&#x2F;utils.py at main · Hexens&#x2F;remedy-ctf-2025</a>，唯一的差别就是运行forge的时候多加了一个<code>--use /usr/bin/solc</code>的参数，表示使用指定的solc二进制文件进行编译，这里就不放代码了，有点长</p>
+<blockquote>
+<p>如果不指定solc路径，则forge会自动尝试联网下载<code>foundry.toml</code>里指定版本的solc，而这对于我们不出网的靶机是致命的（你下不下来啊www）</p>
+</blockquote>
+<p>初始化相比更新实例只是多了对账号余额的操作，因此我们可以顺带写出创建新实例的代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">new_instance</span>():</span><br><span class="line">    <span class="keyword">global</span> mnemonic</span><br><span class="line">    challenge_address = deploy(ANVIL_INSTANCE, <span class="string">&quot;/app/project&quot;</span>, mnemonic, env=&#123;&#125;)</span><br><span class="line">    <span class="keyword">return</span> challenge_address</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-封印！——RPC的封禁策略"><a href="#3-2-封印！——RPC的封禁策略" class="headerlink" title="3.2 封印！——RPC的封禁策略"></a>3.2 封印！——RPC的封禁策略</h3><p>刚刚我们提到Anvil提供了许多强大的API方法，虽然大部分人应该都是正常解题，但是总会有人想打非预期，所以只能下点狠料了（虽然一般情况是直接返回错误说方法不被允许，但是我就是喜欢封禁ο(&#x3D;•ω＜&#x3D;)ρ⌒☆）</p>
+<p>策略很简单：Anvil提供的API方法为了和普通的Ethereum API方法区分，都是以<code>anvil_***</code>格式进行命名的，所以只需要一点简单的字符串操作…</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/rpc&quot;</span>, methods=[<span class="string">&quot;POST&quot;</span>, <span class="string">&quot;OPTIONS&quot;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">rpc_proxy</span>():</span><br><span class="line">    client_ip = request.remote_addr</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 拦截被封禁的 IP（仅针对 POST 请求）</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;POST&quot;</span> <span class="keyword">and</span> client_ip <span class="keyword">in</span> banned_ips:</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            jsonify(</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">&quot;jsonrpc&quot;</span>: <span class="string">&quot;2.0&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;error&quot;</span>: &#123;<span class="string">&quot;code&quot;</span>: -<span class="number">403</span>, <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Get a life, cheater...&quot;</span>&#125;,</span><br><span class="line">                    <span class="string">&quot;id&quot;</span>: <span class="literal">None</span>,</span><br><span class="line">                &#125;</span><br><span class="line">            ),</span><br><span class="line">            <span class="number">403</span>,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 处理 OPTIONS 请求</span></span><br><span class="line">    <span class="keyword">if</span> request.method == <span class="string">&quot;OPTIONS&quot;</span>:</span><br><span class="line">        <span class="keyword">return</span> forward_request(request.path)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 处理 POST 请求</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        data = request.get_json()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 安全检查：检测到 anvil 方法立即封禁</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">&quot;method&quot;</span> <span class="keyword">in</span> data <span class="keyword">and</span> <span class="string">&quot;anvil&quot;</span> <span class="keyword">in</span> data[<span class="string">&quot;method&quot;</span>].lower():</span><br><span class="line">            banned_ips.add(client_ip)</span><br><span class="line">            <span class="keyword">return</span> jsonify(</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">&quot;jsonrpc&quot;</span>: <span class="string">&quot;2.0&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;id&quot;</span>: data.get(<span class="string">&quot;id&quot;</span>, <span class="number">0</span>),</span><br><span class="line">                    <span class="string">&quot;error&quot;</span>: &#123;</span><br><span class="line">                        <span class="string">&quot;code&quot;</span>: -<span class="number">114514</span>,</span><br><span class="line">                        <span class="string">&quot;message&quot;</span>: <span class="string">&quot;No shortcuts, dumbass! No more RPC for you!&quot;</span>,</span><br><span class="line">                    &#125;,</span><br><span class="line">                &#125;</span><br><span class="line">            )</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 转发正常请求</span></span><br><span class="line">        <span class="keyword">return</span> forward_request()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span> json.JSONDecodeError:</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            jsonify(</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">&quot;jsonrpc&quot;</span>: <span class="string">&quot;2.0&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;error&quot;</span>: &#123;<span class="string">&quot;code&quot;</span>: -<span class="number">32700</span>, <span class="string">&quot;message&quot;</span>: <span class="string">&quot;Parse error&quot;</span>&#125;,</span><br><span class="line">                    <span class="string">&quot;id&quot;</span>: <span class="literal">None</span>,</span><br><span class="line">                &#125;</span><br><span class="line">            ),</span><br><span class="line">            <span class="number">400</span>,</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-中间商不赚差价——端口数据转发"><a href="#3-3-中间商不赚差价——端口数据转发" class="headerlink" title="3.3 中间商不赚差价——端口数据转发"></a>3.3 中间商不赚差价——端口数据转发</h3><p>对于正常的数据，使用<code>requests</code>库进行常规的端口转发即可：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">forward_request</span>(<span class="params">url_suffix=<span class="string">&quot;&quot;</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;通用请求转发函数&quot;&quot;&quot;</span></span><br><span class="line">    target_url = <span class="string">f&quot;http://localhost:8545<span class="subst">&#123;url_suffix&#125;</span>&quot;</span></span><br><span class="line">    headers = &#123;key: value <span class="keyword">for</span> key, value <span class="keyword">in</span> request.headers <span class="keyword">if</span> key.lower() != <span class="string">&quot;host&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="comment"># 使用 streaming 方式处理大请求体</span></span><br><span class="line">        response = requests.request(</span><br><span class="line">            method=request.method,</span><br><span class="line">            url=target_url,</span><br><span class="line">            headers=headers,</span><br><span class="line">            data=request.get_data(),</span><br><span class="line">            stream=<span class="literal">True</span>,</span><br><span class="line">            timeout=<span class="number">30</span>,  <span class="comment"># 设置超时时间</span></span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 构造代理响应</span></span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            response.content,</span><br><span class="line">            response.status_code,</span><br><span class="line">            [(name, value) <span class="keyword">for</span> (name, value) <span class="keyword">in</span> response.raw.headers.items()],</span><br><span class="line">        )</span><br><span class="line">    <span class="keyword">except</span> requests.exceptions.RequestException <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            jsonify(</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">&quot;jsonrpc&quot;</span>: <span class="string">&quot;2.0&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;error&quot;</span>: &#123;<span class="string">&quot;code&quot;</span>: -<span class="number">32603</span>, <span class="string">&quot;message&quot;</span>: <span class="string">f&quot;Gateway error: <span class="subst">&#123;<span class="built_in">str</span>(e)&#125;</span>&quot;</span>&#125;,</span><br><span class="line">                    <span class="string">&quot;id&quot;</span>: <span class="literal">None</span>,</span><br><span class="line">                &#125;</span><br><span class="line">            ),</span><br><span class="line">            <span class="number">500</span>,</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+
+<p>至此基本的Python后端部分已经结束了</p>
+<h2 id="4-面子工程——HTML-JavaScript"><a href="#4-面子工程——HTML-JavaScript" class="headerlink" title="4. 面子工程——HTML&amp;JavaScript"></a>4. 面子工程——HTML&amp;JavaScript</h2><p>美化这一方面我也不是专门搞前端的，随便找个Bootstrap美化一下显示框和按钮差不多得了（笑）核心主要还是和按钮绑定的JavaScript代码，<code>fetch</code>肯定是要用的，然后有关按钮的启用和禁用可以用jQuery进行实现，总之内嵌的JS代码如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> address = <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">let</span> priv_key = <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 获取当前挑战信息</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">get_challenge_info</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">challenge_addr</span>: address,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">private_key</span>: priv_key</span></span><br><span class="line"><span class="language-javascript">        &#125;;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 显示数据（通用）</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">displayData</span>(<span class="params">data</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> output = <span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">for</span> (<span class="keyword">const</span> [key, value] <span class="keyword">of</span> <span class="title class_">Object</span>.<span class="title function_">entries</span>(data)) &#123;</span></span><br><span class="line"><span class="language-javascript">            output += <span class="string">`<span class="subst">$&#123;key&#125;</span>: <span class="subst">$&#123;value&#125;</span>\n`</span>;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">        $(<span class="string">&#x27;#output&#x27;</span>).<span class="title function_">text</span>(output);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 显示仅 message + 地址和私钥</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">displayMessageWithInfo</span>(<span class="params">message</span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> output = <span class="string">`message: <span class="subst">$&#123;message&#125;</span>\n`</span>;</span></span><br><span class="line"><span class="language-javascript">        output += <span class="string">`challenge_addr: <span class="subst">$&#123;address&#125;</span>\n`</span>;</span></span><br><span class="line"><span class="language-javascript">        output += <span class="string">`private_key: <span class="subst">$&#123;priv_key&#125;</span>\n`</span>;</span></span><br><span class="line"><span class="language-javascript">        $(<span class="string">&#x27;#output&#x27;</span>).<span class="title function_">text</span>(output);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 保存数据到本地</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">saveToLocalStorage</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> data = &#123;</span></span><br><span class="line"><span class="language-javascript">            address,</span></span><br><span class="line"><span class="language-javascript">            priv_key</span></span><br><span class="line"><span class="language-javascript">        &#125;;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;challenge_info&quot;</span>, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(data));</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 从本地恢复数据</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">loadFromLocalStorage</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> data = <span class="variable language_">localStorage</span>.<span class="title function_">getItem</span>(<span class="string">&quot;challenge_info&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (data) &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> parsed = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(data);</span></span><br><span class="line"><span class="language-javascript">            address = parsed.<span class="property">address</span>;</span></span><br><span class="line"><span class="language-javascript">            priv_key = parsed.<span class="property">priv_key</span>;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">return</span> <span class="literal">true</span>;</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 初始化逻辑</span></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">handleStart</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&quot;/api/initialization&quot;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span></span></span><br><span class="line"><span class="language-javascript">                &#125;</span></span><br><span class="line"><span class="language-javascript">            &#125;);</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="title function_">json</span>();</span></span><br><span class="line"><span class="language-javascript">            address = data.<span class="property">challenge_address</span>;</span></span><br><span class="line"><span class="language-javascript">            priv_key = data.<span class="property">private_key</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">saveToLocalStorage</span>();</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            $(<span class="string">&#x27;#newBtn, #submitBtn&#x27;</span>).<span class="title function_">prop</span>(<span class="string">&#x27;disabled&#x27;</span>, <span class="literal">false</span>);</span></span><br><span class="line"><span class="language-javascript">            $(<span class="string">&#x27;#startBtn&#x27;</span>).<span class="title function_">prop</span>(<span class="string">&#x27;disabled&#x27;</span>, <span class="literal">true</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">displayData</span>(<span class="title function_">get_challenge_info</span>());</span></span><br><span class="line"><span class="language-javascript">        &#125; <span class="keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="language-javascript">            $(<span class="string">&#x27;#output&#x27;</span>).<span class="title function_">text</span>(<span class="string">&quot;Error during initialization: &quot;</span> + error);</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">handleNew</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&quot;/api/create_instance&quot;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span></span></span><br><span class="line"><span class="language-javascript">                &#125;</span></span><br><span class="line"><span class="language-javascript">            &#125;);</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="title function_">json</span>();</span></span><br><span class="line"><span class="language-javascript">            address = data.<span class="property">challenge_address</span>;</span></span><br><span class="line"><span class="language-javascript">            priv_key = data.<span class="property">private_key</span>;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">saveToLocalStorage</span>();</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">displayData</span>(<span class="title function_">get_challenge_info</span>());</span></span><br><span class="line"><span class="language-javascript">        &#125; <span class="keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="language-javascript">            $(<span class="string">&#x27;#output&#x27;</span>).<span class="title function_">text</span>(<span class="string">&quot;Error during create_instance: &quot;</span> + error);</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">handleSubmit</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">try</span> &#123;</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&quot;/api/get_flag&quot;</span>, &#123;</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">method</span>: <span class="string">&quot;POST&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">headers</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">                    <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span></span></span><br><span class="line"><span class="language-javascript">                &#125;</span></span><br><span class="line"><span class="language-javascript">            &#125;);</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="title function_">json</span>();</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">displayMessageWithInfo</span>(data.<span class="property">message</span>);</span></span><br><span class="line"><span class="language-javascript">        &#125; <span class="keyword">catch</span> (error) &#123;</span></span><br><span class="line"><span class="language-javascript">            $(<span class="string">&#x27;#output&#x27;</span>).<span class="title function_">text</span>(<span class="string">&quot;Error during get_flag: &quot;</span> + error);</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 页面加载时执行</span></span></span><br><span class="line"><span class="language-javascript">    $(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">const</span> hasData = <span class="title function_">loadFromLocalStorage</span>();</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span> (hasData) &#123;</span></span><br><span class="line"><span class="language-javascript">            $(<span class="string">&#x27;#newBtn, #submitBtn&#x27;</span>).<span class="title function_">prop</span>(<span class="string">&#x27;disabled&#x27;</span>, <span class="literal">false</span>);</span></span><br><span class="line"><span class="language-javascript">            $(<span class="string">&#x27;#startBtn&#x27;</span>).<span class="title function_">prop</span>(<span class="string">&#x27;disabled&#x27;</span>, <span class="literal">true</span>);</span></span><br><span class="line"><span class="language-javascript">            <span class="title function_">displayData</span>(<span class="title function_">get_challenge_info</span>());</span></span><br><span class="line"><span class="language-javascript">        &#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 绑定事件</span></span></span><br><span class="line"><span class="language-javascript">        $(<span class="string">&#x27;#startBtn&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, handleStart);</span></span><br><span class="line"><span class="language-javascript">        $(<span class="string">&#x27;#newBtn&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, handleNew);</span></span><br><span class="line"><span class="language-javascript">        $(<span class="string">&#x27;#submitBtn&#x27;</span>).<span class="title function_">on</span>(<span class="string">&#x27;click&#x27;</span>, handleSubmit);</span></span><br><span class="line"><span class="language-javascript">    &#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>至于完整的HTML这里就不再展示了</p>
+<h2 id="5-最终成果"><a href="#5-最终成果" class="headerlink" title="5. 最终成果"></a>5. 最终成果</h2><img src="/2025/05/28/blockchain-docker-instance/1.png" class="" title="勉强算是能跑了www">
+
+<p>至此回收了1年前的执念和各种伏笔，中途出现各种曲折（比如多阶段搭建就卡了一周多），但是最后也是收获颇丰，可以安心处理其它事了o(*≧▽≦)ツ┏━┓</p>
+<p>其实这个靶机问题还是很多的，比如启动环境的时候因为要执行20次<code>anvil_setBalance</code>的操作，导致整个环境的初始化需要近30秒（学校内部靶场实测得到的时间），而且前端太简陋了，不太好看，还有Dockerfile里面一堆可能是冗余的库和组件，都是很大的问题，不过现阶段的话能跑就是胜利，等之后给战队留一点题目的时候再慢慢调整就行了，至于Monaco和它的IDE功能…看我什么时候不懒了再说吧www</p>
+<p>总之我整个的Docker源码刚刚push到Github上了：<a target="_blank" rel="noopener" href="https://github.com/Cauliweak9/My-Single-Container-Docker-Templates-for-CTF">Cauliweak9&#x2F;My-Single-Container-Docker-Templates-for-CTF</a>，包括上一篇的Modbus靶机，反正能水一个（超级小的）项目谁不乐意呢？（笑）</p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          9C±Void
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://cauliweak9.github.io/2025/05/28/blockchain-docker-instance/" title="区块链靶机小记" target="_blank">https://cauliweak9.github.io/2025/05/28/blockchain-docker-instance/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">持续更新中(☆▽☆)</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">已完结Σ(っ °Д °;)っ</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Web</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Encrypted</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Web3</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://cauliweak9.github.io/2025/05/28/blockchain-docker-instance/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/05/20/web-newbie/" class="archive-article-date">
-        <time datetime="2024-05-20T02:54:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2024-05-20</time>
+  
+    <a href="/2025/05/03/modbus-docker/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">交互式Modbus靶机小记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
         
-                <br><time datetime="2024-11-22T08:08:08.887Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2024-11-22</time>
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
         
-</a>
-
-
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E5%BA%8F%E7%AB%A0%E2%80%94%E2%80%94%E6%A2%A6%E6%83%B3-%E6%89%A7%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">0. 序章——梦想&amp;执念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A2%A6%E7%9A%84%E5%BC%80%E5%A7%8B%E2%80%94%E2%80%94RemedyCTF-2025"><span class="toc-number">2.</span> <span class="toc-text">1. 梦的开始——RemedyCTF 2025</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E2%80%94%E2%80%94%E5%A4%9A%E9%98%B6%E6%AE%B5%E6%90%AD%E5%BB%BA"><span class="toc-number">3.</span> <span class="toc-text">2. 基础环境配置——多阶段搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%9D%B6%E6%9C%BA%E7%9A%84%E6%A0%B8%E5%BF%83%E2%80%94%E2%80%94Flask-Web3py"><span class="toc-number">4.</span> <span class="toc-text">3. 靶机的核心——Flask&amp;Web3py</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%EF%BC%88%E9%9D%9E%E5%B8%B8%E5%86%97%E6%9D%82%E7%9A%84%EF%BC%89%E9%9D%B6%E6%9C%BA%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 （非常冗杂的）靶机初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%B0%81%E5%8D%B0%EF%BC%81%E2%80%94%E2%80%94RPC%E7%9A%84%E5%B0%81%E7%A6%81%E7%AD%96%E7%95%A5"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 封印！——RPC的封禁策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E4%B8%AD%E9%97%B4%E5%95%86%E4%B8%8D%E8%B5%9A%E5%B7%AE%E4%BB%B7%E2%80%94%E2%80%94%E7%AB%AF%E5%8F%A3%E6%95%B0%E6%8D%AE%E8%BD%AC%E5%8F%91"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 中间商不赚差价——端口数据转发</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%9D%A2%E5%AD%90%E5%B7%A5%E7%A8%8B%E2%80%94%E2%80%94HTML-JavaScript"><span class="toc-number">5.</span> <span class="toc-text">4. 面子工程——HTML&amp;JavaScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%9C%80%E7%BB%88%E6%88%90%E6%9E%9C"><span class="toc-number">6.</span> <span class="toc-text">5. 最终成果</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/05/20/web-newbie/">菜鸡9C的Web入门记</a>
-	
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">持续更新中(☆▽☆)</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Web</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
+
   
-  
-    </div></section>
+      <section id="comments" class="comments">
+        <style>
+          .comments{margin:30px;padding:10px;background:#fff}
+          @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+        </style>
+        <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "gKwlr1RYCplgQDNhzIJAB42y-gzGzoHsz",
+            app_key: "a4flqbMyJoAUgvgNLxCQ8Bjh",
+            placeholder: "求求大佬给点建议带带我吧(☆▽☆)",
+            avatar:""
+        });
+    }
+</script>
+    </section>
   
 
-    
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -368,9 +575,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
