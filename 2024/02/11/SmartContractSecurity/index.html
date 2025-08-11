@@ -23,10 +23,10 @@
 <meta property="og:image" content="https://cauliweak9.github.io/2024/02/11/SmartContractSecurity/zero_slot_1.png">
 <meta property="og:image" content="https://cauliweak9.github.io/2024/02/11/SmartContractSecurity/zero_slot_2.png">
 <meta property="article:published_time" content="2024-02-10T18:30:29.000Z">
-<meta property="article:modified_time" content="2025-06-05T17:09:18.348Z">
+<meta property="article:modified_time" content="2025-07-29T13:46:04.119Z">
 <meta property="article:author" content="9C±Void">
-<meta property="article:tag" content="持续更新中(☆▽☆)">
 <meta property="article:tag" content="随想">
+<meta property="article:tag" content="持续更新中(☆▽☆)">
 <meta property="article:tag" content="Web3">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cauliweak9.github.io/2024/02/11/SmartContractSecurity/state_var.jpeg">
@@ -231,7 +231,7 @@
 <a href="/2024/02/11/SmartContractSecurity/" class="archive-article-date">
         <time datetime="2024-02-10T18:30:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2024-02-11</time>
         
-                <br><time datetime="2025-06-05T17:09:18.348Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2025-06-06</time>
+                <br><time datetime="2025-07-29T13:46:04.119Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2025-07-29</time>
         
 </a>
 
@@ -246,7 +246,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">33.2k字</span>
+      <span class="post-count">33.1k字</span>
     </span>
   </span>
 
@@ -600,9 +600,9 @@
 <p>OK，来到关键部分了：在ECDSA中，一个签名由一组值<code>(r,s)</code>表示，其中<code>r</code>是签名过程中计算出的公钥的X坐标，而这个点是由<code>(x,y) = k * G</code>这样计算得到的，其中<code>k</code>满足<code>1 &lt; k &lt; n</code>（<code>n</code>表示的是SECP256k1中规定的点的个数，即<code>0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141</code>），而这里签名使用的k一般是通过私钥计算得到的；而<code>G</code>则是我们所说的生成点，这个点使用SEC格式（高效加密标准，The Standards for Efficient Cryptography）进行表示的结果是<code>0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798</code>；<code>s</code>则是通过公式<code>s = k^-1 * (e + d*r) mod n</code>计算得到的，其中<code>e</code>表示<code>hash(msg)</code>，而<code>d</code>表示签名者私钥</p>
 <p>但是还记得我们刚刚提到的对称性吗？只知道X坐标的话我们能得到2个合法的点，因此我们还需要一个额外的恢复值<code>v</code>来决定签名者的公钥</p>
 <p>说了这么多，最后关键的点就只有一句话：<strong>如果<code>(r,s)</code>是一组合法的签名，那么根据SECP256k1的X轴对称性，<code>(r, -s mod n)</code>也必然是一组合法的签名</strong></p>
-<h3 id="10-2-签名延展-Signature-Malleability"><a href="#10-2-签名延展-Signature-Malleability" class="headerlink" title="10.2 签名延展 (Signature Malleability)"></a>10.2 签名延展 (Signature Malleability)</h3><p>其实以太坊黄皮书在附录F中已经规定了一个合法的签名需要满足：<code>0 &lt; s &lt; n/2+1, v∈&#123;27,28&#125;</code>，但是实际上EIP-2中仍然允许满足满足<code>0 &lt; s &lt; n</code>的<code>s</code>参与交易，而因此我们就有了签名延展这一可以被实现的操作</p>
+<h3 id="10-2-签名延展-Signature-Malleability"><a href="#10-2-签名延展-Signature-Malleability" class="headerlink" title="10.2 签名延展 (Signature Malleability)"></a>10.2 签名延展 (Signature Malleability)</h3><p>其实以太坊黄皮书在附录F中已经规定了一个合法的签名需要满足：<code>0 &lt; s &lt; n/2+1, v∈&#123;27,28&#125;</code>，但是实际上EIP-2中仍然允许满足<code>0 &lt; s &lt; n</code>的<code>s</code>参与交易，而因此我们就有了签名延展这一可以被实现的操作</p>
 <p>那么根据引子中的理论，我们能够有如下的Python脚本生成同一个私钥的两个合法签名：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> web3 <span class="keyword">import</span> Web3</span><br><span class="line"><span class="keyword">from</span> eth_account.messages <span class="keyword">import</span> encode_defunct</span><br><span class="line"></span><br><span class="line">w3 = Web3()</span><br><span class="line"><span class="comment"># Turn the message hash into bytes</span></span><br><span class="line">message_hash = <span class="built_in">bytes</span>.fromhex(<span class="string">&quot;deadbeef&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your private key</span></span><br><span class="line">private_key = <span class="string">&quot;My Private Key&quot;</span>  <span class="comment"># Replace with your private key (DO NOT SHARE THIS)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Sign the message</span></span><br><span class="line">signed_message = w3.eth.account.signHash(message_hash, private_key=private_key)</span><br><span class="line"></span><br><span class="line"><span class="comment"># View the original signature</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Signature:&quot;</span>, signed_message.signature.<span class="built_in">hex</span>())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;v:&quot;</span>, signed_message.v)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;r:&quot;</span>, <span class="built_in">hex</span>(signed_message.r))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;s:&quot;</span>, <span class="built_in">hex</span>(signed_message.s))</span><br><span class="line"><span class="built_in">print</span>(</span><br><span class="line">    <span class="string">f&#x27;Original Signature: [<span class="subst">&#123;signed_message.v&#125;</span>,&quot;<span class="subst">&#123;<span class="built_in">hex</span>(signed_message.r)&#125;</span>&quot;,&quot;<span class="subst">&#123;<span class="built_in">hex</span>(signed_message.s)&#125;</span>&quot;]&#x27;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Another valid signature: (r,-s mod n)</span></span><br><span class="line">manipulated_v = (</span><br><span class="line">    signed_message.v + <span class="number">1</span> <span class="keyword">if</span> signed_message.v % <span class="number">2</span> == <span class="number">0</span> <span class="keyword">else</span> signed_message.v - <span class="number">1</span></span><br><span class="line">)</span><br><span class="line">manipulated_r = signed_message.r</span><br><span class="line">manipulated_s = (</span><br><span class="line">    <span class="number">0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141</span></span><br><span class="line">    - signed_message.s</span><br><span class="line">)</span><br><span class="line"><span class="built_in">print</span>(</span><br><span class="line">    <span class="string">f&#x27;Manipulated Signature: [<span class="subst">&#123;manipulated_v&#125;</span>,&quot;<span class="subst">&#123;<span class="built_in">hex</span>(manipulated_r)&#125;</span>&quot;,&quot;<span class="subst">&#123;<span class="built_in">hex</span>(manipulated_s)&#125;</span>&quot;]&#x27;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> web3 <span class="keyword">import</span> Web3</span><br><span class="line"><span class="keyword">from</span> eth_account.messages <span class="keyword">import</span> encode_defunct</span><br><span class="line"></span><br><span class="line">w3 = Web3()</span><br><span class="line"><span class="comment"># Turn the message hash into bytes</span></span><br><span class="line">message_hash = <span class="built_in">bytes</span>.fromhex(<span class="string">&quot;deadbeef&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your private key</span></span><br><span class="line">private_key = <span class="string">&quot;My Private Key&quot;</span>  <span class="comment"># Replace with your private key (DO NOT SHARE THIS)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Sign the message</span></span><br><span class="line">signed_message = w3.eth.account.signHash(message_hash, private_key=private_key)</span><br><span class="line"></span><br><span class="line"><span class="comment"># View the original signature</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Signature:&quot;</span>, signed_message.signature.<span class="built_in">hex</span>())</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;v:&quot;</span>, signed_message.v)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;r:&quot;</span>, <span class="built_in">hex</span>(signed_message.r))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;s:&quot;</span>, <span class="built_in">hex</span>(signed_message.s))</span><br><span class="line"><span class="built_in">print</span>(</span><br><span class="line">    <span class="string">f&#x27;Original Signature: [<span class="subst">&#123;signed_message.v&#125;</span>,&quot;<span class="subst">&#123;<span class="built_in">hex</span>(signed_message.r)&#125;</span>&quot;,&quot;<span class="subst">&#123;<span class="built_in">hex</span>(signed_message.s)&#125;</span>&quot;]&#x27;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Another valid signature: (r,-s mod n)</span></span><br><span class="line">manipulated_v = (</span><br><span class="line">    signed_message.v + <span class="number">1</span> <span class="keyword">if</span> signed_message.v % <span class="number">2</span> != <span class="number">0</span> <span class="keyword">else</span> signed_message.v - <span class="number">1</span></span><br><span class="line">)</span><br><span class="line">manipulated_r = signed_message.r</span><br><span class="line">manipulated_s = (</span><br><span class="line">    <span class="number">0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141</span></span><br><span class="line">    - signed_message.s</span><br><span class="line">)</span><br><span class="line"><span class="built_in">print</span>(</span><br><span class="line">    <span class="string">f&#x27;Manipulated Signature: [<span class="subst">&#123;manipulated_v&#125;</span>,&quot;<span class="subst">&#123;<span class="built_in">hex</span>(manipulated_r)&#125;</span>&quot;,&quot;<span class="subst">&#123;<span class="built_in">hex</span>(manipulated_s)&#125;</span>&quot;]&#x27;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
 <p>这两个签名得到的vrs三个参数加上<code>message_hash</code>传入<code>ecrecover</code>，最后能得到的地址都是同一个地址，即签名者的地址，由此可能会导致一些未预料到的函数的二次调用，当然解决方法很简单，就是验证<code>s</code>是否满足黄皮书中的条件，或者使用OpenZeppelin的ECDSA库中的<code>recover</code>，里面已经帮你检查过了</p>
 <h3 id="10-3-签名复用"><a href="#10-3-签名复用" class="headerlink" title="10.3 签名复用"></a>10.3 签名复用</h3><p>这个就是纯粹的逻辑漏洞：就好像一个JWT Token，如果不加上有效时间，那么我就能够不断利用这同一个Token；这里也是同理的，就是合约代码中规定的被签名的<code>message</code>中缺少有效时间，但是并没有任何检查签名有效性的操作，这就可能导致攻击者使用同一个签名不断进行操作（比如提款）最终导致未预想过的损失</p>
@@ -1002,11 +1002,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">持续更新中(☆▽☆)</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">持续更新中(☆▽☆)</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -1310,15 +1310,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">入门...大概？</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">持续更新中(☆▽☆)</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+                <a href="javascript:void(0)" class="js-tag color3">Private</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1326,7 +1318,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">AuroraCTF2024</a>
+                <a href="javascript:void(0)" class="js-tag color3">随想</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">入门...大概？</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">持续更新中(☆▽☆)</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1371,10 +1371,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Private</a>
               </li>
             
             <div class="clearfix"></div>
