@@ -10,18 +10,22 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+  <meta name="description" content="随便溯来玩玩的，不保证100%正确">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记一次简单的Web3溯源">
 <meta property="og:url" content="https://cauliweak9.github.io/2025/09/03/web3-trace/index.html">
 <meta property="og:site_name" content="9C±Void&#39;s Blog">
-<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:description" content="随便溯来玩玩的，不保证100%正确">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cauliweak9.github.io/2025/09/03/web3-trace/0.png">
 <meta property="article:published_time" content="2025-09-03T14:31:28.000Z">
-<meta property="article:modified_time" content="2025-09-05T17:08:00.550Z">
+<meta property="article:modified_time" content="2025-09-15T15:23:14.095Z">
 <meta property="article:author" content="9C±Void">
-<meta property="article:tag" content="Encrypted">
+<meta property="article:tag" content="已完结Σ(っ °Д °;)っ">
+<meta property="article:tag" content="随想">
+<meta property="article:tag" content="Web3">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cauliweak9.github.io/2025/09/03/web3-trace/0.png">
   
     <link rel="alternative" href="/atom.xml" title="9C±Void&#39;s Blog" type="application/atom+xml">
   
@@ -223,7 +227,7 @@
 <a href="/2025/09/03/web3-trace/" class="archive-article-date">
         <time datetime="2025-09-03T14:31:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2025-09-03</time>
         
-                <br><time datetime="2025-09-05T17:08:00.550Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2025-09-06</time>
+                <br><time datetime="2025-09-15T15:23:14.095Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2025-09-15</time>
         
 </a>
 
@@ -238,7 +242,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">59字</span>
+      <span class="post-count">1.6k字</span>
     </span>
   </span>
 
@@ -247,7 +251,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">5分</span>
     </span>
   </span>
 </div>
@@ -258,18 +262,61 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="别猜了，与其看我这个菜逼写的东西不如去看看别的大佬写的东西" data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="2cdaf14aec80674afe6f4c5691de2a4de11918007f8320256051877ab38af7b7">d9a5f2e2a6ab45f8da5a12a108b56156b1e8e46a99e8806b38238910ea60813f094bf58ce6ee865f01d8fa432b89aee57c11ca56507ec5125ebe7d96b350fe79f0e1a995ac303ea944cbbc83a10a6936704c2f54adbf3de5bb465e25138d3cb6657d159067d45822c6571aeba734ae98</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">该博客要么没写完，要么就是内容太简单太丢人，密码是自设的名称/编号，喜欢猜谜的可以自己猜一下（别想着OSINT了，我就没和别人发过我自设）</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+    <p>随便溯来玩玩的，不保证100%正确</p>
+<span id="more"></span>
+
+<hr>
+<p>上一篇创建的博客就是ETHPanda的残酷共学的每日签到日志，也勉强算是跟下来了，结果共学刚结束没几天群里就传出来有人参加那个新手Hackathon拿的奖金被偷了：<a target="_blank" rel="noopener" href="https://forum.lxdao.io/t/eip-7702/3069">关于收获休闲黑客松奖金后钱包被盗分析（EIP-7702） - General - LXDAO</a></p>
+<p>当时刚好也是在给新生赛出题，本来就打算用7702模拟一次恶意攻击拿来出题，这下Buy One Get One Free了，于是简单溯源了一下</p>
+<blockquote>
+<p>别问我为什么这么晚才解禁，问就是还在给新生赛出题</p>
+</blockquote>
+<h2 id="0-引子——EIP-7702简述"><a href="#0-引子——EIP-7702简述" class="headerlink" title="0. 引子——EIP-7702简述"></a>0. 引子——EIP-7702简述</h2><p>我觉得完全轮不到我来解释7702到底是个啥东西，毕竟这EIP有点臭名昭著了，总之就是以太坊在实现账户抽象进行的一次重大尝试，但是这次尝试很明显…炸了喵</p>
+<p>简单来说就是规定了一种新的交易类型，该交易类型会将某一个&#x2F;某一些EOA地址升级为智能钱包，并且该改变是<strong>永久的</strong>，即如果不进行重置则该EOA将永久为智能钱包，直到出现一次新的交易改变其指向的地址</p>
+<p>整个交易只多了一个Authorization List，里面包含的是<code>chainId</code>，<code>address</code>和<code>nonce</code>以及签名数据，其中<code>address</code>则是EOA指向的合约地址，<code>nonce</code>为EOA地址当前的nonce值，除此之外就没有东西了</p>
+<p>由此我们可以看出来被升级的EOA地址是通过<code>ecrecover()</code>计算得到的，也就是说<strong>我们只需要一个简单的签名就能进行EIP-7702的升级</strong>，这可太TM利好钓鱼攻击了，太TM方便了，稍微引诱一下受害者签个名就能偷走所有的资金，那可太TM爽了😅</p>
+<p>升级后的EOA可以视为一个简单代理合约，向其发送的所有交易都会通过delegatecall调用其指向的合约的代码，而这很明显就会出现非常大的问题，比如如下的合约：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity ^0.8.20;</span><br><span class="line"></span><br><span class="line">interface IERC20&#123;</span><br><span class="line">    function transfer(address to, uint256 value) external returns (bool);</span><br><span class="line">    function balanceOf(address account) external view returns (uint256);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract Attack&#123;</span><br><span class="line">    </span><br><span class="line">    function attack() public&#123;</span><br><span class="line">        address receiver = 0xD5...;</span><br><span class="line">        address token = 0xED...;</span><br><span class="line">        uint amount = IERC20(token).balanceOf(address(this));</span><br><span class="line">        IERC20(token).transfer(receiver, amount);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将<code>receiver</code>修改为攻击者的地址，<code>token</code>为某ERC20的地址，这样攻击者通过钓鱼让受害者指向该合约，然后攻击者向受害者调用<code>attack()</code>就能偷走其所有的ERC20资产</p>
+<p>还有一点：<strong>《EOA升级为智能钱包》和《包含calldata的交易》两者完全不冲突</strong>，可能我没表述清楚，简单来说就是<strong>我们可以在同一个交易里面对地址A使用EIP-7702升级，同时正常调用合约B的函数</strong>，这会在我们之后的溯源中看到</p>
+<p>好的，接下来进入正题…</p>
+<h2 id="1-正文——公链溯源"><a href="#1-正文——公链溯源" class="headerlink" title="1. 正文——公链溯源"></a>1. 正文——公链溯源</h2><p>根据受害者的自述，他们将私钥放在<code>.env</code>文件里面，还一个不小心传到repo上了…我记得Patrick Collins当时教怎么用web3py进行合约开发的时候不就特别强调别把env传上去吗，都提及了gitignore🤔，总之木已成舟，那很明显就是私钥泄露了</p>
+<p>接下来说是被偷走了200个USDT，那直接看ERC20交易详情就能找到攻击交易：<a target="_blank" rel="noopener" href="https://etherscan.io/tx/0xe247b175ca374532b52e03fbc89b6c69d9db21dbc81711d4940bf11b32950b3b">Ethereum Transaction Hash: 0xe247b175ca… | Etherscan</a></p>
+<p>开头就是一个巨大的EIP-7702 Action，自此我们已经可以找到攻击者和恶意合约了：</p>
+<ul>
+<li>攻击者：0x3847f3F8F74A202b357406D86CFbbB03BE4432CC</li>
+<li>恶意合约：0xB2BeFaDFeB2407995D7d27c64D0De9D492b682D3</li>
+</ul>
+<p>简单反编译一下恶意合约：<a target="_blank" rel="noopener" href="https://app.dedaub.com/decompile?md5=e31a4554c627bec328ca61348d81234f">EVM Bytecode Decompiler | Dedaub Security Suite</a></p>
+<p>这里的<code>0x0a7c8ed6</code>是一个类似Multicall3合约里面的<code>Aggregate</code>函数，其内容实现大致来说是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">address constant OWNER = 0x3847f3F8F74A202b357406D86CFbbB03BE4432CC;</span><br><span class="line"></span><br><span class="line">struct Call&#123;</span><br><span class="line">    address target;</span><br><span class="line">    bytes callData;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function Aggregate(Call[] calldata calls) public payable returns(uint256 blockNumber, bytes[] memory returnData)&#123;</span><br><span class="line">    require(tx.origin == OWNER, &quot;Not called by owner.&quot;);</span><br><span class="line"></span><br><span class="line">    blockNumber = block.number;</span><br><span class="line">    uint256 length = calls.length;</span><br><span class="line">    returnData = new bytes[](length);</span><br><span class="line">    Call calldata call;</span><br><span class="line">    for (uint256 i = 0; i &lt; length;) &#123;</span><br><span class="line">        bool success;</span><br><span class="line">        call = calls[i];</span><br><span class="line">        (success, returnData[i]) = call.target.call(call.callData);</span><br><span class="line">        require(success, &quot;Multicall aggregate: call failed&quot;);</span><br><span class="line">        unchecked &#123; ++i; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的<code>require</code>块是防止其它攻击者调用（不然到嘴的USDT飞了），除此之外就是一个纯粹的Multicall3 Aggregate函数，内容上就是进行一个Multicall操作</p>
+<p>接下来我们看交易本身，该交易的<code>To</code>字段是地址<code>0xcA11bde05977b3631167028862bE2a173976CA11</code>，是一个实打实的公开的Multicall3合约，然后看交易的<code>Internal Txns</code>，我们发现这次交易中衍生的内部交易有两个，一是Multicall3向受害者发送了交易，然后就是受害者执行了USDT的<code>Transfer</code>函数，那么自此我们已经可以得到完整的攻击链路了：</p>
+<ol start="0">
+<li><p>攻击者使用受害者泄露的私钥进行签名，从而使得受害者通过EIP-7702升级为智能钱包，指向的合约地址为恶意合约地址</p>
+</li>
+<li><p>攻击者在同一交易内调用Multicall3的<code>Aggregate</code>函数进行Multicall操作</p>
+</li>
+<li><p>Multicall3调用受害者的<code>Aggregate</code>函数进行Multicall操作</p>
+</li>
+<li><p>受害者接收到的calldata内容是“调用USDT合约的<code>Transfer</code>函数”，即让受害者将自己的USDT转给攻击者</p>
+</li>
+<li><p>攻击完成</p>
+</li>
+</ol>
+<p>一个简陋的攻击流程图长这样：</p>
+<img src="/2025/09/03/web3-trace/0.png" class="" title="攻击流程图">
+
+<p>由于智能钱包运行代码时是在自己的上下文中，因此完全不需要复杂的Approve操作，直接Transfer就行了</p>
+<p>自此，整个攻击的流程就已经基本摸清楚了，使用一个Multicall合约当恶意合约也是为了窃取存在多种资产的合约</p>
+<h2 id="2-后记——一些废话"><a href="#2-后记——一些废话" class="headerlink" title="2. 后记——一些废话"></a>2. 后记——一些废话</h2><p>其实查看受害者地址的交易详情，我们发现还有另一个攻击者（<code>0x221225800dd383E59b89F7B6F3fE9DF8dc310334</code>和<code>0xd66C1Bb58858dC92378AD1135443Db979dA52D16</code>）在7天前也进行了攻击，稍微瞄了一眼也没有找到这个攻击者的后续执行地址</p>
+<p>借此顺带看了看一些可疑地址的EIP-7702交易，全都是一套公式，闹麻了，只能说开头提到的7702全都是用于钓鱼这一点还真没说错</p>
+<blockquote>
+<p>还看到了有两个交易在同一个块内同时对一个地址进行7702升级，笑死了，Alea jacta est!这块</p>
+</blockquote>
+
     
 
     
@@ -305,7 +352,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Encrypted</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">已完结Σ(っ °Д °;)っ</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Web3</a>
         		</li>
       		
 		</ul>
@@ -405,7 +460,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录是什么，能吃吗？
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E5%BC%95%E5%AD%90%E2%80%94%E2%80%94EIP-7702%E7%AE%80%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">0. 引子——EIP-7702简述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%AD%A3%E6%96%87%E2%80%94%E2%80%94%E5%85%AC%E9%93%BE%E6%BA%AF%E6%BA%90"><span class="toc-number">2.</span> <span class="toc-text">1. 正文——公链溯源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%90%8E%E8%AE%B0%E2%80%94%E2%80%94%E4%B8%80%E4%BA%9B%E5%BA%9F%E8%AF%9D"><span class="toc-number">3.</span> <span class="toc-text">2. 后记——一些废话</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -596,6 +651,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">入门...大概？</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随想</a>
               </li>
              
@@ -608,15 +667,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">入门...大概？</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Web3</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">持续更新中(☆▽☆)</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Encrypted</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -632,10 +691,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Encrypted</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">流量分析</a>
               </li>
              
@@ -644,15 +699,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Forensics</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Hackergame</a>
               </li>
              
               <li class="article-tag-list-item">
