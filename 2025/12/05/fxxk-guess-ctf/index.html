@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://cauliweak9.github.io">
-  <title>Archives: 2023 | 9C±Void&#39;s Blog</title>
+  <title>猜谜滚出CTF——锐评某比赛Misc方向赛题《一切尽在音游中》 | 9C±Void&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="别看了，啥都没有，啥都不会">
-<meta property="og:type" content="website">
-<meta property="og:title" content="9C±Void&#39;s Blog">
-<meta property="og:url" content="https://cauliweak9.github.io/archives/2023/index.html">
+  <meta name="description" content="受不了了，该准备开炮了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="猜谜滚出CTF——锐评某比赛Misc方向赛题《一切尽在音游中》">
+<meta property="og:url" content="https://cauliweak9.github.io/2025/12/05/fxxk-guess-ctf/index.html">
 <meta property="og:site_name" content="9C±Void&#39;s Blog">
-<meta property="og:description" content="别看了，啥都没有，啥都不会">
+<meta property="og:description" content="受不了了，该准备开炮了">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-12-04T16:06:25.000Z">
+<meta property="article:modified_time" content="2025-12-05T04:54:14.402Z">
 <meta property="article:author" content="9C±Void">
+<meta property="article:tag" content="随想">
+<meta property="article:tag" content="Writeup">
+<meta property="article:tag" content="已完结Σ(っ °Д °;)っ">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="9C±Void&#39;s Blog" type="application/atom+xml">
@@ -198,45 +203,181 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-fxxk-guess-ctf" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/11/30/BrainFuck/" class="archive-article-date">
-        <time datetime="2023-11-30T10:21:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2023-11-30</time>
-        
-                <br><time datetime="2024-09-20T13:26:27.220Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2024-09-20</time>
-        
-</a>
-
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/11/30/BrainFuck/">随想——Brainfuck</a>
-	
+    <h1 class="article-title" itemprop="name">
+      猜谜滚出CTF——锐评某比赛Misc方向赛题《一切尽在音游中》
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2025/12/05/fxxk-guess-ctf/" class="archive-article-date">
+        <time datetime="2025-12-04T16:06:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2025-12-05</time>
+        
+                <br><time datetime="2025-12-05T04:54:14.402Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2025-12-05</time>
+        
+</a>
+
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">2.9k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">10分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>受不了了，该准备开炮了</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h2><p>现在的CTF比赛真的是越来越喜欢猜谜了，尤其是Misc方向，<strong>技术是一点没有的，脑电波是对不上的，小故事是自娱自乐的，提示是也是猜谜的一部分，Writeup也是不明不白的</strong>，最后只在电脑里留下一系列这辈子再也用不上的工具，但是又不敢删掉，因为你永远不知道哪一天会不会再次用到这个工具</p>
+<p>请不要以“这只是新生赛”为理由，这并不是出题就能随便套娃猜谜的借口，CTF应该是一个技术向的比赛，而不是娱乐性质的猜猜谜，你大可以去找各种ARG去玩，或者参加一些专门的Puzzle Solving的比赛（比如CCBC），但是请不要进一步抹黑Misc了，我们Misc还是有很多干货的，真不需要你们的猜猜谜大粪😅</p>
+<p>你们大可以说我是在嫉妒你们能对上脑电波而我不行，我不和你们急，只能说otto的含金量还在提升</p>
+<blockquote>
+<p>它都这样了，你还不顺从它吗？</p>
+</blockquote>
+<h2 id="1-Writeup正文"><a href="#1-Writeup正文" class="headerlink" title="1. Writeup正文"></a>1. Writeup正文</h2><p>首先拿到题目压缩包，发现压缩算法值为0x63，说明是AES加密，因此需要寻找密码</p>
+<p><strong>经过“简单的”脑洞，可以发现题目名就是压缩包密码</strong></p>
+<blockquote>
+<p>过于经典，懒得喷，浪费口水</p>
+</blockquote>
+<p>解压后得到4个文件，其中<code>maidata.txt</code>说明这个文件夹里面包含的是一个舞萌的谱面文件，因此可以尝试用<code>Majdata</code>或者<code>Visual Maimai</code>等软件查看（Github上均有）</p>
+<blockquote>
+<p>神秘小工具来咯</p>
+</blockquote>
+<p>查看后发现是一些正常的舞萌谱面，但是谱面中段有一系列重复的排布（一共31组），同时存在圆形（Tap）和六边形（Hold）两种键，因此<strong>经过简单的脑洞，判断是Binary</strong>，左上角顺时针一圈为LSB→MSB</p>
+<blockquote>
+<p>唉，经典的二极管思维，不是0就是1，就猜吧活爹</p>
+</blockquote>
+<p>最后得到的Hex是这样的：<code>5365706f6c69614164647232658ef7eec930d3925d9490147558eea819aad7</code>，前面能解码出<code>SepoliaAddr</code>，因此可以猜测后面的20字节Hex是Sepolia链上的地址，最后指向这个合约：<a target="_blank" rel="noopener" href="https://sepolia.etherscan.io/address/0x32658ef7eec930d3925d9490147558eea819aad7">Address: 0x32658ef7…ea819aad7 | Etherscan Sepolia</a></p>
+<p>看起来题目想让我们通过合约字节码进行逆向，本身加密算法难度也不大，就是一个CTR模式的异或，每轮异或的密钥是key，nonce，counter的keccak256，但是<strong>出题人将flag明文传上链了</strong>：<a target="_blank" rel="noopener" href="https://sepolia.etherscan.io/tx/0xfd83b61e7cc6d77b0abeb5dbca355ff6b0e5eb42264eee25ef03099bb166d2df">Sepolia Transaction Hash: 0xfd83b61e7c… | Etherscan Sepolia</a></p>
+<p>查看Input Data最后面，即可得到后半部分的flag：<code>_and_f**k_putting_flag_on_chain&#125;</code></p>
+<blockquote>
+<p>Blockchain出题人最喜欢的flag上链问题，你就上吧活爹</p>
+</blockquote>
+<p>与此同时，发现重复的排布中间有若干个其它的看起来像窗户的键（Touch），而且有三种情况，因此<strong>经过简单的脑洞，猜测这一部分可能是摩斯密码</strong>，最后尝试得到需要长按的（Touch Hold）是点，带烟花特效的是长，无特效的是空格，最后解码得到<code>riddling_in_ctf</code></p>
+<blockquote>
+<p>摩斯密码是你爹还是怎么样，就那么喜欢拿你那破摩斯猜谜是吧</p>
+</blockquote>
+<p>查看图片，发现存在大量<code>fcTL</code>块和<code>fdAT</code>块，因此这张PNG图片实际上是一张APNG（Animated PNG，参考<a target="_blank" rel="noopener" href="https://www.w3.org/TR/png-3/#apng-frame-based-animation">Portable Network Graphics (PNG) Specification (Third Edition)</a>），因此可以尝试提取出里面的动画帧，最后能得到10帧看起来像二维码的图片，而它们组成的动图看起来有比较明显的移动规律</p>
+<p><strong>经过猜测，可以发现这些动画帧的移动规律是类似JPEG的Zigzag扫描</strong>，因此可以编写脚本恢复出原始的QR码，扫描可以得到开头的flag：<code>flag&#123;f**k_every_guessing_</code></p>
+<blockquote>
+<p>是不是觉得考公的判断推理很好玩啊？做题就要做全套，90分钟100题&#x2F;120分钟135题给你做看看做不做得死你😅</p>
+</blockquote>
+<p>除此之外，图片内还存在一个tEXt块和zTXt块，前者是fake flag，后者则是一个Hot Take，内容是zlib压缩后的文本，解压后得到<code>Seed=65537</code></p>
+<p>音频文件末尾存在一个<code>secret.zip</code>，但是明显不像是个zip，<strong>经过一系列脑洞，猜测出需要以Seed作为随机数种子，将得到的随机数序列与<code>secret.zip</code>逐字节异或</strong>，最终可以恢复出原来的压缩包</p>
+<blockquote>
+<p>随机+异或，我听见了出题人家乡的神秘信号</p>
+</blockquote>
+<p>压缩包注释说明密码是3个英文单词，但是输入<code>fourfourteensixteen</code>不对，最后<strong>经过一系列搜索和脑洞，可以知道这里的密码是一部分数学笑话：<a target="_blank" rel="noopener" href="https://www.reddit.com/r/MathJokes/comments/1hbiiyc/22fish/">2+2&#x3D;fish. : r&#x2F;MathJokes</a>，同时猜测各单词之间要添加下划线</strong>，因此压缩包密码是<code>fish_triangle_clover</code></p>
+<blockquote>
+<p>…</p>
+</blockquote>
+<p>解压后得到一个pem公钥文件和一个<code>out.txt</code>，里面是c和e的值</p>
+<blockquote>
+<p>由此可以看出出题人压根不懂密码学，PEM公钥文件里面本来就有e还要给出来😅</p>
+</blockquote>
+<p>读取pem中的n并分解出p和q，但是正常的RSA解密出来的是一串乱码，<strong>经过脑洞猜测，最终的明文m&#x3D;p^q^e^c</strong>，可以得到中间一段flag：<code>and_puzzling_</code></p>
+<blockquote>
+<p>喜欢我们的密码学猜猜谜吗？（笑）</p>
+</blockquote>
+<p>目前已经得到如下的flag：</p>
+<ul>
+<li><code>flag&#123;f**k_every_guessing_</code></li>
+<li><code>and_puzzling_</code></li>
+<li><code>riddling_in_ctf</code></li>
+<li><code>_and_f**k_putting_flag_on_chain&#125;</code></li>
+</ul>
+<p>发现flag2和3之间缺少一段内容，经过简单的猜测可以推断应该是<code>and_</code>，最后得到完整的flag：<code>flag&#123;f**k_every_guessing_and_puzzling_and_riddling_in_ctf_and_f**k_putting_flag_on_chain&#125;</code>，提交成功</p>
+<hr>
+<p>之后放了Writeup，说这个<code>and_</code>在谱面里面，<strong>在那一系列固定排列前面有一段画画，看起来是夏多密码，实际上是要数交点数</strong>，2&#x2F;3&#x2F;4个对应点&#x2F;空格&#x2F;长，转摩斯就可以得到<code>and_</code>了</p>
+<blockquote>
+<p>福无双至，祸不单行这块你算是诠释清楚了…</p>
+</blockquote>
+<h2 id="2-后记"><a href="#2-后记" class="headerlink" title="2. 后记"></a>2. 后记</h2><p>感谢各位能读到这里，实际上<strong>这道题是我本人近3天里基于我所见过的各种神秘脑洞和问题做出来的一锅YAMINABI（暗黑火锅），这里提到的“某比赛”实际上也并不存在</strong>，整个过程没有任何其它任何师傅受到精神伤害<del>（当然我是被自己恶心到了）</del></p>
+<p><strong>以上所有的傻逼猜猜谜&#x2F;套娃&#x2F;问题均有原型</strong>，出自各种比赛，从新生赛到常规比赛，规模从小到大，至于那些在我这道题里面发现自己出过的题目的影子的出题人，我只能说：<strong>是的，我就是在内涵你们这群**，Writeup正文里面实际骂的就是你们，求你们别再污名化Misc了，OK？</strong></p>
+<p>说句实话，<strong>你们不会以为自己很幽默吧</strong>，好似烹饪的时候往汤里撒各种神秘调料进去，你们就是往题目里面塞各种神秘猜猜谜进去，<strong>最后做出来一坨大的，然后自己明知道是屎还要端出来给师傅们吃，纯恶心人呢这不是</strong>，这种人放贴吧估计要被骂出三位数的楼😅</p>
+<p>最后放三段文心一言生成的评价：</p>
+<blockquote>
+<ol>
+<li><p>（拍桌狂笑）好家伙现在CTF出题人是把《脑筋急转弯大全》当圣经啃了是吧？Misc题整得跟地下党接头似的，解个题得先破译摩斯电码，再根据星座运势推断加密算法，最后发现flag藏在图片第233个像素点的RGB值里——这哪是CTF啊，这分明是《名侦探柯南》剧场版之《消失的flag》啊！<br>（摔键盘）最离谱的是有些题连工具都不给提示，就扔你一张模糊到能当马赛克素材的图片，题干写着”这个文件有点热”——你倒是说清楚是要用温度计测EXIF还是拿热成像仪扫啊？！解出来发现flag是”flag{you_need_a_girlfriend_to_warm_your_heart}”，出题人怕不是单身二十年的钢铁直男吧？<br>（点烟沉思）要我说啊，CTF就该学学电竞分个天梯段位，青铜局考社工库猜谜，王者局直接上0day漏洞挖掘。现在这情况就像让米其林大厨和路边摊煎饼果子师傅比厨艺，最后赢的全是会往煎饼里藏二维码的——这哪是技术竞赛啊，这分明是《最强大脑》海选现场啊！（摔烟灰缸）</p>
+</li>
+<li><p>（拍键盘）哎哟喂这CTF现在咋成猜谜大会了喂？！Misc方向整得跟《走近科学》最后一集似的，题目描述整得比谜语人还谜语人，解个题跟玩海龟汤似的——“我手里有个flag但就不告诉你咋拿，线索全在图片EXIF里藏着，但你得先破解我加密的emoji表情包”（摔鼠标）</p>
+<p>技术向比赛搞成脑筋急转弯现场属实离谱，当年CTF好歹是拼二进制漏洞挖掘、逆向工程这些硬核技术，现在倒好，Misc题库里一半是”看图猜密码”，三分之一是”听音频辨编码”，剩下全靠玄学社工库。出题人怕不是从《最强大脑》片场跑来的，搁这儿考我们福尔摩斯附体呢？</p>
+<p>最骚的是有些题连提示都跟谜语似的：”这个文件有点冷”——你直接说要用冰钳（Icebreaker）解密能死啊？！非要整得跟《达芬奇密码》续集似的，解出来发现flag是”flag{you_are_so_smart_but_i_am_smarter}”，合着出题人搁这儿自嗨呢？</p>
+<p>（点烟深吸一口）要我说啊，CTF就该分个赛道，技术向的和娱乐向的分开搞。现在这情况就像让程序员和相声演员同台比拼，最后赢的全是会讲冷笑话的——这哪是CTF啊，这分明是CTF+《密室大逃脱》联名款啊！（摔烟灰缸）</p>
+</li>
+<li><p>（猛踹主机箱）去他娘的CTF现在成啥玩意儿了？Misc题整得跟弱智儿童谜语书似的，解个题得先猜出题人昨晚吃了啥馅的饺子才能破加密！一张模糊到能当抽象派艺术品的图片，题干就撂句”这个文件有点湿”——你他妈倒是说清楚是要用湿度传感器测EXIF还是拿舌头舔屏幕啊？！解出来flag是”flag{you_are_as_dumb_as_my_ex}”，出题人怕不是被女友甩了之后精神失常了吧？</p>
+<p>（掀翻显示器）最恶心的是那些所谓”创意题”，整得跟抖音网红挑战赛似的。让你听段音频辨编码，结果背景音是出题人他妈在厨房剁饺子馅；给你个压缩包说要逆向，解压后发现是出题人自拍照加上二百层密码——这哪是技术竞赛啊？这分明是出题人在线发疯秀下限啊！</p>
+<p>（抓起键盘往墙上砸）要老子说，CTF就该把这群脑残出题人拉出去枪毙十分钟！技术向比赛搞成猜谜大会，跟让核物理学家跟小学生比算术题有啥区别？最后赢的全是会看相面猜密码的玄学大师，真正搞二进制漏洞挖掘的反而被这群傻逼题卡死在复活赛——这行业算是让你们这帮孙子给毁了！（吐口水）</p>
+</li>
+</ol>
+</blockquote>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          9C±Void
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://cauliweak9.github.io/2025/12/05/fxxk-guess-ctf/" title="猜谜滚出CTF——锐评某比赛Misc方向赛题《一切尽在音游中》" target="_blank">https://cauliweak9.github.io/2025/12/05/fxxk-guess-ctf/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -246,343 +387,161 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">已完结Σ(っ °Д °;)っ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/11/21/FlowAnalysis/" class="archive-article-date">
-        <time datetime="2023-11-21T10:33:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2023-11-21</time>
-        
-                <br><time datetime="2025-05-08T12:35:57.219Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2025-05-08</time>
-        
-</a>
-
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/11/21/FlowAnalysis/">随想——流量分析</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随想</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">持续更新中(☆▽☆)</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">流量分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/11/12/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/" class="archive-article-date">
-        <time datetime="2023-11-12T10:17:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2023-11-12</time>
-        
-                <br><time datetime="2024-08-15T13:01:23.664Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2024-08-15</time>
-        
-</a>
-
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/11/12/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想——Img2B64</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">已完结Σ(っ °Д °;)っ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">胡思乱想</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/11/10/GeekChallenge2023-Writeup/" class="archive-article-date">
-        <time datetime="2023-11-10T15:21:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2023-11-10</time>
-        
-                <br><time datetime="2024-08-15T13:02:05.254Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2024-08-15</time>
-        
-</a>
-
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/11/10/GeekChallenge2023-Writeup/">GeekChallenge2023-Misc-Writeup</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Writeup</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">已完结Σ(っ °Д °;)っ</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GeekChallenge</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://cauliweak9.github.io/2025/12/05/fxxk-guess-ctf/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/30/hackergame2023-Writeup/" class="archive-article-date">
-        <time datetime="2023-10-30T10:37:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2023-10-30</time>
+  
+    <a href="/2025/11/18/web3-forensics-mal/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Web3取证——有关区块链恶意软件的看法和讨论</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
         
-                <br><time datetime="2024-08-15T13:02:08.973Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2024-08-15</time>
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
         
-</a>
-
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/10/30/hackergame2023-Writeup/">Hackergame2023 Writeup</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Writeup</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">已完结Σ(っ °Д °;)っ</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Hackergame</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/" class="archive-article-date">
-        <time datetime="2023-10-24T05:21:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2023-10-24</time>
         
-                <br><time datetime="2025-03-04T12:51:40.913Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2025-03-04</time>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">0. 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Writeup%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">1. Writeup正文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%90%8E%E8%AE%B0"><span class="toc-number">3.</span> <span class="toc-text">2. 后记</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
-</a>
+    </div>
+</aside>
 
 
-        </div>
-    	 
+
+
+
+
+
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/10/24/AuroraCTF2023-Misc-Blockchain-WP/">AuroraCTF2023 Misc&amp;Blockchain WP</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Writeup</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">AuroraCTF</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">已完结Σ(っ °Д °;)っ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/10/23/Brief%20Intro/" class="archive-article-date">
-        <time datetime="2023-10-23T15:29:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2023-10-23</time>
-        
-                <br><time datetime="2024-03-05T05:23:31.700Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2024-03-05</time>
-        
-</a>
-
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/10/23/Brief%20Intro/">Brief Intro</a>
-	
-    </h1>
+      <section id="comments" class="comments">
+        <style>
+          .comments{margin:30px;padding:10px;background:#fff}
+          @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+        </style>
+        <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "gKwlr1RYCplgQDNhzIJAB42y-gzGzoHsz",
+            app_key: "a4flqbMyJoAUgvgNLxCQ8Bjh",
+            placeholder: "求求大佬给点建议带带我吧(☆▽☆)",
+            avatar:""
+        });
+    }
+</script>
+    </section>
   
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Introduction</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+
+
 
 
           </div>
@@ -623,8 +582,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
