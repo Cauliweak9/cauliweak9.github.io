@@ -18,7 +18,7 @@
 <meta property="og:description" content="感觉这个坑会很大，就从合约安全那篇博客挖过来了，不然看的也心烦">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-10-25T20:35:38.000Z">
-<meta property="article:modified_time" content="2026-11-04T19:04:11.361Z">
+<meta property="article:modified_time" content="2026-11-24T13:00:24.021Z">
 <meta property="article:author" content="9C±Void">
 <meta property="article:tag" content="随想">
 <meta property="article:tag" content="持续更新中(☆▽☆)">
@@ -226,7 +226,7 @@
 <a href="/2026/10/26/zero-knowledge/" class="archive-article-date">
         <time datetime="2026-10-25T20:35:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>创建于：2026-10-26</time>
         
-                <br><time datetime="2026-11-04T19:04:11.361Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2026-11-05</time>
+                <br><time datetime="2026-11-24T13:00:24.021Z" itemprop="dateModified"><i class="icon-clock icon"></i>更新于：2026-11-24</time>
         
 </a>
 
@@ -241,7 +241,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">7.4k字</span>
+      <span class="post-count">10.5k字</span>
     </span>
   </span>
 
@@ -250,7 +250,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">28分</span>
+      <span class="post-count">39分</span>
     </span>
   </span>
 </div>
@@ -267,6 +267,7 @@
 <hr>
 <blockquote>
 <p>写这篇博客也只是对着其他人的成果做笔记来push自己，本文对应的参考链接你们可以自己看这个：<a target="_blank" rel="noopener" href="https://rareskills.io/zk-book">The RareSkills Book of Zero Knowledge | RareSkills</a></p>
+<p>哦对了，<strong>傻逼Mathjax</strong></p>
 </blockquote>
 <h1 id="0-瞎写的ZKP概念速通"><a href="#0-瞎写的ZKP概念速通" class="headerlink" title="0. 瞎写的ZKP概念速通"></a>0. 瞎写的ZKP概念速通</h1><p>简单用非数学语言过一下zkp是啥：比如某个人P希望向另一个人V证明某件事，但是P又不希望向V直接或者间接地泄露任何实际信息，这个时候就可以使用zkp去实现这一点</p>
 <p>比如P想证明他能解决任何一个数独，但是P不希望泄露他具体是怎么做到的，甚至连数独的结果都不愿意展示给V，那么这个时候P可以这么办：把每一行、每一列、每一个九宫格的所有数字单独装进不同的袋子里（这样应该有9+9+9&#x3D;27个袋子），此时V只需要检查每个袋子里面是不是都是只出现一次的1~9就可以了</p>
@@ -463,7 +464,110 @@
 <p>接下来谈论奇数和偶数的概念。对于一般情况，我们认为一个数可以被2除尽且没有余数，我们就叫它“偶数”</p>
 <p>但是在有限域内，除以2就是乘以2的乘法逆元，因此它必定会得到另一个域元素，而不会有“余数”</p>
 <p>所以对有限域元素是否为奇数的定义大致是这样的：对于域元素$a\in\mathbb{Z}_p$，$a$的二进制表示中最低有效位为1，则$a$为奇数。</p>
-<h3 id="1-3-5-模平方根"><a href="#1-3-5-模平方根" class="headerlink" title="1.3.5 模平方根"></a>1.3.5 模平方根</h3><h1 id="ZK电路安全"><a href="#ZK电路安全" class="headerlink" title="?. ZK电路安全"></a>?. ZK电路安全</h1><p>本质上ZK电路安全和一般的代码安全有些不一样，因为代码安全主要侧重于“代码干了什么”，而ZK电路本身就只是一些声明性质的方程组，所以它更侧重于“电路缺少了对什么的约束”</p>
+<h3 id="1-3-5-模平方根"><a href="#1-3-5-模平方根" class="headerlink" title="1.3.5 模平方根"></a>1.3.5 模平方根</h3><p>我们现在已经分析完了有限域里的加减乘除，那么下一步就应该到平方和平方根运算了，前者还是很好办的，这里就不展开了；后者的话我们可以用一个例子开始引入：$5\times 5\pmod{11}&#x3D;3$</p>
+<p>所以我们可以知道3的一个平方根是5，而且不仅仅如此，我们知道-5的平方模11也等于3，而有限域里面-5就是5的加法逆元，结果是6，最后验算一下：$6\times 6\pmod{11}&#x3D;3$，嗯，没问题</p>
+<p>这一个例子很符合我们对平方根的直觉：对于一个非负整数，它的平方根有两个，且互为相反数（虽然拓展到复数域的话对负数进行平方根运算这句话也没问题，但是我们还是谈论非负整数吧）</p>
+<p>不过对于$p&#x3D;11$的情况，实际上不是所有的元素都能找到与之对应的“平方根”，总之对于有限域内开平方运算可行性这一件事，有一个概念叫“二次剩余”（更高次方的叫“k次剩余”），相关的定义、证明和性质这里不展开，感兴趣的可以自行查看这个页面：<a target="_blank" rel="noopener" href="https://oi-wiki.org/math/number-theory/quad-residue/#tonellishanks-%E7%AE%97%E6%B3%95">二次剩余 - OI Wiki</a></p>
+<p>总之Python的<code>libnum</code>库就能直接帮你求模平方根（<code>libnum</code>可不是原生库，记得pip）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> libnum <span class="keyword">import</span> has_sqrtmod_prime_power, sqrtmod_prime_power</span><br><span class="line">has_sqrtmod_prime_power(<span class="number">5</span>, <span class="number">11</span>, <span class="number">1</span>) <span class="comment"># True</span></span><br><span class="line"><span class="built_in">list</span>(sqrtmod_prime_power(<span class="number">5</span>, <span class="number">11</span>, <span class="number">1</span>)) <span class="comment"># [4, 7]</span></span><br></pre></td></tr></table></figure>
+
+<p>对于这里的函数<code>sqrtmod_prime_power(a,p,k)</code>，实际上就是求解$x^2\equiv a\pmod{p^k}$中的$x$，上面代码的样例就是在求5在模11的平方根，列表里的两个值就是它的两个平方根</p>
+<p>上面的例子说明，如果在算术电路里面使用<code>x*x===y</code>这种约束，有可能这种约束完全无法满足，也有可能有2个不同的<code>x</code>值满足这个约束，所以设计约束的时候可能需要注意</p>
+<h3 id="1-3-6-有限域中的线性方程组"><a href="#1-3-6-有限域中的线性方程组" class="headerlink" title="1.3.6 有限域中的线性方程组"></a>1.3.6 有限域中的线性方程组</h3><p>算术电路本质上就是有限域中的线性方程组，当然前面我们也发现了一般的数学概念和有限域中的类似的概念之间会有一定的差异，因此我们在有限域内使用线性方程组这个概念之前最好先确认一下有什么差异</p>
+<blockquote>
+<p>为了方便说明，后面提到的线性方程组均为二元一次的线性方程组</p>
+</blockquote>
+<p>这里不再重新说明线性方程组的定义是什么，不过为了后续的说明，还是在这里说一下实数集下线性方程组的解的三种情况：</p>
+<ul>
+<li>没有解，如果用一条线来表示一个线性方程，那么这种情况就是两条线之间没有交点</li>
+<li>有1个解，即两条线相交于同一个点</li>
+<li>有无穷多个解，两条线之间有无穷多个交点，也就是说两个线性方程都表示同一条线</li>
+</ul>
+<p>对于有限域，其实也是同理，依旧可以分为这三类，但是别忘了我们在有限域内，所以合法的解必须要保证交点的横纵坐标都得是整数，而且我们不可能有无穷多组解，最多只有$p$组解。不仅如此，超出范围的值是要被取模的，取模之后可能就会变成另一种情况了，用坐标系表示的话就类似螺纹的正视图那样吧</p>
+<p>对于有限域内的线性方程组，可能会出现以下类型：</p>
+<ul>
+<li>实数域内只有1组解的线性方程组，有限域内可以有$p$组解（比如$x+2y&#x3D;1,6x+y&#x3D;6\pmod{11}$，它们在这个有限域内表示的是同一条线$y&#x3D;5x+6$）</li>
+<li>实数域内只有1组解的线性方程组，有限域内可以没有解（比如$x+2y&#x3D;1,7x+3y&#x3D;2\pmod{11}$，它们在这个有限域内表示的是两条平行的线$y&#x3D;5x+6,y&#x3D;5x+8$）</li>
+<li>实数域内没有解的线性方程组，有限域内可以有$p$组解（比如$x+2y&#x3D;3,4x+8y&#x3D;1\pmod{11}$，它们在这个有限域内表示的是同一条线$y&#x3D;5x+7$）</li>
+</ul>
+<blockquote>
+<p>各位可以自行尝试算一下，反正$p&#x3D;11$下的加法乘法逆元的计算也就一分钟的事</p>
+</blockquote>
+<p>所以上面这些东西进一步说明了我们不能用常规的实数域的计算去“下意识”认为有限域下的计算也是同样的道理</p>
+<h3 id="1-3-7-有限域中的多项式"><a href="#1-3-7-有限域中的多项式" class="headerlink" title="1.3.7 有限域中的多项式"></a>1.3.7 有限域中的多项式</h3><p>在之前算术电路的部分里，我们使用了<code>x(x-1) === 0</code>去约束<code>x</code>的取值只能是0或1两种情况，虽然这个约束在有限域内的效果确实和常规实数域内的效果是相同的，但是前面线性方程组的经验告诉我们事情大概率没那么简单</p>
+<p>虽然这么说，但是我们还是先看看有限域内的多项式和实数域内的多项式有哪些相似的性质吧：</p>
+<ul>
+<li>最高次为$d$的多项式最多有$d$个根，多项式$p(x)$的根为能使$p(r)&#x3D;0$成立的$r$的值</li>
+<li>有限域内对多项式的加法遵循交换律、结合律和分配律</li>
+<li>将两个多项式$p_1$和$p_2$相加，则得到的多项式$p_1+p_2$的最高次<strong>最大</strong>为$\max(\deg(p_1),\deg(p_2))$，当然相加得到的多项式最高次也可以小于这个值（高次项被消掉了）</li>
+<li>对两个多项式$p_1$和$p_2$相乘，得到的多项式$p_1p_2$的根为两个原多项式的根的并集</li>
+</ul>
+<hr>
+<p>那么接下来就是我们最喜欢的实数域&#x2F;有限域差异环节了，不过这里的情况就很简单了：实数域内的多项式无非只有有实数根和没有实数根两种情况，那么反直觉也就只能是在两者之间来回横跳</p>
+<p>先来说实数域内没有根但有限域内有根的情况，比如$y&#x3D;x^2+1\pmod{17}$，对于$x&#x3D;4$和$x&#x3D;13$这两种情况，它们都有$y&#x3D;0$，但是$y&#x3D;x^2+1$本身在实数域内是没有实根的</p>
+<p>接下来就是实数域内有实根但是有限域内没有根的情况，这里我们取$y&#x3D;x^2-5\pmod{17}$，可以很轻松知道在实数域内它的根就是$x&#x3D;\pm\sqrt{5}$，但是它在这个有限域里就是没有根，这个各位自行pyplot都行，不过如果$p&#x3D;11$的话这个多项式还是有根的</p>
+<p>所以这里我们可以发现一个问题：假如我们希望使用算术电路去说明“我知道多项式$y&#x3D;x^2-5$的一个根”，那么此时算术电路使用的$p$将会对这个电路产生巨大的影响，因为我们会发现有一部分的$p$是无法找到<code>x² === 5</code>这个约束的见证的</p>
+<h3 id="1-3-8-Python的galois库"><a href="#1-3-8-Python的galois库" class="headerlink" title="1.3.8 Python的galois库"></a>1.3.8 Python的<code>galois</code>库</h3><p>前面也有提到Python的<code>galois</code>库实现了有限域内的计算，所以这里趁我们了解到了多项式简单过一下（反正我只负责从RareSkills那里Copy Paste喵）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> galois</span><br><span class="line">GF103 = galois.GF(<span class="number">103</span>) <span class="comment"># p = 103</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># we define a polynomial x^2 + 2x + 102 mod 103</span></span><br><span class="line">p1 = galois.Poly([<span class="number">1</span>,<span class="number">2</span>,<span class="number">102</span>], GF103)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p1)</span><br><span class="line"><span class="comment"># x^2 + 2x + 102</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># we define a polynomial x^2 + x + 1 mod 103</span></span><br><span class="line">p2 = galois.Poly([<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>], GF103)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p1 + p2)</span><br><span class="line"><span class="comment"># 2x^2 + 3x</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的<code>galois.GF(p)</code>就是构建一个阶为$p$的Galois域（Galois Field）</p>
+</blockquote>
+<p>当然，这个库能自动将负数转化为加法逆元：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> galois</span><br><span class="line">GF103 = galois.GF(<span class="number">103</span>) <span class="comment"># p = 103</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># We can input &quot;-1&quot; as a coefficient, and that will</span></span><br><span class="line"><span class="comment"># automatically be calculated as `p - 1`</span></span><br><span class="line"><span class="comment"># -1 becomes 102 in a field p = 103</span></span><br><span class="line">p3 = galois.Poly([-<span class="number">1</span>, <span class="number">1</span>], GF103)</span><br><span class="line">p4 = galois.Poly([-<span class="number">1</span>, <span class="number">2</span>], GF103)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(p3)</span><br><span class="line"><span class="comment"># 102x + 1</span></span><br><span class="line"><span class="built_in">print</span>(p4)</span><br><span class="line"><span class="comment"># 102x + 2</span></span><br></pre></td></tr></table></figure>
+
+<p>多项式的相乘也很简单：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(p3 * p4)</span><br><span class="line"><span class="comment"># x^2 + 100x + 2</span></span><br></pre></td></tr></table></figure>
+
+<p>求解多项式的根可以这样：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>((p3 * p4).roots())</span><br><span class="line"><span class="comment"># [1, 2]</span></span><br></pre></td></tr></table></figure>
+
+<p>不过需要注意一下，这个库会自动截断浮点数为整型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The galois library will silently convert</span></span><br><span class="line"><span class="comment"># floats into a integer</span></span><br><span class="line">galois.Poly([<span class="number">2.5</span>], GF103)</span><br><span class="line"><span class="comment"># Poly(2, GF(103))</span></span><br></pre></td></tr></table></figure>
+
+<p>而且你传入大于或等于$p$的值会报错：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># The follow code fails because we cannot</span></span><br><span class="line"><span class="comment"># have coefficients the order of the field or higher</span></span><br><span class="line">galois.Poly([<span class="number">103</span>], GF103)</span><br><span class="line"><span class="comment"># ValueError: GF(103) arrays must have elements in `0 &lt;= x &lt; 103`, not [103].</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-（为程序猿准备的）基础集合论"><a href="#1-4-（为程序猿准备的）基础集合论" class="headerlink" title="1.4 （为程序猿准备的）基础集合论"></a>1.4 （为程序猿准备的）基础集合论</h2><blockquote>
+<p>鸽了那么久终于慢慢氵到了1.4了</p>
+</blockquote>
+<h3 id="1-4-0-开始前的简单说明"><a href="#1-4-0-开始前的简单说明" class="headerlink" title="1.4.0 开始前的简单说明"></a>1.4.0 开始前的简单说明</h3><p>简单来说就是一个速通的篇章，所以有断层很正常，因为它是为了后续1.5小节讲抽象代数打基础的，原作者也说TA特意删去了那些对于理解抽象代数相关部分没有直接效果的部分</p>
+<p>对于那些希望了解完整集合论和希望知道严谨证明的大佬们，各位可以自行开启搜索引擎或者AI，或者翻开自己的书，这里不会有太多的证明</p>
+<p>但是再怎么说，还是推荐各位去做一下ZKBook后面对应的习题（至少原作者是这么说的，TA认为学习集合论和学人类语言一样，而且有些东西得上手才熟悉）</p>
+<p>至于ZKBook前面有关集合、超集和子集之类的一些非常非常简单基础的定义我就先跳过了。作为高中数学必修1一开始就学的东西，高考前几题送分题，后续高数还会用到一些，相信各位还不至于忘得那么彻底，但是如果你还是忘记了子集的开口朝哪边，那还是请先翻开过去的课本再看几眼吧</p>
+<h3 id="1-4-1-有序对"><a href="#1-4-1-有序对" class="headerlink" title="1.4.1 有序对"></a>1.4.1 有序对</h3><p>众所周知，集合内的元素是没有顺序这么一说的，你不管怎么排列集合内的元素，只要两个集合之间的所有元素一一对应，那么它们就是同一个集合</p>
+<p>那么如果我们希望一个集合有所谓“顺序”的话，那怎么办呢？我们先看只有2个元素的情况（毕竟一对只有两个），然后用一个符号$(a,b)$来表示它是一个“有顺序的集合”（其实就是有序对）</p>
+<p>根据我们先前说的，顺序很重要，因此$(a,b)\neq(b,a)$，因为它们顺序不同，但是用集合来表示的话应该怎么办呢？</p>
+
+
+<p>别忘了我们可以进行集合嵌套（比如$\{\{a\}\}$这种），更何况集合里还可以包含不同类型的元素（比如$\{a,\{\}\}$也是一个集合）那么我们是否可以利用这个机制去定义有序对呢？</p>
+
+<p>直接说结论，答案是可以的，对于公理化集合论，有序对$(a,b)$通常定义为库拉托夫斯基对（Kuratowski Pair）：
+
+$$
+(a,b)_K\equiv_{def}\{\{a\},\{a,b\}\}
+$$
+</p>
+<p>除此之外有序对还会有各种变体，为了我打字方便这里就用短对${a,{a,b}}$的定义好了</p>
+
+
+<p>至于拓展到有序n元组（简单来说就是有n个元素的有序对），你就按照有序对的定义去嵌套就行了，比如三元组：
+
+$$
+(a,b,c)=\{a,\{a,(b,c)\}\}=\{a,\{a,\{b,\{b,c\}\}\}\}
+$$
+
+</p>
+
+<blockquote>
+<p>当然如果你实在觉得这种数学表示太麻烦记不住，你就把有序对当成是tuple吧，反正我没意见</p>
+</blockquote>
+<h3 id="1-4-2-笛卡尔积"><a href="#1-4-2-笛卡尔积" class="headerlink" title="1.4.2 笛卡尔积"></a>1.4.2 笛卡尔积</h3><blockquote>
+<p>一直在想为什么Cartesian会和笛卡尔（Rene Descartes）这看起来八竿子打不着的关系放在一起，结果搜了一下发现前者其实就是后者Descartes的拉丁化形式Cartesius的派生</p>
+<p>刚好<code>des-</code>前缀其实就是<code>of</code>的意思，所以笛卡尔名字翻译一下就是Rene of The Cartes，即来自Cartes的Rene，然后<code>-ian</code>通常是人的后缀，前面的部分作修饰，所以你可以理解为Cartesian就是Cartes-ian，Cartes人，所以Descartes和Cartesian表达的意思大致相同</p>
+<p>好的扯远了，还有一件事，上面很多都是我在瞎说的 ~(￣▽￣)~*</p>
+</blockquote>
+<h1 id="ZK电路安全"><a href="#ZK电路安全" class="headerlink" title="?. ZK电路安全"></a>?. ZK电路安全</h1><p>本质上ZK电路安全和一般的代码安全有些不一样，因为代码安全主要侧重于“代码干了什么”，而ZK电路本身就只是一些声明性质的方程组，所以它更侧重于“电路缺少了对什么的约束”，不管是“缺少对关键信号或相关的约束”还是“哪些约束存在预期之外的合法见证”</p>
 
     
 
@@ -583,6 +687,15 @@
 
 <nav id="article-nav">
   
+    <a href="/2026/11/10/jeopardy-is-dead/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Jeopardy已死——AI，CTF，现在，未来
+        
+      </div>
+    </a>
+  
   
     <a href="/2026/07/02/AuroraCTF2026-Blockchain-WP/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">AuroraCTF2026 Blockchain方向Writeup</div>
@@ -612,7 +725,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0-%E7%9E%8E%E5%86%99%E7%9A%84ZKP%E6%A6%82%E5%BF%B5%E9%80%9F%E9%80%9A"><span class="toc-number">1.</span> <span class="toc-text">0. 瞎写的ZKP概念速通</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-ZK%E7%9B%B8%E5%85%B3%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">1. ZK相关的简单密码学基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-P-NP%E9%97%AE%E9%A2%98%E5%92%8CZKP"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 P&#x2F;NP问题和ZKP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-P-NP%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1.1 P&#x2F;NP问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-P%EF%BC%8CNP%EF%BC%8C%E5%B8%83%E5%B0%94%E5%85%AC%E5%BC%8F"><span class="toc-number">2.1.2.</span> <span class="toc-text">1.1.2 P，NP，布尔公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-P%EF%BC%8CNP%EF%BC%8CZKP"><span class="toc-number">2.1.3.</span> <span class="toc-text">1.1.3 P，NP，ZKP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E7%AE%97%E6%9C%AF%E7%94%B5%E8%B7%AF"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 算术电路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-0-%E7%AE%97%E6%9C%AF%E7%94%B5%E8%B7%AF%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9A%E4%B9%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.2.0 算术电路的简单定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-%E5%9F%BA%E4%BA%8ECircom%E7%9A%84%E4%B8%80%E4%BA%9B%E8%A1%A8%E8%BE%BE%E5%92%8C%E8%BF%90%E7%AE%97%EF%BC%88%E7%AC%A6%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">1.2.1 基于Circom的一些表达和运算（符）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-%E4%BD%BF%E7%94%A8%E7%AE%97%E6%9C%AF%E7%94%B5%E8%B7%AF%E5%AF%B9%E5%B8%83%E5%B0%94%E7%94%B5%E8%B7%AF%E8%BF%9B%E8%A1%8C%E5%BB%BA%E6%A8%A1"><span class="toc-number">2.2.3.</span> <span class="toc-text">1.2.2 使用算术电路对布尔电路进行建模</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-0-%E5%88%9D%E5%A7%8B%E7%BA%A6%E6%9D%9F"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">1.2.2.0 初始约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-1-%E4%B8%8E%E9%97%A8"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">1.2.2.1 与门</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-2-%E9%9D%9E%E9%97%A8"><span class="toc-number">2.2.3.3.</span> <span class="toc-text">1.2.2.2 非门</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-3-%E6%88%96%E9%97%A8"><span class="toc-number">2.2.3.4.</span> <span class="toc-text">1.2.2.3  或门</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E6%9C%89%E9%99%90%E5%9F%9F%E5%92%8C%E6%A8%A1%E8%BF%90%E7%AE%97"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 有限域和模运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-%E6%9C%89%E9%99%90%E5%9F%9F"><span class="toc-number">2.3.1.</span> <span class="toc-text">1.3.1 有限域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-%E6%9C%89%E9%99%90%E5%9F%9F%E4%B8%AD%E7%9A%84%E5%8A%A0%E6%B3%95%E9%80%86%E5%85%83%E5%92%8C%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83"><span class="toc-number">2.3.2.</span> <span class="toc-text">1.3.2 有限域中的加法逆元和乘法逆元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-3-%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83%E4%B8%8E%E2%80%9C%E5%B8%B8%E8%A7%84%E2%80%9D%E5%88%86%E6%95%B0"><span class="toc-number">2.3.3.</span> <span class="toc-text">1.3.3 乘法逆元与“常规”分数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-1-%E8%AF%81%E6%98%8E%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83%E4%B8%8E%E2%80%9C%E5%B8%B8%E8%A7%84%E2%80%9D%E5%88%86%E6%95%B0%E7%9A%84%E5%8A%A0%E6%B3%95-%E4%B9%98%E6%B3%95%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-number">2.3.3.1.</span> <span class="toc-text">1.3.3.1 证明乘法逆元与“常规”分数的加法&amp;乘法的一致性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-2-%E8%AE%BE%E8%AE%A1%E2%80%9C%E5%B8%B8%E8%A7%84%E2%80%9D%E5%88%86%E6%95%B0%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%9C%89%E9%99%90%E5%9F%9F%E5%86%85%E5%85%83%E7%B4%A0%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-number">2.3.3.2.</span> <span class="toc-text">1.3.3.2 设计“常规”分数转化为有限域内元素的算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-4-%E6%9C%89%E9%99%90%E5%9F%9F%E5%86%85%E7%9A%84%E2%80%9C%E9%99%A4%E6%B3%95%E2%80%9D%EF%BC%8C%E2%80%9C%E5%81%B6%E6%95%B0%E2%80%9D%E5%92%8C%E2%80%9C%E5%A5%87%E6%95%B0%E2%80%9D"><span class="toc-number">2.3.4.</span> <span class="toc-text">1.3.4 有限域内的“除法”，“偶数”和“奇数”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-5-%E6%A8%A1%E5%B9%B3%E6%96%B9%E6%A0%B9"><span class="toc-number">2.3.5.</span> <span class="toc-text">1.3.5 模平方根</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ZK%E7%94%B5%E8%B7%AF%E5%AE%89%E5%85%A8"><span class="toc-number">3.</span> <span class="toc-text">?. ZK电路安全</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0-%E7%9E%8E%E5%86%99%E7%9A%84ZKP%E6%A6%82%E5%BF%B5%E9%80%9F%E9%80%9A"><span class="toc-number">1.</span> <span class="toc-text">0. 瞎写的ZKP概念速通</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-ZK%E7%9B%B8%E5%85%B3%E7%9A%84%E7%AE%80%E5%8D%95%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="toc-number">2.</span> <span class="toc-text">1. ZK相关的简单密码学基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-P-NP%E9%97%AE%E9%A2%98%E5%92%8CZKP"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 P&#x2F;NP问题和ZKP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-1-P-NP%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.1.</span> <span class="toc-text">1.1.1 P&#x2F;NP问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-2-P%EF%BC%8CNP%EF%BC%8C%E5%B8%83%E5%B0%94%E5%85%AC%E5%BC%8F"><span class="toc-number">2.1.2.</span> <span class="toc-text">1.1.2 P，NP，布尔公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-3-P%EF%BC%8CNP%EF%BC%8CZKP"><span class="toc-number">2.1.3.</span> <span class="toc-text">1.1.3 P，NP，ZKP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E7%AE%97%E6%9C%AF%E7%94%B5%E8%B7%AF"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 算术电路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-0-%E7%AE%97%E6%9C%AF%E7%94%B5%E8%B7%AF%E7%9A%84%E7%AE%80%E5%8D%95%E5%AE%9A%E4%B9%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">1.2.0 算术电路的简单定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-1-%E5%9F%BA%E4%BA%8ECircom%E7%9A%84%E4%B8%80%E4%BA%9B%E8%A1%A8%E8%BE%BE%E5%92%8C%E8%BF%90%E7%AE%97%EF%BC%88%E7%AC%A6%EF%BC%89"><span class="toc-number">2.2.2.</span> <span class="toc-text">1.2.1 基于Circom的一些表达和运算（符）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-2-%E4%BD%BF%E7%94%A8%E7%AE%97%E6%9C%AF%E7%94%B5%E8%B7%AF%E5%AF%B9%E5%B8%83%E5%B0%94%E7%94%B5%E8%B7%AF%E8%BF%9B%E8%A1%8C%E5%BB%BA%E6%A8%A1"><span class="toc-number">2.2.3.</span> <span class="toc-text">1.2.2 使用算术电路对布尔电路进行建模</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-0-%E5%88%9D%E5%A7%8B%E7%BA%A6%E6%9D%9F"><span class="toc-number">2.2.3.1.</span> <span class="toc-text">1.2.2.0 初始约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-1-%E4%B8%8E%E9%97%A8"><span class="toc-number">2.2.3.2.</span> <span class="toc-text">1.2.2.1 与门</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-2-%E9%9D%9E%E9%97%A8"><span class="toc-number">2.2.3.3.</span> <span class="toc-text">1.2.2.2 非门</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-3-%E6%88%96%E9%97%A8"><span class="toc-number">2.2.3.4.</span> <span class="toc-text">1.2.2.3  或门</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E6%9C%89%E9%99%90%E5%9F%9F%E5%92%8C%E6%A8%A1%E8%BF%90%E7%AE%97"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 有限域和模运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-1-%E6%9C%89%E9%99%90%E5%9F%9F"><span class="toc-number">2.3.1.</span> <span class="toc-text">1.3.1 有限域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-2-%E6%9C%89%E9%99%90%E5%9F%9F%E4%B8%AD%E7%9A%84%E5%8A%A0%E6%B3%95%E9%80%86%E5%85%83%E5%92%8C%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83"><span class="toc-number">2.3.2.</span> <span class="toc-text">1.3.2 有限域中的加法逆元和乘法逆元</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-3-%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83%E4%B8%8E%E2%80%9C%E5%B8%B8%E8%A7%84%E2%80%9D%E5%88%86%E6%95%B0"><span class="toc-number">2.3.3.</span> <span class="toc-text">1.3.3 乘法逆元与“常规”分数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-1-%E8%AF%81%E6%98%8E%E4%B9%98%E6%B3%95%E9%80%86%E5%85%83%E4%B8%8E%E2%80%9C%E5%B8%B8%E8%A7%84%E2%80%9D%E5%88%86%E6%95%B0%E7%9A%84%E5%8A%A0%E6%B3%95-%E4%B9%98%E6%B3%95%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7"><span class="toc-number">2.3.3.1.</span> <span class="toc-text">1.3.3.1 证明乘法逆元与“常规”分数的加法&amp;乘法的一致性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-2-%E8%AE%BE%E8%AE%A1%E2%80%9C%E5%B8%B8%E8%A7%84%E2%80%9D%E5%88%86%E6%95%B0%E8%BD%AC%E5%8C%96%E4%B8%BA%E6%9C%89%E9%99%90%E5%9F%9F%E5%86%85%E5%85%83%E7%B4%A0%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-number">2.3.3.2.</span> <span class="toc-text">1.3.3.2 设计“常规”分数转化为有限域内元素的算法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-4-%E6%9C%89%E9%99%90%E5%9F%9F%E5%86%85%E7%9A%84%E2%80%9C%E9%99%A4%E6%B3%95%E2%80%9D%EF%BC%8C%E2%80%9C%E5%81%B6%E6%95%B0%E2%80%9D%E5%92%8C%E2%80%9C%E5%A5%87%E6%95%B0%E2%80%9D"><span class="toc-number">2.3.4.</span> <span class="toc-text">1.3.4 有限域内的“除法”，“偶数”和“奇数”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-5-%E6%A8%A1%E5%B9%B3%E6%96%B9%E6%A0%B9"><span class="toc-number">2.3.5.</span> <span class="toc-text">1.3.5 模平方根</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-6-%E6%9C%89%E9%99%90%E5%9F%9F%E4%B8%AD%E7%9A%84%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E7%BB%84"><span class="toc-number">2.3.6.</span> <span class="toc-text">1.3.6 有限域中的线性方程组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-7-%E6%9C%89%E9%99%90%E5%9F%9F%E4%B8%AD%E7%9A%84%E5%A4%9A%E9%A1%B9%E5%BC%8F"><span class="toc-number">2.3.7.</span> <span class="toc-text">1.3.7 有限域中的多项式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-8-Python%E7%9A%84galois%E5%BA%93"><span class="toc-number">2.3.8.</span> <span class="toc-text">1.3.8 Python的galois库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-%EF%BC%88%E4%B8%BA%E7%A8%8B%E5%BA%8F%E7%8C%BF%E5%87%86%E5%A4%87%E7%9A%84%EF%BC%89%E5%9F%BA%E7%A1%80%E9%9B%86%E5%90%88%E8%AE%BA"><span class="toc-number">2.4.</span> <span class="toc-text">1.4 （为程序猿准备的）基础集合论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-0-%E5%BC%80%E5%A7%8B%E5%89%8D%E7%9A%84%E7%AE%80%E5%8D%95%E8%AF%B4%E6%98%8E"><span class="toc-number">2.4.1.</span> <span class="toc-text">1.4.0 开始前的简单说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-1-%E6%9C%89%E5%BA%8F%E5%AF%B9"><span class="toc-number">2.4.2.</span> <span class="toc-text">1.4.1 有序对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-2-%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF"><span class="toc-number">2.4.3.</span> <span class="toc-text">1.4.2 笛卡尔积</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ZK%E7%94%B5%E8%B7%AF%E5%AE%89%E5%85%A8"><span class="toc-number">3.</span> <span class="toc-text">?. ZK电路安全</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -816,6 +929,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">持续更新中(☆▽☆)</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Writeup</a>
               </li>
              
@@ -828,15 +945,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">持续更新中(☆▽☆)</a>
+                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">入门...大概？</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Introduction</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -852,15 +965,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Encrypted</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Encrypted</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -974,7 +1087,7 @@
             </li>
           
             <li class="search-li">
-              <a href="https://triodelzx.github.io/" target="_blank" 
+              <a href="https://www.triode.cc/" target="_blank" 
                 class="search-title" title="教我怎么赤石的密码（但是全栈）神♪(^∇^*)">
                 
                   <img src="https://cdn.jsdelivr.net/gh/TriodeLzx/blogimage/blog202311111553454.jpg">
@@ -1005,7 +1118,7 @@
           
             <li class="search-li">
               <a href="https://wwwmarin.xyz/" target="_blank" 
-                class="search-title" title="Misc取证大神，正在转Web(o゜▽゜)o☆">
+                class="search-title" title="Misc取证大神，已成功上岸Web(o゜▽゜)o☆">
                 
                   <img src="https://pic1.imgdb.cn/item/67b463fed0e0a243d40083c5.jpg">
                 
@@ -1014,10 +1127,10 @@
             </li>
           
             <li class="search-li">
-              <a href="https://doc4c3.github.io/DocAceLittleHome.github.io/" target="_blank" 
+              <a href="https://docacer.top/" target="_blank" 
                 class="search-title" title="Misc大神，正在鼓捣IoT(ﾉ*･ω･)ﾉ">
                 
-                  <i class="icon-link icon"></i>
+                  <img src="https://docacer.top/images/avatar.png">
                 
                 Doc.Ace
               </a>
